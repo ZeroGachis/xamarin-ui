@@ -1,0 +1,14 @@
+# Artifacts
+bin
+obj
+
+# Visual studio
+.vs
+*.user
+
+# Resharper
+_ReSharper.Caches
+
+# NCrunch
+*.ncrunchsolution
+_NCrunch*
