@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Layouts.Section"
+             x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Container" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="16"></Setter>
+                <Setter Property="Padding" Value="20"></Setter>
+            </Style>
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="FontSize" Value="22"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <Frame Style="{StaticResource Container}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Style="{StaticResource Title}" Text="{Binding Source={x:Reference Self}, Path=Title}" />
+                    <ContentView Grid.Row="1" Content="{Binding Source={x:Reference Self}, Path=Content}" />
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+</ContentView>

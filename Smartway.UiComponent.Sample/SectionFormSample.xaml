@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Sample.SectionFormSample">
+    <ContentPage.Content>
+        <layouts:SectionForm>
+            <layouts:Section Title="Title 1">
+                <Label Text="Content 1" />
+            </layouts:Section>
+            <layouts:Section Title="Title 2">
+                <Label Text="Content 2" />
+            </layouts:Section>
+            <layouts:Section Title="Title 3">
+                <Label Text="Content 3" />
+            </layouts:Section>
+        </layouts:SectionForm>
+    </ContentPage.Content>
+</ContentPage>

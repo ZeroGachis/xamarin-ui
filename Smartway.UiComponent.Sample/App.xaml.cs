@@ -1,11 +1,13 @@
-﻿namespace Smartway.UiComponent.Sample
+﻿using Xamarin.Forms;
+
+namespace Smartway.UiComponent.Sample
 {
     public partial class App
     {
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage{ BindingContext = new MainPageViewModel() });
         }
 
         protected override void OnStart()
