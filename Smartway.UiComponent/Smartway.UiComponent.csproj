@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Smartway</Authors>
+    <Description>Librairie de composant graphique édité par Smartway et utilisé au sein de ses produit</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Smartway</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
