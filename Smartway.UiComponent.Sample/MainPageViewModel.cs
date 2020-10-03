@@ -7,7 +7,7 @@ namespace Smartway.UiComponent.Sample
     {
         public ICommand SectionForm => new Command(async () =>
         {
-            await NavigateTo(new SectionFormSample());
+            await NavigateTo(new SectionFormSample{ BindingContext = new SectionFormSampleViewModel()});
         });
     }
 }
