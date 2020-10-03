@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Smartway.UiComponent.Converters;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Indicators.Status"
+             x:Name="Self" VerticalOptions="Center" HorizontalOptions="Start">
+    <Grid.Resources>
+        <converters:UpperCaseConverter x:Key="UpperCase" />
+    </Grid.Resources>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="20" />
+    </Grid.RowDefinitions>
+    <BoxView x:Name="BoxView" CornerRadius="4" Grid.Row="0">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="StatusValues">
+                <VisualState x:Name="Success">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="#04C382" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Warning">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="#FF6C3B" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Basic">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="#707070" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </BoxView>
+    <Label 
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Padding="6,3,6,3"
+        Text="{Binding Source={x:Reference Self}, Path=Text, Converter={StaticResource UpperCase}}"
+        TextColor="White" FontAttributes="Bold" FontSize="10" LineHeight="0">
+    </Label>
+</Grid>

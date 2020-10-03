@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.Indicators.ViewModels;assembly=Smartway.UiComponent.Sample"
+             xmlns:indicators="clr-namespace:Smartway.UiComponent.Indicators;assembly=Smartway.UiComponent"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Sample.Indicators.Views.Indicators"
+             x:DataType="viewModels:IndicatorsViewModel">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="Center">
+                <indicators:Status Value="Basic" Text="Basic"/>
+                <indicators:Status Value="Warning" Text="Warning"/>
+                <indicators:Status Value="Success" Text="Success"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
