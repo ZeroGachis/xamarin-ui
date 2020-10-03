@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="Smartway.UiComponent.Resources.Colors">
+    <Color x:Key="ZgDarkBlue">#010142</Color>
+    <Color x:Key="ZgNightBlue">#27304A</Color>
+    <Color x:Key="ZgDarkBackground">#010627</Color>
+    <Color x:Key="ZgLoaderColor">Gray</Color>
+    <Color x:Key="ZgGrey">#8B8B8B</Color>
+    <Color x:Key="ZgColdGrey2">#E2E4F0</Color>
+    <Color x:Key="ZgMediumGrey">#B2B2B2</Color>
+    <Color x:Key="ZgLightGrey">#E2E4F0</Color>
+</ResourceDictionary>

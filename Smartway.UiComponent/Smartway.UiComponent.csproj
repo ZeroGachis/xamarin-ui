@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Smartway</Authors>
+    <Description>Librairie de composant graphique édité par Smartway et utilisé au sein de ses produit</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Smartway</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,11 +14,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Buttons\PrimaryButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Layouts\Section.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Layouts\SectionForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

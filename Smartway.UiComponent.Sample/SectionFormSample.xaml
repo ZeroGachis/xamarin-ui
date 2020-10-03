@@ -4,8 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
+             xmlns:buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
+             xmlns:sample="clr-namespace:Smartway.UiComponent.Sample;assembly=Smartway.UiComponent.Sample"
              mc:Ignorable="d"
-             x:Class="Smartway.UiComponent.Sample.SectionFormSample">
+             x:Class="Smartway.UiComponent.Sample.SectionFormSample"
+             x:DataType="sample:SectionFormSampleViewModel">
     <ContentPage.Content>
         <layouts:SectionForm>
             <layouts:Section Title="Title 1">
@@ -15,8 +18,9 @@
                 <Label Text="Content 2" />
             </layouts:Section>
             <layouts:Section Title="Title 3">
-                <Label Text="Content 3" />
+                <Entry Text="{Binding Entry3}" />
             </layouts:Section>
+            <buttons:PrimaryButton Text="Valider" Command="{Binding Validate}"/>
         </layouts:SectionForm>
     </ContentPage.Content>
 </ContentPage>

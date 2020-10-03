@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+                    x:Class="Smartway.UiComponent.Sample.Theme">
+    <ResourceDictionary.MergedDictionaries>
+        <resources:Colors />
+        <ResourceDictionary>
+            <Style x:Key="PrimaryButtonEnableStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ZgDarkBlue}" />
+            </Style>
+            <Style x:Key="PrimaryButtonDisableStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ZgLightGrey}" />
+            </Style>
+            <Style x:Key="SectionFormStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource ZgColdGrey2}" />
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
