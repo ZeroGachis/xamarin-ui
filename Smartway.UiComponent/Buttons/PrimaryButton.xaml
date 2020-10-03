@@ -12,12 +12,12 @@
         <VisualStateGroup x:Name="CommonStates">
             <VisualState x:Name="Normal">
                 <VisualState.Setters>
-                    <Setter Property="BackgroundColor" Value="#010142" />
+                    <Setter Property="Style" Value="PrimaryButtonEnableStyle" />
                 </VisualState.Setters>
             </VisualState>
             <VisualState x:Name="Disabled">
                 <VisualState.Setters>
-                    <Setter Property="BackgroundColor" Value="#E2E4F0" />
+                    <Setter Property="Style" Value="PrimaryButtonDisableStyle" />
                 </VisualState.Setters>
             </VisualState>
         </VisualStateGroup>
