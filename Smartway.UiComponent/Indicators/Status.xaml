@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Grid xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:Smartway.UiComponent.Converters;assembly=Smartway.UiComponent"
+             xmlns:converters="clr-namespace:Smartway.Mvvm.Converters;assembly=Smartway.Mvvm"
              x:Class="Smartway.UiComponent.Indicators.Status"
              x:Name="Self" VerticalOptions="Center" HorizontalOptions="Start">
     <Grid.Resources>
