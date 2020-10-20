@@ -1,5 +1,7 @@
 ﻿using Xamarin.Forms;
 
+[assembly: ExportFont("OpenSans-Bold.ttf", Alias = "OpenSansBold")]
+[assembly: ExportFont("OpenSans-Regular.ttf", Alias = "OpenSans")]
 namespace Smartway.UiComponent.Sample
 {
     public partial class App
