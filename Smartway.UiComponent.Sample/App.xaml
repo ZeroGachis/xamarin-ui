@@ -14,5 +14,14 @@
                 <sample:Theme/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSans"></Setter>
+            <Style.Triggers>
+                <Trigger TargetType="Label" Property="FontAttributes" Value="Bold">
+                    <Setter Property="FontFamily"
+                            Value="OpenSansBold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
