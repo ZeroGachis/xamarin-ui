@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Smartway.Mvvm" Version="0.1.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
   </ItemGroup>
 
   <ItemGroup>
