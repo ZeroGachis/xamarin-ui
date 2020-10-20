@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="SectionSheet\SectionSheetSample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
