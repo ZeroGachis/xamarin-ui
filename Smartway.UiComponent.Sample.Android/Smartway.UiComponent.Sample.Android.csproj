@@ -86,13 +86,16 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\img_product_placeholder_multilocation.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Smartway.UiComponent.Sample\Smartway.UiComponent.Sample.csproj">
       <Project>{2985857A-3C32-48D2-82C2-0196CB942731}</Project>
       <Name>Smartway.UiComponent.Sample</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\img_product_placeholder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -1,59 +1,76 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:Smartway.Mvvm.Converters;assembly=Smartway.Mvvm"
              x:Class="Smartway.UiComponent.Cards.ArticleCard"
              x:Name="Self">
     <ContentView.BindingContext>
         <x:Reference Name="Self" />
     </ContentView.BindingContext>
     <ContentView.Resources>
-        <converters:NegateBooleanConverter x:Key="BooleanInverter" />
+        <ResourceDictionary>
+            <Style x:Key="H5LeftBoldLabel" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="TextColor" Value="#010142"></Setter>
+            </Style>
+            <Style x:Key="ProductImage" TargetType="Image">
+                <Setter Property="Margin" Value="0, 0, 5, 0"></Setter>
+                <Setter Property="WidthRequest" Value="90"></Setter>
+            </Style>
+            <Style x:Key="RegularGencodeText" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="FontAttributes" Value="None"></Setter>
+                <Setter Property="TextColor" Value="#8B8B8B"></Setter>
+            </Style>
+        </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-      <StackLayout Orientation="Vertical" StyleClass="Article">
-          <StackLayout.GestureRecognizers>
-              <TapGestureRecognizer
+        <StackLayout Orientation="Vertical" StyleClass="Article">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
                   Command="{Binding Path=NavigationCommand}" 
                   CommandParameter="{Binding Source={x:Reference Self}}"
                   NumberOfTapsRequired="1"
               />
-          </StackLayout.GestureRecognizers>
-          <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
-              <Image StyleClass="ProductImage">
-                <Image.Triggers>
-                    <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="true">
-                        <Setter Property="Source" Value="img_product_placeholder_multilocation" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="false">
-                        <Setter Property="Source" Value="img_product_placeholder" />
-                    </DataTrigger>
-                </Image.Triggers>
-            </Image>
-            <StackLayout Orientation="Vertical">
-                <Label StyleClass="H5LeftBoldLabel"
-                    Text="{Binding Path=Label}"
-                />
-                <StackLayout Orientation="Horizontal">
+            </StackLayout.GestureRecognizers>
+            <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
+                <Image Style="{StaticResource ProductImage}">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="true">
+                            <Setter Property="Source" Value="img_product_placeholder_multilocation" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="false">
+                            <Setter Property="Source" Value="img_product_placeholder" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <StackLayout Orientation="Vertical">
+                    <Label Style="{StaticResource H5LeftBoldLabel}"
+                           Text="{Binding Path=Label}"
+                    />
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            x:Name="ProductGencode"
+                            Style="{StaticResource RegularGencodeText}"
+                            Text="{Binding Path=Gencode}"
+                         />
+                        <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
+                        <Label
+                            x:Name="ProductPrice"
+                            Style="{StaticResource RegularGencodeText}"
+                            Text="{Binding Path=Price}"
+                        />
+                    </StackLayout>
                     <Label
-                        x:Name="ProductGencode"
-                        StyleClass="RegularGencodeText"
-                        Text="{Binding Path=Gencode}"
-                     />
-                    <Label FontSize="13" Text=" · " TextColor="#8B8B8B"/>
-                    <Label
-                        x:Name="ProductPrice"
-                        StyleClass="RegularGencodeText"
-                        Text="{Binding Path=Price}"
+                        Style="{StaticResource RegularGencodeText}"
+                        TextColor="Black"
+                        Text="{Binding ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
+                        IsVisible="{Binding Path=IsOnShortage}"
                     />
                 </StackLayout>
-                <Label
-                    StyleClass="RegularGencodeText"
-                    TextColor="Black"
-                    Text="{Binding ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
-                    IsVisible="{Binding Path=IsOnShortage}"/>
             </StackLayout>
         </StackLayout>
-        </StackLayout>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>

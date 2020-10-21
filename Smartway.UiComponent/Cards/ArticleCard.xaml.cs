@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +14,8 @@ namespace Smartway.UiComponent.Cards
         public static readonly BindableProperty IsOnShortageProperty = BindableProperty.Create(nameof(IsOnShortage), typeof(bool), typeof(ArticleCard), false);
         public static readonly BindableProperty PriceProperty = BindableProperty.Create(nameof(Price), typeof(double), typeof(ArticleCard), 0.0);
         public static readonly BindableProperty NavigationCommandProperty = BindableProperty.Create(nameof(NavigationCommand), typeof(ICommand), typeof(ArticleCard));
-
+        public static readonly BindableProperty ShortageAtProperty = BindableProperty.Create(nameof(ShortageAt), typeof(DateTime), typeof(ArticleCard), DateTime.Today);
+        
         public bool IsMultilocation
         {
             get => (bool) GetValue(IsMultilocationProperty);
@@ -36,6 +38,12 @@ namespace Smartway.UiComponent.Cards
         {
             get => (bool) GetValue(IsOnShortageProperty);
             set => SetValue(IsOnShortageProperty, value);
+        }
+
+        public DateTime ShortageAt
+        {
+            get => (DateTime) GetValue(ShortageAtProperty);
+            set => SetValue(ShortageAtProperty, value);
         }
 
         public double Price
