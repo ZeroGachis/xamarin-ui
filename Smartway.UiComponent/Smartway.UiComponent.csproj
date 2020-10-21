@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
-    <PackageReference Include="Smartway.Mvvm" Version="0.1.0" />
+    <PackageReference Include="Smartway.Mvvm" Version="0.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +30,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Buttons\PrimaryButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Cards\ArticleCard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Layouts\Section.xaml">

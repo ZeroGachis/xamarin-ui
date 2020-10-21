@@ -1,6 +1,8 @@
 ﻿using System.Windows.Input;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet;
+using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
+using Smartway.UiComponent.Sample.SectionSheet.Views;
 using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Sample
@@ -19,7 +21,7 @@ namespace Smartway.UiComponent.Sample
 
         public ICommand SectionSheet => new Command(async () =>
         {
-            await NavigateTo(new SectionSheetSample());
+            await NavigateTo(new SectionSheetSample{ BindingContext = new SectionSheetSampleViewModel() });
         });
     }
 }

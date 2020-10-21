@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
+             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.SectionSheet.ViewModels;assembly=Smartway.UiComponent.Sample"
+             x:Class="Smartway.UiComponent.Sample.SectionSheet.Views.SectionSheetSample"
+             x:DataType="viewModels:SectionSheetSampleViewModel">
+    <ContentPage.Content>
+        <layouts:SectionSheet>
+            <cards:ArticleCard 
+                Label="Article Test" IsMultilocation="True" IsOnShortage="True" Price="0.3" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}"
+                />
+            <Label>Test 2</Label>
+            <Label>Test 3</Label>
+        </layouts:SectionSheet>
+    </ContentPage.Content>
+</ContentPage>
