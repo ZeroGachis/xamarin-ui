@@ -7,14 +7,17 @@
              x:Class="Smartway.UiComponent.Sample.SectionSheet.Views.SectionSheetSample"
              x:DataType="viewModels:SectionSheetSampleViewModel">
     <ContentPage.Content>
-        <layouts:SectionSheet>
-            <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="True" Price="0.3" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
-            <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="False" Price="0.3" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
-            <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="True" Price="0.3" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
-            <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
+        <ScrollView>
+            <layouts:SectionSheet>
+                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="True" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="False" Price="12.39€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" Status="Monitored"/>
+                <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="True" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" Status="Unmonitored" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
 
-            <Label>Test 2</Label>
-            <Label>Test 3</Label>
-        </layouts:SectionSheet>
+                <Label>Test 2</Label>
+                <Label>Test 3</Label>
+            </layouts:SectionSheet>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

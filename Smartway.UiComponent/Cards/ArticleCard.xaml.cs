@@ -12,10 +12,11 @@ namespace Smartway.UiComponent.Cards
         public static readonly BindableProperty LabelProperty = BindableProperty.Create(nameof(Label), typeof(string), typeof(ArticleCard), "Article");
         public static readonly BindableProperty GencodeProperty = BindableProperty.Create(nameof(Gencode), typeof(string), typeof(ArticleCard), "-");
         public static readonly BindableProperty IsOnShortageProperty = BindableProperty.Create(nameof(IsOnShortage), typeof(bool), typeof(ArticleCard), false);
-        public static readonly BindableProperty PriceProperty = BindableProperty.Create(nameof(Price), typeof(double), typeof(ArticleCard), 0.0);
+        public static readonly BindableProperty PriceProperty = BindableProperty.Create(nameof(Price), typeof(string), typeof(ArticleCard), "0,0€");
         public static readonly BindableProperty NavigationCommandProperty = BindableProperty.Create(nameof(NavigationCommand), typeof(ICommand), typeof(ArticleCard));
         public static readonly BindableProperty ShortageAtProperty = BindableProperty.Create(nameof(ShortageAt), typeof(DateTime), typeof(ArticleCard), DateTime.Today);
-        
+        public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ArticleCard), "Unknown");
+
         public bool IsMultilocation
         {
             get => (bool) GetValue(IsMultilocationProperty);
@@ -46,9 +47,9 @@ namespace Smartway.UiComponent.Cards
             set => SetValue(ShortageAtProperty, value);
         }
 
-        public double Price
+        public string Price
         {
-            get => (double) GetValue(PriceProperty);
+            get => (string) GetValue(PriceProperty);
             set => SetValue(PriceProperty, value);
         }
 
@@ -57,6 +58,13 @@ namespace Smartway.UiComponent.Cards
             get => (ICommand) GetValue(NavigationCommandProperty);
             set => SetValue(NavigationCommandProperty, value);
         }
+
+        public string Status
+        {
+            get => (string)GetValue(StatusProperty);
+            set => SetValue(StatusProperty, value);
+        }
+
         public ArticleCard()
         {
             InitializeComponent();
