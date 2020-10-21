@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Smartway.Mvvm.Converters;assembly=Smartway.Mvvm"
+             x:Class="Smartway.UiComponent.Cards.ArticleCard"
+             x:Name="Self">
+    <ContentView.BindingContext>
+        <x:Reference Name="Self" />
+    </ContentView.BindingContext>
+    <ContentView.Resources>
+        <converters:NegateBooleanConverter x:Key="BooleanInverter" />
+    </ContentView.Resources>
+    <ContentView.Content>
+      <StackLayout Orientation="Vertical" StyleClass="Article">
+          <StackLayout.GestureRecognizers>
+              <TapGestureRecognizer
+                  Command="{Binding Path=NavigationCommand}" 
+                  CommandParameter="{Binding Source={x:Reference Self}}"
+                  NumberOfTapsRequired="1"
+              />
+          </StackLayout.GestureRecognizers>
+          <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
+              <Image StyleClass="ProductImage">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="true">
+                        <Setter Property="Source" Value="img_product_placeholder_multilocation" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="false">
+                        <Setter Property="Source" Value="img_product_placeholder" />
+                    </DataTrigger>
+                </Image.Triggers>
+            </Image>
+            <StackLayout Orientation="Vertical">
+                <Label StyleClass="H5LeftBoldLabel"
+                    Text="{Binding Path=Label}"
+                />
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        x:Name="ProductGencode"
+                        StyleClass="RegularGencodeText"
+                        Text="{Binding Path=Gencode}"
+                     />
+                    <Label FontSize="13" Text=" · " TextColor="#8B8B8B"/>
+                    <Label
+                        x:Name="ProductPrice"
+                        StyleClass="RegularGencodeText"
+                        Text="{Binding Path=Price}"
+                    />
+                </StackLayout>
+                <Label
+                    StyleClass="RegularGencodeText"
+                    TextColor="Black"
+                    Text="{Binding ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
+                    IsVisible="{Binding Path=IsOnShortage}"/>
+            </StackLayout>
+        </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>
