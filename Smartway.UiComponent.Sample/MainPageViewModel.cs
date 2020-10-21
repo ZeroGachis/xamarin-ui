@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
-using Smartway.UiComponent.Sample.SectionSheet;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
 using Xamarin.Forms;

@@ -9,6 +9,5 @@ namespace Smartway.UiComponent.Sample.SectionSheet.ViewModels
         {
             System.Console.WriteLine("DEBUG: PARAM Navigation test : " + param.ToString());
         });
-
     }
 }

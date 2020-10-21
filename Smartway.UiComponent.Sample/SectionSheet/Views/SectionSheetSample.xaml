@@ -9,11 +9,11 @@
     <ContentPage.Content>
         <ScrollView>
             <layouts:SectionSheet>
-                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="True" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
-                <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="False" Price="12.39€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" Status="Monitored"/>
-                <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="True" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
-                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" Status="Unmonitored" />
-                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="True" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" NavigationParameter="test 1" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="False" Price="12.39€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" NavigationParameter="test 2" Status="Monitored"/>
+                <cards:ArticleCard Label="Article Test" IsMultilocation="False" IsOnShortage="True" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" NavigationParameter="test 3" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" NavigationParameter="test 4" Status="Unmonitored" />
+                <cards:ArticleCard Label="Article Test" IsMultilocation="True" IsOnShortage="False" Price="0.3€" Gencode="1234567891234" NavigationCommand="{Binding NavigationTest}" NavigationParameter="test 5" />
 
                 <Label>Test 2</Label>
                 <Label>Test 3</Label>

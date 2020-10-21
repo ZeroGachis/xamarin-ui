@@ -9,11 +9,12 @@ namespace Smartway.UiComponent.Cards
     public partial class ArticleCard
     {
         public static readonly BindableProperty IsMultilocationProperty = BindableProperty.Create(nameof(IsMultilocation), typeof(bool), typeof(ArticleCard), false);
-        public static readonly BindableProperty LabelProperty = BindableProperty.Create(nameof(Label), typeof(string), typeof(ArticleCard), "Article");
-        public static readonly BindableProperty GencodeProperty = BindableProperty.Create(nameof(Gencode), typeof(string), typeof(ArticleCard), "-");
+        public static readonly BindableProperty LabelProperty = BindableProperty.Create(nameof(Label), typeof(string), typeof(ArticleCard));
+        public static readonly BindableProperty GencodeProperty = BindableProperty.Create(nameof(Gencode), typeof(string), typeof(ArticleCard));
         public static readonly BindableProperty IsOnShortageProperty = BindableProperty.Create(nameof(IsOnShortage), typeof(bool), typeof(ArticleCard), false);
-        public static readonly BindableProperty PriceProperty = BindableProperty.Create(nameof(Price), typeof(string), typeof(ArticleCard), "0,0€");
+        public static readonly BindableProperty PriceProperty = BindableProperty.Create(nameof(Price), typeof(string), typeof(ArticleCard));
         public static readonly BindableProperty NavigationCommandProperty = BindableProperty.Create(nameof(NavigationCommand), typeof(ICommand), typeof(ArticleCard));
+        public static readonly BindableProperty NavigationParameterProperty = BindableProperty.Create(nameof(NavigationParameter), typeof(object), typeof(ArticleCard));
         public static readonly BindableProperty ShortageAtProperty = BindableProperty.Create(nameof(ShortageAt), typeof(DateTime), typeof(ArticleCard), DateTime.Today);
         public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ArticleCard), "Unknown");
 
@@ -57,6 +58,12 @@ namespace Smartway.UiComponent.Cards
         {
             get => (ICommand) GetValue(NavigationCommandProperty);
             set => SetValue(NavigationCommandProperty, value);
+        }
+
+        public object NavigationParameter
+        {
+            get => (object) GetValue(NavigationParameterProperty);
+            set => SetValue(NavigationParameterProperty, value);
         }
 
         public string Status

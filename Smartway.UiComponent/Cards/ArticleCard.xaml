@@ -5,9 +5,6 @@
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Cards.ArticleCard"
              x:Name="Self">
-    <ContentView.BindingContext>
-        <x:Reference Name="Self" />
-    </ContentView.BindingContext>
     <ContentView.Resources>
         <ResourceDictionary>
             <Style x:Key="H5LeftBoldLabel" TargetType="Label">
@@ -29,56 +26,56 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout Orientation="Vertical" StyleClass="Article">
+        <StackLayout Orientation="Vertical">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer
-                  Command="{Binding Path=NavigationCommand}" 
-                  CommandParameter="{Binding Source={x:Reference Self}}"
+                  Command="{Binding Source={Reference Self}, Path=NavigationCommand}"
+                  CommandParameter="{Binding Source={Reference Self}, Path=NavigationParameter}"
                   NumberOfTapsRequired="1"
               />
             </StackLayout.GestureRecognizers>
             <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
                 <Image Style="{StaticResource ProductImage}">
                     <Image.Triggers>
-                        <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="true">
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="true">
                             <Setter Property="Source" Value="img_product_placeholder_multilocation" />
                         </DataTrigger>
-                        <DataTrigger TargetType="Image" Binding="{Binding Path=IsMultilocation}" Value="false">
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="false">
                             <Setter Property="Source" Value="img_product_placeholder" />
                         </DataTrigger>
                     </Image.Triggers>
                 </Image>
                 <StackLayout Orientation="Vertical">
                     <Label Style="{StaticResource H5LeftBoldLabel}"
-                           Text="{Binding Path=Label}"
+                           Text="{Binding Source={Reference Self}, Path=Label}"
                     />
                     <StackLayout Orientation="Horizontal">
                         <Label
                             x:Name="ProductGencode"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Path=Gencode}"
+                            Text="{Binding Source={Reference Self}, Path=Gencode}"
                          />
                         <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
                         <Label
                             x:Name="ProductPrice"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Path=Price}"
+                            Text="{Binding Source={Reference Self}, Path=Price}"
                         />
                     </StackLayout>
                     <Label
                         Style="{StaticResource RegularGencodeText}"
                         TextColor="Black"
-                        Text="{Binding ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
-                        IsVisible="{Binding Path=IsOnShortage}"
+                        Text="{Binding Source={Reference Self}, Path=ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
+                        IsVisible="{Binding Source={Reference Self}, Path=IsOnShortage}"
                     />
                     <indicators:Status IsVisible="False" HorizontalOptions="StartAndExpand">
                         <indicators:Status.Triggers>
-                            <DataTrigger TargetType="indicators:Status" Binding="{Binding Path=Status}" Value="Monitored">
+                            <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Monitored">
                                 <Setter Property="Value" Value="Success" />
                                 <Setter Property="IsVisible" Value="True" />
                                 <Setter Property="Text" Value="{x:Static resources:Resources.Monitor}" />
                             </DataTrigger>
-                            <DataTrigger TargetType="indicators:Status" Binding="{Binding Path=Status}" Value="Unmonitored">
+                            <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Unmonitored">
                                 <Setter Property="Value" Value="Basic" />
                                 <Setter Property="IsVisible" Value="True" />
                                 <Setter Property="Text" Value="{x:Static resources:Resources.Unmonitor}" />
