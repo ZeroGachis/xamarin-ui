@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:indicators="clr-namespace:Smartway.UiComponent.Indicators;assembly=Smartway.UiComponent"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+             xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Cards.ArticleCard"
+             x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ProductLabel" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+                <Setter Property="TextColor" Value="#010142"></Setter>
+            </Style>
+            <Style x:Key="ProductImage" TargetType="Image">
+                <Setter Property="Margin" Value="0, 0, 5, 0"></Setter>
+                <Setter Property="WidthRequest" Value="90"></Setter>
+            </Style>
+            <Style x:Key="RegularGencodeText" TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="FontAttributes" Value="None"></Setter>
+                <Setter Property="TextColor" Value="#8B8B8B"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding Source={Reference Self}, Path=NavigationCommand}"
+                  CommandParameter="{Binding Source={Reference Self}, Path=NavigationParameter}"
+                  NumberOfTapsRequired="1"
+              />
+            </StackLayout.GestureRecognizers>
+            <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
+                <Image Style="{StaticResource ProductImage}">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="true">
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder_multilocation.png}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="false">
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder.png}" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <StackLayout Orientation="Vertical">
+                    <Label Style="{StaticResource ProductLabel}"
+                           Text="{Binding Source={Reference Self}, Path=Label}"
+                    />
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            x:Name="ProductGencode"
+                            Style="{StaticResource RegularGencodeText}"
+                            Text="{Binding Source={Reference Self}, Path=Gencode}"
+                         />
+                        <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
+                        <Label
+                            x:Name="ProductPrice"
+                            Style="{StaticResource RegularGencodeText}"
+                            Text="{Binding Source={Reference Self}, Path=Price}"
+                        />
+                    </StackLayout>
+                    <Label
+                        Style="{StaticResource RegularGencodeText}"
+                        TextColor="Black"
+                        Text="{Binding Source={Reference Self}, Path=ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
+                        IsVisible="{Binding Source={Reference Self}, Path=IsOnShortage}"
+                    />
+                    <indicators:Status IsVisible="False" HorizontalOptions="StartAndExpand">
+                        <indicators:Status.Triggers>
+                            <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Monitored">
+                                <Setter Property="Value" Value="Success" />
+                                <Setter Property="IsVisible" Value="True" />
+                                <Setter Property="Text" Value="{x:Static resources:Resources.Monitor}" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Unmonitored">
+                                <Setter Property="Value" Value="Basic" />
+                                <Setter Property="IsVisible" Value="True" />
+                                <Setter Property="Text" Value="{x:Static resources:Resources.Unmonitor}" />
+                            </DataTrigger>
+                        </indicators:Status.Triggers>
+                    </indicators:Status>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

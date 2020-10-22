@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="SectionSheet\SectionSheetSample.xaml">
+    <EmbeddedResource Update="SectionSheet\Views\SectionSheetSample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Theme.xaml">
