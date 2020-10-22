@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:indicators="clr-namespace:Smartway.UiComponent.Indicators;assembly=Smartway.UiComponent"
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+             xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Cards.ArticleCard"
              x:Name="Self">
     <ContentView.Resources>
@@ -38,10 +39,10 @@
                 <Image Style="{StaticResource ProductImage}">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="true">
-                            <Setter Property="Source" Value="img_product_placeholder_multilocation" />
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder_multilocation.png}" />
                         </DataTrigger>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="false">
-                            <Setter Property="Source" Value="img_product_placeholder" />
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder.png}" />
                         </DataTrigger>
                     </Image.Triggers>
                 </Image>
