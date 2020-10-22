@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.TopAppBar.ViewModels;assembly=Smartway.UiComponent.Sample"
+             xmlns:topappbar="clr-namespace:Smartway.UiComponent.TopAppBar;assembly=Smartway.UiComponent"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Sample.TopAppBar.Views.TopAppBar"
+             x:DataType="viewModels:TopAppBarViewModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Default"/>
+            <topappbar:TopAppBar
+                    Title="Product 1"
+                    Command="{Binding Back}"/>
+            <Label Text="Modal"/>
+            <topappbar:TopAppBar
+                    Title="Product 2"
+                    Type="Modal"
+                    ExtraNavigationLabel="Index"
+                    Command="{Binding Back}"
+                    ExtraNavigationCommand="{Binding Back}"/>
+            <Label Text="Custom"/>
+                <topappbar:TopAppBar
+                Title="harder better faster stronger"
+                Type="Custom"
+                ExtraNavigationLabel="Inventaire"
+                Command="{Binding Back}"
+                ExtraNavigationCommand="{Binding Back}"
+                IconSource="icon_check"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
