@@ -7,7 +7,8 @@ namespace Smartway.UiComponent.Sample.SectionSheet.ViewModels
     {
         public ICommand NavigationTest => new Command((param) =>
         {
-            System.Console.WriteLine("DEBUG: PARAM Navigation test : " + param.ToString());
+            var message = "Tapped on " + param.ToString();
+            DependencyService.Get<INotifyMessage>().ShortAlert(message);
         });
     }
 }
