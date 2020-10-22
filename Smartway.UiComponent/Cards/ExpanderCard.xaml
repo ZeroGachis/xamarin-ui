@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Expander
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+    xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+    x:Class="Smartway.UiComponent.Cards.ExpanderCard"
+    x:Name="Self">
+    <Expander.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label" x:Key="WarningLabel">
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                        <Setter Property="TextColor" Value="Orange" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Expander.Resources>
+    <Expander.Header>
+        <StackLayout >
+            <StackLayout.Triggers>
+                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference Self}, Path=IsExpanded}" Value="true">
+                    <Setter Property="HeightRequest" Value="52" />
+                </DataTrigger>
+            </StackLayout.Triggers>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+                <FlexLayout Grid.Column="0">
+                    <Image IsVisible="false" Margin="0,0,10,0"  WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.orange_icon_warning.png}">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                                <Setter Property="IsVisible" Value="true" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                    <Label TextColor="Black" FontSize="16" Grid.Column="1"  Text="{Binding Path=Title, Source={x:Reference Self}}" Style="{StaticResource WarningLabel}"/>
+                </FlexLayout>
+                <Label Grid.Column="1" FontSize="14" Text="{Binding Path=Counter, Source={x:Reference Self}}"  HorizontalOptions="End"  TextColor="{DynamicResource ZgMediumGrey}" Style="{StaticResource WarningLabel}"/>
+                <Image Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="0,-5,0,0" Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.orange_icon_arrow_down.png}" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=IsExpanded}" Value="true">
+                            <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Grid>
+        </StackLayout>
+    </Expander.Header>
+</Expander>
