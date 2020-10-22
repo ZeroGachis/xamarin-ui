@@ -5,7 +5,7 @@ namespace Smartway.UiComponent.Cards
 {
     [ContentProperty("Content")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ExpanderCard
+    public partial class CustomExpander
     {
         public static readonly BindableProperty StatusProperty = BindableProperty.Create(
             nameof(Status), typeof(string), typeof(ExpanderCard)
@@ -19,23 +19,26 @@ namespace Smartway.UiComponent.Cards
             nameof(Counter), typeof(string), typeof(ExpanderCard)
         );
 
-        public static readonly BindableProperty ExpanderContentProperty = BindableProperty.Create(nameof(ExpanderContent), typeof(View), typeof(ExpanderCard));
+        public static readonly BindableProperty ExpanderContentProperty = BindableProperty.Create(
+            nameof(ExpanderContent), typeof(View), typeof(ExpanderCard)
+        );
+
 
         public string Status
         {
-            get => (string)GetValue(StatusProperty);
+            get => (string) GetValue(StatusProperty);
             set => SetValue(StatusProperty, value);
         }
 
         public string Title
         {
-            get => (string)GetValue(TitleProperty);
+            get => (string) GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
         }
 
         public string Counter
         {
-            get => (string)GetValue(CounterProperty);
+            get => (string) GetValue(CounterProperty);
             set => SetValue(CounterProperty, value);
         }
 
@@ -44,8 +47,7 @@ namespace Smartway.UiComponent.Cards
             get => (View)GetValue(ExpanderContentProperty);
             set => SetValue(ExpanderContentProperty, value);
         }
-
-        public ExpanderCard()
+        public CustomExpander()
         {
             InitializeComponent();
         }
