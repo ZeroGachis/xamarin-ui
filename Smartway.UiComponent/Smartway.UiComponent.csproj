@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\icon_arrow_back.png" />
+    <EmbeddedResource Include="Resources\Images\icon_close.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder_multilocation.png" />
     <EmbeddedResource Include="Resources\Images\logo_easyturn.png" />
@@ -57,6 +59,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\TopAppBar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Resources.resx">

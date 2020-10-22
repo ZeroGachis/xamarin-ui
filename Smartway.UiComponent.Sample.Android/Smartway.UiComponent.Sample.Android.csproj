@@ -87,6 +87,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_check.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Smartway.UiComponent.Sample\Smartway.UiComponent.Sample.csproj">
       <Project>{2985857A-3C32-48D2-82C2-0196CB942731}</Project>
       <Name>Smartway.UiComponent.Sample</Name>

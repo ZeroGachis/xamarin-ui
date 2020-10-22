@@ -2,6 +2,7 @@
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
+using Smartway.UiComponent.Sample.TopAppBar.ViewModels;
 using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Sample
@@ -21,6 +22,11 @@ namespace Smartway.UiComponent.Sample
         public ICommand SectionSheet => new Command(async () =>
         {
             await NavigateTo(new SectionSheetSample{ BindingContext = new SectionSheetSampleViewModel() });
+        });
+
+        public ICommand TopAppBar => new Command(async () =>
+        {
+            await NavigateTo(new TopAppBar.Views.TopAppBar{ BindingContext =  new TopAppBarViewModel()});
         });
     }
 }
