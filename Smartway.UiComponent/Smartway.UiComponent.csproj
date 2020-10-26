@@ -10,12 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\black_icon_arrow_down.png" />
+    <None Remove="Resources\Icons\orange_icon_arrow_down.png" />
+    <None Remove="Resources\Icons\orange_icon_warning.png" />
     <None Remove="Resources\Images\img_product_placeholder.png" />
     <None Remove="Resources\Images\img_product_placeholder_multilocation.png" />
     <None Remove="Resources\Images\logo_easyturn.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\black_icon_arrow_down.png" />
+    <EmbeddedResource Include="Resources\Icons\orange_icon_arrow_down.png" />
+    <EmbeddedResource Include="Resources\Icons\orange_icon_warning.png" />
     <EmbeddedResource Include="Resources\Images\icon_arrow_back.png" />
     <EmbeddedResource Include="Resources\Images\icon_close.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder.png" />
@@ -29,6 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Cards\CustomExpander.xaml.cs">
+      <DependentUpon>CustomExpander.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Indicators\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
     </Compile>
@@ -47,6 +56,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Cards\ArticleCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Cards\CustomExpander.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Cards\ExpanderCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Cards\RoundedFrame.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Layouts\Section.xaml">

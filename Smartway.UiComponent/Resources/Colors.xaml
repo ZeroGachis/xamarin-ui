@@ -6,6 +6,7 @@
     <Color x:Key="ZgDarkBackground">#010627</Color>
     <Color x:Key="ZgLoaderColor">Gray</Color>
     <Color x:Key="ZgGrey">#8B8B8B</Color>
+    <Color x:Key="ZgWarning">#FF6C3B</Color>
     <Color x:Key="ZgColdGrey2">#E2E4F0</Color>
     <Color x:Key="ZgMediumGrey">#B2B2B2</Color>
     <Color x:Key="ZgLightGrey">#E2E4F0</Color>

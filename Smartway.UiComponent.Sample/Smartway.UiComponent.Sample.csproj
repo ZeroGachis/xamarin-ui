@@ -46,4 +46,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ExpanderCard\ExpanderCardSample.xaml.cs">
+      <DependentUpon>ExpanderCardSample.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

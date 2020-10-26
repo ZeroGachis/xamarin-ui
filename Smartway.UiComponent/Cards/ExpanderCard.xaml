@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Cards.ExpanderCard"
+             x:Name="Self">
+        <cards:RoundedFrame>
+            <cards:CustomExpander 
+                Title="{Binding Source={x:Reference Self}, Path=Title}" 
+                Counter="{Binding Source={x:Reference Self}, Path=Counter}" 
+                Status="{Binding Source={x:Reference Self}, Path=Status}">
+                <cards:CustomExpander.ExpanderContent>
+                    <ContentView Content="{Binding ExpanderContent, Source={x:Reference Self}}" />
+                </cards:CustomExpander.ExpanderContent>
+            </cards:CustomExpander>
+        </cards:RoundedFrame>
+</ContentView>

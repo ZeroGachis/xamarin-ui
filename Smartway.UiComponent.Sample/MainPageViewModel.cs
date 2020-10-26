@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
@@ -27,6 +28,11 @@ namespace Smartway.UiComponent.Sample
         public ICommand TopAppBar => new Command(async () =>
         {
             await NavigateTo(new TopAppBar.Views.TopAppBar{ BindingContext =  new TopAppBarViewModel()});
+        });
+
+        public ICommand ExpanderCard => new Command(async () =>
+        {
+            await NavigateTo(new ExpanderCardSample());
         });
     }
 }

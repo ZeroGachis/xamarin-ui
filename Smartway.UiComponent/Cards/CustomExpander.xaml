@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Expander
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+    xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+    x:Class="Smartway.UiComponent.Cards.CustomExpander"
+    x:Name="Self">
+    <Expander.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Label" x:Key="TitleLabel">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="16" />
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                        <Setter Property="TextColor" Value="{DynamicResource ZgWarning}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Label" x:Key="CounterLabel">
+                <Setter Property="TextColor" Value="{DynamicResource ZgMediumGrey}" />
+                <Setter Property="FontSize" Value="14" />
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                        <Setter Property="TextColor" Value="{DynamicResource ZgWarning}" />
+                    </DataTrigger>
+                </Style.Triggers> 
+            </Style>
+            <Style TargetType="Image" x:Key="DropDownIcon">
+                <Setter Property="WidthRequest" Value="30" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="Margin" Value="0,-5,0,0" />
+                <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}" />
+                <Style.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.orange_icon_arrow_down.png}" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=IsExpanded}" Value="true">
+                        <Setter Property="Rotation" Value="180" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Image" x:Key="WarningIcon">
+                <Setter Property="WidthRequest" Value="24" />
+                <Setter Property="HeightRequest" Value="24" />
+                <Setter Property="Margin" Value="0,0,10,0" />
+                <Setter Property="IsVisible" Value="false" />
+                <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.orange_icon_warning.png}" />
+                <Style.Triggers>
+                    <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                        <Setter Property="IsVisible" Value="true" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Expander.Resources>
+    <Expander.Header>
+        <StackLayout >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+                <FlexLayout Grid.Column="0">
+                    <Image IsVisible="false" HorizontalOptions="Start" Style="{StaticResource WarningIcon}" />
+                    <Label Text="{Binding Path=Title, Source={x:Reference Self}}" Style="{StaticResource TitleLabel}"/>
+                </FlexLayout>
+                <Label Grid.Column="1" Text="{Binding Path=Counter, Source={x:Reference Self}}"  HorizontalOptions="End"  Style="{StaticResource CounterLabel}"/>
+                <Image Grid.Column="2"  Style="{StaticResource DropDownIcon}"/>
+            </Grid>
+        </StackLayout>
+    </Expander.Header>
+    <StackLayout Padding="0,30,0,0">
+        <ContentView Content="{Binding ExpanderContent, Source={x:Reference Self}}" />
+    </StackLayout>
+</Expander>
