@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
+             xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.CardLists.ArticleCardList"
+             x:Name="List">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" x:Name="ArticleListElement" BindableLayout.ItemsSource="{Binding Source={x:Reference List}, Path=ArticlesList}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical">
+                        <separators:ElementSeparator/>
+                        <cards:ArticleCard 
+                            Label="{Binding Label}" 
+                            IsMultilocation="{Binding IsMultilocation}" 
+                            IsOnShortage="{Binding IsOnShortage}" 
+                            Price="{Binding Price}" 
+                            Gencode="{Binding Gencode}"
+                            NavigationCommand="{Binding NavigationCommand}"
+                            NavigationParameter="{Binding NavigationParameter}"
+                            ShortageAt="{Binding ShortageAt}"
+                        />
+                    </StackLayout>
+                </DataTemplate>
+          </BindableLayout.ItemTemplate>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>
