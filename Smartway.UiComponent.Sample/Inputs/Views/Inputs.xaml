@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.Inputs.ViewModels;assembly=Smartway.UiComponent.Sample"
+             xmlns:inputs="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.Inputs.Views.Inputs"
+             x:DataType="viewModels:InputsViewModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <inputs:BarcodeInput
+                Margin="16, 26, 16, 30">
+            </inputs:BarcodeInput>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

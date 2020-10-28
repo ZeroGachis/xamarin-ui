@@ -16,6 +16,7 @@
         <Button Text="TopAppBar" Command="{Binding TopAppBar}"/>
         <Button Text="Separator" Command="{Binding Separators}" />
         <Button Text="Button" Command="{Binding Button}"/>
+        <Button Text="Inputs" Command="{Binding Inputs}"/>
     </StackLayout>
 
 </ContentPage>

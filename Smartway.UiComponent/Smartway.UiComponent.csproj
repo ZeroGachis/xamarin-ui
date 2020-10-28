@@ -8,11 +8,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Smartway</Copyright>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <None Remove="Resources\Icons\black_icon_arrow_down.png" />
     <None Remove="Resources\Icons\orange_icon_arrow_down.png" />
     <None Remove="Resources\Icons\orange_icon_warning.png" />
+    <None Remove="Resources\Images\icon_gencode.png" />
     <None Remove="Resources\Images\img_product_placeholder.png" />
     <None Remove="Resources\Images\img_product_placeholder_multilocation.png" />
     <None Remove="Resources\Images\logo_easyturn.png" />
@@ -24,14 +25,17 @@
     <EmbeddedResource Include="Resources\Icons\orange_icon_warning.png" />
     <EmbeddedResource Include="Resources\Images\icon_arrow_back.png" />
     <EmbeddedResource Include="Resources\Images\icon_close.png" />
+    <EmbeddedResource Include="Resources\Images\icon_gencode.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder_multilocation.png" />
     <EmbeddedResource Include="Resources\Images\logo_easyturn.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+    <PackageReference Include="Smartway.Barcode" Version="0.1.0" />
+    <PackageReference Include="Smartway.ValueObjects" Version="0.3.0" />
     <PackageReference Include="Smartway.Mvvm" Version="0.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,13 +48,16 @@
     <Compile Update="Indicators\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Inputs\BarcodeInput.xaml.cs">
+      <DependentUpon>BarcodeInput.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
+ 
   <ItemGroup>
     <EmbeddedResource Update="Buttons\Button.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -98,6 +105,17 @@
     <EmbeddedResource Update="Separators\LabelledDivider.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Inputs\BarcodeInput.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <None Update="Resources\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>
