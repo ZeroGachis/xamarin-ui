@@ -5,8 +5,7 @@
              x:Name="Self">
     <ContentView.Resources>
         <Style x:Key="LineStyle" TargetType="BoxView">
-            <Setter Property="BackgroundColor"/>
-            <Setter Property="HeightRequest" Value="1"/>
+            <Setter Property="HeightRequest" Value="1" />
             <Setter Property="Margin" Value="0, 8" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         </Style>

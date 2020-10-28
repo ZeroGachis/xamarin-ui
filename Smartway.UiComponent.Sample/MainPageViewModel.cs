@@ -3,6 +3,7 @@ using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
+using Smartway.UiComponent.Sample.Separator;
 using Smartway.UiComponent.Sample.TopAppBar.ViewModels;
 using Xamarin.Forms;
 
@@ -33,6 +34,11 @@ namespace Smartway.UiComponent.Sample
         public ICommand ExpanderCard => new Command(async () =>
         {
             await NavigateTo(new ExpanderCardSample());
+        });
+
+        public ICommand Separators => new Command(async () =>
+        {
+            await NavigateTo(new SeparatorsSample());
         });
     }
 }
