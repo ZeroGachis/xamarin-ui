@@ -18,8 +18,18 @@ namespace Smartway.UiComponent.Sample
         }
 
         public ICommand Validate => new Command(
-            _ => { },
-            _ => !string.IsNullOrEmpty(Entry3)
-        );
+            async _ => await Back(),
+            _ =>
+            {
+                ValidationForm = !string.IsNullOrEmpty(Entry3);
+                NotifyPropertyChanged(nameof(ValidationForm));
+                return ValidationForm;
+            });
+
+        public bool ValidationForm
+        {
+            get;
+            set;
+        }
     }
 }

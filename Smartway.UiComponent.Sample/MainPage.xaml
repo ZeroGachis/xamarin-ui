@@ -15,6 +15,7 @@
         <Button Text="ExpanderCard" Command="{Binding ExpanderCard}"/>
         <Button Text="TopAppBar" Command="{Binding TopAppBar}"/>
         <Button Text="Separator" Command="{Binding Separators}" />
+        <Button Text="Button" Command="{Binding Button}"/>
     </StackLayout>
 
 </ContentPage>
