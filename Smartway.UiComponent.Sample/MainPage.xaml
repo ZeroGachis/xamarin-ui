@@ -14,6 +14,7 @@
         <Button Text="SectionSheet" Command="{Binding SectionSheet}"/>
         <Button Text="ExpanderCard" Command="{Binding ExpanderCard}"/>
         <Button Text="TopAppBar" Command="{Binding TopAppBar}"/>
+        <Button Text="Separator" Command="{Binding Separators}" />
     </StackLayout>
 
 </ContentPage>
