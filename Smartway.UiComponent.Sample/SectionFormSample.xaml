@@ -20,7 +20,9 @@
             <layouts:Section Title="Title 3">
                 <Entry Text="{Binding Entry3}" />
             </layouts:Section>
-            <buttons:PrimaryButton Text="Valider" Command="{Binding Validate}"/>
+            <buttons:Button Text="Primary"
+                            Command="{Binding Validate}"
+                            Activated="{Binding ValidationForm}"/>
         </layouts:SectionForm>
     </ContentPage.Content>
 </ContentPage>

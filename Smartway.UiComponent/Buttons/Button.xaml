@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Button xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="Smartway.UiComponent.Buttons.Button"
+        x:Name="Self"
+        CornerRadius="36"
+        HorizontalOptions="Center"
+        HeightRequest="50" 
+        BackgroundColor="#CCCCCC"
+        TextColor="White">
+    <Button.Triggers>
+        <MultiTrigger TargetType="Button">
+            <MultiTrigger.Conditions>
+                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="Primary"/>
+                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Activated}" Value="True"/>
+            </MultiTrigger.Conditions>
+            <Setter Property="BackgroundColor" Value="#010142" />
+        </MultiTrigger>
+        <MultiTrigger TargetType="Button">
+            <MultiTrigger.Conditions>
+                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="Warning"/>
+                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Activated}" Value="True"/>
+            </MultiTrigger.Conditions>
+            <Setter Property="BackgroundColor" Value="#FF6C3B" />
+        </MultiTrigger>
+        <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Small">
+            <Setter Property="WidthRequest" Value="135" />
+        </DataTrigger>
+        <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Large">
+            <Setter Property="WidthRequest" Value="328" />
+        </DataTrigger>
+    </Button.Triggers>
+</Button>

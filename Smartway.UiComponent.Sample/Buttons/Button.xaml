@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.Buttons.Button">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Primary Button"/>
+            <Buttons:Button Text="Primary"
+                            Status="Primary"
+                            Size="Small"
+                            Activated="false"/>
+            <Buttons:Button Text="Primary"
+                            Status="Primary"
+                            Size="Small"
+                            Activated="true"/>
+            <Buttons:Button Text="Primary"
+                            Status="Primary"
+                            Size="Large"
+                            Activated="false"/>
+            <Buttons:Button Text="Primary"
+                            Status="Primary"
+                            Size="Large"
+                            Activated="true"/>
+            <Label Text="Warning Button"/>
+            <Buttons:Button Text="Warning"
+                            Status="Warning"
+                            Size="Small"
+                            Activated="false"/>
+            <Buttons:Button Text="Warning"
+                            Status="Warning"
+                            Size="Small"
+                            Activated="True"/>
+            <Buttons:Button Text="Warning"
+                            Status="Warning"
+                            Size="Large"
+                            Activated="true"/>
+            <Buttons:Button Text="Warning"
+                            Status="Warning"
+                            Size="Large"
+                            Activated="true"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
