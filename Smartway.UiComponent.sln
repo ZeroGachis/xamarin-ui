@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartway.UiComponent.Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartway.UiComponent.Sample.Android", "Smartway.UiComponent.Sample.Android\Smartway.UiComponent.Sample.Android.csproj", "{0B5A61D7-9EBB-499B-9094-4B15AFCB84D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartway.UiComponent.Droid", "Smartway.UiComponent.Droid\Smartway.UiComponent.Droid.csproj", "{CE147EDD-5F85-4AF7-8C41-4F0479712D73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{0B5A61D7-9EBB-499B-9094-4B15AFCB84D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B5A61D7-9EBB-499B-9094-4B15AFCB84D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B5A61D7-9EBB-499B-9094-4B15AFCB84D6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CE147EDD-5F85-4AF7-8C41-4F0479712D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE147EDD-5F85-4AF7-8C41-4F0479712D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE147EDD-5F85-4AF7-8C41-4F0479712D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE147EDD-5F85-4AF7-8C41-4F0479712D73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
