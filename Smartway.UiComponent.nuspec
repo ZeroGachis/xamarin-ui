@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>Smartway.UiComponent</id>
+        <version>1.0.0</version>
+        <title>Smartway.UiComponent</title>
+        <authors>Smartway</authors>
+        <owners>Smartway</owners>
+        <projectUrl>https://github.com/ZeroGachis/xamarin-ui</projectUrl>
+        <icon>smartway.png</icon>
+        <tags>xamarin forms xamarinforms xamarin.forms xamarinui xaml smartway design ui uikit ui-components</tags>
+        <license type="file">LICENSE</license>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>A Design system UI library that Smartway use and maintain for their mobile applications.</description>
+        <dependencies>
+            <group targetFramework="netstandard2.0">
+                <dependency id="Smartway.Barcode" version="0.1.0" />
+                <dependency id="Smartway.Mvvm" version="0.2.0" />
+                <dependency id="Smartway.ValueObjects" version="0.3.0" />
+                <dependency id="Xamarin.Forms" version="4.8.0" />
+            </group>
+            <group targetFramework="MonoAndroid9.0">
+                <dependency id="Smartway.Barcode" version="0.1.0" />
+                <dependency id="Smartway.Mvvm" version="0.2.0" />
+                <dependency id="Smartway.ValueObjects" version="0.3.0" />
+                <dependency id="Xamarin.Forms" version="4.8.0"/>
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <!-- License-->
+        <file src="LICENSE" target="LICENSE " />
+		
+		<!-- Icon -->
+		<file src="smartway.png" target="" />
+        
+        <!-- Cross-platform reference assemblies -->
+        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.dll" target="lib\netstandard2.0\Smartway.UiComponent.dll" />
+        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.pdb" target="lib\netstandard2.0\Smartway.UiComponent.pdb" />
+		
+        <!-- Android reference assemblies -->
+        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.dll" target="lib\monoandroid90\Smartway.UiComponent.dll" />
+        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.pdb" target="lib\monoandroid90\Smartway.UiComponent.pdb" />
+        <file src="Smartway.UiComponent.Droid\bin\Release\Smartway.UiComponent.Droid.dll" target="lib\monoandroid90\Smartway.UiComponent.Droid.dll" />
+        <file src="Smartway.UiComponent.Droid\bin\Release\Smartway.UiComponent.Droid.pdb" target="lib\monoandroid90\Smartway.UiComponent.Droid.pdb" />
+    </files>
+</package>
