@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.Basics.BasicComponents">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Default Label" />
+            <Label Text="Secondary Label" Style="{StaticResource SecondaryTextStyle}"/>
+            <cards:RoundedFrame Style="{StaticResource SecondaryFrame}">
+                <Label Text="Various Content"></Label>
+            </cards:RoundedFrame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

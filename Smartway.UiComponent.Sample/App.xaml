@@ -4,24 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
-             xmlns:sample="clr-namespace:Smartway.UiComponent.Sample;assembly=Smartway.UiComponent.Sample"
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Sample.App">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <resources:Colors />
-                <sample:Theme/>
+                <resources:Themes />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="OpenSans"></Setter>
-            <Style.Triggers>
-                <Trigger TargetType="Label" Property="FontAttributes" Value="Bold">
-                    <Setter Property="FontFamily"
-                            Value="OpenSansBold" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Application.Resources>
 </Application>

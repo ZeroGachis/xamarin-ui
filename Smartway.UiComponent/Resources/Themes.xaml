@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="Smartway.UiComponent.Resources.Themes">
+    <!-- Colors -->
+    <Color x:Key="ZgDarkBlue">#010142</Color>
+    <Color x:Key="ZgNightBlue">#27304A</Color>
+    <Color x:Key="ZgDarkBackground">#010627</Color>
+    <Color x:Key="ZgSecondaryDarkBackground">#141937</Color>
+    <Color x:Key="ZgLoaderColor">Gray</Color>
+    <Color x:Key="ZgGrey">#8B8B8B</Color>
+    <Color x:Key="ZgWarning">#FF6C3B</Color>
+    <Color x:Key="ZgColdGrey2">#E2E4F0</Color>
+    <Color x:Key="ZgHighGrey">#A2A2BA</Color>
+    <Color x:Key="ZgMediumGrey">#B2B2B2</Color>
+    <Color x:Key="ZgLightGrey">#E2E4F0</Color>
+
+    <!-- Label Styles -->
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="OpenSans" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding 
+                        Light=Black, 
+                        Dark=White
+                    }"  />
+        <Style.Triggers>
+            <Trigger TargetType="Label" Property="FontAttributes" Value="Bold">
+                <Setter Property="FontFamily"
+                        Value="OpenSansBold" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Label" x:Key="SecondaryTextStyle">
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding 
+                        Light={StaticResource ZgMediumGrey}, 
+                        Dark={StaticResource ZgHighGrey}
+                    }"  />
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- StackLayout Style -->
+    <Style TargetType="StackLayout">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding 
+                        Light=White, 
+                        Dark={StaticResource ZgDarkBlue}
+                    }" />
+    </Style>
+
+    <!-- Frame Style -->
+    <Style TargetType="Frame" x:Key="SecondaryFrame">
+        <Setter Property="BackgroundColor"
+            Value="{AppThemeBinding 
+                    Light=White,
+                    Dark={StaticResource ZgSecondaryDarkBackground}
+                }" />
+    </Style>
+</ResourceDictionary>
