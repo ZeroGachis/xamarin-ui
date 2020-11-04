@@ -90,14 +90,16 @@
     <AndroidResource Include="Resources\drawable\icon_check.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Smartway.UiComponent.Droid\Smartway.UiComponent.Droid.csproj">
+      <Project>{ce147edd-5f85-4af7-8c41-4f0479712d73}</Project>
+      <Name>Smartway.UiComponent.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Smartway.UiComponent.Sample\Smartway.UiComponent.Sample.csproj">
       <Project>{2985857A-3C32-48D2-82C2-0196CB942731}</Project>
       <Name>Smartway.UiComponent.Sample</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

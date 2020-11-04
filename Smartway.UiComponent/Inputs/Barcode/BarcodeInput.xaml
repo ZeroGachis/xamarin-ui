@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+             xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+             xmlns:barcode="clr-namespace:Smartway.UiComponent.Inputs.Barcode;assembly=Smartway.UiComponent"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Inputs.Barcode.BarcodeInput"
+             x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Icon" TargetType="Image">
+                <Setter Property="WidthRequest" Value="24"></Setter>
+                <Setter Property="HeightRequest" Value="24"></Setter>
+                <Setter Property="Margin" Value="10"></Setter>
+            </Style>
+            <Style x:Key="BaseEntry" TargetType="barcode:BarcodeEntry">
+                <Setter Property="Margin" Value="-10,0,0,0"></Setter>
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="PlaceholderColor" Value="#A2A2BA"></Setter>
+            </Style>
+            <Style x:Key="Global" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#1A1F3D"></Setter>
+                <Setter Property="CornerRadius" Value="21"></Setter>
+                <Setter Property="Padding" Value="0"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame Style="{StaticResource Global}">
+            <StackLayout Orientation="Horizontal">
+                <Image Style="{StaticResource Icon}" Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_gencode.png}"/>
+                <barcode:BarcodeEntry
+                    Style="{StaticResource BaseEntry}"
+                    Text="{Binding Source={Reference Self}, Path=Value}"
+                    Placeholder="{Binding Source={Reference Self}, Path=Placeholder, TargetNullValue={x:Static resources:Resources.BarcodeInput_Placeholder}}" 
+                    Focused="Entry_OnFocused"
+                    Unfocused="Entry_OnUnfocused">
+                    <barcode:BarcodeEntry.Triggers>
+                        <DataTrigger TargetType="barcode:BarcodeEntry" Binding="{Binding Source={x:Reference Self}, Path=HasFocus}" Value="True">
+                            <Setter Property="Placeholder" Value=""/>
+                        </DataTrigger>
+                    </barcode:BarcodeEntry.Triggers>
+                    <barcode:BarcodeEntry.Behaviors>
+                        <barcode:BarcodeInputBehavior Command="{Binding Source={Reference Self}, Path=Command}"/>
+                    </barcode:BarcodeEntry.Behaviors>
+                </barcode:BarcodeEntry>
+            </StackLayout>
+        </Frame>
+  </ContentView.Content>
+</ContentView>
