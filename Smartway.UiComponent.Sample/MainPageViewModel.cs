@@ -2,6 +2,7 @@
 using Smartway.UiComponent.Sample.Basics;
 using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Buttons;
+using Smartway.UiComponent.Sample.ExpanderCard.ViewModels;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.Inputs.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
@@ -36,7 +37,7 @@ namespace Smartway.UiComponent.Sample
 
         public ICommand ExpanderCard => new Command(async () =>
         {
-            await NavigateTo(new ExpanderCardSample());
+            await NavigateTo(new ExpanderCardSample{ BindingContext = new ExpanderCardSampleViewModel()});
         });
 
         public ICommand BasicComponents => new Command(async () =>

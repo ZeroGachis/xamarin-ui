@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows.Input;
-using Smartway.UiComponent.Cards;
 using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Sample
 {
-    class DummyArticle : IProductViewModel
+    class DummyArticle
     {
         public string Label { get; set; }
         public bool IsMultilocation { get; set; }
