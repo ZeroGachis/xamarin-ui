@@ -6,19 +6,21 @@
     <ContentView.Resources>
         <Style x:Key="LineStyle" TargetType="BoxView">
             <Setter Property="HeightRequest" Value="1" />
-            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="Margin" Value="0, 10" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundColor" Value="#3D4458" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
-            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="MaxLines" Value="1" />
+            <Setter Property="TextColor" Value="#A2A2BA" />
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
       <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-          <BoxView Style="{StaticResource LineStyle}" BackgroundColor="{Binding Source={Reference Self}, Path=Color}"/>
-            <Label Style="{StaticResource LabelStyle}" Text="{Binding Source={Reference Self}, Path=Label}" TextColor="{Binding Source={Reference Self}, Path=Color}" />
-            <BoxView Style="{StaticResource LineStyle}" BackgroundColor="{Binding Source={Reference Self}, Path=Color}" />
+            <BoxView Style="{StaticResource LineStyle}" />
+            <Label Style="{StaticResource LabelStyle}" Text="{Binding Source={Reference Self}, Path=Label}" />
+            <BoxView Style="{StaticResource LineStyle}" />
         </StackLayout>
   </ContentView.Content>
 </ContentView>
