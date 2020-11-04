@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Xml;
-using Smartway.UiComponent.Utils;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.TopAppBar
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TopAppBar : ContentView
+    public partial class TopAppBar
     {
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(TopAppBar));
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(TopAppBar));
@@ -52,6 +44,7 @@ namespace Smartway.UiComponent.TopAppBar
             get => (string) GetValue(IconSourceProperty);
             set => SetValue(IconSourceProperty, value);
         }
+        public bool IsDarkTheme => Application.Current.RequestedTheme == OSAppTheme.Dark;
 
         public TopAppBar()
         {
