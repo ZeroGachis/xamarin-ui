@@ -7,14 +7,17 @@
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Cards.ExpanderCard"
              x:Name="Self">
-        <cards:RoundedFrame>
-            <cards:CustomExpander 
+    <cards:RoundedFrame>
+        <cards:CustomExpander
                 Title="{Binding Source={x:Reference Self}, Path=Title}" 
                 Counter="{Binding Source={x:Reference Self}, Path=Counter}" 
-                Status="{Binding Source={x:Reference Self}, Path=Status}">
-                <cards:CustomExpander.ExpanderContent>
-                    <ContentView Content="{Binding ExpanderContent, Source={x:Reference Self}}" />
-                </cards:CustomExpander.ExpanderContent>
-            </cards:CustomExpander>
+                Status="{Binding Source={x:Reference Self}, Path=Status}"
+                IsExpanded="{Binding Source={x:Reference Self}, Path=IsExpanded}"
+                State="{Binding Source={x:Reference Self}, Path=State}"
+                Command="{Binding Source={x:Reference Self}, Path=Command}"
+                ForceUpdateSizeCommand="{Binding Source={x:Reference Self}, Path=ForceUpdateSizeCommand}"
+                ContentTemplate="{Binding Source={x:Reference Self}, Path=ExpanderTemplate}"
+                >
+        </cards:CustomExpander>
         </cards:RoundedFrame>
 </ContentView>
