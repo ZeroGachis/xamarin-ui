@@ -48,7 +48,7 @@
     <Compile Update="Indicators\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Inputs\BarcodeInput.xaml.cs">
+    <Compile Update="Inputs\Barcode\BarcodeInput.xaml.cs">
       <DependentUpon>BarcodeInput.xaml</DependentUpon>
     </Compile>
     <Compile Update="Resources\Resources.Designer.cs">
@@ -105,7 +105,7 @@
     <EmbeddedResource Update="Separators\LabelledDivider.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Inputs\BarcodeInput.xaml">
+    <EmbeddedResource Update="Inputs\Barcode\BarcodeInput.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

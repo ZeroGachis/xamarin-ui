@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Smartway.UiComponent.Inputs
+namespace Smartway.UiComponent.Inputs.Barcode
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BarcodeInput

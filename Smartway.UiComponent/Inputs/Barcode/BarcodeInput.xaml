@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
-             xmlns:inputs="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+             xmlns:barcode="clr-namespace:Smartway.UiComponent.Inputs.Barcode;assembly=Smartway.UiComponent"
              mc:Ignorable="d"
-             x:Class="Smartway.UiComponent.Inputs.BarcodeInput"
+             x:Class="Smartway.UiComponent.Inputs.Barcode.BarcodeInput"
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -16,7 +16,7 @@
                 <Setter Property="HeightRequest" Value="24"></Setter>
                 <Setter Property="Margin" Value="10"></Setter>
             </Style>
-            <Style x:Key="BaseEntry" TargetType="inputs:BaseEntry">
+            <Style x:Key="BaseEntry" TargetType="barcode:BarcodeEntry">
                 <Setter Property="Margin" Value="-10,0,0,0"></Setter>
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="PlaceholderColor" Value="#A2A2BA"></Setter>
@@ -32,21 +32,21 @@
         <Frame Style="{StaticResource Global}">
             <StackLayout Orientation="Horizontal">
                 <Image Style="{StaticResource Icon}" Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_gencode.png}"/>
-                <inputs:BaseEntry
+                <barcode:BarcodeEntry
                     Style="{StaticResource BaseEntry}"
                     Text="{Binding Source={Reference Self}, Path=Value}"
                     Placeholder="{Binding Source={Reference Self}, Path=Placeholder, TargetNullValue={x:Static resources:Resources.BarcodeInput_Placeholder}}" 
                     Focused="Entry_OnFocused"
                     Unfocused="Entry_OnUnfocused">
-                    <inputs:BaseEntry.Triggers>
-                        <DataTrigger TargetType="inputs:BaseEntry" Binding="{Binding Source={x:Reference Self}, Path=HasFocus}" Value="True">
+                    <barcode:BarcodeEntry.Triggers>
+                        <DataTrigger TargetType="barcode:BarcodeEntry" Binding="{Binding Source={x:Reference Self}, Path=HasFocus}" Value="True">
                             <Setter Property="Placeholder" Value=""/>
                         </DataTrigger>
-                    </inputs:BaseEntry.Triggers>
-                    <inputs:BaseEntry.Behaviors>
-                        <inputs:BarcodeInputBehavior Command="{Binding Source={Reference Self}, Path=Command}"/>
-                    </inputs:BaseEntry.Behaviors>
-                </inputs:BaseEntry>
+                    </barcode:BarcodeEntry.Triggers>
+                    <barcode:BarcodeEntry.Behaviors>
+                        <barcode:BarcodeInputBehavior Command="{Binding Source={Reference Self}, Path=Command}"/>
+                    </barcode:BarcodeEntry.Behaviors>
+                </barcode:BarcodeEntry>
             </StackLayout>
         </Frame>
   </ContentView.Content>

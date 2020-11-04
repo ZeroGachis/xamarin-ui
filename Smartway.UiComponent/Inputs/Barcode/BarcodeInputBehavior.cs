@@ -1,11 +1,11 @@
-﻿using Smartway.Barcode.Ean13;
+﻿using System.Windows.Input;
+using Smartway.Barcode.Ean13;
 using Smartway.UiComponent.Behaviors;
-using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Smartway.UiComponent.Inputs
+namespace Smartway.UiComponent.Inputs.Barcode
 {
-    public class BarcodeInputBehavior: BaseBehavior<BaseEntry>
+    public class BarcodeInputBehavior: BaseBehavior<BarcodeEntry>
     {
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BarcodeInputBehavior));
 

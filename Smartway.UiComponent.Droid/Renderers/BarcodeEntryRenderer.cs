@@ -5,16 +5,17 @@ using Android.OS;
 using Android.Runtime;
 using Android.Widget;
 using Smartway.UiComponent.Droid.Renderers;
+using Smartway.UiComponent.Inputs.Barcode;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Color = Android.Graphics.Color;
 
-[assembly: ExportRenderer(typeof(Entry), typeof(ZgEntryRenderer))]
+[assembly: ExportRenderer(typeof(BarcodeEntry), typeof(BarcodeEntryRenderer))]
 namespace Smartway.UiComponent.Droid.Renderers
 {
-    public class ZgEntryRenderer : EntryRenderer
+    public class BarcodeEntryRenderer : EntryRenderer
     {
-        public ZgEntryRenderer(Context context)
+        public BarcodeEntryRenderer(Context context)
             : base(context) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
