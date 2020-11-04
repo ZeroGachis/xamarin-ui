@@ -67,7 +67,7 @@
                         Style="{StaticResource RegularGencodeText}"
                         TextColor="Black"
                         Text="{Binding Source={Reference Self}, Path=ShortageAt, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
-                        IsVisible="{Binding Source={Reference Self}, Path=IsOnShortage}"
+                        IsVisible="{Binding Source={Reference Self}, Path=DisplayShortageAt}"
                     />
                     <indicators:Status IsVisible="False" HorizontalOptions="StartAndExpand">
                         <indicators:Status.Triggers>
