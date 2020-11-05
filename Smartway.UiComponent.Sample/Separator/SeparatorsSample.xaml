@@ -13,7 +13,7 @@
             <separators:LabelledDivider Label="This is Sparta !" />
             <Label Text="Separator avec Label et Couleur custom"
                     HorizontalOptions="CenterAndExpand" />
-            <separators:LabelledDivider Label="This is Sparta With Colors !" Color="#A2A2BA" />
+            <separators:LabelledDivider Label="This is Sparta With Colors !" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
