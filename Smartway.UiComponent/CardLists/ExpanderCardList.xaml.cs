@@ -68,12 +68,22 @@ namespace Smartway.UiComponent.CardLists
 
         public ExpanderState ExpanderState { get; set; }
 
-        public bool IsExpanded { get; set; }
+        public bool IsExpanded
+        {
+            get => (bool)GetValue(IsExpandedProperty);
+            set => SetValue(IsExpandedProperty, value);
+        }
 
         public bool LoadAsync
         {
             get => (bool)GetValue(LoadAsyncProperty);
             set => SetValue(LoadAsyncProperty, value);
+        }
+
+        public ICommand ExpandCommand
+        {
+            get => (ICommand)GetValue(ExpandCommandProperty);
+            set => SetValue(ExpandCommandProperty, value);
         }
 
         public ICommand ForceUpdateSizeCommand { get; set; }
@@ -148,6 +158,7 @@ namespace Smartway.UiComponent.CardLists
 
         private async Task OnExpanderClick()
         {
+            ExpandCommand.Execute(null);
             if (ExpanderState != ExpanderState.Expanding)
                 return;
 
