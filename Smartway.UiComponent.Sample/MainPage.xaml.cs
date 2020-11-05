@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Sample
 {
@@ -11,5 +14,11 @@ namespace Smartway.UiComponent.Sample
         {
             InitializeComponent();
         }
+
+        public ICommand SwitchTheme => new Command( () =>
+        {
+            var currentTheme = Application.Current.RequestedTheme;
+            Application.Current.UserAppTheme = currentTheme == OSAppTheme.Light ? OSAppTheme.Dark : OSAppTheme.Light;
+        });
     }
 }

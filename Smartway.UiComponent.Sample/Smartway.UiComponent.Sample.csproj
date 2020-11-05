@@ -36,6 +36,9 @@
     <EmbeddedResource Update="Inputs\Views\Inputs.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Basics\BasicComponents.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="SectionSheet\Views\SectionSheetSample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -57,6 +60,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Basics\BasicComponents.xaml.cs">
+      <DependentUpon>BasicComponents.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ExpanderCard\ExpanderCardSample.xaml.cs">
       <DependentUpon>ExpanderCardSample.xaml</DependentUpon>
     </Compile>

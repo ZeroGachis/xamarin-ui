@@ -13,6 +13,9 @@
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>
                 <Setter Property="WidthRequest" Value="24"></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                <Setter Property="Source" 
+                        Value="">
+                </Setter>
             </Style>
             <Style x:Key="LabelTitle" TargetType="Label">
                 <Setter Property="FontSize" Value="20"></Setter>
@@ -20,12 +23,10 @@
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>
                 <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
                 <Setter Property="FontAttributes" Value="Bold"></Setter>
-                <Setter Property="TextColor" Value="#010142"></Setter>
                 <Setter Property="WidthRequest" Value="200"></Setter>
             </Style>
             <Style x:Key="ExtraLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="16"></Setter>
-                <Setter Property="TextColor" Value="#010142"></Setter>
                 <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"></Setter>
             </Style>
@@ -33,23 +34,31 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Orientation="Horizontal">
-                <ImageButton Style="{StaticResource ImageButton}" 
-                             Command="{Binding Source={x:Reference Self}, Path=Command}">
+                <ImageButton x:Name="ImageButton" Style="{StaticResource ImageButton}" 
+                             Command="{Binding Source={x:Reference Self}, Path=Command}"
+                             Source="{Binding Source={x:Reference Self}, Path=ImageContent}">
                     <ImageButton.Triggers>
                         <DataTrigger TargetType="ImageButton" 
-                                 Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default">
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_arrow_back.png }"/>
+                                     Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default">
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_arrow_back.png }"/>
                         </DataTrigger>
                         <DataTrigger TargetType="ImageButton" 
-                                 Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal">
+                                     Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal">
                             <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_close.png}"/>
                         </DataTrigger>
                         <DataTrigger TargetType="ImageButton" 
-                                 Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
+                                     Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
                             <Setter Property="Source" Value="{Binding Source={x:Reference Self}, Path=IconSource}"/>
                         </DataTrigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
+                        <MultiTrigger TargetType="ImageButton">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_close.png}"/>
+                        </MultiTrigger>
+                </ImageButton.Triggers>
+            </ImageButton>
                 <Label Style="{StaticResource LabelTitle}"
                        Text="{Binding Source={x:Reference Self}, Path=Title}" 
                        LineBreakMode="TailTruncation"/>

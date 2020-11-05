@@ -6,9 +6,11 @@
              xmlns:sample="clr-namespace:Smartway.UiComponent.Sample;assembly=Smartway.UiComponent.Sample"
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Sample.MainPage"
-             x:DataType="sample:MainPageViewModel">
-
+             x:DataType="sample:MainPageViewModel"
+             x:Name="Self">
     <StackLayout>
+        <Button x:Name="SwitchThemeBtn" Text="Switch ALL APP Theme" Command="{Binding Source={x:Reference Self}, Path=SwitchTheme}"/>
+        <Button Text="BasicComponents" Command="{Binding BasicComponents}"/>
         <Button Text="SectionForm" Command="{Binding SectionForm}"/>
         <Button Text="Indicators" Command="{Binding Indicators}"/>
         <Button Text="SectionSheet" Command="{Binding SectionSheet}"/>
@@ -18,5 +20,4 @@
         <Button Text="Button" Command="{Binding Button}"/>
         <Button Text="Inputs" Command="{Binding Inputs}"/>
     </StackLayout>
-
 </ContentPage>
