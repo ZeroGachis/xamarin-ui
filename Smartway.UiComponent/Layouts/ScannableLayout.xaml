@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
+    x:Name="Self"
+    x:Class="Smartway.UiComponent.Layouts.ScannableLayout">
+    <ContentView.Content>
+        <RelativeLayout>
+            <ContentView
+                Content="{Binding LayoutContent, Source={x:Reference Self}}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" >
+            </ContentView>
+        <buttons:ScanButton
+                        Command="{Binding ScanButton}"
+                        RelativeLayout.XConstraint="272"
+                        RelativeLayout.YConstraint="480"/>
+        </RelativeLayout>
+    </ContentView.Content>
+</ContentView>

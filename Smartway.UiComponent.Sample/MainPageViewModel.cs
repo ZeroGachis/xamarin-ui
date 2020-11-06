@@ -52,12 +52,17 @@ namespace Smartway.UiComponent.Sample
 
         public ICommand Button => new Command(async () =>
         {
-            await NavigateTo(new Buttons.Button());
+            await NavigateTo(new Buttons.Button{BindingContext = new ButtonViewModel()});
         });
 
         public ICommand Inputs => new Command(async () =>
         {
             await NavigateTo(new Inputs.Views.Inputs{ BindingContext = new InputsViewModel()});
+        });
+
+        public ICommand Layouts => new Command(async () =>
+        {
+            await NavigateTo(new Layouts.LayoutsSample());
         });
     }
 }
