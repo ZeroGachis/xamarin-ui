@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 
 namespace Smartway.UiComponent.Sample.SectionSheet.ViewModels
 {
     class SectionSheetSampleViewModel: ViewModel
     {
-        public List<object> Articles => new List<object>
+        public ObservableCollection<object> Articles => new ObservableCollection<object>
         {
             new DummyArticle
             {

@@ -158,7 +158,7 @@ namespace Smartway.UiComponent.CardLists
 
         private async Task OnExpanderClick()
         {
-            ExpandCommand.Execute(null);
+            ExpandCommand?.Execute(null);
             if (ExpanderState != ExpanderState.Expanding)
                 return;
 

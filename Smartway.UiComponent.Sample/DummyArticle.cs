@@ -25,7 +25,7 @@ namespace Smartway.UiComponent.Sample
 
         public object NavigationParameter { get; set; }
         public string Status { get; set; }
-        public DateTime? ShortageAt
+        public DateTime? OnShortageSince
         {
             get => DateTime.Today;
             set => throw new NotImplementedException();
