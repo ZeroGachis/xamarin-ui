@@ -16,6 +16,7 @@
             </Style>
             <Style x:Key="ProductImage" TargetType="Image">
                 <Setter Property="Margin" Value="0, 0, 5, 0"></Setter>
+                <Setter Property="WidthRequest" Value="90" />
             </Style>
             <Style x:Key="RegularGencodeText" TargetType="Label">
                 <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
@@ -42,9 +43,6 @@
                         </DataTrigger>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="false">
                             <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder.png}" />
-                        </DataTrigger>
-                        <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="false">
-                            <Setter Property="WidthRequest" Value="90" />
                         </DataTrigger>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="true">
                             <Setter Property="WidthRequest" Value="60" />
