@@ -23,6 +23,7 @@
                                 <cards:ArticleCard Label="Escargot 1" Gencode="123456" Price="666" IsMultilocation="true"/>
                                 <cards:ArticleCard Label="Escargot 2" Gencode="123456" Price="666" IsMultilocation="true"/>
                                 <cards:ArticleCard Label="Escargot 3" Gencode="123456" Price="666" IsMultilocation="true"/>
+                                <cards:ArticleCard Label="Escargot 4" Gencode="123456" Price="666" IsMultilocation="true" IsCondensed="true"/>
                             </StackLayout>
                         </cards:ExpanderCard.ExpanderContent>
                     </cards:ExpanderCard>
