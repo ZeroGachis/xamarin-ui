@@ -12,12 +12,23 @@ namespace Smartway.UiComponent.Sample
         public bool IsOnShortage { get; set; }
         public string Price { get; set; }
         public string Gencode { get; set; }
-        public ICommand NavigationCommand => new Command((param) => {
-            var message = "Tapped on " + param.ToString();
-            DependencyService.Get<INotifyMessage>().ShortAlert(message);
-        });
+        public ICommand NavigationCommand
+        {
+            get =>
+                new Command((param) =>
+                {
+                    var message = "Tapped on " + param.ToString();
+                    DependencyService.Get<INotifyMessage>().ShortAlert(message);
+                });
+            set => throw new NotImplementedException();
+        }
+
         public object NavigationParameter { get; set; }
         public string Status { get; set; }
-        public DateTime ShortageAt => DateTime.Today;
+        public DateTime? OnShortageSince
+        {
+            get => DateTime.Today;
+            set => throw new NotImplementedException();
+        }
     }
 }

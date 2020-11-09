@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms;
@@ -9,11 +9,11 @@ namespace Smartway.UiComponent.CardLists
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ArticleCardList
     {
-        public static readonly BindableProperty ArticlesListProperty = BindableProperty.Create(nameof(ArticlesList), typeof(List<object>), typeof(ArticleCardList));
+        public static readonly BindableProperty ArticlesListProperty = BindableProperty.Create(nameof(ArticlesList), typeof(ObservableCollection<object>), typeof(ArticleCardList));
 
-        public List<object> ArticlesList
+        public ObservableCollection<object> ArticlesList
         {
-            get => (List<object>) GetValue(ArticlesListProperty);
+            get => (ObservableCollection<object>) GetValue(ArticlesListProperty);
             set => SetValue(ArticlesListProperty, value);
         }
 

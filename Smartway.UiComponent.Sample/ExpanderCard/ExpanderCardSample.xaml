@@ -3,29 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
              xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
-             x:Class="Smartway.UiComponent.Sample.ExpanderCard.ExpanderCardSample">
+             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.ExpanderCard.ViewModels;assembly=Smartway.UiComponent.Sample"
+             xmlns:cardLists="clr-namespace:Smartway.UiComponent.CardLists;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.ExpanderCard.ExpanderCardSample"
+             x:DataType="viewModels:ExpanderCardSampleViewModel">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
                 <cards:ExpanderCard Title="basic title" Counter="1">
                 </cards:ExpanderCard>
                 <cards:ExpanderCard Title="basic title With Content" Counter="123">
-                    <cards:ExpanderCard.ExpanderContent>
-                        <Label>Test Content</Label>
-                    </cards:ExpanderCard.ExpanderContent>
+                    <cards:ExpanderCard.ExpanderTemplate>
+                        <DataTemplate>
+                            <Label>Test Content</Label>
+                        </DataTemplate>
+                    </cards:ExpanderCard.ExpanderTemplate>
                 </cards:ExpanderCard>
                 <layouts:SectionSheet>
                     <Label Text="In Section Sheet"></Label>
-                    <cards:ExpanderCard Title="warning title" Counter="233" Status="warning">
-                        <cards:ExpanderCard.ExpanderContent>
-                            <StackLayout>
-                                <cards:ArticleCard Label="Escargot" Gencode="123456" Price="666" IsMultilocation="true"/>
-                                <cards:ArticleCard Label="Escargot 1" Gencode="123456" Price="666" IsMultilocation="true"/>
-                                <cards:ArticleCard Label="Escargot 2" Gencode="123456" Price="666" IsMultilocation="true"/>
-                                <cards:ArticleCard Label="Escargot 3" Gencode="123456" Price="666" IsMultilocation="true"/>
-                            </StackLayout>
-                        </cards:ExpanderCard.ExpanderContent>
-                    </cards:ExpanderCard>
+                    <cardLists:ExpanderCardList Title="Expander 50 items " Status="warning" SourceList="{Binding Articles}"/>
+                    <cardLists:ExpanderCardList Title="Expander lazy loading 50 items" SourceList="{Binding Articles}" LoadAsync="True"/>
                 </layouts:SectionSheet>
             </StackLayout>
         </ScrollView>

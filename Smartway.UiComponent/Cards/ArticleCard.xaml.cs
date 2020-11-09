@@ -15,7 +15,7 @@ namespace Smartway.UiComponent.Cards
         public static readonly BindableProperty PriceProperty = BindableProperty.Create(nameof(Price), typeof(string), typeof(ArticleCard));
         public static readonly BindableProperty NavigationCommandProperty = BindableProperty.Create(nameof(NavigationCommand), typeof(ICommand), typeof(ArticleCard));
         public static readonly BindableProperty NavigationParameterProperty = BindableProperty.Create(nameof(NavigationParameter), typeof(object), typeof(ArticleCard));
-        public static readonly BindableProperty ShortageAtProperty = BindableProperty.Create(nameof(ShortageAt), typeof(DateTime), typeof(ArticleCard), DateTime.Today);
+        public static readonly BindableProperty OnShortageSinceProperty = BindableProperty.Create(nameof(OnShortageSince), typeof(DateTime?), typeof(ArticleCard), DateTime.Today);
         public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ArticleCard), "Unknown");
 
         public bool IsMultilocation
@@ -42,10 +42,10 @@ namespace Smartway.UiComponent.Cards
             set => SetValue(IsOnShortageProperty, value);
         }
 
-        public DateTime ShortageAt
+        public DateTime? OnShortageSince
         {
-            get => (DateTime) GetValue(ShortageAtProperty);
-            set => SetValue(ShortageAtProperty, value);
+            get => (DateTime?) GetValue(OnShortageSinceProperty);
+            set => SetValue(OnShortageSinceProperty, value);
         }
 
         public string Price
@@ -71,6 +71,8 @@ namespace Smartway.UiComponent.Cards
             get => (string)GetValue(StatusProperty);
             set => SetValue(StatusProperty, value);
         }
+
+        public bool DisplayOnShortageSince => IsOnShortage && OnShortageSince != null;
 
         public ArticleCard()
         {

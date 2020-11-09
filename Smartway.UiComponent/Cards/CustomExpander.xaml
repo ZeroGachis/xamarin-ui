@@ -5,7 +5,11 @@
     xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
     xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
     x:Class="Smartway.UiComponent.Cards.CustomExpander"
-    x:Name="Self">
+    x:Name="Self"
+    IsExpanded="{Binding Path=IsExpanded, Source={x:Reference Self}}"
+    State="{Binding Path=State, Source={x:Reference Self}}"
+    ForceUpdateSizeCommand="{Binding Path=ForceUpdateSizeCommand, Source={x:Reference Self}}"
+    Command="{Binding Path=Command, Source={x:Reference Self}}">
     <Expander.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,7 +31,7 @@
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
                         <Setter Property="TextColor" Value="{DynamicResource ZgWarning}" />
                     </DataTrigger>
-                </Style.Triggers> 
+                </Style.Triggers>
             </Style>
             <Style TargetType="Image" x:Key="DropDownIcon">
                 <Setter Property="WidthRequest" Value="30" />
@@ -58,7 +62,7 @@
         </ResourceDictionary>
     </Expander.Resources>
     <Expander.Header>
-        <StackLayout >
+        <StackLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -74,7 +78,4 @@
             </Grid>
         </StackLayout>
     </Expander.Header>
-    <StackLayout Padding="0,30,0,0">
-        <ContentView Content="{Binding ExpanderContent, Source={x:Reference Self}}" />
-    </StackLayout>
 </Expander>

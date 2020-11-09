@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Windows.Input;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.Cards
@@ -19,8 +20,24 @@ namespace Smartway.UiComponent.Cards
             nameof(Counter), typeof(string), typeof(ExpanderCard)
         );
 
-        public static readonly BindableProperty ExpanderContentProperty = BindableProperty.Create(nameof(ExpanderContent), typeof(View), typeof(ExpanderCard));
+        public static readonly BindableProperty IsExpandedProperty = BindableProperty.Create(
+            nameof(IsExpanded), typeof(bool), typeof(ExpanderCard), false, BindingMode.TwoWay
+        );
 
+        public static readonly BindableProperty StateProperty = BindableProperty.Create(
+            nameof(State), typeof(ExpanderState), typeof(ExpanderCard), default(ExpanderState), BindingMode.OneWayToSource
+        );
+
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create(
+            nameof(Command), typeof(ICommand), typeof(ExpanderCard)
+        );
+
+        public static readonly BindableProperty ForceUpdateSizeCommandProperty = BindableProperty.Create(
+            nameof(ForceUpdateSizeCommand), typeof(ICommand), typeof(ExpanderCard), null, BindingMode.OneWayToSource
+        );
+
+        public static readonly BindableProperty ExpanderTemplateProperty = BindableProperty.Create(nameof(ExpanderTemplate), typeof(DataTemplate), typeof(ExpanderCard));
+        
         public string Status
         {
             get => (string)GetValue(StatusProperty);
@@ -39,10 +56,34 @@ namespace Smartway.UiComponent.Cards
             set => SetValue(CounterProperty, value);
         }
 
-        public View ExpanderContent
+        public bool IsExpanded
         {
-            get => (View)GetValue(ExpanderContentProperty);
-            set => SetValue(ExpanderContentProperty, value);
+            get => (bool)GetValue(IsExpandedProperty);
+            set => SetValue(IsExpandedProperty, value);
+        }
+
+        public ExpanderState State
+        {
+            get => (ExpanderState)GetValue(StateProperty);
+            set => SetValue(StateProperty, value);
+        }
+
+        public ICommand Command
+        {
+            get => (ICommand)GetValue(CommandProperty);
+            set => SetValue(CommandProperty, value);
+        }
+
+        public ICommand ForceUpdateSizeCommand
+        {
+            get => (ICommand)GetValue(ForceUpdateSizeCommandProperty);
+            set => SetValue(ForceUpdateSizeCommandProperty, value);
+        }
+        
+        public DataTemplate ExpanderTemplate
+        {
+            get => (DataTemplate)GetValue(ExpanderTemplateProperty);
+            set => SetValue(ExpanderTemplateProperty, value);
         }
 
         public ExpanderCard()

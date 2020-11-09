@@ -19,7 +19,7 @@
                             Gencode="{Binding Gencode}"
                             NavigationCommand="{Binding NavigationCommand}"
                             NavigationParameter="{Binding NavigationParameter}"
-                            ShortageAt="{Binding ShortageAt}"
+                            OnShortageSince="{Binding OnShortageSince}"
                         />
                     </StackLayout>
                 </DataTemplate>
