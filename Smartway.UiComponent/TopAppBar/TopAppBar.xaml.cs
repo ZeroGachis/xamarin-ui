@@ -13,6 +13,8 @@ namespace Smartway.UiComponent.TopAppBar
         public static readonly BindableProperty ExtraNavigationLabelProperty = BindableProperty.Create(nameof(ExtraNavigationLabel), typeof(string), typeof(TopAppBar));
         public static readonly BindableProperty ExtraNavigationCommandProperty = BindableProperty.Create(nameof(ExtraNavigationCommand), typeof(ICommand), typeof(TopAppBar));
         public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(nameof(IconSource), typeof(string), typeof(TopAppBar));
+        public static readonly BindableProperty IsDarkThemeProperty = BindableProperty.Create(nameof(IsDarkTheme), typeof(bool), typeof(TopAppBar));
+
 
         public string Title
         {
@@ -44,7 +46,11 @@ namespace Smartway.UiComponent.TopAppBar
             get => (string) GetValue(IconSourceProperty);
             set => SetValue(IconSourceProperty, value);
         }
-        public bool IsDarkTheme => Application.Current.RequestedTheme == OSAppTheme.Dark;
+        public bool IsDarkTheme
+        {
+            get => (bool)GetValue(IsDarkThemeProperty);
+            set => SetValue(IsDarkThemeProperty, value);
+        }
 
         public TopAppBar()
         {

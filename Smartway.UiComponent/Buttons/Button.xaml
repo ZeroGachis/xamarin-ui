@@ -8,8 +8,8 @@
         x:Name="Self"
         CornerRadius="36"
         HorizontalOptions="Center"
-        HeightRequest="50" 
         BackgroundColor="#CCCCCC"
+        TextTransform="None"
         TextColor="White">
     <Button.Triggers>
         <MultiTrigger TargetType="Button">
@@ -27,10 +27,12 @@
             <Setter Property="BackgroundColor" Value="#FF6C3B" />
         </MultiTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Small">
-            <Setter Property="WidthRequest" Value="135" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="HeightRequest" Value="30" />
+            <Setter Property="Padding" Value="10,-2, 10, 0" />
         </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Large">
-            <Setter Property="WidthRequest" Value="328" />
+            <Setter Property="HeightRequest" Value="50" />
         </DataTrigger>
     </Button.Triggers>
 </Button>
