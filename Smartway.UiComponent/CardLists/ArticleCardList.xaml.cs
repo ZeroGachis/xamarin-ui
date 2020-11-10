@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Xamarin.Forms;
@@ -10,6 +11,7 @@ namespace Smartway.UiComponent.CardLists
     public partial class ArticleCardList
     {
         public static readonly BindableProperty ArticlesListProperty = BindableProperty.Create(nameof(ArticlesList), typeof(ObservableCollection<object>), typeof(ArticleCardList));
+        public static readonly BindableProperty ItemTemplateProperty = BindableProperty.Create(nameof(ItemTemplate), typeof(DataTemplate), typeof(ArticleCardList));
 
         public ObservableCollection<object> ArticlesList
         {
@@ -17,19 +19,31 @@ namespace Smartway.UiComponent.CardLists
             set => SetValue(ArticlesListProperty, value);
         }
 
+        public DataTemplate ItemTemplate
+        {
+            get => (DataTemplate) GetValue(ItemTemplateProperty);
+            set => SetValue(ItemTemplateProperty, value);
+        }
+
         public ArticleCardList()
         {
             InitializeComponent();
-            ArticleListElement.PropertyChanged += ArticleListChanged;
+            ArticleListElements.PropertyChanged += ArticleListChanged;
         }
 
         private void ArticleListChanged(object sender, PropertyChangedEventArgs e)
         {
-            OnPropertyChanged(nameof(ArticlesList));
-            var element = ArticleListElement.Children.Cast<StackLayout>().FirstOrDefault(_ => _.IsVisible);
-            if (element != null)
+            if (e.PropertyName != "ItemsSource" && e.PropertyName != "ItemTemplate")
             {
-                element.Children.First().IsVisible = false;
+                try
+                {
+                    var element = ArticleListElements.Children.Cast<Layout<View>>().FirstOrDefault(_ => _.IsVisible);
+                    if (element != null)
+                    {
+                        element.Children.First().IsVisible = false;
+                    }
+                }
+                catch (InvalidCastException ex) { }
             }
         }
     }

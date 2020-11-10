@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
              xmlns:cardLists="clr-namespace:Smartway.UiComponent.CardLists;assembly=Smartway.UiComponent"
+             xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              mc:Ignorable="d"
              x:Name="ExpanderCardListComponent"
              x:Class="Smartway.UiComponent.CardLists.ExpanderCardList">
@@ -19,7 +20,27 @@
                             ForceUpdateSizeCommand="{Binding Source={x:Reference ExpanderCardListComponent}, Path= ForceUpdateSizeCommand}">
           <cards:ExpanderCard.ExpanderTemplate>
               <DataTemplate>
-                    <cardLists:ArticleCardList ArticlesList="{Binding Source={x:Reference ExpanderCardListComponent}, Path=ItemsLoadedList}" Margin="0,30,0,0"></cardLists:ArticleCardList>
+                    <cardLists:ArticleCardList 
+                        ArticlesList="{Binding Source={x:Reference ExpanderCardListComponent}, Path=ItemsLoadedList}" 
+                        Margin="0,30,0,0">
+                        <cardLists:ArticleCardList.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Vertical">
+                                    <separators:ElementSeparator />
+                                    <cards:ArticleCard 
+                                        Label="{Binding Label}" 
+                                        IsMultilocation="{Binding IsMultilocation}" 
+                                        IsOnShortage="{Binding IsOnShortage}" 
+                                        Price="{Binding Price}" 
+                                        Gencode="{Binding Gencode}"
+                                        NavigationCommand="{Binding NavigationCommand}"
+                                        NavigationParameter="{Binding NavigationParameter}"
+                                        OnShortageSince="{Binding OnShortageSince}"
+                                    />
+                                </StackLayout>
+                            </DataTemplate>
+                        </cardLists:ArticleCardList.ItemTemplate>
+                    </cardLists:ArticleCardList>
               </DataTemplate>
           </cards:ExpanderCard.ExpanderTemplate>
       </cards:ExpanderCard>

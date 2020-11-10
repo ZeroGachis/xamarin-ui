@@ -2,14 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
-             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.SectionSheet.ViewModels;assembly=Smartway.UiComponent.Sample"
              xmlns:cardLists="clr-namespace:Smartway.UiComponent.CardLists;assembly=Smartway.UiComponent"
-             x:Class="Smartway.UiComponent.Sample.SectionSheet.Views.SectionSheetSample"
-             x:DataType="viewModels:SectionSheetSampleViewModel">
+             xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.SectionSheet.Views.SectionSheetSample">
     <ContentPage.Content>
         <ScrollView>
             <layouts:SectionSheet>
-                <cardLists:ArticleCardList ArticlesList="{Binding Articles}" />
+                <cardLists:ArticleCardList ArticlesList="{Binding Articles}">
+                    <cardLists:ArticleCardList.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Vertical">
+                                <separators:ElementSeparator/>
+                                <cards:ArticleCard 
+                                    Label="{Binding Label}" 
+                                    IsMultilocation="{Binding IsMultilocation}" 
+                                    IsOnShortage="{Binding IsOnShortage}" 
+                                    Price="{Binding Price}" 
+                                    Gencode="{Binding Gencode}"
+                                    NavigationCommand="{Binding NavigationCommand}"
+                                    NavigationParameter="{Binding NavigationParameter}"
+                                    OnShortageSince="{Binding OnShortageSince}"
+                                />
+                            </StackLayout>
+                        </DataTemplate>
+                    </cardLists:ArticleCardList.ItemTemplate>
+                </cardLists:ArticleCardList>
             </layouts:SectionSheet>
         </ScrollView>
     </ContentPage.Content>
