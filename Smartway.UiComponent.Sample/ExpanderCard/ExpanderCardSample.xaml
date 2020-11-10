@@ -23,6 +23,19 @@
                     <Label Text="In Section Sheet"></Label>
                     <cardLists:ExpanderCardList Title="Expander 50 items " Status="warning" SourceList="{Binding Articles}"/>
                     <cardLists:ExpanderCardList Title="Expander lazy loading 50 items" SourceList="{Binding Articles}" LoadAsync="True"/>
+                <Label Text="In Section Sheet - Condensed"></Label>
+                    <cards:ExpanderCard Title="Basic Title">
+                        <cards:ExpanderCard.ExpanderTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <cards:ArticleCard Label="Escargot" Gencode="123456" Price="666" IsMultilocation="true" IsCondensed="true"/>
+                                    <cards:ArticleCard Label="Escargot 2" Gencode="123456" Price="666" IsMultilocation="true" IsCondensed="true"/>
+                                    <cards:ArticleCard Label="Escargot 3" Gencode="123456" Price="666" IsMultilocation="false" IsCondensed="true"/>
+                                    <cards:ArticleCard Label="Escargot 4" Gencode="123456" Price="666" IsMultilocation="false" IsCondensed="true"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </cards:ExpanderCard.ExpanderTemplate>
+                    </cards:ExpanderCard>
                 </layouts:SectionSheet>
             </StackLayout>
         </ScrollView>

@@ -17,11 +17,18 @@ namespace Smartway.UiComponent.Cards
         public static readonly BindableProperty NavigationParameterProperty = BindableProperty.Create(nameof(NavigationParameter), typeof(object), typeof(ArticleCard));
         public static readonly BindableProperty OnShortageSinceProperty = BindableProperty.Create(nameof(OnShortageSince), typeof(DateTime?), typeof(ArticleCard), DateTime.Today);
         public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ArticleCard), "Unknown");
+        public static readonly BindableProperty IsCondensedProperty = BindableProperty.Create(nameof(IsCondensed), typeof(bool), typeof(ArticleCard), false);
 
         public bool IsMultilocation
         {
             get => (bool) GetValue(IsMultilocationProperty);
             set => SetValue(IsMultilocationProperty, value);
+        }
+
+        public bool IsCondensed
+        {
+            get => (bool)GetValue(IsCondensedProperty);
+            set => SetValue(IsCondensedProperty, value);
         }
 
         public string Label
