@@ -10,25 +10,26 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <Style x:Key="ImageButton" TargetType="ImageButton">
-                <Setter Property="HorizontalOptions" Value="Start"></Setter>
-                <Setter Property="WidthRequest" Value="24"></Setter>
-                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="WidthRequest" Value="24"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="Source" 
                         Value="">
                 </Setter>
             </Style>
             <Style x:Key="LabelTitle" TargetType="Label">
-                <Setter Property="FontSize" Value="20"></Setter>
-                <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
-                <Setter Property="HorizontalOptions" Value="Start"></Setter>
-                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
-                <Setter Property="FontAttributes" Value="Bold"></Setter>
-                <Setter Property="WidthRequest" Value="200"></Setter>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="WidthRequest" Value="190"/>
+                <Setter Property="Margin" Value="20, 0, 0, 0"/>
             </Style>
             <Style x:Key="ExtraLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="16"></Setter>
-                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
-                <Setter Property="HorizontalOptions" Value="EndAndExpand"></Setter>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -50,6 +51,13 @@
                                      Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
                             <Setter Property="Source" Value="{Binding Source={x:Reference Self}, Path=IconSource}"/>
                         </DataTrigger>
+                        <MultiTrigger TargetType="ImageButton">
+                            <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_back.png}"/>
+                        </MultiTrigger>
                         <MultiTrigger TargetType="ImageButton">
                             <MultiTrigger.Conditions>
                                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal" />
