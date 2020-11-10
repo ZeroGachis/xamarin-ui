@@ -20,7 +20,7 @@
                 <Setter Property="FontSize" Value="16" />
                 <Style.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
-                        <Setter Property="TextColor" Value="{DynamicResource ZgWarning}" />
+                        <Setter Property="TextColor" Value="#FF6C3B" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
@@ -29,7 +29,7 @@
                 <Setter Property="FontSize" Value="14" />
                 <Style.Triggers>
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
-                        <Setter Property="TextColor" Value="{DynamicResource ZgWarning}" />
+                        <Setter Property="TextColor" Value="#FF6C3B" />
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
