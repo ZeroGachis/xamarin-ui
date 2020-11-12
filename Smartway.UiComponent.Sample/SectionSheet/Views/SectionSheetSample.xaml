@@ -8,9 +8,16 @@
              x:DataType="viewModels:SectionSheetSampleViewModel">
     <ContentPage.Content>
         <ScrollView>
-            <layouts:SectionSheet>
-                <cardLists:ArticleCardList ArticlesList="{Binding Articles}" />
-            </layouts:SectionSheet>
+            <StackLayout>
+                <layouts:SectionSheet>
+                    <Label Text="Normal Size" />
+                    <cardLists:ArticleCardList ArticlesList="{Binding Articles}" />
+                </layouts:SectionSheet>
+                <layouts:SectionSheet>
+                    <Label Text="Condensed Size" />
+                    <cardLists:ArticleCardList ArticlesList="{Binding Articles}" IsCondensed="True" /> 
+                </layouts:SectionSheet>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

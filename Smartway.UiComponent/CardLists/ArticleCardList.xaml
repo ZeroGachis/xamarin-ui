@@ -4,7 +4,8 @@
              xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
              xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.CardLists.ArticleCardList"
-             x:Name="List">
+             x:Name="List"
+             >
     <ContentView.Content>
         <StackLayout Orientation="Vertical" x:Name="ArticleListElement" BindableLayout.ItemsSource="{Binding Source={x:Reference List}, Path=ArticlesList}">
             <BindableLayout.ItemTemplate>
@@ -20,6 +21,7 @@
                             NavigationCommand="{Binding NavigationCommand}"
                             NavigationParameter="{Binding NavigationParameter}"
                             OnShortageSince="{Binding OnShortageSince}"
+                            IsCondensed="{Binding Source={x:Reference List}, Path=IsCondensed}"
                         />
                     </StackLayout>
                 </DataTemplate>

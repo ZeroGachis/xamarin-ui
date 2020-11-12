@@ -10,6 +10,7 @@ namespace Smartway.UiComponent.CardLists
     public partial class ArticleCardList
     {
         public static readonly BindableProperty ArticlesListProperty = BindableProperty.Create(nameof(ArticlesList), typeof(ObservableCollection<object>), typeof(ArticleCardList));
+        public static readonly BindableProperty IsCondensedProperty = BindableProperty.Create(nameof(IsCondensed), typeof(bool), typeof(ArticleCardList), false);
 
         public ObservableCollection<object> ArticlesList
         {
@@ -23,9 +24,14 @@ namespace Smartway.UiComponent.CardLists
             ArticleListElement.PropertyChanged += ArticleListChanged;
         }
 
+        public bool IsCondensed
+        {
+            get => (bool) GetValue(IsCondensedProperty);
+            set => SetValue(IsCondensedProperty, value);
+        }
+
         private void ArticleListChanged(object sender, PropertyChangedEventArgs e)
         {
-            OnPropertyChanged(nameof(ArticlesList));
             var element = ArticleListElement.Children.Cast<StackLayout>().FirstOrDefault(_ => _.IsVisible);
             if (element != null)
             {
