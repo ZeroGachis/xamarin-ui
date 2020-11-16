@@ -18,6 +18,7 @@
     <None Remove="Resources\Images\img_product_placeholder.png" />
     <None Remove="Resources\Images\img_product_placeholder_multilocation.png" />
     <None Remove="Resources\Images\logo_easyturn.png" />
+    <None Remove="Resources\Images\white_icon_arrow_back.png" />
     <None Remove="Resources\Images\white_icon_close.png" />
   </ItemGroup>
 
@@ -32,6 +33,7 @@
     <EmbeddedResource Include="Resources\Images\img_product_placeholder.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder_multilocation.png" />
     <EmbeddedResource Include="Resources\Images\logo_easyturn.png" />
+    <EmbeddedResource Include="Resources\Images\white_icon_arrow_back.png" />
     <EmbeddedResource Include="Resources\Images\white_icon_close.png" />
   </ItemGroup>
 

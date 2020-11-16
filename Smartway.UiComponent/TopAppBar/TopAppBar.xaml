@@ -55,7 +55,7 @@
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default" />
                                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_back.png}"/>
+                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_arrow_back.png}"/>
                         </MultiTrigger>
                         <MultiTrigger TargetType="ImageButton">
                             <MultiTrigger.Conditions>
