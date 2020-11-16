@@ -36,6 +36,10 @@
                     }"  />
         <Setter Property="FontSize" Value="14"/>
     </Style>
+    <Style TargetType="Label" x:Key="SemiBoldFont">
+        <Setter Property="FontFamily"
+                Value="SemiBold" />
+    </Style>
 
     <!-- StackLayout Style -->
     <Style TargetType="StackLayout">
