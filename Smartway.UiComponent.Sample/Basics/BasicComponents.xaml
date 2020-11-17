@@ -2,14 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
+             xmlns:labels="clr-namespace:Smartway.UiComponent.Labels;assembly=Smartway.UiComponent"
+             xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.Basics.BasicComponents">
+    <ContentPage.Resources>
+        <x:String x:Key="PluralText">{0} Articles</x:String>
+        <x:String x:Key="SingularText">{0} Article</x:String>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Default Label" />
+            <separators:ElementSeparator />
+
             <Label Text="Secondary Label" Style="{StaticResource SecondaryTextStyle}"/>
+
+            <Label Text="Frame" />
+            <separators:ElementSeparator />
             <cards:RoundedFrame Style="{StaticResource SecondaryFrame}">
-                <Label Text="Various Content"></Label>
+                <Label Text="Various Content" />
             </cards:RoundedFrame>
+
+            <Label Text="Singular/Plural Form" />
+            <separators:ElementSeparator />
+
+            <labels:PluralizableLabel ItemCount="1" SingularText="{StaticResource SingularText}" PluralText="{StaticResource PluralText}" />
+            <labels:PluralizableLabel ItemCount="11" SingularText="{StaticResource SingularText}" PluralText="{StaticResource PluralText}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
