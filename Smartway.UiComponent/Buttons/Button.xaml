@@ -10,6 +10,7 @@
         HorizontalOptions="Center"
         BackgroundColor="#CCCCCC"
         TextTransform="None"
+        Font="OpenSansSemiBold"
         TextColor="White">
     <Button.Triggers>
         <MultiTrigger TargetType="Button">

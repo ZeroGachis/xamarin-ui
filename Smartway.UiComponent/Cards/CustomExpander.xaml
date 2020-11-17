@@ -60,7 +60,7 @@
                 </Style.Triggers>
             </Style>
             <Style TargetType="Grid" x:Key="Header">
-                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="22" />
             </Style>
         </ResourceDictionary>
     </Expander.Resources>
