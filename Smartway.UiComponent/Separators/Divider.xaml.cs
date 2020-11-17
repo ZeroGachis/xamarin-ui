@@ -3,9 +3,9 @@
 namespace Smartway.UiComponent.Separators
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ElementSeparator
+    public partial class Divider
     {
-        public ElementSeparator()
+        public Divider()
         {
             InitializeComponent();
         }

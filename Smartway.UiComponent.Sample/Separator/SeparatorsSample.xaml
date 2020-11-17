@@ -7,7 +7,7 @@
         <StackLayout>
             <Label Text="Separator Simple"
                 HorizontalOptions="CenterAndExpand" />
-            <separators:ElementSeparator />
+            <separators:Divider />
             <Label  Text="Separator avec Label"
                     HorizontalOptions="CenterAndExpand" />
             <separators:LabelledDivider Label="This is Sparta !" />

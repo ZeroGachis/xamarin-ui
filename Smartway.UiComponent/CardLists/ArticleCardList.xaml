@@ -11,7 +11,7 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Vertical">
-                        <separators:ElementSeparator/>
+                        <separators:Divider/>
                         <cards:ArticleCard 
                             Label="{Binding Label}" 
                             IsMultilocation="{Binding IsMultilocation}" 
