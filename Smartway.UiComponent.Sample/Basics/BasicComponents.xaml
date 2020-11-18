@@ -12,18 +12,18 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Default Label" />
-            <separators:ElementSeparator />
+            <separators:Divider />
 
             <Label Text="Secondary Label" Style="{StaticResource SecondaryTextStyle}"/>
 
             <Label Text="Frame" />
-            <separators:ElementSeparator />
+            <separators:Divider />
             <cards:RoundedFrame Style="{StaticResource SecondaryFrame}">
                 <Label Text="Various Content" />
             </cards:RoundedFrame>
 
             <Label Text="Singular/Plural Form" />
-            <separators:ElementSeparator />
+            <separators:Divider />
 
             <labels:PluralizableLabel ItemCount="1" SingularText="{StaticResource SingularText}" PluralText="{StaticResource PluralText}" />
             <labels:PluralizableLabel ItemCount="11" SingularText="{StaticResource SingularText}" PluralText="{StaticResource PluralText}" />
