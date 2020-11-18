@@ -13,11 +13,13 @@
   <ItemGroup>
     <None Remove="Resources\OpenSans-Bold.ttf" />
     <None Remove="Resources\OpenSans-Regular.ttf" />
+    <None Remove="Resources\OpenSans-SemiBold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\OpenSans-Bold.ttf" />
     <EmbeddedResource Include="Resources\OpenSans-Regular.ttf" />
+    <EmbeddedResource Include="Resources\OpenSans-SemiBold.ttf" />
   </ItemGroup>
 
   <ItemGroup>

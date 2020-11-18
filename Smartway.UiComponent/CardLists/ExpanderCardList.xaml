@@ -9,8 +9,7 @@
              x:Name="ExpanderCardListComponent"
              x:Class="Smartway.UiComponent.CardLists.ExpanderCardList">
   <ContentView.Content>
-        <cards:ExpanderCard Margin="0,15,0,0" 
-                            Title="{Binding Source={x:Reference ExpanderCardListComponent}, Path=Title}" 
+        <cards:ExpanderCard Title="{Binding Source={x:Reference ExpanderCardListComponent}, Path=Title}" 
                             Counter="{Binding Source={x:Reference ExpanderCardListComponent}, Path=Counter}" 
                             Status="{Binding Source={x:Reference ExpanderCardListComponent}, Path=Status}"
                             State="{Binding Source={x:Reference ExpanderCardListComponent}, Path=ExpanderState}"
