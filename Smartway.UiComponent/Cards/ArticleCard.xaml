@@ -37,6 +37,11 @@
               />
             </StackLayout.GestureRecognizers>
             <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="true">
+                        <Setter Property="Margin" Value="0, 0, 0, 10" />
+                    </DataTrigger>
+                </StackLayout.Triggers>
                 <Image Style="{StaticResource ProductImage}">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="true">

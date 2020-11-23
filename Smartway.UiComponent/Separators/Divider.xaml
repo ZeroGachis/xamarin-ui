@@ -4,5 +4,4 @@
          x:Class="Smartway.UiComponent.Separators.Divider"
          BackgroundColor="#E2E4F0"
          HeightRequest="1"
-         Margin="0, 0, 0, 20"
 />
