@@ -60,6 +60,9 @@
     <Compile Update="Inputs\Barcode\BarcodeInput.xaml.cs">
       <DependentUpon>BarcodeInput.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Inputs\NoDialogDatePicker.xaml.cs">
+      <DependentUpon>NoDialogDatePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Layouts\ScannableLayout.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -99,6 +102,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Labels\PluralizableLabel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Inputs\NoDialogDatePicker.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Layouts\Section.xaml">

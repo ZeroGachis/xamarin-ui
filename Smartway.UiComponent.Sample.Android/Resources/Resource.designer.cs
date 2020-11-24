@@ -12857,6 +12857,9 @@ namespace Smartway.UiComponent.Sample.Droid
 			// aapt resource value: 0x7F0E01F9
 			public const int scrollViewTheme = 2131624441;
 			
+			// aapt resource value: 0x7F0E01FA
+			public const int style_date_picker = 2131624442;
+			
 			// aapt resource value: 0x7F0E00E7
 			public const int TextAppearance_AppCompat = 2131624167;
 			
