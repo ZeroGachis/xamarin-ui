@@ -11,7 +11,14 @@
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Vertical">
-                        <separators:Divider/>
+                        <StackLayout Margin="0, 0, 0, 20">
+                            <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference List}, Path=IsCondensed}" Value="true">
+                                    <Setter Property="Margin" Value="0, 0, 0, 10" />
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                            <separators:Divider/>
+                        </StackLayout>
                         <cards:ArticleCard 
                             Label="{Binding Label}" 
                             IsMultilocation="{Binding IsMultilocation}" 

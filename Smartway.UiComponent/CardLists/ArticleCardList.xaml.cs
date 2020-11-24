@@ -32,11 +32,11 @@ namespace Smartway.UiComponent.CardLists
 
         private void ArticleListChanged(object sender, PropertyChangedEventArgs e)
         {
-            var element = ArticleListElement.Children.Cast<StackLayout>().FirstOrDefault(_ => _.IsVisible);
-            if (element != null)
-            {
-                element.Children.First().IsVisible = false;
-            }
+            var enumerator = ArticleListElement.Children.Cast<StackLayout>().GetEnumerator();
+            if (enumerator.MoveNext())
+                enumerator.Current.Children.First().IsVisible = false;
+            while (enumerator.MoveNext())
+                enumerator.Current.Children.First().IsVisible = true;
         }
     }
 }
