@@ -11,7 +11,9 @@
         BackgroundColor="#CCCCCC"
         TextTransform="None"
         Font="OpenSansSemiBold"
-        TextColor="White">
+        TextColor="White"
+        IsEnabled="{Binding Source={x:Reference Self}, Path=Activated}"
+       >
     <Button.Triggers>
         <MultiTrigger TargetType="Button">
             <MultiTrigger.Conditions>
