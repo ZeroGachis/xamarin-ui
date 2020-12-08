@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:ModalPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Smartway.UiComponent.Pages;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.Pages.ModalPageSample">
+    <pages:ModalPage.HeaderContent>
+        <StackLayout BackgroundColor="Green">
+            <Label Text="Header"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </pages:ModalPage.HeaderContent>
+    <pages:ModalPage.BodyContent>
+        <StackLayout BackgroundColor="DarkRed" HeightRequest="200">
+            <Label Text="Body"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </pages:ModalPage.BodyContent>
+    <pages:ModalPage.FooterContent>
+        <StackLayout BackgroundColor="RoyalBlue">
+            <Label Text="Footer"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </pages:ModalPage.FooterContent>
+</pages:ModalPage>
