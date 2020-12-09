@@ -64,5 +64,10 @@ namespace Smartway.UiComponent.Sample
         {
             await NavigateTo(new Layouts.LayoutsSample());
         });
+
+        public ICommand ModalPage => new Command(async () =>
+        {
+            await NavigateTo(new Pages.ModalPageSample());
+        });
     }
 }
