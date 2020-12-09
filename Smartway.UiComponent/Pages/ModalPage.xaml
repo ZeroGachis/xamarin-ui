@@ -1,15 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage NavigationPage.HasNavigationBar="false"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Pages.ModalPage"
              x:Name="Self"
              BackgroundColor="Black">
+    <ContentPage.Resources>
+        <Style x:Key="ModalFrame" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Margin" Value="16" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style x:Key="MainStack" TargetType="StackLayout">
+            <Setter Property="Orientation" Value="Vertical" />
+            <Setter Property="Spacing" Value="0"/>
+        </Style>
+        <Style x:Key="HeaderView" TargetType="ContentView">
+            <Setter Property="HeightRequest" Value="60" />
+        </Style>
+        <Style x:Key="FooterView" TargetType="ContentView">
+            <Setter Property="HeightRequest" Value="82" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Frame CornerRadius="15" Margin="16" BackgroundColor="White" Padding="0" VerticalOptions="CenterAndExpand">
-            <StackLayout Orientation="Vertical" Spacing="0">
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=HeaderContent}" HeightRequest="60"/>
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=BodyContent}"  />
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=FooterContent}" HeightRequest="82"/>
+        <Frame Style="{StaticResource ModalFrame}">
+            <StackLayout Style="{StaticResource MainStack}">
+                <ContentView Content="{Binding Source={x:Reference Self}, Path=HeaderContent}" Style="{StaticResource HeaderView}" />
+                <separators:Divider  /> 
+                <ContentView Content="{Binding Source={x:Reference Self}, Path=BodyContent}" />
+                <separators:Divider />
+                <ContentView Content="{Binding Source={x:Reference Self}, Path=FooterContent}"  Style="{StaticResource FooterView}" />
             </StackLayout>
         </Frame>
     </ContentPage.Content>
