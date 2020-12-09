@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Smartway.UiComponent.FormsElements
         public static readonly BindableProperty InputProperty = BindableProperty.Create(nameof(Input), typeof(string), typeof(FormElement));
         public static readonly BindableProperty HelperProperty = BindableProperty.Create(nameof(Helper), typeof(string), typeof(FormElement));
         public static readonly BindableProperty ReadOnlyProperty = BindableProperty.Create(nameof(ReadOnly), typeof(bool), typeof(FormElement), false);
-        public static readonly BindableProperty DisabledProperty = BindableProperty.Create(nameof(Disabled), typeof(bool), typeof(FormElement), false);
+        public static readonly BindableProperty DisabledProperty = BindableProperty.Create(nameof(Disabled), typeof(bool), typeof(FormElement), false, propertyChanged: DisabledMode);
 
         public string Title
         {
@@ -47,8 +48,12 @@ namespace Smartway.UiComponent.FormsElements
         public bool Disabled
         {
             get => (bool)GetValue(DisabledProperty);
-            set => SetValue(DisabledProperty, value);
+            set
+            {
+                SetValue(DisabledProperty, value);
+            }
         }
+
         public FormElement()
         {
             InitializeComponent();
@@ -64,6 +69,22 @@ namespace Smartway.UiComponent.FormsElements
         {
             DividerPrefix.BackgroundColor = Color.FromHex("#E2E4F0");
             DividerInput.BackgroundColor = Color.FromHex("#E2E4F0");
+        }
+
+        private static void DisabledMode(BindableObject bindable, object oldValue, object newValue)
+        {
+            if ((bool) newValue)
+            {
+                var FormElement = (FormElement) bindable;
+                var GrayColor = Color.FromHex("#B2B2B2");
+
+                FormElement.TitleLabel.TextColor = GrayColor;
+                FormElement.PrefixLabel.TextColor = GrayColor;
+                FormElement.HelperLabel.TextColor = GrayColor;
+                FormElement.CustomEntry.TextColor = GrayColor;
+
+                FormElement.CustomEntry.IsEnabled = false;
+            }
         }
     }
 }

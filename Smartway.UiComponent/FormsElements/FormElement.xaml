@@ -15,7 +15,7 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Margin="16" BackgroundColor="White" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-            <Label Text="{Binding Source={x:Reference Self}, Path=Title}" Style="{StaticResource Title}"></Label>
+            <Label x:Name="TitleLabel" Text="{Binding Source={x:Reference Self}, Path=Title}" Style="{StaticResource Title}"></Label>
             <Grid Margin="0,0,0,-17"  ColumnSpacing="0" RowSpacing="-11">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -26,7 +26,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Text="{Binding Source={x:Reference Self}, Path=Prefix}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" Margin="5, 0">
+                <Label Grid.Column="0" x:Name="PrefixLabel" Text="{Binding Source={x:Reference Self}, Path=Prefix}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" Margin="5, 0">
                     <Label.Triggers>
                         <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Prefix}" Value="">
                             <Setter Property="IsVisible" Value="False"/>
@@ -41,10 +41,13 @@
                     </separators:Divider.Triggers>
                 </separators:Divider>
 
-                <formsElements:CustomEntry Grid.Row="0" Grid.Column="1" FontSize="16" Placeholder="{Binding Source={x:Reference Self}, Path=Input}" Focused="InputOnFocused" Unfocused="InputOnUnfocused"/>
-                <separators:Divider x:Name="DividerInput"  Grid.Row="1" Grid.Column="1"></separators:Divider>
+                <formsElements:CustomEntry Grid.Row="0" Grid.Column="1" x:Name="CustomEntry" FontSize="16" Placeholder="{Binding Source={x:Reference Self}, Path=Input}" Focused="InputOnFocused" Unfocused="InputOnUnfocused">
+                </formsElements:CustomEntry>
+                    <separators:Divider x:Name="DividerInput"  Grid.Row="1" Grid.Column="1">
+                    </separators:Divider>
             </Grid>
-            <Label  Text="{Binding Source={x:Reference Self}, Path=Helper}" Margin="4,-3,0,0"></Label>
+            <Label x:Name="HelperLabel" Text="{Binding Source={x:Reference Self}, Path=Helper}" Margin="4,-3,0,0">
+            </Label>
         </StackLayout>
     </ContentView.Content>
 </ContentView>
