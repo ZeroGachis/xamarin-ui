@@ -79,6 +79,8 @@
                                 Activated="false"/>
                 </Frame>
                 <Label Style="{StaticResource Section}" Text="Variations" />
+                <Buttons:TextButton Text="Text Button" />
+                <Buttons:TextButton Text="Text Button (limits)" BorderWidth="1" BorderColor="#FF6C3B" />
                 <Buttons:ScanButton Command="{Binding ScanCommand}"/>
             </StackLayout>
         </ScrollView>
