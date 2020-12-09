@@ -22,6 +22,7 @@
             <Button Text="Inputs" Command="{Binding Inputs}"/>
             <Button Text="Layouts" Command="{Binding Layouts}"/>
             <Button Text="ModalPage" Command="{Binding ModalPage}" />
+            <Button Text="FormsElements" Command="{Binding FormsElements}"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

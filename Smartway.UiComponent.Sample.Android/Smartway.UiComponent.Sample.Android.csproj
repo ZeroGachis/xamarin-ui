@@ -58,6 +58,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomentryRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NotifyMessageAndroid.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -97,6 +98,10 @@
     <ProjectReference Include="..\Smartway.UiComponent.Sample\Smartway.UiComponent.Sample.csproj">
       <Project>{2985857A-3C32-48D2-82C2-0196CB942731}</Project>
       <Name>Smartway.UiComponent.Sample</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smartway.UiComponent\Smartway.UiComponent.csproj">
+      <Project>{FCBD2D06-7FDD-4ABA-88C0-D8774AF1EC89}</Project>
+      <Name>Smartway.UiComponent</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
+             xmlns:formsElements="clr-namespace:Smartway.UiComponent.FormsElements;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.FormsElements.FormElement">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="Title" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="5,0" BackgroundColor="White" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Label Text" Style="{StaticResource Title}"></Label>
+            <Grid Margin="0,0,0,-17"  ColumnSpacing="0" RowSpacing="-11">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Text="€" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" Margin="5, 0"></Label>
+                <separators:Divider Grid.Row="1" Grid.Column="0" IsVisible="True" WidthRequest="0"></separators:Divider>
+               
+                <formsElements:CustomEntry Grid.Column="1" FontSize="16" Placeholder="Input text" />
+                <separators:Divider Grid.Row="1" Grid.Column="1"></separators:Divider>
+                <Label Grid.Row="2" Grid.Column="1" Text="Helper text displayed here" Margin="4,-3,0,0"></Label>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
