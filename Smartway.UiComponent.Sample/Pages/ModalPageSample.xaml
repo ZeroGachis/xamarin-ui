@@ -12,7 +12,7 @@
         </Style>
     </pages:ModalPage.Resources>
     <pages:ModalPage.HeaderContent>
-        <StackLayout Padding="16">
+        <StackLayout Padding="20">
             <Label Text="Header" Style="{StaticResource Title}" />
         </StackLayout>
     </pages:ModalPage.HeaderContent>

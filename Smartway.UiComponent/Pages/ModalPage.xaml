@@ -5,7 +5,8 @@
              xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Pages.ModalPage"
              x:Name="Self"
-             BackgroundColor="Black">
+             BackgroundColor="Black"
+             Opacity="0.8">
     <ContentPage.Resources>
         <Style x:Key="ModalFrame" TargetType="Frame">
             <Setter Property="CornerRadius" Value="15" />
