@@ -11,6 +11,8 @@
         BackgroundColor="#CCCCCC"
         TextTransform="None"
         Font="OpenSansSemiBold"
+        FontSize="15"
+        Padding="18,15"
         TextColor="White"
         IsEnabled="{Binding Source={x:Reference Self}, Path=Activated}"
        >
@@ -29,10 +31,18 @@
             </MultiTrigger.Conditions>
             <Setter Property="BackgroundColor" Value="#FF6C3B" />
         </MultiTrigger>
+        <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Block">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HeightRequest" Value="50" />
+        </DataTrigger>
+        <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Modal">
+            <Setter Property="Padding" Value="42,15"/>
+            <Setter Property="HeightRequest" Value="50" />
+        </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Small">
             <Setter Property="FontSize" Value="12" />
             <Setter Property="HeightRequest" Value="30" />
-            <Setter Property="Padding" Value="10,-2, 10, 0" />
+            <Setter Property="Padding" Value="10,6,10,7" />
         </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Large">
             <Setter Property="HeightRequest" Value="50" />

@@ -3,43 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.Buttons.Button">
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="Section">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+            <Setter Property="Padding" Value="15"/>
+        </Style>
+        <Style x:Key="BlockContainer" TargetType="Frame">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="10,10,10,0" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="Primary Button"/>
-                <Buttons:Button Text="Small button"
-                                Status="Primary"
-                                Size="Small"
-                                Activated="false"/>
-                <Buttons:Button Text="Small button"
-                                Status="Primary"
-                                Size="Small"
-                                Activated="true"/>
-                <Buttons:Button Text="Primary button"
-                                Status="Primary"
-                                Size="Large"
-                                Activated="false"/>
+                <Label Text="Priority" Style="{StaticResource Section}"/>
                 <Buttons:Button Text="Primary button"
                                 Status="Primary"
                                 Size="Large"
                                 Activated="true"/>
-                <Label Text="Warning Button"/>
-                <Buttons:Button Text="Small button"
+                <Buttons:Button Text="Warning button"
                                 Status="Warning"
-                                Size="Small"
+                                Size="Large"
+                                Activated="true"/>
+                <Label Text="States"  Style="{StaticResource Section}"/>    
+                <Buttons:Button Text="Disabled"
+                                Status="Primary"
+                                Size="Large"
+                                Activated="False"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Buttons:Button Text="Primary button"
+                                    Status="Primary"
+                                    Size="Large"
+                                    Activated="true"/>
+                    <Buttons:Button Text="Warning button"
+                                    Status="Warning"
+                                    Size="Large"
+                                    Activated="true"/>
+                </StackLayout>
+                <Label Text="Size" Style="{StaticResource Section}" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Buttons:Button Text="Primary Large"
+                                    Status="Primary"
+                                    Size="Large"
+                                    Activated="true"/>
+                    <Buttons:Button Text="Warning Large"
+                                    Status="Warning"
+                                    Size="Large"
+                                    Activated="true"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Buttons:Button Text="Primary Small"
+                                    Status="Primary"
+                                    Size="Small"
+                                    Activated="true"/>
+                    <Buttons:Button Text="Warning Small"
+                                    Status="Warning"
+                                    Size="Small"
+                                    Activated="true"/>
+                </StackLayout>
+                <Buttons:Button Text="Modal button"
+                        Size="Modal"
+                        Activated="true"/>
+                <Frame Style="{StaticResource BlockContainer}" >
+                <Buttons:Button Text="Block button"
+                                Status="Primary"
+                                Size="Block"
+                                Activated="true"/>
+                </Frame>
+                <Frame Style="{StaticResource BlockContainer}">
+                <Buttons:Button Text="Block button"
+                                Status="Primary"
+                                Size="Block"
                                 Activated="false"/>
-                <Buttons:Button Text="Small button"
-                                Status="Warning"
-                                Size="Small"
-                                Activated="True"/>
-                <Buttons:Button Text="Large button"
-                                Status="Warning"
-                                Size="Large"
-                                Activated="true"/>
-                <Buttons:Button Text="Large button"
-                                Status="Warning"
-                                Size="Large"
-                                Activated="true"/>
+                </Frame>
+                <Label Style="{StaticResource Section}" Text="Variations" />
                 <Buttons:ScanButton Command="{Binding ScanCommand}"/>
             </StackLayout>
         </ScrollView>
