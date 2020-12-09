@@ -73,7 +73,7 @@ namespace Smartway.UiComponent.Sample
 
         public ICommand FormsElements => new Command(async () =>
         {
-            await NavigateTo(new FormElement());
+            await NavigateTo(new FormsElements.FormElement());
         });
     }
 }

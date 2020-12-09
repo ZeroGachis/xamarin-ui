@@ -5,7 +5,7 @@
              x:Class="Smartway.UiComponent.Sample.FormsElements.FormElement">
     <ContentPage.Content>
         <StackLayout>
-            <formsElements:CustomEntry></formsElements:CustomEntry>
+            <formsElements:FormElement Title="Label text" Prefix="€" Helper="Helper text" Input="This is a placeholder" ReadOnly="True"></formsElements:FormElement>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
