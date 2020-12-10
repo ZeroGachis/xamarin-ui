@@ -8,7 +8,7 @@
              x:Class="Smartway.UiComponent.Buttons.ScanButton"
              x:Name="Self"
              >
-    <Frame CornerRadius="32" BackgroundColor="#27304A">
+    <Frame CornerRadius="32" BackgroundColor="#010142">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Source={Reference Self}, Path=Command}"></TapGestureRecognizer>
             </Frame.GestureRecognizers>

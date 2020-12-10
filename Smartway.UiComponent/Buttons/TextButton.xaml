@@ -12,7 +12,7 @@
         TextTransform="None"
         Font="OpenSansSemiBold"
         FontSize="15"
-        TextColor="Black"
+        TextColor="#010142"
         HeightRequest="50"
         Padding="0,15"
         >

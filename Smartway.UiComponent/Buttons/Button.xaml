@@ -8,7 +8,7 @@
         x:Name="Self"
         CornerRadius="36"
         HorizontalOptions="Center"
-        BackgroundColor="#CCCCCC"
+        BackgroundColor="#B2B2B2"
         TextTransform="None"
         Font="OpenSansSemiBold"
         FontSize="15"
@@ -36,8 +36,8 @@
             <Setter Property="HeightRequest" Value="50" />
         </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Modal">
-            <Setter Property="Padding" Value="42,15"/>
             <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="WidthRequest" Value="134" />
         </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Small">
             <Setter Property="FontSize" Value="12" />
