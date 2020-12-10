@@ -6,7 +6,7 @@ using Smartway.UiComponent.Sample.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
+[assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
 namespace Smartway.UiComponent.Sample.Droid
 {
     public class CustomEntryRenderer : EntryRenderer
