@@ -7,6 +7,7 @@
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
+            <formsElements:HasErrorMessageConverter x:Key="HasErrorMessage" />
             <Style x:Key="Title" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="13"/>
                 <Setter Property="TextColor" Value="Black"/>
@@ -14,9 +15,9 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout Margin="16" BackgroundColor="White" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="16, 0" Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="0">
             <Label x:Name="TitleLabel" Text="{Binding Source={x:Reference Self}, Path=Title}" Style="{StaticResource Title}"></Label>
-            <Grid Margin="0,0,0,-17"  ColumnSpacing="0" RowSpacing="-11">
+            <Grid ColumnSpacing="0" RowSpacing="-10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
@@ -38,15 +39,36 @@
                         <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=Prefix}" Value="">
                             <Setter Property="IsVisible" Value="False"/>
                         </DataTrigger>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
                     </separators:Divider.Triggers>
                 </separators:Divider>
 
-                <formsElements:CustomEntry Grid.Row="0" Grid.Column="1" x:Name="CustomEntry" FontSize="16" Placeholder="{Binding Source={x:Reference Self}, Path=Input}" Focused="InputOnFocused" Unfocused="InputOnUnfocused">
+                <formsElements:CustomEntry Grid.Row="0" Grid.Column="1" x:Name="CustomEntry" FontSize="16" Text="{Binding Source={x:Reference Self}, Path=Text}" Placeholder="{Binding Source={x:Reference Self}, Path=PlaceHolder}" Focused="InputOnFocused" Unfocused="InputOnUnfocused">
+                    <formsElements:CustomEntry.Triggers>
+                        <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </DataTrigger>
+                    </formsElements:CustomEntry.Triggers>
                 </formsElements:CustomEntry>
                     <separators:Divider x:Name="DividerInput"  Grid.Row="1" Grid.Column="1">
-                    </separators:Divider>
+                    <separators:Divider.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                                <Setter Property="BackgroundColor" Value="Transparent"/>
+                            </DataTrigger>
+                        </separators:Divider.Triggers>
+                </separators:Divider>
             </Grid>
-            <Label x:Name="HelperLabel" Text="{Binding Source={x:Reference Self}, Path=Helper}" Margin="4,-3,0,0">
+            <Label x:Name="HelperLabel" TextColor="#707070" Text="{Binding Source={x:Reference Self}, Path=Helper}" Margin="4,2,0,0">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Error,Converter={StaticResource HasErrorMessage}}" Value="True">
+                        <Setter Property="TextColor" Value="Red"/>
+                    </DataTrigger>
+                </Label.Triggers>
             </Label>
         </StackLayout>
     </ContentView.Content>

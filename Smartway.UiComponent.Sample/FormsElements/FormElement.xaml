@@ -4,8 +4,12 @@
              xmlns:formsElements="clr-namespace:Smartway.UiComponent.FormsElements;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.FormsElements.FormElement">
     <ContentPage.Content>
-        <StackLayout>
-            <formsElements:FormElement Title="Label text" Prefix="€" Helper="Helper text" Input="This is a placeholder" ReadOnly="True" Disabled="False"></formsElements:FormElement>
+        <StackLayout Spacing="20">
+            <formsElements:FormElement Title="ReadOnly" Prefix="€" Helper="Helper text" Text="Input text" PlaceHolder="This is a placeholder" ReadOnly="True" ></formsElements:FormElement>
+            <formsElements:FormElement Title="Disabled" Prefix="€" Helper="Helper text" PlaceHolder="This is a placeholder" Disabled="True"></formsElements:FormElement>
+            <formsElements:FormElement Title="Activated" Prefix="€" Helper="Helper text" Text="Another input text" PlaceHolder="This is a placeholder"></formsElements:FormElement>
+            <formsElements:FormElement Title="Error" Prefix="€" Helper="Helper text" PlaceHolder="This is a placeholder" Error="Error1"></formsElements:FormElement>
+            <formsElements:FormElement Title="Without prefix" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder"></formsElements:FormElement>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
