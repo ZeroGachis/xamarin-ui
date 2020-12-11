@@ -3,13 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.Inputs.ViewModels;assembly=Smartway.UiComponent.Sample"
              xmlns:barcode="clr-namespace:Smartway.UiComponent.Inputs.Barcode;assembly=Smartway.UiComponent"
+             xmlns:inputs="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.Inputs.Views.Inputs"
              x:DataType="viewModels:InputsViewModel">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Spacing="16">
             <barcode:BarcodeInput
                 Margin="16, 26, 16, 30">
             </barcode:BarcodeInput>
+            <inputs:RadioButton>
+                <Label Text="Left button" FontSize="16"/>
+            </inputs:RadioButton>
+            <inputs:RadioButton Position="Right">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Right button" FontSize="16"/>
+                    <Label Text="Short description" FontSize="8"/>
+                </StackLayout>
+            </inputs:RadioButton>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
