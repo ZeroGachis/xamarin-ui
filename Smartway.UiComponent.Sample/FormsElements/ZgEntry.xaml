@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:formsElements="clr-namespace:Smartway.UiComponent.FormsElements;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.FormsElements.FormElement">
+    <ContentPage.Content>
+        <StackLayout Spacing="20">
+            <formsElements:ZgEntry Title="ReadOnly" Prefix="€" Helper="Helper text" Text="Input text" PlaceHolder="This is a placeholder" ReadOnly="True" ></formsElements:ZgEntry>
+            <formsElements:ZgEntry Title="Disabled" Prefix="€" Helper="Helper text" PlaceHolder="This is a placeholder" Disabled="True"></formsElements:ZgEntry>
+            <formsElements:ZgEntry Title="Activated" Prefix="€" Helper="Helper text" Text="Another input text" PlaceHolder="This is a placeholder"></formsElements:ZgEntry>
+            <formsElements:ZgEntry Title="Error" Prefix="€" Helper="Helper text" PlaceHolder="This is a placeholder" Error="Error1"></formsElements:ZgEntry>
+            <formsElements:ZgEntry Title="Without prefix" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder"></formsElements:ZgEntry>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

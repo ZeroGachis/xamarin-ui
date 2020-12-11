@@ -58,7 +58,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomentryRenderer.cs" />
+    <Compile Include="CustomEntryRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NotifyMessageAndroid.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
