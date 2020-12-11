@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Smartway.UiComponent.Inputs.RadioButton"
+       x:Name="Self"
+       WidthRequest="21"
+       HeightRequest="21"
+       BackgroundColor="white"
+       VerticalOptions="Start"
+       HorizontalOptions="Start"
+       BorderColor="#010142"
+       HasShadow="False"
+       CornerRadius="50"
+       Padding="5" >
+    <BoxView
+        CornerRadius="50"
+        BackgroundColor="#010142"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" IsVisible="False">
+        <BoxView.Triggers>
+            <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=IsChecked}" Value="True">
+                <Setter Property="IsVisible" Value="True"></Setter>
+            </DataTrigger>
+        </BoxView.Triggers>
+    </BoxView>
+</Frame>
