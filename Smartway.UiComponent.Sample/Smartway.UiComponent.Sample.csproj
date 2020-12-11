@@ -35,7 +35,7 @@
     <EmbeddedResource Update="Buttons\Button.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FormsElements\ZgEntry.xaml">
+    <EmbeddedResource Update="FormsElements\FormEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Inputs\Views\Inputs.xaml">
@@ -77,8 +77,8 @@
     <Compile Update="ExpanderCard\ExpanderCardSample.xaml.cs">
       <DependentUpon>ExpanderCardSample.xaml</DependentUpon>
     </Compile>
-    <Compile Update="FormsElements\ZgEntry.xaml.cs">
-      <DependentUpon>ZgEntry.xaml</DependentUpon>
+    <Compile Update="FormsElements\FormEntry.xaml.cs">
+      <DependentUpon>FormEntry.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

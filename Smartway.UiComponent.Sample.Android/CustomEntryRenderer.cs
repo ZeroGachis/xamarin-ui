@@ -23,6 +23,8 @@ namespace Smartway.UiComponent.Sample.Droid
             {
                 GradientDrawable gd = new GradientDrawable();
                 gd.SetColor(global::Android.Graphics.Color.Transparent);
+
+                this.Control.SetPadding(0, 0, Control.PaddingRight, 0);
                 this.Control.SetBackground(null);
                 this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
             }
