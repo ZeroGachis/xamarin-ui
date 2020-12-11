@@ -14,6 +14,7 @@ namespace Smartway.UiComponent.Sample.Droid
         public CustomEntryRenderer(Context context) : base(context)
         {
         }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
