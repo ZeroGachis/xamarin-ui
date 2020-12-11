@@ -7,19 +7,32 @@
              x:Class="Smartway.UiComponent.Sample.Inputs.Views.Inputs"
              x:DataType="viewModels:InputsViewModel">
     <ContentPage.Content>
-        <StackLayout Spacing="16">
-            <barcode:BarcodeInput
-                Margin="16, 26, 16, 30">
+        <StackLayout Spacing="30" Margin="16, 30, 16, 0">
+            <barcode:BarcodeInput>
             </barcode:BarcodeInput>
-            <inputs:RadioButton>
-                <Label Text="Left button" FontSize="16"/>
-            </inputs:RadioButton>
-            <inputs:RadioButton Position="Right">
-                <StackLayout Orientation="Vertical">
-                    <Label Text="Right button" FontSize="16"/>
-                    <Label Text="Short description" FontSize="8"/>
+
+            <Frame>
+                <StackLayout>
+                    <inputs:RadioButton Name="Group1">
+                        <Label Text="Banane" FontSize="16"/>
+                    </inputs:RadioButton>
+                    <inputs:RadioButton Name="Group1">
+                        <Label Text="Fraise" FontSize="16"/>
+                    </inputs:RadioButton>
                 </StackLayout>
-            </inputs:RadioButton>
+            </Frame>
+
+
+            <Frame>
+                <StackLayout>
+                    <inputs:RadioButton Position="Right" Name="Group2">
+                        <Label Text="Vanille" FontSize="16"/>
+                    </inputs:RadioButton>
+                    <inputs:RadioButton Position="Right" Name="Group2">
+                        <Label Text="Chocolat" FontSize="16"/>
+                    </inputs:RadioButton>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

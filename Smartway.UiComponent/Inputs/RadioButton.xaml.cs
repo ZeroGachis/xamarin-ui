@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,7 +29,57 @@ namespace Smartway.UiComponent.Inputs
             Right
         }
 
-        public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(RadioButton), false);
+        private class RadioButtonComparer : IEqualityComparer<RadioButton>
+        {
+            public bool Equals(RadioButton x, RadioButton y)
+            {
+                return ReferenceEquals(x, y);
+            }
+
+            public int GetHashCode(RadioButton obj)
+            {
+                return obj.GetHashCode();
+            }
+        }
+
+        private class Groups
+        {
+            private Dictionary<string, HashSet<RadioButton>> _map;
+
+            private static Groups _instance;
+
+            public static Groups Instance
+            {
+                get {
+                    if (_instance == null)
+                        _instance = new Groups{ _map = new Dictionary<string, HashSet<RadioButton>>()};
+
+                    return _instance;
+                }
+            }
+
+            public void Register(string name, RadioButton button)
+            {
+                if (!_map.ContainsKey(name))
+                {
+                    _map.Add(name, new HashSet<RadioButton>(new RadioButtonComparer()));
+                }
+
+                _map[name].Add(button);
+            }
+
+            public void Uncheck(string groupName)
+            {
+                var group = _map[groupName];
+
+                foreach (var item in group)
+                {
+                    item.IsChecked = false;
+                }
+            }
+        }
+
+        public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(RadioButton));
 
         public static readonly BindableProperty CustomContentProperty = BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(RadioButton), propertyChanged:OnCustomContentChanged);
 
@@ -42,12 +93,31 @@ namespace Smartway.UiComponent.Inputs
 
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(RadioButton));
 
-        public static readonly BindableProperty IndexProperty = BindableProperty.Create(nameof(Index), typeof(int), typeof(RadioButton));
+        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(RadioButton), "Default", propertyChanged:OnGroupChanged);
+
+        private static void OnGroupChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var groupName = newvalue as string;
+            var button = bindable as RadioButton;
+            Groups.Instance.Register(groupName, button);
+        }
+
+        public string Name
+        {
+            get => (string)GetValue(NameProperty);
+            set => SetValue(NameProperty, value);
+        }
 
         public bool IsChecked
         {
             get => (bool) GetValue(IsCheckedProperty);
-            set => SetValue(IsCheckedProperty, value);
+            set
+            {
+                if (value)
+                    Groups.Instance.Uncheck(Name);
+
+                SetValue(IsCheckedProperty, value);
+            }
         }
 
         public View CustomContent
