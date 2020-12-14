@@ -9,7 +9,6 @@ namespace Smartway.UiComponent.Inputs
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RadioButton
     {
-
         public class CommandParameters
         {
             /// <summary>
@@ -81,25 +80,37 @@ namespace Smartway.UiComponent.Inputs
 
         public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(nameof(IsChecked), typeof(bool), typeof(RadioButton));
 
-        public static readonly BindableProperty CustomContentProperty = BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(RadioButton), propertyChanged:OnCustomContentChanged);
+        public static readonly BindableProperty CustomContentProperty = BindableProperty.Create(nameof(CustomContent), typeof(View), typeof(RadioButton));
 
-        public static readonly BindableProperty LeftContentProperty = BindableProperty.Create(nameof(LeftContent), typeof(View), typeof(RadioButton));
+        public static readonly BindableProperty PositionProperty = BindableProperty.Create(nameof(Position), typeof(PositionType), typeof(RadioButton), propertyChanged: OnPositionChanged);
 
-        public static readonly BindableProperty RightContentProperty = BindableProperty.Create(nameof(RightContent), typeof(View), typeof(RadioButton));
+        private static void OnPositionChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var positionType = (PositionType)newvalue;
+            var button = bindable as RadioButton;
+            if (button is null || positionType != PositionType.Right)
+                return;
 
-        public static readonly BindableProperty PositionProperty = BindableProperty.Create(nameof(Position), typeof(PositionType), typeof(RadioButton));
+            button.FirstColumnDefinition.Width = new GridLength(1, GridUnitType.Star);
+            button.SecondColumnDefinition.Width = new GridLength(41);
+        }
 
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(RadioButton));
 
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(RadioButton));
 
-        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(RadioButton), "Default", propertyChanged:OnGroupChanged);
+        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(RadioButton), "Default", propertyChanged:OnNameChanged);
 
-        private static void OnGroupChanged(BindableObject bindable, object oldvalue, object newvalue)
+        private static void OnNameChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             var groupName = newvalue as string;
             var button = bindable as RadioButton;
             Groups.Instance.Register(groupName, button);
+        }
+
+        public RadioButton()
+        {
+            InitializeComponent();
         }
 
         public string Name
@@ -138,18 +149,6 @@ namespace Smartway.UiComponent.Inputs
             set => SetValue(PositionProperty, value);
         }
 
-        public View LeftContent
-        {
-            get => (View)GetValue(LeftContentProperty);
-            set => SetValue(LeftContentProperty, value);
-        }
-
-        public View RightContent
-        {
-            get => (View)GetValue(RightContentProperty);
-            set => SetValue(RightContentProperty, value);
-        }
-
         public ICommand ToggleRadioButton => new Command(() =>
         {
             IsChecked = true;
@@ -161,23 +160,5 @@ namespace Smartway.UiComponent.Inputs
             set => SetValue(CommandParameterProperty, value);
         }
 
-        public RadioButton()
-        {
-            InitializeComponent();
-        }
-
-        private static void OnCustomContentChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            var radioButton = (RadioButton) bindable;
-            switch (radioButton.Position)
-            {
-                case PositionType.Left:
-                    radioButton.RightContent = (View)newvalue;
-                    break;
-                case PositionType.Right:
-                    radioButton.LeftContent = (View)newvalue;
-                    break;
-            }
-        }
     }
 }

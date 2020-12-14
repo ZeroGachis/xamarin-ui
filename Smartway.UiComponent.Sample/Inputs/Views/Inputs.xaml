@@ -8,9 +8,7 @@
              x:DataType="viewModels:InputsViewModel">
     <ContentPage.Content>
         <StackLayout Spacing="30" Margin="16, 30, 16, 0">
-            <barcode:BarcodeInput>
-            </barcode:BarcodeInput>
-
+            <barcode:BarcodeInput />
             <Frame>
                 <StackLayout>
                     <inputs:RadioButton Name="Group1">
@@ -21,8 +19,6 @@
                     </inputs:RadioButton>
                 </StackLayout>
             </Frame>
-
-
             <Frame>
                 <StackLayout>
                     <inputs:RadioButton Position="Right" Name="Group2">

@@ -4,8 +4,12 @@
              x:Class="Smartway.UiComponent.Inputs.RadioButton"
              x:Name="Self">
     <ContentView.Content>
-        <StackLayout Orientation="Horizontal" VerticalOptions="Start">
-            <StackLayout.GestureRecognizers>
+        <Grid VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="FirstColumnDefinition" Width="41"/>
+                <ColumnDefinition x:Name="SecondColumnDefinition" />
+            </Grid.ColumnDefinitions>
+            <Grid.GestureRecognizers>
                 <TapGestureRecognizer
                     Command="{Binding Source={x:Reference Self}, Path=ToggleRadioButton}"
                     NumberOfTapsRequired="1" />
@@ -13,24 +17,35 @@
                     Command="{Binding Source={x:Reference Self}, Path=Command}"
                     CommandParameter="{Binding Source={x:Reference Self}, Path=CommandParameter}"
                     NumberOfTapsRequired="1" />
-            </StackLayout.GestureRecognizers>
-            <ContentView Content="{Binding Source={x:Reference Self}, Path=LeftContent}">
+            </Grid.GestureRecognizers>
+            <ContentView Content="{Binding Source={x:Reference Self}, Path=CustomContent}">
                 <ContentView.Triggers>
                     <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Right">
-                        <Setter Property="IsVisible" Value="True" />
+                        <Setter Property="Grid.Column" Value="0" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
+                        <Setter Property="Grid.Column" Value="1" />
                     </DataTrigger>
                 </ContentView.Triggers>
             </ContentView>
-            <Frame 
+            <Frame
                 WidthRequest="16"
                 HeightRequest="16"
-                BackgroundColor="white"
+                BackgroundColor="White"
                 VerticalOptions="Start"
-                HorizontalOptions="Start"
+                HorizontalOptions="Center"
                 BorderColor="#010142"
                 HasShadow="False"
                 CornerRadius="50"
                 Padding="5">
+                <Frame.Triggers>
+                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Right">
+                        <Setter Property="Grid.Column" Value="1" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
+                        <Setter Property="Grid.Column" Value="0" />
+                    </DataTrigger>
+                </Frame.Triggers>
                 <BoxView
                     CornerRadius="50"
                     BackgroundColor="#010142"
@@ -43,13 +58,6 @@
                     </BoxView.Triggers>
                 </BoxView>
             </Frame>
-            <ContentView Content="{Binding Source={x:Reference Self}, Path=RightContent}">
-                <ContentView.Triggers>
-                    <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
-                        <Setter Property="IsVisible" Value="True" />
-                    </DataTrigger>
-                </ContentView.Triggers>
-            </ContentView>
-        </StackLayout>
+        </Grid>
     </ContentView.Content>
 </ContentView>
