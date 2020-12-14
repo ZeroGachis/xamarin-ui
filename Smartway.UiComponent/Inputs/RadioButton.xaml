@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartway.UiComponent.Inputs.RadioButton"
+             x:Name="Self">
+    <ContentView.Content>
+        <Grid VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="FirstColumnDefinition" Width="41"/>
+                <ColumnDefinition x:Name="SecondColumnDefinition" />
+            </Grid.ColumnDefinitions>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Source={x:Reference Self}, Path=ToggleRadioButton}"
+                    NumberOfTapsRequired="1" />
+                <TapGestureRecognizer
+                    Command="{Binding Source={x:Reference Self}, Path=Command}"
+                    CommandParameter="{Binding Source={x:Reference Self}, Path=CommandParameter}"
+                    NumberOfTapsRequired="1" />
+            </Grid.GestureRecognizers>
+            <ContentView Content="{Binding Source={x:Reference Self}, Path=CustomContent}">
+                <ContentView.Triggers>
+                    <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Right">
+                        <Setter Property="Grid.Column" Value="0" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="ContentView" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
+                        <Setter Property="Grid.Column" Value="1" />
+                    </DataTrigger>
+                </ContentView.Triggers>
+            </ContentView>
+            <Frame
+                WidthRequest="16"
+                HeightRequest="16"
+                BackgroundColor="White"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                BorderColor="#010142"
+                HasShadow="False"
+                CornerRadius="50"
+                Padding="5">
+                <Frame.Triggers>
+                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Right">
+                        <Setter Property="Grid.Column" Value="1" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
+                        <Setter Property="Grid.Column" Value="0" />
+                    </DataTrigger>
+                </Frame.Triggers>
+                <BoxView
+                    CornerRadius="50"
+                    BackgroundColor="#010142"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" IsVisible="False">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=IsChecked}" Value="True">
+                            <Setter Property="IsVisible" Value="True"></Setter>
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
