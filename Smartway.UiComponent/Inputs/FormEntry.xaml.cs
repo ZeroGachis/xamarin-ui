@@ -9,6 +9,9 @@ namespace Smartway.UiComponent.FormsElements
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormEntry
     {
+        public static readonly Color LightGrayColor = Color.FromHex("#E2E4F0");
+        public static readonly Color GrayColor = Color.FromHex("#B2B2B2");
+
         public static readonly BindableProperty TitleProperty =
             BindableProperty.Create(nameof(Title), typeof(string), typeof(FormEntry));
 
@@ -94,8 +97,8 @@ namespace Smartway.UiComponent.FormsElements
 
         private void InputOnUnfocused(object sender, FocusEventArgs e)
         {
-            EntryDividerPrefix.BackgroundColor = Color.FromHex("#E2E4F0");
-            EntryDividerInput.BackgroundColor = Color.FromHex("#E2E4F0");
+            EntryDividerPrefix.BackgroundColor = LightGrayColor;
+            EntryDividerInput.BackgroundColor = LightGrayColor;
         }
 
         private static void DisabledMode(BindableObject bindable, object oldValue, object newValue)
@@ -103,7 +106,7 @@ namespace Smartway.UiComponent.FormsElements
             if ((bool) newValue)
             {
                 var formElement = (FormEntry) bindable;
-                var grayColor = Color.FromHex("#B2B2B2");
+                var grayColor = GrayColor;
 
                 formElement.EntryTitle.TextColor = grayColor;
                 formElement.EntryPrefix.TextColor = grayColor;

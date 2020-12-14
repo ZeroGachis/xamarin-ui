@@ -54,7 +54,7 @@
     <Compile Update="Cards\CustomExpander.xaml.cs">
       <DependentUpon>CustomExpander.xaml</DependentUpon>
     </Compile>
-    <Compile Update="FormsElements\FormEntry.xaml.cs">
+    <Compile Update="Inputs\FormEntry.xaml.cs">
       <DependentUpon>FormEntry.xaml</DependentUpon>
     </Compile>
     <Compile Update="Indicators\Status.xaml.cs">
@@ -107,7 +107,7 @@
     <EmbeddedResource Update="Cards\RoundedFrame.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FormsElements\FormEntry.xaml">
+    <EmbeddedResource Update="Inputs\FormEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Labels\PluralizableLabel.xaml">
