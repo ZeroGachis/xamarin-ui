@@ -11,10 +11,10 @@
             <barcode:BarcodeInput />
             <Frame>
                 <StackLayout>
-                    <inputs:RadioButton Name="Group1">
+                    <inputs:RadioButton>
                         <Label Text="Banane" FontSize="16"/>
                     </inputs:RadioButton>
-                    <inputs:RadioButton Name="Group1">
+                    <inputs:RadioButton>
                         <Label Text="Fraise" FontSize="16"/>
                     </inputs:RadioButton>
                 </StackLayout>

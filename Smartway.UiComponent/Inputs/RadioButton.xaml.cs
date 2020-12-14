@@ -57,14 +57,23 @@ namespace Smartway.UiComponent.Inputs
                 }
             }
 
-            public void Register(string name, RadioButton button)
+            public void Register(RadioButton button, string groupName)
             {
-                if (!_map.ContainsKey(name))
+                UnRegister(button);
+                if (!_map.ContainsKey(groupName))
                 {
-                    _map.Add(name, new HashSet<RadioButton>(new RadioButtonComparer()));
+                    _map.Add(groupName, new HashSet<RadioButton>(new RadioButtonComparer()));
                 }
 
-                _map[name].Add(button);
+                _map[groupName].Add(button);
+            }
+
+            private void UnRegister(RadioButton button)
+            {
+                foreach (var group in _map.Values)
+                {
+                    group.Remove(button);
+                }
             }
 
             public void Uncheck(string groupName)
@@ -99,13 +108,21 @@ namespace Smartway.UiComponent.Inputs
 
         public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(RadioButton));
 
-        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(RadioButton), "Default", propertyChanged:OnNameChanged);
+        public static readonly BindableProperty NameProperty = BindableProperty.Create(nameof(Name), typeof(string), typeof(RadioButton), propertyChanged: OnNameChanged, defaultValueCreator: OnNameCreated);
+        
+        private static object OnNameCreated(BindableObject bindable)
+        {
+            const string defaultGroupName = "Default";
+            var button = (RadioButton)bindable;
+            Groups.Instance.Register(button, defaultGroupName);
+            return defaultGroupName;
+        }
 
         private static void OnNameChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             var groupName = newvalue as string;
             var button = bindable as RadioButton;
-            Groups.Instance.Register(groupName, button);
+            Groups.Instance.Register(button, groupName);
         }
 
         public RadioButton()
