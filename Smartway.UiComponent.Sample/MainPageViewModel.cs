@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Smartway.UiComponent.FormsElements;
 using Smartway.UiComponent.Sample.Basics;
 using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Buttons;
@@ -68,6 +69,11 @@ namespace Smartway.UiComponent.Sample
         public ICommand ModalPage => new Command(async () =>
         {
             await NavigateTo(new Pages.ModalPageSample());
+        });
+
+        public ICommand FormsElements => new Command(async () =>
+        {
+            await NavigateTo(new FormsElements.FormElement());
         });
     }
 }
