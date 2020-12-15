@@ -40,7 +40,7 @@ namespace Smartway.UiComponent.FormsElements
             typeof(bool), typeof(FormEntry), propertyChanged: DisabledMode);
 
         public static readonly BindableProperty ErrorProperty =
-            BindableProperty.Create(nameof(Error), typeof(string), typeof(FormEntry), string.Empty);
+            BindableProperty.Create(nameof(Error), typeof(bool), typeof(FormEntry));
 
         public static readonly BindableProperty EntryTypeProperty =
             BindableProperty.Create(nameof(EntryType), typeof(EntryTypes), typeof(FormEntry), EntryTypes.Input, propertyChanged: OnEntryTypeChanged);
@@ -92,9 +92,9 @@ namespace Smartway.UiComponent.FormsElements
             set => SetValue(HelperProperty, value);
         }
 
-        public string Error
+        public bool Error
         {
-            get => (string) GetValue(ErrorProperty);
+            get => (bool) GetValue(ErrorProperty);
             set => SetValue(ErrorProperty, value);
         }
 
