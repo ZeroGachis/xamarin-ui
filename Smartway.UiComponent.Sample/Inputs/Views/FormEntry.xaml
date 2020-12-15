@@ -4,9 +4,10 @@
              xmlns:formsElements="clr-namespace:Smartway.UiComponent.FormsElements;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.FormsElements.FormElement">
     <ContentPage.Content>
-        <StackLayout Spacing="20">
+        <StackLayout Spacing="10">
             <formsElements:FormEntry Title="ReadOnly" Prefix="€" Helper="Helper text" Text="Input text" PlaceHolder="This is a placeholder" ReadOnly="True" ></formsElements:FormEntry>
-            <formsElements:FormEntry Title="Disabled" Prefix="€" Helper="Helper text" PlaceHolder="This is a placeholder" Disabled="True"></formsElements:FormEntry>
+            <formsElements:FormEntry Title="Disabled" Prefix="€" PlaceHolder="This is a placeholder" Disabled="True"></formsElements:FormEntry>
+            <formsElements:FormEntry Title="Select" Prefix="€" PlaceHolder="Choose your item" EntryType="Select" Helper="" ></formsElements:FormEntry>
             <formsElements:FormEntry Title="Activated" Prefix="€" Helper="Helper text" Text="Another input text" PlaceHolder="This is a placeholder"></formsElements:FormEntry>
             <formsElements:FormEntry Title="Error" Prefix="€" Helper="Helper text" PlaceHolder="This is a placeholder" Error="Error1"></formsElements:FormEntry>
             <formsElements:FormEntry Title="Without prefix" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder"></formsElements:FormEntry>
