@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,23 +9,29 @@ namespace Smartway.UiComponent.FormsElements
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormEntry
     {
+        public enum EntryTypes
+        {
+            Input,
+            Select
+        }
+
         public static readonly Color LightGrayColor = Color.FromHex("#E2E4F0");
         public static readonly Color GrayColor = Color.FromHex("#B2B2B2");
 
         public static readonly BindableProperty TitleProperty =
-            BindableProperty.Create(nameof(Title), typeof(string), typeof(FormEntry));
+            BindableProperty.Create(nameof(Title), typeof(string), typeof(FormEntry), string.Empty);
 
         public static readonly BindableProperty PrefixProperty =
             BindableProperty.Create(nameof(Prefix), typeof(string), typeof(FormEntry), string.Empty);
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(FormEntry));
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(FormEntry), string.Empty);
 
         public static readonly BindableProperty PlaceHolderProperty =
-            BindableProperty.Create(nameof(PlaceHolder), typeof(string), typeof(FormEntry));
+            BindableProperty.Create(nameof(PlaceHolder), typeof(string), typeof(FormEntry), string.Empty);
 
         public static readonly BindableProperty HelperProperty =
-            BindableProperty.Create(nameof(Helper), typeof(string), typeof(FormEntry));
+            BindableProperty.Create(nameof(Helper), typeof(string), typeof(FormEntry), string.Empty);
 
         public static readonly BindableProperty ReadOnlyProperty =
             BindableProperty.Create(nameof(ReadOnly), typeof(bool), typeof(FormEntry));
@@ -34,7 +40,27 @@ namespace Smartway.UiComponent.FormsElements
             typeof(bool), typeof(FormEntry), propertyChanged: DisabledMode);
 
         public static readonly BindableProperty ErrorProperty =
-            BindableProperty.Create(nameof(Error), typeof(string), typeof(FormEntry), string.Empty);
+            BindableProperty.Create(nameof(Error), typeof(bool), typeof(FormEntry));
+
+        public static readonly BindableProperty EntryTypeProperty =
+            BindableProperty.Create(nameof(EntryType), typeof(EntryTypes), typeof(FormEntry), EntryTypes.Input, propertyChanged: OnEntryTypeChanged);
+
+        private static void OnEntryTypeChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var entryType = (EntryTypes) newvalue;
+            var formElement = (FormEntry) bindable;
+
+            switch (entryType)
+            {
+                case EntryTypes.Input:
+                    formElement.EntryArrow.IsVisible = false;
+                    break;
+
+                case EntryTypes.Select:
+                    formElement.EntryArrow.IsVisible = true;
+                    break;
+            }
+        }
 
         public string Title
         {
@@ -66,9 +92,9 @@ namespace Smartway.UiComponent.FormsElements
             set => SetValue(HelperProperty, value);
         }
 
-        public string Error
+        public bool Error
         {
-            get => (string) GetValue(ErrorProperty);
+            get => (bool) GetValue(ErrorProperty);
             set => SetValue(ErrorProperty, value);
         }
 
@@ -84,6 +110,12 @@ namespace Smartway.UiComponent.FormsElements
             set => SetValue(DisabledProperty, value);
         }
 
+        public EntryTypes EntryType
+        {
+            get => (EntryTypes) GetValue(EntryTypeProperty);
+            set => SetValue(EntryTypeProperty, value);
+        }
+
         public FormEntry()
         {
             InitializeComponent();
@@ -93,12 +125,14 @@ namespace Smartway.UiComponent.FormsElements
         {
             EntryDividerPrefix.BackgroundColor = Color.Black;
             EntryDividerInput.BackgroundColor = Color.Black;
+            EntryDividerArrow.BackgroundColor = Color.Black;
         }
 
         private void InputOnUnfocused(object sender, FocusEventArgs e)
         {
             EntryDividerPrefix.BackgroundColor = LightGrayColor;
             EntryDividerInput.BackgroundColor = LightGrayColor;
+            EntryDividerArrow.BackgroundColor = LightGrayColor;
         }
 
         private static void DisabledMode(BindableObject bindable, object oldValue, object newValue)
@@ -114,6 +148,7 @@ namespace Smartway.UiComponent.FormsElements
                 formElement.CustomEntry.TextColor = grayColor;
 
                 formElement.CustomEntry.IsEnabled = false;
+                formElement.EntryArrow.IsVisible = false;
             }
         }
     }

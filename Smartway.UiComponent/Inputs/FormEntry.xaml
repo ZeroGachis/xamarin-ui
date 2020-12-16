@@ -2,6 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
+             xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.FormsElements.FormEntry"
              x:Name="Self">
     <ContentView.Resources>
@@ -9,28 +10,28 @@
             <Style x:Key="Title" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="13"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="Margin" Value="0,0,0,5"/>
+                <Setter Property="Margin" Value="0,0,0,6"/>
             </Style>
             <Style x:Key="PrefixLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Margin" Value="0,0,10,2"/>
+                <Setter Property="Margin" Value="0,0,10,5"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
             </Style>
             <Style x:Key="CustomEntry" TargetType="Entry">
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Margin" Value="0,0,0,2"/>
+                <Setter Property="PlaceholderColor" Value="#B2B2B2"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
             <Style x:Key="Helper" TargetType="Label">
                 <Setter Property="FontSize" Value="13"/>
-                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="TextColor" Value="#707070"/>
                 <Setter Property="Margin" Value="0,3,0,0"/>
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout Padding="16, 0" Spacing="0">
-
+        <StackLayout Spacing="0">
             <Label x:Name="EntryTitle" Text="{Binding Source={x:Reference  Self}, Path=Title}" Style="{StaticResource Title}"></Label>
             
             <Grid ColumnSpacing="0" RowSpacing="0">
@@ -41,6 +42,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" x:Name="EntryPrefix" Style="{StaticResource PrefixLabel}" Text="{Binding Source={x:Reference Self}, Path=Prefix}">
@@ -81,20 +83,55 @@
                 <separators:Divider x:Name="EntryDividerInput"  Grid.Row="1" Grid.Column="1">
                     <separators:Divider.Triggers>
                         <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
-                                <Setter Property="BackgroundColor" Value="Transparent"/>
-                            </DataTrigger>
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
                         </separators:Divider.Triggers>
                 </separators:Divider>
 
+                <Image 
+                    x:Name="EntryArrow"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Grid.Column="2"
+                    IsVisible="False"
+                    HeightRequest="0"
+                    Margin="0,0,0,5"
+                    Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}">
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+
+                <separators:Divider x:Name="EntryDividerArrow"  Grid.Row="1" Grid.Column="2">
+                    <separators:Divider.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </separators:Divider.Triggers>
+                </separators:Divider>
+
+                <BoxView IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2" BackgroundColor="Transparent" HeightRequest="0">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
+
             </Grid>
 
-            <Label  x:Name="EntryHelper" Style="{StaticResource Helper}" Text="{Binding Source={x:Reference Self}, Path=Helper}" >
+            <Label x:Name="EntryHelper" Style="{StaticResource Helper}" Text="{Binding Source={x:Reference Self}, Path=Helper}" >
                 <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Helper}" Value="">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
                     <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
                         <Setter Property="IsVisible" Value="False"/>
                     </DataTrigger>
-                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Error}" Value="">
-                        <Setter Property="TextColor" Value="#707070"/>
+                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Error}" Value="True">
+                        <Setter Property="TextColor" Value="#FF5065"/>
                     </DataTrigger>
                 </Label.Triggers>
             </Label>
