@@ -77,9 +77,6 @@
                         <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
                             <Setter Property="IsReadOnly" Value="True"/>
                         </DataTrigger>
-                        <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
-                            <Setter Property="IsReadOnly" Value="True"/>
-                        </DataTrigger>
                     </Entry.Triggers>
                 </Entry>
 
@@ -94,9 +91,11 @@
                 <Image 
                     x:Name="EntryArrow"
                     Grid.Row="0"
+                    Grid.RowSpan="2"
                     Grid.Column="2"
                     IsVisible="False"
-                    HeightRequest="10"
+                    HeightRequest="0"
+                    Margin="0,0,0,5"
                     Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
@@ -112,6 +111,14 @@
                         </DataTrigger>
                     </separators:Divider.Triggers>
                 </separators:Divider>
+
+                <BoxView IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2" BackgroundColor="Transparent" HeightRequest="0">
+                    <BoxView.Triggers>
+                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
+                            <Setter Property="IsVisible" Value="True"/>
+                        </DataTrigger>
+                    </BoxView.Triggers>
+                </BoxView>
 
             </Grid>
 
