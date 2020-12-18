@@ -21,12 +21,16 @@
             </Frame>
             <Frame>
                 <StackLayout>
-                    <inputs:RadioButton Position="Right" Name="Group2">
-                        <Label Text="Vanille" FontSize="16"/>
-                    </inputs:RadioButton>
-                    <inputs:RadioButton Position="Right" Name="Group2">
-                        <Label Text="Chocolat" FontSize="16"/>
-                    </inputs:RadioButton>
+                    <StackLayout BindableLayout.ItemsSource="{Binding RadioButtons}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="viewModels:RadioButtonInputViewModel">
+                                <inputs:RadioButton Name="Group2" Position="Right" IsChecked="{Binding IsChecked}">
+                                    <Label Text="{Binding Label}" FontSize="16"/>
+                                </inputs:RadioButton>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <Button Command="{Binding Validate}" Text="Valider" />
                 </StackLayout>
             </Frame>
         </StackLayout>
