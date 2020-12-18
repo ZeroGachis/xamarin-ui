@@ -1,5 +1,7 @@
 ﻿using System.Windows.Input;
 using Smartway.UiComponent.FormsElements;
+using Smartway.UiComponent.Sample.ArticleCardList;
+using Smartway.UiComponent.Sample.ArticleCardList.ViewModels;
 using Smartway.UiComponent.Sample.Basics;
 using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Buttons;
@@ -29,6 +31,11 @@ namespace Smartway.UiComponent.Sample
         public ICommand SectionSheet => new Command(async () =>
         {
             await NavigateTo(new SectionSheetSample{ BindingContext = new SectionSheetSampleViewModel() });
+        });
+
+        public ICommand ArticleCardList => new Command(async () =>
+        {
+            await NavigateTo(new ArticleCardListSample() { BindingContext = new ArticleCardListSampleViewModel() });
         });
 
         public ICommand TopAppBar => new Command(async () =>

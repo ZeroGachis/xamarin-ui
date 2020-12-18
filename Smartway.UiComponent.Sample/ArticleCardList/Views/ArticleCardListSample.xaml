@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cardLists="clr-namespace:Smartway.UiComponent.CardLists;assembly=Smartway.UiComponent"
+             xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.ArticleCardList.ViewModels;assembly=Smartway.UiComponent.Sample"
+             x:Class="Smartway.UiComponent.Sample.ArticleCardList.ArticleCardListSample"
+             x:DataType="viewModels:ArticleCardListSampleViewModel">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Normal Size" />
+                    <cardLists:ArticleCardList ArticlesList="{Binding Articles}" IsSwipeable="true" SwipedCommand="{Binding DeleteArticle}" />
+                <Label Text="Condensed Size" />
+                    <cardLists:ArticleCardList ArticlesList="{Binding Articles}" IsCondensed="True" IsSwipeable="true" SwipedCommand="{Binding DeleteArticle}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
