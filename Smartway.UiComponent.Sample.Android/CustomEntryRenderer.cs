@@ -50,7 +50,6 @@ namespace Smartway.UiComponent.Sample.Droid
         private void RemoveHintBottomLine()
         {
             this.Control.SetBackground(null);
-            this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
         }
     }
 }
