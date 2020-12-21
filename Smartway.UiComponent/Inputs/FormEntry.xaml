@@ -71,6 +71,7 @@
                     Style="{StaticResource CustomEntry}"
                     Text="{Binding Source={x:Reference Self}, Path=Text}"
                     Placeholder="{Binding Source={x:Reference Self}, Path=PlaceHolder}"
+                    Keyboard="{Binding Source={x:Reference Self}, Path=Keyboard}"
                     Focused="InputOnFocused"
                     Unfocused="InputOnUnfocused">
                     <Entry.Triggers>

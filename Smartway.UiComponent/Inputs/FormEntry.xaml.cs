@@ -30,6 +30,9 @@ namespace Smartway.UiComponent.FormsElements
         public static readonly BindableProperty PlaceHolderProperty =
             BindableProperty.Create(nameof(PlaceHolder), typeof(string), typeof(FormEntry), string.Empty);
 
+        public static readonly BindableProperty KeyboardProperty =
+            BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(FormEntry), Xamarin.Forms.Keyboard.Default);
+
         public static readonly BindableProperty HelperProperty =
             BindableProperty.Create(nameof(Helper), typeof(string), typeof(FormEntry), string.Empty);
 
@@ -84,6 +87,12 @@ namespace Smartway.UiComponent.FormsElements
         {
             get => (string) GetValue(PlaceHolderProperty);
             set => SetValue(PlaceHolderProperty, value);
+        }
+        
+        public Keyboard Keyboard
+        {
+            get => (Keyboard) GetValue(KeyboardProperty);
+            set => SetValue(KeyboardProperty, value);
         }
 
         public string Helper
