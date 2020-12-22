@@ -9,7 +9,7 @@
              IsEnabled="{Binding Source={Reference Self}, Path=IsSwipeable}">
     <SwipeView.LeftItems>
         <SwipeItems>
-            <SwipeItemView Padding="30" Command="{Binding Source={Reference Self}, Path=SwipedCommand}" CommandParameter="{Binding Source={Reference Self}, Path=Gencode}">
+            <SwipeItemView Padding="30" Command="{Binding Source={Reference Self}, Path=SwipedCommand}" CommandParameter="{Binding Source={Reference Self}, Path=SwipedCommandParameter}">
                 <StackLayout BackgroundColor="#FF5065" Orientation="Horizontal" HorizontalOptions="Center">
                     <Image Margin="34,0,0,0" Source="icon_delete.png" HeightRequest="24" WidthRequest="24"></Image>
                 </StackLayout>

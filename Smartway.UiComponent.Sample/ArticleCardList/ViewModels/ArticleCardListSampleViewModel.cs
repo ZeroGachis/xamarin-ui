@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -61,11 +60,10 @@ namespace Smartway.UiComponent.Sample.ArticleCardList.ViewModels
             });
         }
 
-        public ICommand DeleteArticle => new Command(async gencode =>
+        public ICommand DeleteArticle => new Command( article =>
         {
-            foreach (var article in Articles.ToArray())
-                if (((DummyArticle)article).Gencode == gencode)
-                    Articles.Remove(article);
+            var dummyArticle = (DummyArticle) article;
+            Articles.Remove(dummyArticle);
         });
     }
 }
