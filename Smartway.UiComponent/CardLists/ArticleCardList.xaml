@@ -41,6 +41,7 @@
                             IsCondensed="{Binding Source={x:Reference List}, Path=IsCondensed}"
                             IsSwipeable="{Binding Source={x:Reference List}, Path=IsSwipeable}"
                             SwipedCommand="{Binding Source={x:Reference List}, Path=SwipedCommand}"
+                            SwipedCommandParameter="{Binding .}"
                         />
                     </StackLayout>
                 </DataTemplate>
