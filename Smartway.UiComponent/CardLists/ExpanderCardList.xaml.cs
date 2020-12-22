@@ -4,42 +4,15 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Smartway.UiComponent.Cards;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.CardLists
 {
-    internal class ObservableCollectionAction<T>
-    {
-        public ObservableCollectionAction(NotifyCollectionChangedAction action, T item)
-        {
-            Action = action;
-            Item = item;
-        }
-
-        public NotifyCollectionChangedAction Action { get; }
-
-        public T Item { get; }
-
-        public void ApplyAction(ObservableCollection<T> collection)
-        {
-            switch (Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    collection.Add(Item);
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    collection.Remove(Item);
-                    break;
-            }
-        }
-    }
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpanderCardList : ContentView
     {
-        private readonly Queue<ObservableCollectionAction<object>> _actionToExecute = new Queue<ObservableCollectionAction<object>>();
+        private readonly Queue<object> _articleToAdd = new Queue<object>();
 
         public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ExpanderCardList));
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(ExpanderCardList));
@@ -118,18 +91,18 @@ namespace Smartway.UiComponent.CardLists
             else
             {
                 ItemsLoadedList = new ObservableCollection<object>();
-                AddActions(NotifyCollectionChangedAction.Add, SourceList);
+                AddArticleToLoadAsync(SourceList);
             }
 
             SourceList.CollectionChanged += OnSourceListChanged;
             OnPropertyChanged(nameof(Counter));
         }
 
-        private void AddActions(NotifyCollectionChangedAction action, IEnumerable<object> articles)
+        private void AddArticleToLoadAsync(IEnumerable<object> articles)
         {
             foreach (var article in articles)
             {
-                _actionToExecute.Enqueue(new ObservableCollectionAction<object>(action, article));
+                _articleToAdd.Enqueue(article);
             }
         }
 
@@ -142,18 +115,37 @@ namespace Smartway.UiComponent.CardLists
         private async void OnSourceListChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (LoadAsync)
-                SaveAction(e);
+                await ApplyChanges(e);
 
             OnPropertyChanged(nameof(Counter));
             await DisplayData();
         }
 
-        private void SaveAction(NotifyCollectionChangedEventArgs e)
+        private async Task ApplyChanges(NotifyCollectionChangedEventArgs e)
         {
-            if (e.NewItems?.Count > 0)
-                AddActions(e.Action, e.NewItems.Cast<object>());
-            if (e.OldItems?.Count > 0)
-                AddActions(e.Action, e.OldItems.Cast<object>());
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    AddArticleToLoadAsync(e.NewItems.Cast<object>());
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    await RemoveArticleFromDisplayedList(e.OldItems.Cast<object>().First());
+                    break;
+                default:
+                    return;
+            }
+        }
+
+        private async Task RemoveArticleFromDisplayedList(object item)
+        {
+            ItemsLoadedList.Remove(item);
+            await ForceExpanderResize();
+        }
+
+        private async Task AddArticleToDisplayedList(object item)
+        {
+            ItemsLoadedList.Add(item);
+            await ForceExpanderResize();
         }
 
         private async Task OnExpanderClick()
@@ -168,14 +160,13 @@ namespace Smartway.UiComponent.CardLists
 
         private async Task DisplayData()
         {
-            while (_actionToExecute.Count>0)
+            while (_articleToAdd.Count>0)
             {
                 if (!IsExpanded)
                     return;
 
-                var action = _actionToExecute.Dequeue();
-                action.ApplyAction(ItemsLoadedList);
-                await ForceExpanderResize();
+                var article = _articleToAdd.Dequeue();
+                await AddArticleToDisplayedList(article);
             }
             
             await ForceExpanderResize();
