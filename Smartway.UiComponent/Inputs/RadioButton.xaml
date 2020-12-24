@@ -29,8 +29,8 @@
                 </ContentView.Triggers>
             </ContentView>
             <Frame
-                WidthRequest="16"
-                HeightRequest="16"
+                WidthRequest="10"
+                HeightRequest="10"
                 BackgroundColor="White"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
