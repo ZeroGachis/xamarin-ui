@@ -29,8 +29,8 @@
                 </ContentView.Triggers>
             </ContentView>
             <Frame
-                WidthRequest="16"
-                HeightRequest="16"
+                WidthRequest="10"
+                HeightRequest="10"
                 BackgroundColor="White"
                 VerticalOptions="Start"
                 HorizontalOptions="Center"
@@ -44,6 +44,9 @@
                     </DataTrigger>
                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
                         <Setter Property="Grid.Column" Value="0" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=IsChecked}" Value="False">
+                        <Setter Property="BorderColor" Value="#8B8B8B"></Setter>
                     </DataTrigger>
                 </Frame.Triggers>
                 <BoxView
