@@ -18,8 +18,6 @@ namespace Smartway.UiComponent.Cards
         public static readonly BindableProperty OnShortageSinceProperty = BindableProperty.Create(nameof(OnShortageSince), typeof(DateTime?), typeof(ArticleCard), DateTime.Today);
         public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ArticleCard), "Unknown");
         public static readonly BindableProperty IsCondensedProperty = BindableProperty.Create(nameof(IsCondensed), typeof(bool), typeof(ArticleCard), false);
-        public static readonly BindableProperty IsSwipeableProperty = BindableProperty.Create(nameof(IsSwipeable), typeof(bool), typeof(ArticleCard));
-        public static readonly BindableProperty SwipedCommandProperty = BindableProperty.Create(nameof(SwipedCommand), typeof(ICommand), typeof(ArticleCard));
 
         public bool IsMultilocation
         {
@@ -79,18 +77,6 @@ namespace Smartway.UiComponent.Cards
         {
             get => (string)GetValue(StatusProperty);
             set => SetValue(StatusProperty, value);
-        }
-
-        public bool IsSwipeable
-        {
-            get => (bool)GetValue(IsSwipeableProperty);
-            set => SetValue(IsSwipeableProperty, value);
-        }
-
-        public ICommand SwipedCommand
-        {
-            get => (ICommand)GetValue(SwipedCommandProperty);
-            set => SetValue(SwipedCommandProperty, value);
         }
 
         public bool DisplayOnShortageSince => IsOnShortage && OnShortageSince != null;
