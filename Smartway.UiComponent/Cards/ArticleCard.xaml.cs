@@ -20,7 +20,6 @@ namespace Smartway.UiComponent.Cards
         public static readonly BindableProperty IsCondensedProperty = BindableProperty.Create(nameof(IsCondensed), typeof(bool), typeof(ArticleCard), false);
         public static readonly BindableProperty IsSwipeableProperty = BindableProperty.Create(nameof(IsSwipeable), typeof(bool), typeof(ArticleCard));
         public static readonly BindableProperty SwipedCommandProperty = BindableProperty.Create(nameof(SwipedCommand), typeof(ICommand), typeof(ArticleCard));
-        public static readonly BindableProperty SwipedCommandParameterProperty = BindableProperty.Create(nameof(SwipedCommandParameter), typeof(object), typeof(ArticleCard));
 
         public bool IsMultilocation
         {
@@ -92,12 +91,6 @@ namespace Smartway.UiComponent.Cards
         {
             get => (ICommand)GetValue(SwipedCommandProperty);
             set => SetValue(SwipedCommandProperty, value);
-        }
-
-        public object SwipedCommandParameter
-        {
-            get => (object)GetValue(SwipedCommandParameterProperty);
-            set => SetValue(SwipedCommandParameterProperty, value);
         }
 
         public bool DisplayOnShortageSince => IsOnShortage && OnShortageSince != null;
