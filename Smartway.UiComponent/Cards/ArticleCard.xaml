@@ -1,21 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<SwipeView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:indicators="clr-namespace:Smartway.UiComponent.Indicators;assembly=Smartway.UiComponent"
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Cards.ArticleCard"
-             x:Name="Self"
-             IsEnabled="{Binding Source={Reference Self}, Path=IsSwipeable}">
-    <SwipeView.LeftItems>
-        <SwipeItems>
-            <SwipeItemView Padding="30" Command="{Binding Source={Reference Self}, Path=SwipedCommand}" CommandParameter="{Binding Source={Reference Self}, Path=SwipedCommandParameter}">
-                <StackLayout BackgroundColor="#FF5065" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Image Margin="34,0,0,0" Source="icon_delete.png" HeightRequest="24" WidthRequest="24"></Image>
-                </StackLayout>
-            </SwipeItemView>
-        </SwipeItems>
-    </SwipeView.LeftItems>
+             x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
             <Style x:Key="ProductLabel" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
@@ -46,29 +36,11 @@
                   NumberOfTapsRequired="1"
               />
             </StackLayout.GestureRecognizers>
-            <StackLayout Orientation="Horizontal" Margin="0,20,0,20">
+            <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
                 <StackLayout.Triggers>
-                    <MultiTrigger TargetType="StackLayout">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsCondensed}" Value="true"/>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsSwipeable}" Value="false"/>
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Margin" Value="0, 10, 0, 10" />
-                    </MultiTrigger>
-                    <MultiTrigger TargetType="StackLayout">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsCondensed}" Value="true"/>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsSwipeable}" Value="true"/>
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Margin" Value="16, 10, 16, 10" />
-                    </MultiTrigger>
-                    <MultiTrigger TargetType="StackLayout">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsCondensed}" Value="false"/>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsSwipeable}" Value="true"/>
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Margin" Value="16, 20, 16, 20" />
-                    </MultiTrigger>
+                    <DataTrigger TargetType="StackLayout" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="true">
+                        <Setter Property="Margin" Value="0, 0, 0, 10" />
+                    </DataTrigger>
                 </StackLayout.Triggers>
                 <Image Style="{StaticResource ProductImage}">
                     <Image.Triggers>
@@ -124,4 +96,4 @@
             </StackLayout>
         </StackLayout>
     </ContentView.Content>
-</SwipeView>
+</ContentView>

@@ -15,7 +15,6 @@
             <Button Text="SectionForm" Command="{Binding SectionForm}"/>
             <Button Text="Indicators" Command="{Binding Indicators}"/>
             <Button Text="SectionSheet" Command="{Binding SectionSheet}"/>
-            <Button Text="ArticleCardList" Command="{Binding ArticleCardList}"/>
             <Button Text="ExpanderCard" Command="{Binding ExpanderCard}"/>
             <Button Text="TopAppBar" Command="{Binding TopAppBar}"/>
             <Button Text="Separator" Command="{Binding Separators}" />

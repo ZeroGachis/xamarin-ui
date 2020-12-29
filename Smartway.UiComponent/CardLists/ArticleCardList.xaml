@@ -8,23 +8,13 @@
              >
     <ContentView.Content>
         <StackLayout Orientation="Vertical" x:Name="ArticleListElement" BindableLayout.ItemsSource="{Binding Source={x:Reference List}, Path=ArticlesList}">
-            <StackLayout.Triggers>
-                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference List}, Path=IsSwipeable}" Value="true">
-                    <Setter Property="Spacing" Value="0" />
-                </DataTrigger>
-            </StackLayout.Triggers>
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Vertical">
-                        <StackLayout.Triggers>
-                            <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference List}, Path=IsSwipeable}" Value="true">
-                                <Setter Property="Spacing" Value="0" />
-                            </DataTrigger>
-                        </StackLayout.Triggers>
-                        <StackLayout>
+                        <StackLayout Margin="0, 0, 0, 20">
                             <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference List}, Path=IsSwipeable}" Value="true">
-                                    <Setter Property="Spacing" Value="0" />
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding Source={x:Reference List}, Path=IsCondensed}" Value="true">
+                                    <Setter Property="Margin" Value="0, 0, 0, 10" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                             <separators:Divider/>
@@ -39,9 +29,6 @@
                             NavigationParameter="{Binding NavigationParameter}"
                             OnShortageSince="{Binding OnShortageSince}"
                             IsCondensed="{Binding Source={x:Reference List}, Path=IsCondensed}"
-                            IsSwipeable="{Binding Source={x:Reference List}, Path=IsSwipeable}"
-                            SwipedCommand="{Binding Source={x:Reference List}, Path=SwipedCommand}"
-                            SwipedCommandParameter="{Binding .}"
                         />
                     </StackLayout>
                 </DataTemplate>
