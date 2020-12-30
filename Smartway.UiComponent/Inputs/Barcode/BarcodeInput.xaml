@@ -20,6 +20,8 @@
                 <Setter Property="Margin" Value="-10,0,0,0"></Setter>
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="PlaceholderColor" Value="#A2A2BA"></Setter>
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="FontFamily" Value="OpenSans"></Setter>
             </Style>
             <Style x:Key="Global" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="#1A1F3D"></Setter>
