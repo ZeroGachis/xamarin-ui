@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using Smartway.UiComponent.Inputs;
 using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Sample.Inputs.ViewModels
@@ -31,6 +32,13 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
         {
             var message = $"{SelectedElement.Label} selected element";
             DependencyService.Get<INotifyMessage>().ShortAlert(message);
+        });
+
+        public ICommand ChipsAction => new Command((param) =>
+        {
+            var chips = (Chips) param;
+            chips.IsVisible = false;
+            DependencyService.Get<INotifyMessage>().ShortAlert("Chips tapped !");
         });
     }
 }
