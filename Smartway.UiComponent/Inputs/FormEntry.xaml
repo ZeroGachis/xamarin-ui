@@ -119,6 +119,10 @@
                             <Setter Property="IsVisible" Value="True"/>
                         </DataTrigger>
                     </BoxView.Triggers>
+
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=OnSelectTap}"/>
+                    </BoxView.GestureRecognizers>
                 </BoxView>
 
             </Grid>

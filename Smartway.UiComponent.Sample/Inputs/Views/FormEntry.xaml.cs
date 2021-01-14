@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Windows.Input;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.Sample.FormsElements

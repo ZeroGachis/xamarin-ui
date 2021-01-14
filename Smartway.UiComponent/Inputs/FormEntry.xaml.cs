@@ -47,7 +47,6 @@ namespace Smartway.UiComponent.FormsElements
 
         public static readonly BindableProperty EntryTypeProperty =
             BindableProperty.Create(nameof(EntryType), typeof(EntryTypes), typeof(FormEntry), EntryTypes.Input, propertyChanged: OnEntryTypeChanged);
-
         private static void OnEntryTypeChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             var entryType = (EntryTypes) newvalue;
@@ -64,6 +63,9 @@ namespace Smartway.UiComponent.FormsElements
                     break;
             }
         }
+
+        public static readonly BindableProperty SelectCommandProperty = 
+            BindableProperty.Create(nameof(SelectCommand), typeof(ICommand), typeof(FormEntry));
 
         public string Title
         {
@@ -125,6 +127,12 @@ namespace Smartway.UiComponent.FormsElements
             set => SetValue(EntryTypeProperty, value);
         }
 
+        public ICommand SelectCommand
+        {
+            get => (ICommand)GetValue(SelectCommandProperty);
+            set => SetValue(SelectCommandProperty, value);
+        }
+
         public FormEntry()
         {
             InitializeComponent();
@@ -160,5 +168,14 @@ namespace Smartway.UiComponent.FormsElements
                 formElement.EntryArrow.IsVisible = false;
             }
         }
+
+        public ICommand OnSelectTap => new Command(() =>
+        {
+            if (SelectCommand == null)
+                return;
+
+            if (SelectCommand.CanExecute(null))
+                SelectCommand.Execute(null);
+        });
     }
 }
