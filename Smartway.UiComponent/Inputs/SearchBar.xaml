@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartway.UiComponent.Inputs.SearchBar"
+             x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="OpenSans" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"
+                   Source="icon_search.png"/>
+            <Entry Grid.Column="1"
+                   Placeholder="{Binding Source={Reference Self}, Path=Placeholder}"
+                   Text="{Binding Source={Reference Self}, Path=SearchText, Mode=TwoWay}" />
+            <Image Grid.Column="2"
+                   Source="icon_close.png"
+                   IsVisible="{Binding Source={Reference Self}, Path=CanClearSearchText}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ClearSearchText"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
