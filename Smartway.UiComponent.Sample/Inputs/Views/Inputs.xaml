@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.Inputs.ViewModels;assembly=Smartway.UiComponent.Sample"
              xmlns:barcode="clr-namespace:Smartway.UiComponent.Inputs.Barcode;assembly=Smartway.UiComponent"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
              xmlns:inputs="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.Inputs.Views.Inputs"
              x:DataType="viewModels:InputsViewModel">
@@ -78,6 +79,20 @@
                             <inputs:Chips Label="Block 1"/>
                             <inputs:Chips Label="Block 2" IsSelected="True" Grid.Column="1" />
                         </Grid>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Padding="5">
+                        <inputs:SearchBar Placeholder="SearchBar sans frame"
+                                          SearchText="{Binding SearchText}"
+                                          HeightRequest="40" />
+                        <cards:RoundedFrame Padding="10"
+                                            CornerRadius="21">
+                            <inputs:SearchBar Placeholder="SearchBar avec RoundedFrame"
+                                              SearchText="{Binding SearchText}" />
+                        </cards:RoundedFrame>
+                        <ListView ItemsSource="{Binding SearchableContentList}"
+                                  SelectionMode="None"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>

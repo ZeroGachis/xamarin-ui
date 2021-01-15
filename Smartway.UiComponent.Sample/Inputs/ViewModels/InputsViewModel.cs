@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Smartway.UiComponent.Inputs;
@@ -15,6 +17,13 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
 
     public class InputsViewModel: ViewModel
     {
+        private readonly List<string> _searchableContentList = new List<string>()
+        {
+            "Test", "a-Test", "bac a-tett", "Top result", "BIM", "Smartway"
+        };
+
+        private string _searchText;
+
         public InputsViewModel()
         {
             RadioButtons = new ObservableCollection<RadioButtonInputViewModel>
@@ -22,6 +31,8 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
                 new RadioButtonInputViewModel{Label = "Vanille", IsChecked = true},
                 new RadioButtonInputViewModel{Label = "Chocolat"}
             };
+
+            SearchableContentList = _searchableContentList.ToList();
         }
 
         public ObservableCollection<RadioButtonInputViewModel> RadioButtons { get; set; }
@@ -40,5 +51,21 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
             chips.IsVisible = false;
             DependencyService.Get<INotifyMessage>().ShortAlert("Chips tapped !");
         });
+        
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                SearchableContentList = _searchableContentList.Where(c =>
+                    c.StartsWith(_searchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                SearchableContentList.AddRange(_searchableContentList.Where(c => c.IndexOf(_searchText, StringComparison.InvariantCultureIgnoreCase) > 0));
+                RaisedPropertyChanged(nameof(SearchableContentList));
+                RaisedPropertyChanged(nameof(SearchText));
+            }
+        }
+
+        public List<string> SearchableContentList { get; set; }
     }
 }
