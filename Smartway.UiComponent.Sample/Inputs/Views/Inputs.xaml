@@ -6,33 +6,81 @@
              xmlns:inputs="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.Inputs.Views.Inputs"
              x:DataType="viewModels:InputsViewModel">
+    <ContentPage.Resources>
+        <Style x:Key="SubtitleStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansSemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="TitleStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansBold"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Spacing="30" Margin="16, 30, 16, 0">
-            <barcode:BarcodeInput />
-            <Frame>
-                <StackLayout>
-                    <inputs:RadioButton>
-                        <Label Text="Banane" FontSize="16"/>
-                    </inputs:RadioButton>
-                    <inputs:RadioButton>
-                        <Label Text="Fraise" FontSize="16"/>
-                    </inputs:RadioButton>
-                </StackLayout>
-            </Frame>
-            <Frame>
-                <StackLayout>
-                    <StackLayout BindableLayout.ItemsSource="{Binding RadioButtons}">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate x:DataType="viewModels:RadioButtonInputViewModel">
-                                <inputs:RadioButton Name="Group2" Position="Right" IsChecked="{Binding IsChecked}">
-                                    <Label Text="{Binding Label}" FontSize="16"/>
-                                </inputs:RadioButton>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+        <ScrollView>
+            <StackLayout Spacing="30" Padding="16, 30, 16, 0" BackgroundColor="#E5E5E5">
+                <Frame>
+                    <StackLayout Padding="0, 0, 0, 5">
+                        <Label Text="Barcode Input" Style="{StaticResource TitleStyle}"/>
+                        <barcode:BarcodeInput />
                     </StackLayout>
-                    <Button Command="{Binding Validate}" Text="Valider" />
-                </StackLayout>
-            </Frame>
-        </StackLayout>
+                </Frame>
+                
+                <Frame>
+                    <StackLayout>
+                        <Label Text="RadioButton" Style="{StaticResource TitleStyle}"/>
+                        <inputs:RadioButton>
+                            <Label Text="Banane" FontSize="16"/>
+                        </inputs:RadioButton>
+                        <inputs:RadioButton>
+                            <Label Text="Fraise" FontSize="16"/>
+                        </inputs:RadioButton>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label Text="RadioButton with Validation" Style="{StaticResource TitleStyle}"/>
+                        <StackLayout BindableLayout.ItemsSource="{Binding RadioButtons}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="viewModels:RadioButtonInputViewModel">
+                                    <inputs:RadioButton Name="Group2" Position="Right" IsChecked="{Binding IsChecked}">
+                                        <Label Text="{Binding Label}" FontSize="16"/>
+                                    </inputs:RadioButton>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <Button Command="{Binding Validate}" Text="Valider" />
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Choice Chips" Style="{StaticResource TitleStyle}"/>
+                        <Label Text="Defaut" Style="{StaticResource SubtitleStyle}"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                            <inputs:Chips Label="Chips"  />
+                            <inputs:Chips Label="Chips Selected" IsSelected="True" />
+                        </StackLayout>
+                        <Label Text="Counter" Style="{StaticResource SubtitleStyle}"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="10">
+                            <inputs:Chips Label="Chips • 125" />
+                            <inputs:Chips Label="Chips • 125" IsSelected="True"/>
+                        </StackLayout>
+                        <Label Text="With Command" Style="{StaticResource SubtitleStyle}" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <inputs:Chips Label="Tap me !" Command="{Binding ChipsAction}"/>
+                        </StackLayout>
+                        <Label Style="{StaticResource SubtitleStyle}" Text="Chips en mode Block"/>
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <inputs:Chips Label="Block 1"/>
+                            <inputs:Chips Label="Block 2" IsSelected="True" Grid.Column="1" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
