@@ -990,7 +990,7 @@ namespace Smartway.UiComponent.Sample.Droid
 			global::Smartway.UiComponent.Droid.Resource.Drawable.design_ic_visibility_off = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.design_ic_visibility_off;
 			global::Smartway.UiComponent.Droid.Resource.Drawable.design_password_eye = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.design_password_eye;
 			global::Smartway.UiComponent.Droid.Resource.Drawable.design_snackbar_background = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.design_snackbar_background;
-			global::Smartway.UiComponent.Droid.Resource.Drawable.icon_close = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.icon_close;
+			global::Smartway.UiComponent.Droid.Resource.Drawable.icon_close_grey = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.icon_close_grey;
 			global::Smartway.UiComponent.Droid.Resource.Drawable.icon_search = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.icon_search;
 			global::Smartway.UiComponent.Droid.Resource.Drawable.ic_mtrl_chip_checked_black = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.ic_mtrl_chip_checked_black;
 			global::Smartway.UiComponent.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle = global::Smartway.UiComponent.Sample.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle;
@@ -10936,7 +10936,7 @@ namespace Smartway.UiComponent.Sample.Droid
 			public const int icon_check = 2131165286;
 			
 			// aapt resource value: 0x7F070067
-			public const int icon_close = 2131165287;
+			public const int icon_close_grey = 2131165287;
 			
 			// aapt resource value: 0x7F070068
 			public const int icon_search = 2131165288;

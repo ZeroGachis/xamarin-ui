@@ -16,7 +16,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0"
                    Source="icon_search.png"/>
@@ -24,7 +24,8 @@
                    Placeholder="{Binding Source={Reference Self}, Path=Placeholder}"
                    Text="{Binding Source={Reference Self}, Path=SearchText, Mode=TwoWay}" />
             <Image Grid.Column="2"
-                   Source="icon_close.png"
+                   HeightRequest="20"
+                   Source="icon_close_grey.png"
                    IsVisible="{Binding Source={Reference Self}, Path=CanClearSearchText}">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ClearSearchText"/>

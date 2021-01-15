@@ -3000,7 +3000,7 @@ namespace Smartway.UiComponent.Droid
 			public static int design_snackbar_background = 2131165282;
 			
 			// aapt resource value: 0x7F070066
-			public static int icon_close = 2131165286;
+			public static int icon_close_grey = 2131165286;
 			
 			// aapt resource value: 0x7F070067
 			public static int icon_search = 2131165287;
