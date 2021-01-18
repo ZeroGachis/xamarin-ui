@@ -87,7 +87,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_search.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon_close.png" />
+    <AndroidResource Include="Resources\drawable\icon_close_grey.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\icon_search.png" />
