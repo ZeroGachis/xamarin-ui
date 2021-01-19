@@ -13,8 +13,7 @@
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="WidthRequest" Value="24"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="Source" 
-                        Value="">
+                <Setter Property="Source" Value="">
                 </Setter>
             </Style>
             <Style x:Key="LabelTitle" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
@@ -22,20 +21,20 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start"/>
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="Margin" Value="32, 0, 0, 0"/>
+                <Setter Property="Margin" Value="20, 0, 0, 0"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"></Setter>
             </Style>
             <Style x:Key="ExtraLabel" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="Padding" Value="0, 1, 0, 0"/>
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid>
+        <Grid Padding="17, 3, 16, 5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="48" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30" />
@@ -89,8 +88,7 @@
                     </Label.Triggers>
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
-                        Command="{Binding Source={x:Reference Self}, Path=ExtraNavigationCommand}"
-                        NumberOfTapsRequired="1" />
+                        Command="{Binding Source={x:Reference Self}, Path=ExtraNavigationCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
