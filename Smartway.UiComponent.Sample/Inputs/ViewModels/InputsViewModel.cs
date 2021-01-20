@@ -67,5 +67,14 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
         }
 
         public List<string> SearchableContentList { get; set; }
+
+        private DateTime _date;
+        public DateTime Date
+        {
+            get => _date;
+            set => Set(nameof(Date), ref _date, value);
+        }
+
+        public DateTime MinimumDate => DateTime.Today.AddDays(1);
     }
 }

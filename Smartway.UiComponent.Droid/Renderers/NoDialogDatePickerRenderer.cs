@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Android.App;
 using Android.Content;
 using Smartway.UiComponent.Droid.Renderers;
@@ -12,9 +13,27 @@ using DatePickerAndroid = Android.Widget.DatePicker;
 namespace Smartway.UiComponent.Droid.Renderers
 {
 	public class NoDialogDatePickerRenderer : ViewRenderer<DatePickerForms, DatePickerAndroid>
-	{
+    {
+        private bool _disposed;
+
 		public NoDialogDatePickerRenderer(Context context) : base(context)
         {
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && !_disposed)
+            {
+                _disposed = true;
+
+                if (Control != null)
+                    Control.DateChanged -= AndroidControlOnDateChanged;
+
+                if (Element != null)
+                    Element.DateSelected -= ElementDateChanged;
+            }
+
+            base.Dispose(disposing);
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<DatePickerForms> e)
@@ -26,6 +45,61 @@ namespace Smartway.UiComponent.Droid.Renderers
                 var dialog = new DatePickerDialog(Context);
                 SetNativeControl(dialog.DatePicker);
             }
-        }   
+
+            if (Control != null)
+            {
+                LinkDatePickerToAndroidControl(e.NewElement);
+                UpdateMinimumDate();
+                UpdateMaximumDate();
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName == DatePicker.MinimumDateProperty.PropertyName) 
+                UpdateMinimumDate();
+            else if (e.PropertyName == DatePicker.MaximumDateProperty.PropertyName)
+                UpdateMaximumDate();
+        }
+
+        private void UpdateMaximumDate()
+        {
+            Control.MaxDate = ConvertDateToJavaFormat(Element.MaximumDate.ToUniversalTime());
+        }
+
+        private void UpdateMinimumDate()
+        {
+            Control.MinDate = ConvertDateToJavaFormat(Element.MinimumDate.ToUniversalTime());
+        }
+
+        private void LinkDatePickerToAndroidControl(DatePicker element)
+        {
+            element.DateSelected += ElementDateChanged;
+            Control.DateChanged += AndroidControlOnDateChanged;
+        }
+
+        private void AndroidControlOnDateChanged(object sender, DatePickerAndroid.DateChangedEventArgs e)
+        {
+            var newDate = new DateTime(e.Year, e.MonthOfYear+1, e.DayOfMonth);
+            if (Element.Date == newDate)
+                return;
+            Element.Date = newDate;
+        }
+
+        private void ElementDateChanged(object sender, DateChangedEventArgs e)
+        {
+            if (Control.DateTime == e.NewDate)
+                return;
+
+            Control.DateTime = e.NewDate;
+        }
+
+        private long ConvertDateToJavaFormat(DateTime date)
+        {
+            var javaDate = new DateTime(1970, 1, 1);
+            var javaDiff = date - javaDate;
+            return (long)javaDiff.TotalMilliseconds;
+        }
     }
 }
