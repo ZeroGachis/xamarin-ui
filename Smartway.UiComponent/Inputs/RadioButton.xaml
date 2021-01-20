@@ -4,9 +4,9 @@
              x:Class="Smartway.UiComponent.Inputs.RadioButton"
              x:Name="Self">
     <ContentView.Content>
-        <Grid VerticalOptions="Start">
+        <Grid VerticalOptions="Start" ColumnSpacing="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="FirstColumnDefinition" Width="41"/>
+                <ColumnDefinition x:Name="FirstColumnDefinition" Width="36"/>
                 <ColumnDefinition x:Name="SecondColumnDefinition" />
             </Grid.ColumnDefinitions>
             <Grid.GestureRecognizers>
@@ -33,17 +33,20 @@
                 HeightRequest="10"
                 BackgroundColor="White"
                 VerticalOptions="Start"
-                HorizontalOptions="Center"
+                HorizontalOptions="Start"
                 BorderColor="#010142"
                 HasShadow="False"
+                Margin="0,1,0,1"
                 CornerRadius="50"
                 Padding="5">
                 <Frame.Triggers>
                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Right">
                         <Setter Property="Grid.Column" Value="1" />
+                        <Setter Property="HorizontalOptions" Value="End" />
                     </DataTrigger>
                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=Position}" Value="Left">
                         <Setter Property="Grid.Column" Value="0" />
+                        <Setter Property="HorizontalOptions" Value="Start" />
                     </DataTrigger>
                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=IsChecked}" Value="False">
                         <Setter Property="BorderColor" Value="#8B8B8B"></Setter>
