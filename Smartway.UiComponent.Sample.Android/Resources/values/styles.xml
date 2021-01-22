@@ -20,14 +20,5 @@
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
-    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
-  </style>
-  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-    <item name="android:datePickerStyle">@style/style_date_picker</item>
-    <item name="android:textSize">22sp</item>
-    <item name="android:colorControlNormal">@color/mtrl_btn_transparent_bg_color</item>
-  </style>
-  <style name="style_date_picker" parent="android:Widget.Material.Light.DatePicker">
-    <item name="android:datePickerMode">spinner</item>
   </style>
 </resources>

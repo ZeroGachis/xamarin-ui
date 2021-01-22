@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Base theme applied no matter what API -->
+	<style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+	</style>
+	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+		<item name="android:datePickerStyle">@style/style_date_picker</item>
+		<item name="android:textSize">22sp</item>
+		<item name="android:colorControlNormal">@color/mtrl_btn_transparent_bg_color</item>
+	</style>
+	<style name="style_date_picker" parent="android:Widget.Material.Light.DatePicker">
+		<item name="android:datePickerMode">spinner</item>
+	</style>
+</resources>

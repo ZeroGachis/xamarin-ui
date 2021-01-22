@@ -1596,6 +1596,7 @@ namespace Smartway.UiComponent.Sample.Droid
 			global::Smartway.UiComponent.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::Smartway.UiComponent.Sample.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
 			global::Smartway.UiComponent.Droid.Resource.Style.scrollViewScrollBars = global::Smartway.UiComponent.Sample.Droid.Resource.Style.scrollViewScrollBars;
 			global::Smartway.UiComponent.Droid.Resource.Style.scrollViewTheme = global::Smartway.UiComponent.Sample.Droid.Resource.Style.scrollViewTheme;
+			global::Smartway.UiComponent.Droid.Resource.Style.style_date_picker = global::Smartway.UiComponent.Sample.Droid.Resource.Style.style_date_picker;
 			global::Smartway.UiComponent.Droid.Resource.Style.TextAppearance_AppCompat = global::Smartway.UiComponent.Sample.Droid.Resource.Style.TextAppearance_AppCompat;
 			global::Smartway.UiComponent.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::Smartway.UiComponent.Sample.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
 			global::Smartway.UiComponent.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::Smartway.UiComponent.Sample.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
