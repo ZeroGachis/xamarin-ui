@@ -32,7 +32,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid Padding="17, 3, 16, 5">
+        <Grid Padding="16, 3, 16, 5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="48" />
             </Grid.RowDefinitions>
