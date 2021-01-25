@@ -6,6 +6,7 @@
 	</style>
 	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
 		<item name="android:datePickerStyle">@style/style_date_picker</item>
+		<item name="android:background">@color/whiteSmoke</item>
 		<item name="android:textSize">22sp</item>
 		<item name="android:colorControlNormal">@color/mtrl_btn_transparent_bg_color</item>
 	</style>
