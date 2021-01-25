@@ -97,8 +97,7 @@
                 </Frame>
                 <Frame>
                     <StackLayout>
-                        <inputs:NoDialogDatePicker  
-                            BackgroundColor="WhiteSmoke"
+                        <inputs:NoDialogDatePicker
                             MinimumDate="{Binding MinimumDate}"
                             Date="{Binding Date}"/>
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
