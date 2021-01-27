@@ -6,15 +6,19 @@ namespace Smartway.UiComponent.Indicators
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Status
     {
-        private const string DefaultState = "Basic";
+        private const StatusValuesEnum DefaultState = StatusValuesEnum.Basic;
 
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(string), typeof(Status), DefaultState, propertyChanged:OnValueChange);
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
+            typeof(StatusValuesEnum), 
+            typeof(Status),
+            DefaultState,
+            propertyChanged:OnValueChange);
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(Status));
 
-        public string Value
+        public StatusValuesEnum Value
         {
-            get => (string)GetValue(ValueProperty);
+            get => (StatusValuesEnum)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
         }
 
@@ -27,17 +31,27 @@ namespace Smartway.UiComponent.Indicators
         public Status()
         {
             InitializeComponent();
-            GoToState(this, DefaultState);
+            GoToState(this, DefaultState.ToString());
         }
 
         private static void OnValueChange(BindableObject bindable, object oldvalue, object newvalue)
         {
-            GoToState(bindable as Status, newvalue as string);
+            GoToState(bindable as Status, newvalue.ToString());
         }
 
         private static void GoToState(Status status, string state)
         {
             VisualStateManager.GoToState(status.BoxView, state);
+        }
+
+        public enum StatusValuesEnum
+        {
+            Success,
+            Warning,
+            Info,
+            Basic,
+            Danger,
+            Dark
         }
     }
 }
