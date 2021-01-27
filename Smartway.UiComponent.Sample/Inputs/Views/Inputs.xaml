@@ -98,7 +98,6 @@
                 <Frame>
                     <StackLayout>
                         <inputs:RoundedDatePicker
-                            HeightRequest="172"
                             MinimumDate="{Binding MinimumDate}"
                             MaximumDate="{Binding MaximumDate}"
                             Date="{Binding Date}"/>

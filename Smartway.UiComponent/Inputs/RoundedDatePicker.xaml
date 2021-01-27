@@ -7,6 +7,7 @@
              x:Name="Self">
     <cards:RoundedFrame Padding="0" HasShadow="False">
         <inputs:NoDialogDatePicker
+            HeightRequest="172"
             Date="{Binding Source={x:Reference Self}, Path=Date}"
             MinimumDate="{Binding Source={x:Reference Self}, Path=MinimumDate}"
             MaximumDate="{Binding Source={x:Reference Self}, Path=MaximumDate}"/>
