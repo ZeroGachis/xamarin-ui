@@ -97,8 +97,10 @@
                 </Frame>
                 <Frame>
                     <StackLayout>
-                        <inputs:NoDialogDatePicker
+                        <inputs:RoundedDatePicker
+                            HeightRequest="172"
                             MinimumDate="{Binding MinimumDate}"
+                            MaximumDate="{Binding MaximumDate}"
                             Date="{Binding Date}"/>
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
                     </StackLayout>
