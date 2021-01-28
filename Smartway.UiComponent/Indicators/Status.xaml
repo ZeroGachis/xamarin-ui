@@ -28,6 +28,21 @@
                         <Setter Property="BackgroundColor" Value="#707070" />
                     </VisualState.Setters>
                 </VisualState>
+                <VisualState x:Name="Dark">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="#010142" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Info">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="#415CCB" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Danger">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="#FF5065" />
+                    </VisualState.Setters>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </BoxView>

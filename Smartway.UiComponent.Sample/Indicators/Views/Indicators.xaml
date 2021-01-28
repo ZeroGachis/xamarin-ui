@@ -9,12 +9,17 @@
              x:Class="Smartway.UiComponent.Sample.Indicators.Views.Indicators"
              x:DataType="viewModels:IndicatorsViewModel">
     <ContentPage.Content>
-        <StackLayout Padding="10">
-            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="Center">
-                <indicators:Status Value="Basic" Text="Basic"/>
-                <indicators:Status Value="Warning" Text="Warning"/>
-                <indicators:Status Value="Success" Text="Success"/>
-            </StackLayout>
+        <StackLayout Spacing="10"
+                     Margin="20"
+                     Orientation="Vertical"
+                     HorizontalOptions="Center">
+            <indicators:Status Text="Default (Basic)"/>
+            <indicators:Status Value="Basic" Text="Basic"/>
+            <indicators:Status Value="Warning" Text="Warning"/>
+            <indicators:Status Value="Success" Text="Success"/>
+            <indicators:Status Value="Danger" Text="Danger"/>
+            <indicators:Status Value="Dark" Text="Dark"/>
+            <indicators:Status Value="Info" Text="Info"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
