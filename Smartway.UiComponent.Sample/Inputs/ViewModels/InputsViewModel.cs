@@ -75,6 +75,7 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
             set => Set(nameof(Date), ref _date, value);
         }
 
-        public DateTime MinimumDate => DateTime.Today.AddDays(1);
+        public DateTime MinimumDate => DateTime.Today;
+        public DateTime MaximumDate => DateTime.Today.AddYears(4);
     }
 }
