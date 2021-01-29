@@ -1,11 +1,13 @@
 ﻿using System.Windows.Input;
-using Smartway.UiComponent.FormsElements;
+using Smartway.UiComponent.Inputs;
+using Smartway.UiComponent.Sample.Inputs;
 using Smartway.UiComponent.Sample.Basics;
 using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Buttons;
 using Smartway.UiComponent.Sample.ExpanderCard.ViewModels;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.Inputs.ViewModels;
+using Smartway.UiComponent.Sample.Inputs.Views;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
 using Smartway.UiComponent.Sample.Separator;
@@ -73,7 +75,7 @@ namespace Smartway.UiComponent.Sample
 
         public ICommand FormsElements => new Command(async () =>
         {
-            await NavigateTo(new FormsElements.FormElement { BindingContext = new FormEntryViewModel() });
+            await NavigateTo(new Inputs.Views.FormEntry { BindingContext = new FormEntryViewModel() });
         });
     }
 }

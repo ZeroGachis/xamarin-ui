@@ -1,16 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:formsElements="clr-namespace:Smartway.UiComponent.FormsElements;assembly=Smartway.UiComponent"
-             x:Class="Smartway.UiComponent.Sample.FormsElements.FormElement">
+             xmlns:inputs="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.Inputs.Views.FormEntry">
     <ContentPage.Content>
-        <StackLayout Spacing="25">
-            <formsElements:FormEntry Title="ReadOnly" Prefix="€" Helper="Helper text" Text="Input text" PlaceHolder="This is a placeholder" ReadOnly="True" />
-            <formsElements:FormEntry Title="Disabled" Prefix="€" PlaceHolder="This is a placeholder" Disabled="True"/>
-            <formsElements:FormEntry Title="Select" Prefix="€" PlaceHolder="Choose your item" EntryType="Select" Helper="" SelectCommand="{Binding MyCommand}" />
-            <formsElements:FormEntry Title="Activated" Prefix="€" Helper="Helper text" Text="Another input text" PlaceHolder="This is a placeholder"/>
-            <formsElements:FormEntry Title="Error" Prefix="€" Helper="There was an error" PlaceHolder="This is a placeholder" Error="True"/>
-            <formsElements:FormEntry Title="Without prefix" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="25">
+                <inputs:FormEntry Title="ReadOnly" Prefix="€" Helper="Helper text" Text="Input text" PlaceHolder="This is a placeholder" ReadOnly="True" />
+                <inputs:FormEntry Title="Disabled" Prefix="€" PlaceHolder="This is a placeholder" Disabled="True"/>
+                <inputs:FormEntry Title="Select" Prefix="€" PlaceHolder="Choose your item" EntryType="Select" Helper="" SelectCommand="{Binding MyCommand}" />
+                <inputs:FormEntry Title="Activated" Prefix="€" Helper="Helper text" Text="Another input text" PlaceHolder="This is a placeholder"/>
+                <inputs:FormEntry Title="Error" Prefix="€" Helper="There was an error" PlaceHolder="This is a placeholder" Error="True"/>
+                <inputs:FormEntry Title="Without prefix" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder"/>
+                <inputs:FormEntry Title="Password" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder" IsPassword="True"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

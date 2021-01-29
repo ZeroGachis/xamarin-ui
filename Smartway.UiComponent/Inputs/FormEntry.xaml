@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
-             x:Class="Smartway.UiComponent.FormsElements.FormEntry"
+             x:Class="Smartway.UiComponent.Inputs.FormEntry"
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -32,115 +32,90 @@
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <Label x:Name="EntryTitle" Text="{Binding Source={x:Reference  Self}, Path=Title}" Style="{StaticResource Title}"></Label>
-            
             <Grid ColumnSpacing="0" RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="26" x:Name="LabelDivider"/>
+                    <RowDefinition Height="25" x:Name="Entry"/>
+                    <RowDefinition Height="1" x:Name="SeparatorDivider"/>
+                    <RowDefinition Height="Auto" x:Name="HelpText"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"  x:Name="EntryTitle" Text="{Binding Source={x:Reference Self}, Path=Title}" Style="{StaticResource Title}"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="32" />
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="0" x:Name="EntryPrefix" Style="{StaticResource PrefixLabel}" Text="{Binding Source={x:Reference Self}, Path=Prefix}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Prefix}" Value="">
+                                <Setter Property="IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        x:Name="CustomEntry"
+                        Style="{StaticResource CustomEntry}"
+                        Text="{Binding Source={x:Reference Self}, Path=Text}"
+                        Placeholder="{Binding Source={x:Reference Self}, Path=PlaceHolder}"
+                        Keyboard="{Binding Source={x:Reference Self}, Path=Keyboard}"
+                        Focused="InputOnFocused"
+                        IsPassword="{Binding Source={x:Reference Self}, Path=IsPassword}"
+                        Unfocused="InputOnUnfocused"
+                        >
+                        <Entry.Triggers>
+                            <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </DataTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <BoxView Grid.Column="1" IsVisible="False" BackgroundColor="Transparent" HeightRequest="0">
+                        <BoxView.Triggers>
+                            <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </BoxView.Triggers>
 
-                <Label Grid.Column="0" x:Name="EntryPrefix" Style="{StaticResource PrefixLabel}" Text="{Binding Source={x:Reference Self}, Path=Prefix}">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=OnSelectTap}"/>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Image 
+                        Grid.Column="2"
+                        x:Name="EntryArrow"
+                        IsVisible="False"
+                        Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
+                                <Setter Property="IsVisible" Value="True"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <separators:Divider x:Name="EntryDividerInput">
+                        <separators:Divider.Triggers>
+                            <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                                <Setter Property="IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </separators:Divider.Triggers>
+                    </separators:Divider>
+                </Grid>
+                <Label Grid.Row="3" x:Name="EntryHelper" Style="{StaticResource Helper}" Text="{Binding Source={x:Reference Self}, Path=Helper}" HeightRequest="18">
                     <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Prefix}" Value="">
+                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Helper}" Value="">
                             <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Error}" Value="True">
+                            <Setter Property="TextColor" Value="#FF5065"/>
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>
-
-                <separators:Divider x:Name="EntryDividerPrefix" Grid.Row="1" Grid.Column="0" WidthRequest="0">
-                    <separators:Divider.Triggers>
-                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=Prefix}" Value="">
-                            <Setter Property="IsVisible" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
-                            <Setter Property="IsVisible" Value="False"/>
-                        </DataTrigger>
-                    </separators:Divider.Triggers>
-                </separators:Divider>
-
-                <Entry
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    x:Name="CustomEntry"
-                    Style="{StaticResource CustomEntry}"
-                    Text="{Binding Source={x:Reference Self}, Path=Text}"
-                    Placeholder="{Binding Source={x:Reference Self}, Path=PlaceHolder}"
-                    Keyboard="{Binding Source={x:Reference Self}, Path=Keyboard}"
-                    Focused="InputOnFocused"
-                    Unfocused="InputOnUnfocused">
-                    <Entry.Triggers>
-                        <DataTrigger TargetType="Entry" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
-                            <Setter Property="IsReadOnly" Value="True"/>
-                        </DataTrigger>
-                    </Entry.Triggers>
-                </Entry>
-
-                <separators:Divider x:Name="EntryDividerInput"  Grid.Row="1" Grid.Column="1">
-                    <separators:Divider.Triggers>
-                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
-                            <Setter Property="IsVisible" Value="False"/>
-                        </DataTrigger>
-                        </separators:Divider.Triggers>
-                </separators:Divider>
-
-                <Image 
-                    x:Name="EntryArrow"
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Grid.Column="2"
-                    IsVisible="False"
-                    HeightRequest="0"
-                    Margin="0,0,0,5"
-                    Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}">
-                    <Image.Triggers>
-                        <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
-                            <Setter Property="IsVisible" Value="True"/>
-                        </DataTrigger>
-                    </Image.Triggers>
-                </Image>
-
-                <separators:Divider x:Name="EntryDividerArrow"  Grid.Row="1" Grid.Column="2">
-                    <separators:Divider.Triggers>
-                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
-                            <Setter Property="IsVisible" Value="False"/>
-                        </DataTrigger>
-                    </separators:Divider.Triggers>
-                </separators:Divider>
-
-                <BoxView IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2" BackgroundColor="Transparent" HeightRequest="0">
-                    <BoxView.Triggers>
-                        <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
-                            <Setter Property="IsVisible" Value="True"/>
-                        </DataTrigger>
-                    </BoxView.Triggers>
-
-                    <BoxView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=OnSelectTap}"/>
-                    </BoxView.GestureRecognizers>
-                </BoxView>
-
             </Grid>
-
-            <Label x:Name="EntryHelper" Style="{StaticResource Helper}" Text="{Binding Source={x:Reference Self}, Path=Helper}" >
-                <Label.Triggers>
-                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Helper}" Value="">
-                        <Setter Property="IsVisible" Value="False"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=ReadOnly}" Value="True">
-                        <Setter Property="IsVisible" Value="False"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Error}" Value="True">
-                        <Setter Property="TextColor" Value="#FF5065"/>
-                    </DataTrigger>
-                </Label.Triggers>
-            </Label>
-
         </StackLayout>
     </ContentView.Content>
 </ContentView>
