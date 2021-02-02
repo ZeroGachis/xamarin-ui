@@ -3,14 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Smartway.UiComponent.Inputs.SearchBar"
              x:Name="Self">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Entry">
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontFamily" Value="OpenSans" />
-            </Style>
-        </ResourceDictionary>
-    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -22,7 +14,13 @@
                    Source="icon_search.png"/>
             <Entry Grid.Column="1"
                    Placeholder="{Binding Source={Reference Self}, Path=Placeholder}"
-                   Text="{Binding Source={Reference Self}, Path=SearchText, Mode=TwoWay}" />
+                   PlaceholderColor="{Binding Source={Reference Self}, Path=PlaceholderColor}"
+                   FontFamily="{Binding Source={Reference Self}, Path=FontFamily}"
+                   FontSize="{Binding Source={Reference Self}, Path=FontSize}"
+                   TextColor="{Binding Source={Reference Self}, Path=TextColor}"
+                   Text="{Binding Source={Reference Self}, Path=SearchText, Mode=TwoWay}"
+                   TextChanged="OnEntryTextChanged"
+                   Completed="OnEntryCompleted"/>
             <Image Grid.Column="2"
                    HeightRequest="20"
                    Source="icon_close_grey.png"

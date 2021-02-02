@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Smartway.UiComponent.Sample.Inputs.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Inputs : ContentPage
+    public partial class Inputs
     {
         public Inputs()
         {

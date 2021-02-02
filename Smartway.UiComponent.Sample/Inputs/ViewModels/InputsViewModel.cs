@@ -66,6 +66,16 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
             }
         }
 
+        public ICommand SearchCompletedCommand => new Command(() =>
+        {
+            Console.WriteLine("Search complete");
+        });
+
+        public ICommand SearchTextChangedCommand => new Command(() =>
+        {
+            Console.WriteLine("Search text changed");
+        });
+
         public List<string> SearchableContentList { get; set; }
 
         private DateTime _date;
