@@ -84,6 +84,13 @@
                 <Frame>
                     <StackLayout Padding="5">
                         <inputs:SearchBar Placeholder="SearchBar sans frame"
+                                          FontSize="30"
+                                          FontFamily="Arial"
+                                          FontAttributes="Bold"
+                                          TextColor="Blue"
+                                          PlaceholderColor="Aquamarine"
+                                          TextChangedCommand="{Binding SearchTextChangedCommand}"
+                                          CompletedCommand="{Binding SearchCompletedCommand}"
                                           SearchText="{Binding SearchText}"
                                           HeightRequest="40" />
                         <cards:RoundedFrame Padding="10"
