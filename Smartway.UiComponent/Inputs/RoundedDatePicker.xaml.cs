@@ -18,7 +18,7 @@ namespace Smartway.UiComponent.Inputs
         }
   
         public static readonly BindableProperty DateProperty =
-            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(RoundedDatePicker));
+            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(RoundedDatePicker), BindingMode.TwoWay);
 
         public static readonly BindableProperty MinimumDateProperty =
             BindableProperty.Create(nameof(MinimumDate), typeof(DateTime), typeof(RoundedDatePicker));
