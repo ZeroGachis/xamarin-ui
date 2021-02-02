@@ -49,6 +49,7 @@ namespace Smartway.UiComponent.Droid.Renderers
             if (Control != null)
             {
                 LinkDatePickerToAndroidControl(e.NewElement);
+                UpdateSelectDate();
                 UpdateMinimumDate();
                 UpdateMaximumDate();
             }
@@ -61,6 +62,11 @@ namespace Smartway.UiComponent.Droid.Renderers
                 UpdateMinimumDate();
             else if (e.PropertyName == DatePicker.MaximumDateProperty.PropertyName)
                 UpdateMaximumDate();
+        }
+
+        private void UpdateSelectDate()
+        {
+            Control.DateTime = Element.Date;
         }
 
         private void UpdateMaximumDate()
