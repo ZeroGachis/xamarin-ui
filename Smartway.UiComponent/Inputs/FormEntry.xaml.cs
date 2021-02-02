@@ -25,7 +25,7 @@ namespace Smartway.UiComponent.FormsElements
             BindableProperty.Create(nameof(Prefix), typeof(string), typeof(FormEntry), string.Empty);
 
         public static readonly BindableProperty TextProperty =
-            BindableProperty.Create(nameof(Text), typeof(string), typeof(FormEntry), string.Empty);
+            BindableProperty.Create(nameof(Text), typeof(string), typeof(FormEntry), defaultBindingMode: BindingMode.TwoWay);
 
         public static readonly BindableProperty PlaceHolderProperty =
             BindableProperty.Create(nameof(PlaceHolder), typeof(string), typeof(FormEntry), string.Empty);
