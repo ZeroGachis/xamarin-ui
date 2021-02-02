@@ -1,16 +1,10 @@
 ﻿using Android.Content;
-using Android.Content.Res;
-using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.OS;
 using Android.Runtime;
-using Android.Text;
 using Android.Widget;
-using Smartway.UiComponent.FormsElements;
 using Smartway.UiComponent.Sample.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Color = Xamarin.Forms.Color;
 
 [assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
 namespace Smartway.UiComponent.Sample.Droid

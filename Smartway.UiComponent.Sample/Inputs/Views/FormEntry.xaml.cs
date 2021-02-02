@@ -1,12 +1,11 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms.Xaml;
 
-namespace Smartway.UiComponent.Sample.FormsElements
+namespace Smartway.UiComponent.Sample.Inputs.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FormElement : ContentPage
+    public partial class FormEntry
     {
-        public FormElement()
+        public FormEntry()
         {
             InitializeComponent();
         }

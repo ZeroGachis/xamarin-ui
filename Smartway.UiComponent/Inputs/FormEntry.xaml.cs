@@ -1,10 +1,8 @@
-﻿using System;
-using System.Globalization;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Smartway.UiComponent.FormsElements
+namespace Smartway.UiComponent.Inputs
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormEntry
@@ -44,6 +42,9 @@ namespace Smartway.UiComponent.FormsElements
 
         public static readonly BindableProperty ErrorProperty =
             BindableProperty.Create(nameof(Error), typeof(bool), typeof(FormEntry));
+
+        public static readonly BindableProperty IsPasswordProperty =
+            BindableProperty.Create(nameof(IsPassword), typeof(bool), typeof(FormEntry), false);
 
         public static readonly BindableProperty EntryTypeProperty =
             BindableProperty.Create(nameof(EntryType), typeof(EntryTypes), typeof(FormEntry), EntryTypes.Input, propertyChanged: OnEntryTypeChanged);
@@ -109,6 +110,12 @@ namespace Smartway.UiComponent.FormsElements
             set => SetValue(ErrorProperty, value);
         }
 
+        public bool IsPassword
+        {
+            get => (bool)GetValue(IsPasswordProperty);
+            set => SetValue(IsPasswordProperty, value);
+        }
+
         public bool ReadOnly
         {
             get => (bool) GetValue(ReadOnlyProperty);
@@ -140,16 +147,12 @@ namespace Smartway.UiComponent.FormsElements
 
         private void InputOnFocused(object sender, FocusEventArgs e)
         {
-            EntryDividerPrefix.BackgroundColor = Color.Black;
             EntryDividerInput.BackgroundColor = Color.Black;
-            EntryDividerArrow.BackgroundColor = Color.Black;
         }
 
         private void InputOnUnfocused(object sender, FocusEventArgs e)
         {
-            EntryDividerPrefix.BackgroundColor = LightGrayColor;
             EntryDividerInput.BackgroundColor = LightGrayColor;
-            EntryDividerArrow.BackgroundColor = LightGrayColor;
         }
 
         private static void DisabledMode(BindableObject bindable, object oldValue, object newValue)

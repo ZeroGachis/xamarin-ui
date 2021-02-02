@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FormsElements\**" />
+    <EmbeddedResource Remove="FormsElements\**" />
+    <None Remove="FormsElements\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\OpenSans-Bold.ttf" />
     <None Remove="Resources\OpenSans-Regular.ttf" />
     <None Remove="Resources\OpenSans-SemiBold.ttf" />
@@ -77,12 +83,5 @@
     <Compile Update="ExpanderCard\ExpanderCardSample.xaml.cs">
       <DependentUpon>ExpanderCardSample.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Inputs\Views\FormEntry.xaml.cs">
-      <DependentUpon>FormEntry.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="FormsElements\" />
   </ItemGroup>
 </Project>
