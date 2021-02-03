@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,7 +14,7 @@ namespace Smartway.UiComponent.Inputs
         }
   
         public static readonly BindableProperty DateProperty =
-            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(RoundedDatePicker), BindingMode.TwoWay);
+            BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(RoundedDatePicker), defaultBindingMode: BindingMode.TwoWay);
 
         public static readonly BindableProperty MinimumDateProperty =
             BindableProperty.Create(nameof(MinimumDate), typeof(DateTime), typeof(RoundedDatePicker));
