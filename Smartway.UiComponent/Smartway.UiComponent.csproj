@@ -8,7 +8,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Smartway</Copyright>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <None Remove="Resources\Icons\black_icon_arrow_down.png" />
     <None Remove="Resources\Icons\orange_icon_arrow_down.png" />
@@ -114,6 +114,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Inputs\SearchBar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Labels\Icons\Icon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Labels\PluralizableLabel.xaml">
