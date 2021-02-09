@@ -2,18 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:Buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.Buttons.Button">
     <ContentPage.Resources>
-        <Style TargetType="Label" x:Key="Section">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="OpenSansSemiBold" />
-            <Setter Property="Padding" Value="15"/>
-        </Style>
-        <Style x:Key="BlockContainer" TargetType="Frame">
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="Margin" Value="10,10,10,0" />
-            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Style TargetType="Label" x:Key="Section">
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+                        <Setter Property="Padding" Value="15"/>
+                    </Style>
+                    <Style x:Key="BlockContainer" TargetType="Frame">
+                        <Setter Property="Padding" Value="10"/>
+                        <Setter Property="Margin" Value="10,10,10,0" />
+                        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                    </Style>
+                </ResourceDictionary>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
@@ -80,7 +88,7 @@
                 </Frame>
                 <Label Style="{StaticResource Section}" Text="Variations" />
                 <Buttons:TextButton Text="Text Button" />
-                <Buttons:TextButton Text="Text Button (limits)" BorderWidth="1" BorderColor="#FF6C3B" />
+                <Buttons:TextButton Text="Text Button (limits)" BorderWidth="1" BorderColor="{StaticResource ZgBrightOrange}" />
                 <Buttons:ScanButton Command="{Binding ScanCommand}"/>
             </StackLayout>
         </ScrollView>
