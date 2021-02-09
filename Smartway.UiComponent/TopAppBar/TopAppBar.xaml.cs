@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,7 @@ namespace Smartway.UiComponent.TopAppBar
         public static readonly BindableProperty TypeProperty = BindableProperty.Create(nameof(Type), typeof(string), typeof(TopAppBar), "Default");
         public static readonly BindableProperty ExtraNavigationLabelProperty = BindableProperty.Create(nameof(ExtraNavigationLabel), typeof(string), typeof(TopAppBar));
         public static readonly BindableProperty ExtraNavigationCommandProperty = BindableProperty.Create(nameof(ExtraNavigationCommand), typeof(ICommand), typeof(TopAppBar));
-        public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(nameof(IconSource), typeof(string), typeof(TopAppBar));
+        public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(nameof(IconSource), typeof(string), typeof(TopAppBar), String.Empty);
         public static readonly BindableProperty IsDarkThemeProperty = BindableProperty.Create(nameof(IsDarkTheme), typeof(bool), typeof(TopAppBar));
 
 

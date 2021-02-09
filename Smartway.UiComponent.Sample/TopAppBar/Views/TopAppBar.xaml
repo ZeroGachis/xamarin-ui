@@ -11,24 +11,24 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Default"/>
-            <topappbar:TopAppBar
-                    Title="Product 1"
-                    Command="{Binding Back}"/>
+            <topappbar:TopAppBar Title="Product 1"
+                                 Command="{Binding Back}"/>
             <Label Text="Modal"/>
-            <topappbar:TopAppBar
-                    Title="Product 2"
-                    Type="Modal"
-                    ExtraNavigationLabel="Index"
-                    Command="{Binding Back}"
-                    ExtraNavigationCommand="{Binding Back}"/>
+            <topappbar:TopAppBar Title="Product 2"
+                                 Type="Modal"
+                                 ExtraNavigationLabel="Index"
+                                 Command="{Binding Back}"
+                                 ExtraNavigationCommand="{Binding Back}"/>
             <Label Text="Custom"/>
-                <topappbar:TopAppBar
-                Title="harder better faster stronger"
-                Type="Custom"
-                ExtraNavigationLabel="Inventaire"
-                Command="{Binding Back}"
-                ExtraNavigationCommand="{Binding Back}"
-                IconSource="icon_check"/>
+                <topappbar:TopAppBar Title="harder better faster stronger"
+                                     Type="Custom"
+                                     ExtraNavigationLabel="Inventaire"
+                                     Command="{Binding Back}"
+                                     ExtraNavigationCommand="{Binding Back}"
+                                     IconSource="icon_check"/>
+            <Label Text="Custom"/>
+                <topappbar:TopAppBar Title="no image button"
+                                     Type="Custom"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
