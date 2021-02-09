@@ -7,12 +7,24 @@
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Sample.Layouts.LayoutsSample">
     <ContentPage.Content>
-        <layouts:ScannableLayout>
+        <RelativeLayout>
+            <layouts:ClickableItem
+                BackgroundColor="DeepSkyBlue"
+                BoxWidth="250"
+                BoxHeight="20">
+                <layouts:ClickableItem.LayoutContent>
+                    <Label Text="Example clickable item with box view"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Start"/>
+                </layouts:ClickableItem.LayoutContent>
+            </layouts:ClickableItem>
+            <layouts:ScannableLayout>
             <layouts:ScannableLayout.LayoutContent>
                 <Label Text="Example layout avec bouton scan sur la page"
-                       VerticalOptions="CenterAndExpand" 
+                       VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand" />
             </layouts:ScannableLayout.LayoutContent>
         </layouts:ScannableLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
