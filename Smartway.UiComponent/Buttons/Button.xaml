@@ -3,33 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
         mc:Ignorable="d"
         x:Class="Smartway.UiComponent.Buttons.Button"
         x:Name="Self"
         CornerRadius="36"
         HorizontalOptions="Center"
-        BackgroundColor="#B2B2B2"
+        BackgroundColor="{StaticResource ZgMediumGrey}"
         TextTransform="None"
         Font="OpenSansSemiBold"
         FontSize="15"
         Padding="18,15"
         TextColor="White"
-        IsEnabled="{Binding Source={x:Reference Self}, Path=Activated}"
-       >
+        IsEnabled="{Binding Source={x:Reference Self}, Path=Activated}" >
+    <Button.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Button.Resources>
     <Button.Triggers>
         <MultiTrigger TargetType="Button">
             <MultiTrigger.Conditions>
                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="Primary"/>
                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Activated}" Value="True"/>
             </MultiTrigger.Conditions>
-            <Setter Property="BackgroundColor" Value="#010142" />
+            <Setter Property="BackgroundColor" Value="{StaticResource ZgDarkBlue}" />
         </MultiTrigger>
         <MultiTrigger TargetType="Button">
             <MultiTrigger.Conditions>
                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="Warning"/>
                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Activated}" Value="True"/>
             </MultiTrigger.Conditions>
-            <Setter Property="BackgroundColor" Value="#FF6C3B" />
+            <Setter Property="BackgroundColor" Value="{StaticResource ZgBrightOrange}" />
         </MultiTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Block">
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />

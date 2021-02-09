@@ -1,30 +1,38 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Inputs.Chips"
              x:Name="Chip">
     <ContentView.Resources>
-        <Style TargetType="{x:Type Frame}" x:Key="RoundBtn">
-            <Setter Property="BorderColor" Value="#E2E4F0"/>
-            <Setter Property="CornerRadius" Value="80" />
-            <Setter Property="BackgroundColor" Value="White"/>
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="Padding" Value="16,12" />
-            <Setter Property="HasShadow" Value="False" />
-        </Style>
-        <Style TargetType="{x:Type Frame}" x:Key="RoundBtnSelected">
-            <Setter Property="BorderColor" Value="Black"/>
-            <Setter Property="CornerRadius" Value="80" />
-            <Setter Property="BackgroundColor" Value="#EBEBEB"/>
-            <Setter Property="Margin" Value="0"/>
-            <Setter Property="Padding" Value="16,12" />
-            <Setter Property="HasShadow" Value="False" />
-        </Style>
-        <Style TargetType="{x:Type Label}" x:Key="ChipsLabel">
-            <Setter Property="FontFamily" Value="OpenSans"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+                <ResourceDictionary>
+                    <Style TargetType="{x:Type Frame}" x:Key="RoundBtn">
+                        <Setter Property="BorderColor" Value="{StaticResource ZgColdGrey}"/>
+                        <Setter Property="CornerRadius" Value="80" />
+                        <Setter Property="BackgroundColor" Value="White"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Padding" Value="16,12" />
+                        <Setter Property="HasShadow" Value="False" />
+                    </Style>
+                    <Style TargetType="{x:Type Frame}" x:Key="RoundBtnSelected">
+                        <Setter Property="BorderColor" Value="Black"/>
+                        <Setter Property="CornerRadius" Value="80" />
+                        <Setter Property="BackgroundColor" Value="#EBEBEB"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Padding" Value="16,12" />
+                        <Setter Property="HasShadow" Value="False" />
+                    </Style>
+                    <Style TargetType="{x:Type Label}" x:Key="ChipsLabel">
+                        <Setter Property="FontFamily" Value="OpenSans"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Frame Style="{StaticResource RoundBtn}">
