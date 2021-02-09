@@ -8,23 +8,28 @@
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style x:Key="ProductLabel" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
-                <Setter Property="HorizontalTextAlignment" Value="Start"/>
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="LineBreakMode" Value="TailTruncation" />
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="LineHeight" Value="19"/>
-            </Style>
-            <Style x:Key="ProductImage" TargetType="Image">
-                <Setter Property="Margin" Value="0, 0, 5, 0"/>
-                <Setter Property="WidthRequest" Value="90" />
-            </Style>
-            <Style x:Key="RegularGencodeText" TargetType="Label">
-                <Setter Property="HorizontalTextAlignment" Value="Start"/>
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="FontAttributes" Value="None"/>
-                <Setter Property="TextColor" Value="#8B8B8B"/>
-            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+                <ResourceDictionary>
+                    <Style x:Key="ProductLabel" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
+                        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="LineBreakMode" Value="TailTruncation" />
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Setter Property="LineHeight" Value="19"/>
+                    </Style>
+                    <Style x:Key="ProductImage" TargetType="Image">
+                        <Setter Property="Margin" Value="0, 0, 5, 0"/>
+                        <Setter Property="WidthRequest" Value="90" />
+                    </Style>
+                    <Style x:Key="RegularGencodeText" TargetType="Label">
+                        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontAttributes" Value="None"/>
+                        <Setter Property="TextColor" Value="{StaticResource ZgNightGrey}"/>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -33,8 +38,7 @@
                 <TapGestureRecognizer
                   Command="{Binding Source={Reference Self}, Path=NavigationCommand}"
                   CommandParameter="{Binding Source={Reference Self}, Path=NavigationParameter}"
-                  NumberOfTapsRequired="1"
-              />
+                  NumberOfTapsRequired="1" />
             </StackLayout.GestureRecognizers>
             <StackLayout Margin="0, 0, 0, 20" Orientation="Horizontal">
                 <StackLayout.Triggers>
@@ -57,27 +61,23 @@
                 </Image>
                 <StackLayout Orientation="Vertical">
                     <Label Style="{StaticResource ProductLabel}"
-                           Text="{Binding Source={Reference Self}, Path=Label}"
-                    />
+                           Text="{Binding Source={Reference Self}, Path=Label}" />
                     <StackLayout Orientation="Horizontal">
                         <Label
                             x:Name="ProductGencode"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Source={Reference Self}, Path=Gencode}"
-                         />
+                            Text="{Binding Source={Reference Self}, Path=Gencode}" />
                         <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
                         <Label
                             x:Name="ProductPrice"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Source={Reference Self}, Path=Price}"
-                        />
+                            Text="{Binding Source={Reference Self}, Path=Price}" />
                     </StackLayout>
                     <Label
                         Style="{StaticResource RegularGencodeText}"
                         TextColor="Black"
                         Text="{Binding Source={Reference Self}, Path=OnShortageSince, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
-                        IsVisible="{Binding Source={Reference Self}, Path=DisplayOnShortageSince}"
-                    />
+                        IsVisible="{Binding Source={Reference Self}, Path=DisplayOnShortageSince}" />
                     <indicators:Status IsVisible="False" HorizontalOptions="StartAndExpand">
                         <indicators:Status.Triggers>
                             <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Monitored">

@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Inputs.RadioButton"
              x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid VerticalOptions="Start" ColumnSpacing="0">
             <Grid.ColumnDefinitions>
@@ -34,7 +42,7 @@
                 BackgroundColor="White"
                 VerticalOptions="Start"
                 HorizontalOptions="Start"
-                BorderColor="#010142"
+                BorderColor="{StaticResource ZgDarkBlue}"
                 HasShadow="False"
                 Margin="0,1,0,1"
                 CornerRadius="50"
@@ -49,17 +57,17 @@
                         <Setter Property="HorizontalOptions" Value="Start" />
                     </DataTrigger>
                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference Self}, Path=IsChecked}" Value="False">
-                        <Setter Property="BorderColor" Value="#8B8B8B"></Setter>
+                        <Setter Property="BorderColor" Value="{StaticResource ZgNightGrey}" />
                     </DataTrigger>
                 </Frame.Triggers>
                 <BoxView
                     CornerRadius="50"
-                    BackgroundColor="#010142"
+                    BackgroundColor="{StaticResource ZgDarkBlue}"
                     VerticalOptions="Center"
                     HorizontalOptions="Center" IsVisible="False">
                     <BoxView.Triggers>
                         <DataTrigger TargetType="BoxView" Binding="{Binding Source={x:Reference Self}, Path=IsChecked}" Value="True">
-                            <Setter Property="IsVisible" Value="True"></Setter>
+                            <Setter Property="IsVisible" Value="True" />
                         </DataTrigger>
                     </BoxView.Triggers>
                 </BoxView>

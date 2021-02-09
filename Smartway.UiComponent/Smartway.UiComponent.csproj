@@ -74,6 +74,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Colors.xaml.cs">
+      <DependentUpon>Colors.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Themes.xaml.cs">
       <DependentUpon>Themes.xaml</DependentUpon>
     </Compile>
@@ -140,11 +143,11 @@
     <EmbeddedResource Update="Pages\ModalPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Themes.xaml">
+    <EmbeddedResource Update="Resources\Colors.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Colors.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <EmbeddedResource Update="Resources\Themes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\TopAppBar.xaml">
       <Generator>MSBuild:Compile</Generator>

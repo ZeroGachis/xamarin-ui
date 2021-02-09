@@ -4,11 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Buttons.ScanButton"
-             x:Name="Self"
-             >
-    <Frame CornerRadius="32" BackgroundColor="#010142">
+             x:Name="Self" >
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Frame CornerRadius="32" BackgroundColor="{StaticResource ZgDarkBlue}">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Source={Reference Self}, Path=Command}"></TapGestureRecognizer>
             </Frame.GestureRecognizers>

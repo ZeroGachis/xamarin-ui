@@ -3,11 +3,17 @@
                     x:Class="Smartway.UiComponent.Resources.Colors">
     <Color x:Key="ZgDarkBlue">#010142</Color>
     <Color x:Key="ZgNightBlue">#27304A</Color>
-    <Color x:Key="ZgDarkBackground">#010627</Color>
-    <Color x:Key="ZgLoaderColor">Gray</Color>
-    <Color x:Key="ZgGrey">#8B8B8B</Color>
-    <Color x:Key="ZgWarning">#FF6C3B</Color>
-    <Color x:Key="ZgColdGrey2">#E2E4F0</Color>
+    <Color x:Key="ZgDeepBlue">#415CCB</Color>
+
+    <Color x:Key="ZgDarkGrey">#707070</Color>
+    <Color x:Key="ZgNightGrey">#8B8B8B</Color>
     <Color x:Key="ZgMediumGrey">#B2B2B2</Color>
-    <Color x:Key="ZgLightGrey">#E2E4F0</Color>
+    <Color x:Key="ZgMediumGrey2">#CCCCCC</Color>
+    <Color x:Key="ZgColdGrey">#E2E4F0</Color>
+    <Color x:Key="ZgLightGrey">#F0F1F7</Color>
+
+    <Color x:Key="ZgBrightGreen">#04C382</Color>
+    <Color x:Key="ZgBrightOrange">#FF6C3B</Color>
+    <Color x:Key="ZgBrightRed">#FF5065</Color>
+    <Color x:Key="ZgLightYellow">#FFF7B5</Color>
 </ResourceDictionary>
