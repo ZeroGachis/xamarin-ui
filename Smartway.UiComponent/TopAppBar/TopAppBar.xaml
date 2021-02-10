@@ -3,19 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
-             xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
+             xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.TopAppBar.TopAppBar"
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style x:Key="Image" TargetType="Image">
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="Icon" TargetType="icons:Icon">
                 <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="WidthRequest" Value="24"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="{StaticResource ZgDarkBlue}"/>
+                <Setter Property="FontSize" Value="24"/>
                 <Setter Property="Margin" Value="0, 0, 16, 0"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
             <Style x:Key="LabelTitle" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="20"/>
@@ -47,64 +51,73 @@
                     <TapGestureRecognizer
                         Command="{Binding Source={x:Reference Self}, Path=Command}"/>
                 </layouts:ClickableItem.GestureRecognizers>
-                <Image x:Name="Image" Style="{StaticResource Image}"
-                             Source="{Binding Source={x:Reference Self}, Path=ImageContent}">
-                <Image.Triggers>
-                    <DataTrigger TargetType="Image"
-                                 Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default">
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_arrow_back.png }"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Image"
-                                 Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal">
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_close.png}"/>
-                    </DataTrigger>
-                    <DataTrigger TargetType="Image"
-                                 Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
-                        <Setter Property="Source" Value="{Binding Source={x:Reference Self}, Path=IconSource}"/>
-                    </DataTrigger>
-                    <MultiTrigger TargetType="Image">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_arrow_back.png}"/>
-                    </MultiTrigger>
-                    <MultiTrigger TargetType="Image">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
-                        </MultiTrigger.Conditions>
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_close.png}"/>
-                    </MultiTrigger>
-                    <MultiTrigger TargetType="Image">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Static system:String.Empty}" />
-                        </MultiTrigger.Conditions>
-                        <Setter Property="IsVisible" Value="False"/>
-                    </MultiTrigger>
-                    <MultiTrigger TargetType="Image">
-                        <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Static system:String.Empty}" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
-                        </MultiTrigger.Conditions>
-                        <Setter Property="IsVisible" Value="False"/>
-                    </MultiTrigger>
-                </Image.Triggers>
-            </Image>
+                <icons:Icon Style="{StaticResource Icon}">
+                    <icons:Icon.Triggers>
+                        <DataTrigger TargetType="icons:Icon"
+                         Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default">
+                            <Setter Property="Value" Value="ArrowBack"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="icons:Icon"
+                         Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal">
+                            <Setter Property="Value" Value="Close"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="icons:Icon"
+                         Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
+                            <Setter Property="Value" Value="{Binding Source={x:Reference Self}, Path=IconSource}"/>
+                        </DataTrigger>
+                        <MultiTrigger TargetType="icons:Icon">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Value" Value="ArrowBack"/>
+                            <Setter Property="TextColor" Value="White"/>
+                        </MultiTrigger>
+                        <MultiTrigger TargetType="icons:Icon">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Value" Value="Close"/>
+                            <Setter Property="TextColor" Value="White"/>
+                        </MultiTrigger>
+                        <MultiTrigger TargetType="icons:Icon">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Value" Value="{Binding Source={x:Reference Self}, Path=IconSource}"/>
+                            <Setter Property="TextColor" Value="White"/>
+                        </MultiTrigger>
+                        <MultiTrigger TargetType="icons:Icon">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Null}" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsVisible" Value="False"/>
+                        </MultiTrigger>
+                        <MultiTrigger TargetType="icons:Icon">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Null}" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsVisible" Value="False"/>
+                        </MultiTrigger>
+                    </icons:Icon.Triggers>
+                </icons:Icon>
                 <layouts:ClickableItem.Triggers>
                     <MultiTrigger TargetType="layouts:ClickableItem">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Static system:String.Empty}" />
+                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Null}" />
                         </MultiTrigger.Conditions>
                         <Setter Property="IsVisible" Value="False"/>
                     </MultiTrigger>
                     <MultiTrigger TargetType="layouts:ClickableItem">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
-                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Static system:String.Empty}" />
+                            <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Null}" />
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                         </MultiTrigger.Conditions>
                         <Setter Property="IsVisible" Value="False"/>

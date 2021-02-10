@@ -20,15 +20,15 @@
                                  Command="{Binding Back}"
                                  ExtraNavigationCommand="{Binding Back}"/>
             <Label Text="Custom"/>
-                <topappbar:TopAppBar Title="harder better faster stronger"
-                                     Type="Custom"
-                                     ExtraNavigationLabel="Inventaire"
-                                     Command="{Binding Back}"
-                                     ExtraNavigationCommand="{Binding Back}"
-                                     IconSource="icon_check"/>
+            <topappbar:TopAppBar Title="harder better faster stronger"
+                                 Type="Custom"
+                                 ExtraNavigationLabel="Inventaire"
+                                 Command="{Binding Back}"
+                                 ExtraNavigationCommand="{Binding Back}"
+                                 IconSource="GridView"/>
             <Label Text="Custom"/>
-                <topappbar:TopAppBar Title="no image button"
-                                     Type="Custom"/>
+            <topappbar:TopAppBar Title="no image button"
+                                 Type="Custom"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

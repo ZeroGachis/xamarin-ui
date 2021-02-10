@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Smartway.UiComponent.Labels.Icons;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +13,7 @@ namespace Smartway.UiComponent.TopAppBar
         public static readonly BindableProperty TypeProperty = BindableProperty.Create(nameof(Type), typeof(string), typeof(TopAppBar), "Default");
         public static readonly BindableProperty ExtraNavigationLabelProperty = BindableProperty.Create(nameof(ExtraNavigationLabel), typeof(string), typeof(TopAppBar));
         public static readonly BindableProperty ExtraNavigationCommandProperty = BindableProperty.Create(nameof(ExtraNavigationCommand), typeof(ICommand), typeof(TopAppBar));
-        public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(nameof(IconSource), typeof(string), typeof(TopAppBar), String.Empty);
+        public static readonly BindableProperty IconSourceProperty = BindableProperty.Create(nameof(IconSource), typeof(Icon.IconNames?), typeof(TopAppBar));
         public static readonly BindableProperty IsDarkThemeProperty = BindableProperty.Create(nameof(IsDarkTheme), typeof(bool), typeof(TopAppBar));
 
 
@@ -42,9 +42,9 @@ namespace Smartway.UiComponent.TopAppBar
             get => (ICommand)GetValue(ExtraNavigationCommandProperty);
             set => SetValue(ExtraNavigationCommandProperty, value);
         }
-        public string IconSource
+        public Icon.IconNames? IconSource
         {
-            get => (string) GetValue(IconSourceProperty);
+            get => (Icon.IconNames?) GetValue(IconSourceProperty);
             set => SetValue(IconSourceProperty, value);
         }
         public bool IsDarkTheme
