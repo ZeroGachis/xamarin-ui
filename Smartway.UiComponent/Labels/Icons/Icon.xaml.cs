@@ -20,10 +20,12 @@ namespace Smartway.UiComponent.Labels.Icons
             ArrowRight,
             CalendarToday,
             Clear,
+            Close,
             NotificationImportant,
             Search,
             SignalCellularNoSim,
-            ViewHeadline
+            ViewHeadline,
+            Warning
         }
 
         /// <summary>
@@ -39,26 +41,36 @@ namespace Smartway.UiComponent.Labels.Icons
             { IconNames.ArrowRight, "\ue5df" },
             { IconNames.CalendarToday, "\ue935" },
             { IconNames.Clear, "\ue14c" },
+            { IconNames.Close, "\ue5cd" },
             { IconNames.NotificationImportant, "\ue004" },
             { IconNames.Search, "\ue8b6" },
             { IconNames.SignalCellularNoSim, "\ue1ce" },
-            { IconNames.ViewHeadline, "\ue8ee" }
+            { IconNames.ViewHeadline, "\ue8ee" },
+            { IconNames.Warning, "\ue002" }
         };
+        
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
+            typeof(IconNames), typeof(Icon), propertyChanged: OnValueChanged);
+
+        private static void OnValueChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            ((Icon)bindable).UpdateText();
+        }
 
         public Icon()
         {
             InitializeComponent();
         }
 
-        private IconNames _value;
+        private void UpdateText()
+        {
+            Text = _iconCodes[Value];
+        }
+
         public IconNames Value
         {
-            get => _value;
-            set
-            {
-                _value = value;
-                Text = System.Text.RegularExpressions.Regex.Unescape(_iconCodes[value]);
-            }
+            get => (IconNames)GetValue(ValueProperty);
+            set =>  SetValue(ValueProperty, value);
         }
     }
 }
