@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Smartway.UiComponent.Effects;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Sample.Effects.Views.Effect">
+    <ContentPage.Content>
+        <StackLayout Spacing="100">
+            <Label
+                Text="Click on me 3 times"
+                FontSize="30"
+                BackgroundColor="Yellow"
+                HorizontalTextAlignment="Center"
+                effects:CustomTapEffect.NumberOfTaps="3"
+                effects:CustomTapEffect.Command="{Binding MyTapCommand}">
+
+                <Label.Effects>
+                    <effects:CustomTapEffect/>
+                </Label.Effects>
+            </Label>
+
+            <Label
+                Text="Hold me 5 seconds"
+                FontSize="30"
+                BackgroundColor="Yellow"
+                HorizontalTextAlignment="Center"
+                effects:HoldTapEffect.HoldTime="5000"
+                effects:HoldTapEffect.Command="{Binding MyHoldCommand}">
+
+                <Label.Effects>
+                    <effects:HoldTapEffect/>
+                </Label.Effects>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
