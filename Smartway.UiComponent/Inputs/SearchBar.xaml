@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Inputs.SearchBar"
              x:Name="Self">
+    <ContentView.Resources>
+        <resources:Colors />
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -10,8 +15,12 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0"
-                   Source="icon_search.png"/>
+
+            <icons:Icon Grid.Column="0"
+                        FontSize="20"
+                        TextColor="{StaticResource ZgNightGrey}"
+                        VerticalOptions="Center"
+                        Value="Search"/>
             <Entry Grid.Column="1"
                    Placeholder="{Binding Source={Reference Self}, Path=Placeholder}"
                    PlaceholderColor="{Binding Source={Reference Self}, Path=PlaceholderColor}"
@@ -21,14 +30,16 @@
                    Text="{Binding Source={Reference Self}, Path=SearchText, Mode=TwoWay}"
                    TextChanged="OnEntryTextChanged"
                    Completed="OnEntryCompleted"/>
-            <Image Grid.Column="2"
-                   HeightRequest="20"
-                   Source="icon_close_grey.png"
-                   IsVisible="{Binding Source={Reference Self}, Path=CanClearSearchText}">
-                <Image.GestureRecognizers>
+            <icons:Icon Grid.Column="2"
+                        FontSize="20"
+                        TextColor="{StaticResource ZgNightGrey}"
+                        VerticalOptions="Center"
+                        Value="Clear"
+                        IsVisible="{Binding Source={Reference Self}, Path=CanClearSearchText}">
+                <icons:Icon.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ClearSearchText"/>
-                </Image.GestureRecognizers>
-            </Image>
+                </icons:Icon.GestureRecognizers>
+            </icons:Icon>
         </Grid>
     </ContentView.Content>
 </ContentView>
