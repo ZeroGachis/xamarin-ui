@@ -2,10 +2,16 @@
 <Grid xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:Smartway.Mvvm.Converters;assembly=Smartway.Mvvm"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Indicators.Status"
              x:Name="Self" VerticalOptions="Center" HorizontalOptions="Start">
     <Grid.Resources>
-        <converters:UpperCaseConverter x:Key="UpperCase" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:UpperCaseConverter x:Key="UpperCase" />
+        </ResourceDictionary>
     </Grid.Resources>
     <Grid.RowDefinitions>
         <RowDefinition Height="20" />
@@ -15,32 +21,32 @@
             <VisualStateGroup x:Name="StatusValues">
                 <VisualState x:Name="Success">
                     <VisualState.Setters>
-                        <Setter Property="BackgroundColor" Value="#04C382" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgBrightGreen}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Warning">
                     <VisualState.Setters>
-                        <Setter Property="BackgroundColor" Value="#FF6C3B" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgBrightOrange}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Basic">
                     <VisualState.Setters>
-                        <Setter Property="BackgroundColor" Value="#707070" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgDarkGrey}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Dark">
                     <VisualState.Setters>
-                        <Setter Property="BackgroundColor" Value="#010142" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgDarkBlue}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Info">
                     <VisualState.Setters>
-                        <Setter Property="BackgroundColor" Value="#415CCB" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgDeepBlue}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Danger">
                     <VisualState.Setters>
-                        <Setter Property="BackgroundColor" Value="#FF5065" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgBrightRed}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

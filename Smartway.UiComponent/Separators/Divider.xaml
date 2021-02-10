@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <BoxView xmlns="http://xamarin.com/schemas/2014/forms" 
          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
          x:Class="Smartway.UiComponent.Separators.Divider"
-         BackgroundColor="#E2E4F0"
-         HeightRequest="1"
-/>
+         BackgroundColor="{StaticResource ZgColdGrey}"
+         HeightRequest="1">
+    <BoxView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </BoxView.Resources>
+</BoxView>

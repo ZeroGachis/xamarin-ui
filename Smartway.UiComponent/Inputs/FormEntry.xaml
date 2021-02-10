@@ -3,31 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+             xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
+             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Inputs.FormEntry"
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style x:Key="Title" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
-                <Setter Property="FontSize" Value="13"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="Margin" Value="0,0,0,6"/>
-            </Style>
-            <Style x:Key="PrefixLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="Margin" Value="0,0,10,5"/>
-                <Setter Property="HorizontalTextAlignment" Value="Center"/>
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-            </Style>
-            <Style x:Key="CustomEntry" TargetType="Entry">
-                <Setter Property="FontSize" Value="16"/>
-                <Setter Property="PlaceholderColor" Value="#B2B2B2"/>
-                <Setter Property="Margin" Value="0,0,0,5"/>
-            </Style>
-            <Style x:Key="Helper" TargetType="Label">
-                <Setter Property="FontSize" Value="13"/>
-                <Setter Property="TextColor" Value="#707070"/>
-                <Setter Property="Margin" Value="0,3,0,0"/>
-            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors />
+                <ResourceDictionary>
+                    <Style x:Key="Title" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Setter Property="Margin" Value="0,0,0,6"/>
+                    </Style>
+                    <Style x:Key="PrefixLabel" TargetType="Label">
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="Margin" Value="0,0,10,5"/>
+                        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                        <Setter Property="VerticalTextAlignment" Value="Center"/>
+                    </Style>
+                    <Style x:Key="CustomEntry" TargetType="Entry">
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="PlaceholderColor" Value="{StaticResource ZgMediumGrey}"/>
+                        <Setter Property="Margin" Value="0,0,0,5"/>
+                    </Style>
+                    <Style x:Key="Helper" TargetType="Label">
+                        <Setter Property="FontSize" Value="13"/>
+                        <Setter Property="TextColor" Value="{StaticResource ZgDarkGrey}"/>
+                        <Setter Property="Margin" Value="0,3,0,0"/>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -81,17 +88,17 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=OnSelectTap}"/>
                         </BoxView.GestureRecognizers>
                     </BoxView>
-                    <Image 
-                        Grid.Column="2"
-                        x:Name="EntryArrow"
-                        IsVisible="False"
-                        Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}">
-                        <Image.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
+                    <icons:Icon Grid.Column="2"
+                                x:Name="EntryArrow"
+                                IsVisible="False"
+                                TextColor="Black"
+                                Value="ArrowDropDown">
+                        <icons:Icon.Triggers>
+                            <DataTrigger TargetType="{x:Type icons:Icon}" Binding="{Binding Source={x:Reference Self}, Path=EntryType}" Value="Select">
                                 <Setter Property="IsVisible" Value="True"/>
                             </DataTrigger>
-                        </Image.Triggers>
-                    </Image>
+                        </icons:Icon.Triggers>
+                    </icons:Icon>
                 </Grid>
                 <Grid Grid.Row="2">
                     <separators:Divider x:Name="EntryDividerInput">
@@ -111,7 +118,7 @@
                             <Setter Property="IsVisible" Value="False"/>
                         </DataTrigger>
                         <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference Self}, Path=Error}" Value="True">
-                            <Setter Property="TextColor" Value="#FF5065"/>
+                            <Setter Property="TextColor" Value="{StaticResource ZgBrightRed}"/>
                         </DataTrigger>
                     </Label.Triggers>
                 </Label>

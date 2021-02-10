@@ -1,0 +1,76 @@
+﻿using System.Collections.Generic;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Smartway.UiComponent.Labels.Icons
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Icon
+    {
+        /// <summary>
+        /// <see cref="https://material.io/resources/icons/"/> for icon names
+        /// </summary>
+        public enum IconNames
+        {
+            AccessAlarm,
+            ArrowBack,
+            ArrowDropDown,
+            ArrowDropUp,
+            ArrowLeft,
+            ArrowRight,
+            CalendarToday,
+            Clear,
+            Close,
+            NotificationImportant,
+            Search,
+            SignalCellularNoSim,
+            ViewHeadline,
+            Warning
+        }
+
+        /// <summary>
+        /// <see cref="https://github.com/google/material-design-icons/blob/master/font/MaterialIconsOutlined-Regular.codepoints"/> for icon codes.
+        /// </summary>
+        private readonly Dictionary<IconNames, string> _iconCodes = new Dictionary<IconNames, string>
+        {
+            { IconNames.AccessAlarm, "\ue190" },
+            { IconNames.ArrowBack, "\ue5c4" },
+            { IconNames.ArrowDropDown, "\ue5c5" },
+            { IconNames.ArrowDropUp, "\ue5c7" },
+            { IconNames.ArrowLeft, "\ue5de" },
+            { IconNames.ArrowRight, "\ue5df" },
+            { IconNames.CalendarToday, "\ue935" },
+            { IconNames.Clear, "\ue14c" },
+            { IconNames.Close, "\ue5cd" },
+            { IconNames.NotificationImportant, "\ue004" },
+            { IconNames.Search, "\ue8b6" },
+            { IconNames.SignalCellularNoSim, "\ue1ce" },
+            { IconNames.ViewHeadline, "\ue8ee" },
+            { IconNames.Warning, "\ue002" }
+        };
+        
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
+            typeof(IconNames), typeof(Icon), propertyChanged: OnValueChanged);
+
+        private static void OnValueChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            ((Icon)bindable).UpdateText();
+        }
+
+        public Icon()
+        {
+            InitializeComponent();
+        }
+
+        private void UpdateText()
+        {
+            Text = _iconCodes[Value];
+        }
+
+        public IconNames Value
+        {
+            get => (IconNames)GetValue(ValueProperty);
+            set =>  SetValue(ValueProperty, value);
+        }
+    }
+}
