@@ -2,7 +2,6 @@
 <Expander
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
     xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
     xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
     x:Class="Smartway.UiComponent.Cards.CustomExpander"
@@ -36,26 +35,29 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                    <Style TargetType="Image" x:Key="DropDownIcon">
+                    <Style TargetType="{x:Type icons:Icon}" x:Key="DropDownIcon">
                         <Setter Property="VerticalOptions" Value="Center" />
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.black_icon_arrow_down.png}" />
+                        <Setter Property="Value" Value="ArrowDropDown" />
+                        <Setter Property="FontSize" Value="24" />
+                        <Setter Property="TextColor" Value="Black" />
                         <Style.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
-                                <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.orange_icon_arrow_down.png}" />
+                            <DataTrigger TargetType="{x:Type icons:Icon}" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                                <Setter Property="TextColor" Value="{StaticResource ZgBrightOrange}" />
                             </DataTrigger>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=IsExpanded}" Value="true">
-                                <Setter Property="Rotation" Value="180" />
+                            <DataTrigger TargetType="{x:Type icons:Icon}" Binding="{Binding Source={x:Reference Self}, Path=IsExpanded}" Value="true">
+                                <Setter Property="Value" Value="ArrowDropUp" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                    <Style TargetType="Image" x:Key="WarningIcon">
-                        <Setter Property="WidthRequest" Value="24" />
+                    <Style TargetType="{x:Type icons:Icon}" x:Key="WarningIcon">
+                        <Setter Property="FontSize" Value="24" />
                         <Setter Property="Margin" Value="0,0,10,0" />
                         <Setter Property="IsVisible" Value="false" />
                         <Setter Property="VerticalOptions" Value="Center" />
-                        <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Icons.orange_icon_warning.png}" />
+                        <Setter Property="TextColor" Value="{StaticResource ZgBrightOrange}" />
+                        <Setter Property="Value" Value="Warning" />
                         <Style.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
+                            <DataTrigger TargetType="{x:Type icons:Icon}" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
                                 <Setter Property="IsVisible" Value="true" />
                             </DataTrigger>
                         </Style.Triggers>
