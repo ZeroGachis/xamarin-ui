@@ -11,13 +11,11 @@
              x:Name="Self">
     <ContentView.Resources>
         <ResourceDictionary>
-            <Style x:Key="ImageButton" TargetType="ImageButton">
+            <Style x:Key="Image" TargetType="Image">
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="WidthRequest" Value="24"/>
                 <Setter Property="Margin" Value="0, 0, 16, 0"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="Source" Value="">
-                </Setter>
             </Style>
             <Style x:Key="LabelTitle" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="20"/>
@@ -45,44 +43,47 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <layouts:ClickableItem Padding="16, 0, 0, 0">
-                <ImageButton x:Name="ImageButton" Style="{StaticResource ImageButton}"
-                         Command="{Binding Source={x:Reference Self}, Path=Command}"
-                         Source="{Binding Source={x:Reference Self}, Path=ImageContent}">
-                <ImageButton.Triggers>
-                    <DataTrigger TargetType="ImageButton"
+                <layouts:ClickableItem.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding Source={x:Reference Self}, Path=Command}"/>
+                </layouts:ClickableItem.GestureRecognizers>
+                <Image x:Name="Image" Style="{StaticResource Image}"
+                             Source="{Binding Source={x:Reference Self}, Path=ImageContent}">
+                <Image.Triggers>
+                    <DataTrigger TargetType="Image"
                                  Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default">
                         <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_arrow_back.png }"/>
                     </DataTrigger>
-                    <DataTrigger TargetType="ImageButton"
+                    <DataTrigger TargetType="Image"
                                  Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal">
                         <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_close.png}"/>
                     </DataTrigger>
-                    <DataTrigger TargetType="ImageButton"
+                    <DataTrigger TargetType="Image"
                                  Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
                         <Setter Property="Source" Value="{Binding Source={x:Reference Self}, Path=IconSource}"/>
                     </DataTrigger>
-                    <MultiTrigger TargetType="ImageButton">
+                    <MultiTrigger TargetType="Image">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default" />
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                         </MultiTrigger.Conditions>
                         <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_arrow_back.png}"/>
                     </MultiTrigger>
-                    <MultiTrigger TargetType="ImageButton">
+                    <MultiTrigger TargetType="Image">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal" />
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                         </MultiTrigger.Conditions>
                         <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.white_icon_close.png}"/>
                     </MultiTrigger>
-                    <MultiTrigger TargetType="ImageButton">
+                    <MultiTrigger TargetType="Image">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Static system:String.Empty}" />
                         </MultiTrigger.Conditions>
                         <Setter Property="IsVisible" Value="False"/>
                     </MultiTrigger>
-                    <MultiTrigger TargetType="ImageButton">
+                    <MultiTrigger TargetType="Image">
                         <MultiTrigger.Conditions>
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom" />
                             <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IconSource}" Value="{x:Static system:String.Empty}" />
@@ -90,8 +91,8 @@
                         </MultiTrigger.Conditions>
                         <Setter Property="IsVisible" Value="False"/>
                     </MultiTrigger>
-                </ImageButton.Triggers>
-            </ImageButton>
+                </Image.Triggers>
+            </Image>
                 <layouts:ClickableItem.Triggers>
                     <MultiTrigger TargetType="layouts:ClickableItem">
                         <MultiTrigger.Conditions>
