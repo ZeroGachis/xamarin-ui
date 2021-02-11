@@ -17,18 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\OpenSans-Bold.ttf" />
-    <None Remove="Resources\OpenSans-Regular.ttf" />
-    <None Remove="Resources\OpenSans-SemiBold.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\OpenSans-Bold.ttf" />
-    <EmbeddedResource Include="Resources\OpenSans-Regular.ttf" />
-    <EmbeddedResource Include="Resources\OpenSans-SemiBold.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>

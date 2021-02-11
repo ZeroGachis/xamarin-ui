@@ -27,6 +27,12 @@
 
             <labels:PluralizableLabel ItemCount="1" SingularText="{StaticResource SingularText}" PluralText="{StaticResource PluralText}" />
             <labels:PluralizableLabel ItemCount="11" SingularText="{StaticResource SingularText}" PluralText="{StaticResource PluralText}" />
+            <separators:Divider />
+
+            <Label Text="Display Text - Arial"  FontFamily="Arial" />
+            <Label Text="Display Text - OpenSans" FontFamily="OpenSans"/>
+            <Label Text="Display Text - OpenSansSemiBold" FontFamily="OpenSansSemiBold"/>
+            <Label Text="Display Text - OpenSansBold" FontFamily="OpenSansBold"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
