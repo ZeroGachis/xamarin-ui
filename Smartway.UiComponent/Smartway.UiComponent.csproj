@@ -14,8 +14,6 @@
     <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
     <None Remove="Resources\Fonts\OpenSans-SemiBold.ttf" />
-    <None Remove="Resources\Icons\orange_icon_arrow_down.png" />
-    <None Remove="Resources\Icons\orange_icon_warning.png" />
     <None Remove="Resources\Images\icon_scan.png" />
     <None Remove="Resources\Images\img_product_placeholder.png" />
     <None Remove="Resources\Images\img_product_placeholder_multilocation.png" />
@@ -26,8 +24,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\MaterialIcons-Regular.ttf" />
-    <EmbeddedResource Include="Resources\Icons\orange_icon_arrow_down.png" />
-    <EmbeddedResource Include="Resources\Icons\orange_icon_warning.png" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Regular.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-SemiBold.ttf" />
