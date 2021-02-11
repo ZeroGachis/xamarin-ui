@@ -4,6 +4,7 @@ using Smartway.UiComponent.Sample.Inputs;
 using Smartway.UiComponent.Sample.Basics;
 using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Buttons;
+using Smartway.UiComponent.Sample.Effects.ViewModels;
 using Smartway.UiComponent.Sample.ExpanderCard.ViewModels;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.Inputs.ViewModels;
@@ -76,6 +77,11 @@ namespace Smartway.UiComponent.Sample
         public ICommand FormsElements => new Command(async () =>
         {
             await NavigateTo(new Inputs.Views.FormEntry { BindingContext = new FormEntryViewModel() });
+        });
+
+        public ICommand EffectsPage => new Command(async () =>
+        {
+            await NavigateTo(new Effects.Views.Effect { BindingContext = new EffectsViewModel() });
         });
     }
 }

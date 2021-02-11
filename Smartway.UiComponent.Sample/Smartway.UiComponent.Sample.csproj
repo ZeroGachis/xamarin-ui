@@ -80,6 +80,9 @@
     <Compile Update="Basics\BasicComponents.xaml.cs">
       <DependentUpon>BasicComponents.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Effects\Views\Effect.xaml.cs">
+      <DependentUpon>Effect.xaml</DependentUpon>
+    </Compile>
     <Compile Update="ExpanderCard\ExpanderCardSample.xaml.cs">
       <DependentUpon>ExpanderCardSample.xaml</DependentUpon>
     </Compile>
