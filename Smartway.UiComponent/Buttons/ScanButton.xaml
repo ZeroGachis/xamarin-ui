@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+             xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Buttons.ScanButton"
              x:Name="Self" >
@@ -15,10 +16,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame CornerRadius="32" BackgroundColor="{StaticResource ZgDarkBlue}">
+    <Frame CornerRadius="32" Padding="14" BackgroundColor="{StaticResource ZgDarkBlue}">
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={Reference Self}, Path=Command}"></TapGestureRecognizer>
-            </Frame.GestureRecognizers>
-        <Image Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_scan.png}" />
+            <TapGestureRecognizer Command="{Binding Source={Reference Self}, Path=Command}"/>
+        </Frame.GestureRecognizers>
+        <icons:Icon Value="CenterFocusStrong" TextColor="White" FontSize="30"/>
     </Frame>
 </ContentView>
