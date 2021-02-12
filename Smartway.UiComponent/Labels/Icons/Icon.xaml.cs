@@ -20,14 +20,19 @@ namespace Smartway.UiComponent.Labels.Icons
             ArrowRight,
             CalendarToday,
             CenterFocusStrong,
+            Check,
             Clear,
             Close,
+            Delete,
+            FormatAlignLeft,
             GridView,
             NotificationImportant,
             Search,
             SignalCellularNoSim,
+            Stop,
+            Today,
             ViewHeadline,
-            Warning
+            Warning,
         }
 
         /// <summary>
@@ -43,14 +48,19 @@ namespace Smartway.UiComponent.Labels.Icons
             { IconNames.ArrowRight, "\ue5df" },
             { IconNames.CalendarToday, "\ue935" },
             { IconNames.CenterFocusStrong, "\ue3b4" },
+            { IconNames.Check, "\ue5ca"},
             { IconNames.Clear, "\ue14c" },
             { IconNames.Close, "\ue5cd" },
+            { IconNames.Delete, "\ue872"},
+            { IconNames.FormatAlignLeft, "\ue236" },
             { IconNames.GridView, "\ue9b0" },
             { IconNames.NotificationImportant, "\ue004" },
             { IconNames.Search, "\ue8b6" },
             { IconNames.SignalCellularNoSim, "\ue1ce" },
+            { IconNames.Stop, "\ue047" },
+            { IconNames.Today, "\ue8df" },
             { IconNames.ViewHeadline, "\ue8ee" },
-            { IconNames.Warning, "\ue002" }
+            { IconNames.Warning, "\ue002" },
         };
         
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
