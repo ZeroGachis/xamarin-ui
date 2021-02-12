@@ -12,7 +12,7 @@ namespace Smartway.UiComponent.Labels.Icons
         /// </summary>
         public enum IconNames
         {
-            AccessAlarm,
+            Alarm,
             ArrowBack,
             ArrowDropDown,
             ArrowDropUp,
@@ -40,7 +40,7 @@ namespace Smartway.UiComponent.Labels.Icons
         /// </summary>
         private readonly Dictionary<IconNames, string> _iconCodes = new Dictionary<IconNames, string>
         {
-            { IconNames.AccessAlarm, "\ue190" },
+            { IconNames.Alarm, "\ue190" },
             { IconNames.ArrowBack, "\ue5c4" },
             { IconNames.ArrowDropDown, "\ue5c5" },
             { IconNames.ArrowDropUp, "\ue5c7" },
@@ -74,6 +74,7 @@ namespace Smartway.UiComponent.Labels.Icons
         public Icon()
         {
             InitializeComponent();
+            UpdateText();
         }
 
         private void UpdateText()
