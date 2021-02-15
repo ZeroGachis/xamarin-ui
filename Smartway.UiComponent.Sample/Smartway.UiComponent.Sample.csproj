@@ -41,7 +41,7 @@
     <EmbeddedResource Update="Layouts\LayoutsSample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ModalPageSample.xaml">
+    <EmbeddedResource Update="Pages\ModalSample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SectionSheet\Views\SectionSheetSample.xaml">
@@ -73,6 +73,9 @@
     </Compile>
     <Compile Update="ExpanderCard\ExpanderCardSample.xaml.cs">
       <DependentUpon>ExpanderCardSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\ModalSample.xaml.cs">
+      <DependentUpon>ModalSample.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

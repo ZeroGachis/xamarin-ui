@@ -4,11 +4,11 @@ using Xamarin.Forms.Xaml;
 namespace Smartway.UiComponent.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ModalPage : ContentPage
+    public partial class Modal : ContentPage
     {
-        BindableProperty HeaderContentProperty = BindableProperty.Create(nameof(HeaderContent), typeof(View), typeof(ModalPage));
-        BindableProperty BodyContentProperty = BindableProperty.Create(nameof(BodyContent), typeof(View), typeof(ModalPage));
-        BindableProperty FooterContentProperty = BindableProperty.Create(nameof(FooterContent), typeof(View), typeof(ModalPage));
+        BindableProperty HeaderContentProperty = BindableProperty.Create(nameof(HeaderContent), typeof(View), typeof(Modal));
+        BindableProperty BodyContentProperty = BindableProperty.Create(nameof(BodyContent), typeof(View), typeof(Modal));
+        BindableProperty FooterContentProperty = BindableProperty.Create(nameof(FooterContent), typeof(View), typeof(Modal));
 
         public View HeaderContent
         {
@@ -28,7 +28,7 @@ namespace Smartway.UiComponent.Pages
         }
 
 
-        public ModalPage()
+        public Modal()
         {
             InitializeComponent();
         }
