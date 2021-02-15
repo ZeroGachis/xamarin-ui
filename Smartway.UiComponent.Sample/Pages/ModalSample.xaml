@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:ModalPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:Modal xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Smartway.UiComponent.Pages;assembly=Smartway.UiComponent"
              xmlns:buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
-             x:Class="Smartway.UiComponent.Sample.Pages.ModalPageSample">
-    <pages:ModalPage.Resources>
+             x:Class="Smartway.UiComponent.Sample.Pages.ModalSample">
+    <pages:Modal.Resources>
         <Style x:Key="Title" TargetType="Label">
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontFamily" Value="OpenSansSemiBold" />
         </Style>
-    </pages:ModalPage.Resources>
-    <pages:ModalPage.HeaderContent>
+    </pages:Modal.Resources>
+    <pages:Modal.HeaderContent>
         <StackLayout Padding="20">
             <Label Text="Header" Style="{StaticResource Title}" />
         </StackLayout>
-    </pages:ModalPage.HeaderContent>
-    <pages:ModalPage.BodyContent>
+    </pages:Modal.HeaderContent>
+    <pages:Modal.BodyContent>
         <StackLayout HeightRequest="200">
             <Label Text="Body"
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>
-    </pages:ModalPage.BodyContent>
-    <pages:ModalPage.FooterContent>
+    </pages:Modal.BodyContent>
+    <pages:Modal.FooterContent>
         <Grid Padding="5,5,16,5"  MinimumHeightRequest="90">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -38,5 +38,5 @@
             <buttons:TextButton Text="Annuler"  Grid.Column="0" Grid.Row="1" />
             <buttons:Button Text="Valider" Size="Modal" Grid.Column="2" Grid.Row="1" />
         </Grid>
-    </pages:ModalPage.FooterContent>
-</pages:ModalPage>
+    </pages:Modal.FooterContent>
+</pages:Modal>
