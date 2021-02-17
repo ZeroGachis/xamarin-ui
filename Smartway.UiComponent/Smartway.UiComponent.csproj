@@ -70,6 +70,9 @@
     <Compile Update="Pages\YesNoModalFooter.xaml.cs">
       <DependentUpon>YesNoModalFooter.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\YesModalFooter.xaml.cs">
+      <DependentUpon>YesModalFooter.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -148,6 +151,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\YesNoModalFooter.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\YesModalFooter.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Colors.xaml">
