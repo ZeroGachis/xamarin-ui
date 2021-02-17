@@ -4,7 +4,8 @@
          xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
          x:Class="Smartway.UiComponent.Separators.Divider"
          BackgroundColor="{StaticResource ZgColdGrey}"
-         HeightRequest="1">
+         HeightRequest="1"
+         Margin="0">
     <BoxView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

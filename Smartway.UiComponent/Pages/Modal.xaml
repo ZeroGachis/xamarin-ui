@@ -4,36 +4,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:separators="clr-namespace:Smartway.UiComponent.Separators;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Pages.Modal"
-             x:Name="Self"
-             BackgroundColor="Black"
-             Opacity="0.8">
+             x:Name="Self">
     <ContentPage.Resources>
         <Style x:Key="ModalFrame" TargetType="Frame">
             <Setter Property="CornerRadius" Value="15" />
             <Setter Property="Margin" Value="16" />
             <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-            <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="Padding" Value="0" />
         </Style>
-        <Style x:Key="MainStack" TargetType="StackLayout">
-            <Setter Property="Orientation" Value="Vertical" />
-            <Setter Property="Spacing" Value="0"/>
-        </Style>
         <Style x:Key="HeaderView" TargetType="ContentView">
-            <Setter Property="HeightRequest" Value="60" />
+            <Setter Property="Padding" Value="20"/>
+        </Style>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="OpenSansSemiBold" />
+        </Style>
+        <Style x:Key="BodyView" TargetType="ContentView">
+            <Setter Property="Padding" Value="20, 0"/>
         </Style>
         <Style x:Key="FooterView" TargetType="ContentView">
-            <Setter Property="HeightRequest" Value="82" />
+            <Setter Property="Padding" Value="20,16"/>
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Frame Style="{StaticResource ModalFrame}">
-            <StackLayout Style="{StaticResource MainStack}">
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=HeaderContent}" Style="{StaticResource HeaderView}" />
-                <separators:Divider  /> 
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=BodyContent}" />
-                <separators:Divider />
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=FooterContent}"  Style="{StaticResource FooterView}" />
+            <StackLayout Spacing="0">
+                <StackLayout Style="{StaticResource HeaderView}">
+                    <Label Text="{Binding Source={x:Reference Self}, Path=Title}" 
+                           Style="{StaticResource Title}"/>
+                </StackLayout>
+                <separators:Divider IsVisible="{Binding Source={x:Reference Self}, Path=HasDivider}"/>
+                <ContentView Content="{Binding Source={x:Reference Self}, Path=BodyContent}" Style="{StaticResource BodyView}"/>
+                <separators:Divider IsVisible="{Binding Source={x:Reference Self}, Path=HasDivider}" />
+                <ContentView Content="{Binding Source={x:Reference Self}, Path=NavigationContent}" Style="{StaticResource FooterView}"/>
             </StackLayout>
         </Frame>
     </ContentPage.Content>
