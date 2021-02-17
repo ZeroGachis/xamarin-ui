@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Pages.YesModalFooter"
+             x:Name="Self">
+    <ContentView.Content>
+        <buttons:Button Text="Appliquer"
+                        Size="Block"
+                        Command="{Binding Source={x:Reference Self}, Path=ApplyCommand}"/>
+    </ContentView.Content>
+</ContentView>
