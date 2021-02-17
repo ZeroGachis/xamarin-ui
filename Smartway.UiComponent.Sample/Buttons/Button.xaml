@@ -88,7 +88,10 @@
                 </Frame>
                 <Label Style="{StaticResource Section}" Text="Variations" />
                 <Buttons:TextButton Text="Text Button" />
-                <Buttons:TextButton Text="Text Button (limits)" BorderWidth="1" BorderColor="{StaticResource ZgBrightOrange}" />
+                <Frame BorderColor="{StaticResource ZgBrightOrange}"
+                       Padding="0">
+                    <Buttons:TextButton Text="Text Button (limits)"/>
+                </Frame>
                 <Buttons:ScanButton Command="{Binding ScanCommand}"/>
             </StackLayout>
         </ScrollView>
