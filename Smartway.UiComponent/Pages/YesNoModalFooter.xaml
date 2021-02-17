@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Smartway.UiComponent.Buttons;assembly=Smartway.UiComponent"
+             x:Class="Smartway.UiComponent.Pages.YesNoModalFooter"
+             x:Name="Self">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <buttons:TextButton Text="Annuler"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Command="{Binding Source={x:Reference Self}, Path=CancelCommand}"/>
+            <buttons:Button Text="Valider"
+                                Size="Modal"
+                                Grid.Column="1"
+                                HorizontalOptions="End"
+                                Command="{Binding Source={x:Reference Self}, Path=ValidateCommand}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
