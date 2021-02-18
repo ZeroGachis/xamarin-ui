@@ -46,11 +46,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <layouts:ClickableItem Padding="16, 0, 0, 0">
-                <layouts:ClickableItem.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding Source={x:Reference Self}, Path=Command}"/>
-                </layouts:ClickableItem.GestureRecognizers>
+            <layouts:ClickableItem Padding="16, 0, 0, 0"
+                                   TapCommand="{Binding Source={x:Reference Self}, Path=Command}">
                 <icons:Icon Style="{StaticResource Icon}">
                     <icons:Icon.Triggers>
                         <DataTrigger TargetType="icons:Icon"
