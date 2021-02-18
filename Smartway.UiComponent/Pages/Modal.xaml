@@ -20,9 +20,6 @@
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontFamily" Value="OpenSansSemiBold" />
         </Style>
-        <Style x:Key="BodyView" TargetType="ContentView">
-            <Setter Property="Padding" Value="20, 0"/>
-        </Style>
         <Style x:Key="FooterView" TargetType="ContentView">
             <Setter Property="Padding" Value="20,16"/>
         </Style>
@@ -35,7 +32,8 @@
                            Style="{StaticResource Title}"/>
                 </StackLayout>
                 <separators:Divider IsVisible="{Binding Source={x:Reference Self}, Path=HasDivider}"/>
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=BodyContent}" Style="{StaticResource BodyView}"/>
+                <ContentView Padding="{Binding Source={x:Reference Self}, Path=BodyPadding}" 
+                             Content="{Binding Source={x:Reference Self}, Path=BodyContent}"/>
                 <separators:Divider IsVisible="{Binding Source={x:Reference Self}, Path=HasDivider}" />
                 <ContentView Content="{Binding Source={x:Reference Self}, Path=NavigationContent}" Style="{StaticResource FooterView}"/>
             </StackLayout>
