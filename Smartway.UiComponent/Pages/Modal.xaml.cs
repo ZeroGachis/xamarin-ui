@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.Pages
@@ -14,11 +13,16 @@ namespace Smartway.UiComponent.Pages
         public static readonly BindableProperty BodyContentProperty =
             BindableProperty.Create(nameof(BodyContent), typeof(View), typeof(Modal));
 
+        public static readonly BindableProperty BodyPaddingProperty =
+            BindableProperty.Create(nameof(BodyPadding), typeof(Thickness), typeof(Modal));
+
         public static readonly BindableProperty HasDividerProperty =
             BindableProperty.Create(nameof(HasDivider), typeof(bool), typeof(Modal));
 
         public static readonly BindableProperty NavigationContentProperty =
             BindableProperty.Create(nameof(NavigationContent), typeof(View), typeof(Modal));
+
+        
 
         public string Title
         {
@@ -30,6 +34,11 @@ namespace Smartway.UiComponent.Pages
         {
             get => (View)GetValue(BodyContentProperty);
             set => SetValue(BodyContentProperty, value);
+        }
+
+        public Thickness BodyPadding {
+            get => (Thickness)GetValue(BodyPaddingProperty);
+            set => SetValue(BodyPaddingProperty, value);
         }
 
         public bool HasDivider
