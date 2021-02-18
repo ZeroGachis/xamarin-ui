@@ -10,8 +10,8 @@
         <RelativeLayout>
             <layouts:ClickableItem
                 BackgroundColor="DeepSkyBlue"
-                BoxWidth="250"
-                BoxHeight="20">
+                HitBoxWidth="250"
+                HitBoxHeight="20">
                 <layouts:ClickableItem.LayoutContent>
                     <Label Text="Example clickable item with box view"
                            HorizontalOptions="Center"
