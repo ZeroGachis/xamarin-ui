@@ -3,11 +3,13 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                       xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
                        xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
+                       xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
                        mc:Ignorable="d"
                        x:Class="Smartway.UiComponent.Buttons.TextButton"
-                       HeightRequest="50">
+                       x:Name="TxtButton"
+                       HeightRequest="50"
+                       TapCommand="{Binding Command, Source={x:Reference TxtButton}}">
     <layouts:ClickableItem.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,13 +17,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </layouts:ClickableItem.Resources>
-    <layouts:ClickableItem.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding Command, Source={x:Reference Self}}"/>
-    </layouts:ClickableItem.GestureRecognizers>
-    <Label Text="{Binding Text, Source={x:Reference Self}}"
-           HorizontalOptions="Center"
-           VerticalOptions="Center"
-           FontFamily="OpenSansSemiBold"
-           FontSize="15"
-           TextColor="{StaticResource ZgDarkBlue}"/>
+    <layouts:ClickableItem.Content>
+        <Label Text="{Binding Text, Source={x:Reference TxtButton}}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontFamily="OpenSansSemiBold"
+               FontSize="15"
+               TextColor="{StaticResource ZgDarkBlue}"/>
+    </layouts:ClickableItem.Content>
+   
 </layouts:ClickableItem>

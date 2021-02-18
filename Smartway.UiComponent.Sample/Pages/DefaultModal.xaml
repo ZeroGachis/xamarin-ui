@@ -7,9 +7,6 @@
              Title="Attention">
     <pages:Modal.BodyContent>
         <Label Text="body"
-               FontFamily="OpenSans"
-               FontSize="14"
-               TextColor="Black"
                Margin="0, 20"/>
     </pages:Modal.BodyContent>
     <pages:Modal.NavigationContent>

@@ -3,13 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Smartway.UiComponent.Layouts.ClickableItem"
              x:Name="Self">
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=TapCommand }" />
+    </ContentView.GestureRecognizers>
     <ContentView.Content>
-        <RelativeLayout>
-            <BoxView WidthRequest="{Binding Source={x:Reference Self}, Path=BoxWidth}"
-                     HeightRequest="{Binding Source={x:Reference Self}, Path= BoxHeight}"/>
-                <ContentView
-                    Content="{Binding Source={x:Reference Self}, Path=LayoutContent}">
-                </ContentView>
-        </RelativeLayout>
+        <Frame WidthRequest="{Binding Source={x:Reference Self}, Path=HitBoxWidth}"
+               HeightRequest="{Binding Source={x:Reference Self}, Path= HitBoxHeight}">
+            
+            <ContentView
+                Content="{Binding Source={x:Reference Self}, Path=LayoutContent}">
+            </ContentView>
+        </Frame>
     </ContentView.Content>
 </ContentView>
