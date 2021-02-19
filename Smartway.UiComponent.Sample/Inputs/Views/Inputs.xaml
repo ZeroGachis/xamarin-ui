@@ -19,7 +19,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="30" Padding="16, 30, 16, 0" BackgroundColor="#E5E5E5">
+            <StackLayout Spacing="30" Padding="16, 30, 16, 0" BackgroundColor="{StaticResource ZgLightGrey}">
                 <Frame>
                     <StackLayout Padding="0, 0, 0, 5">
                         <Label Text="Barcode Input" Style="{StaticResource TitleStyle}"/>

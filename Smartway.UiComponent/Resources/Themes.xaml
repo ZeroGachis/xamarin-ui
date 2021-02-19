@@ -1,25 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
                     x:Class="Smartway.UiComponent.Resources.Themes">
-    <!-- Light theme colors -->
-    <Color x:Key="LightPrimaryBackgroundColor">White</Color>
-    <Color x:Key="LightSecondaryBackgroundColor">White</Color>
-    <Color x:Key="LightPrimaryTextColor">Black</Color>
-    <Color x:Key="LightSecondaryTextColor">#B2B2B2</Color>
-
-    <!-- Dark theme colors -->
-    <Color x:Key="DarkPrimaryBackgroundColor">#010627</Color>
-    <Color x:Key="DarkSecondaryBackgroundColor">#141937</Color>
-    <Color x:Key="DarkPrimaryTextColor">White</Color>
-    <Color x:Key="DarkSecondaryTextColor">#A2A2BA</Color>
+    <ResourceDictionary.MergedDictionaries>
+        <resources:Colors />
+    </ResourceDictionary.MergedDictionaries>
 
     <!-- Label Styles -->
     <Style TargetType="Label">
         <Setter Property="FontFamily" Value="OpenSans" />
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding 
-                        Light={StaticResource LightPrimaryTextColor}, 
-                        Dark={StaticResource DarkPrimaryTextColor}
+                        Light=Black, 
+                        Dark=White
                     }"  />
         <Style.Triggers>
             <Trigger TargetType="Label" Property="FontAttributes" Value="Bold">
@@ -31,8 +24,8 @@
     <Style TargetType="Label" x:Key="SecondaryTextStyle">
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding 
-                        Light={StaticResource LightSecondaryTextColor}, 
-                        Dark={StaticResource DarkSecondaryTextColor}
+                        Light={StaticResource ZgMediumGrey}, 
+                        Dark={StaticResource DmLightBlue}
                     }"  />
         <Setter Property="FontSize" Value="14"/>
     </Style>
@@ -45,8 +38,8 @@
     <Style TargetType="StackLayout">
         <Setter Property="BackgroundColor"
                 Value="{AppThemeBinding 
-                        Light={StaticResource LightPrimaryBackgroundColor}, 
-                        Dark={StaticResource DarkPrimaryBackgroundColor}
+                        Light=White, 
+                        Dark={StaticResource DmDarkBlue}
                     }" />
     </Style>
 
@@ -54,8 +47,8 @@
     <Style TargetType="Frame" x:Key="SecondaryFrame">
         <Setter Property="BackgroundColor"
                 Value="{AppThemeBinding 
-                        Light={StaticResource LightSecondaryBackgroundColor},
-                        Dark={StaticResource DarkSecondaryBackgroundColor}
+                        Light=White,
+                        Dark={StaticResource DmNightBlue}
                     }" />
     </Style>
 </ResourceDictionary>

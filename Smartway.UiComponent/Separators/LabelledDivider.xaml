@@ -8,12 +8,12 @@
             <Setter Property="HeightRequest" Value="1" />
             <Setter Property="Margin" Value="0, 10" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-            <Setter Property="BackgroundColor" Value="#3D4458" />
+            <Setter Property="BackgroundColor" Value="{StaticResource DmMediumBlue}" />
         </Style>
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="MaxLines" Value="1" />
-            <Setter Property="TextColor" Value="#A2A2BA" />
+            <Setter Property="TextColor" Value="{StaticResource DmLightBlue}" />
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
