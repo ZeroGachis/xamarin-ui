@@ -5,7 +5,8 @@
              x:Name="Self">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Default Modal" Command="{Binding Source={x:Reference Self}, Path=DefaultModal}" />
+            <Button Text="ModalSettings FullHeight" Command="{Binding Source={x:Reference Self}, Path=ModalSettingsFullHeight}" />
+            <Button Text="ModalSettings CustomHeight" Command="{Binding Source={x:Reference Self}, Path=ModalSettingsCustomHeight}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
