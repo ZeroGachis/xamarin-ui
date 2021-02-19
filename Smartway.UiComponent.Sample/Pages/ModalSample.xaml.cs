@@ -12,9 +12,22 @@ namespace Smartway.UiComponent.Sample.Pages
             InitializeComponent();
         }
 
-        public ICommand DefaultModal => new Command(async () =>
+        public ICommand ModalSettingsFullHeight => new Command(async () =>
         {
-            await this.Navigation.PushModalAsync(new DefaultModal(), false);
+            await this.Navigation.PushModalAsync(new ModalSettingsSample()
+            {
+                BodyHeight = LayoutOptions.FillAndExpand
+            }, 
+                false);
+        });
+
+        public ICommand ModalSettingsCustomHeight => new Command(async () =>
+        {
+            await this.Navigation.PushModalAsync(new ModalSettingsSample()
+                {
+                    BodyHeight = LayoutOptions.CenterAndExpand
+                },
+                false);
         });
     }
 }
