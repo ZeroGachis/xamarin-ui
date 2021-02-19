@@ -6,11 +6,11 @@
              x:Class="Smartway.UiComponent.Pages.Modal"
              x:Name="Self">
     <ContentPage.Resources>
-        <Style x:Key="ModalFrame" TargetType="Frame">
+        <Style x:Key="ModalFrame" TargetType="Frame" >
             <Setter Property="CornerRadius" Value="15" />
             <Setter Property="Margin" Value="16" />
-            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
             <Setter Property="Padding" Value="0" />
+            <Setter Property="VerticalOptions" Value="{Binding Source={x:Reference Self}, Path=BodyHeight}"/>
         </Style>
         <Style x:Key="HeaderView" TargetType="ContentView">
             <Setter Property="Padding" Value="20"/>
@@ -32,10 +32,12 @@
                            Style="{StaticResource Title}"/>
                 </StackLayout>
                 <separators:Divider IsVisible="{Binding Source={x:Reference Self}, Path=HasDivider}"/>
-                <ContentView Padding="{Binding Source={x:Reference Self}, Path=BodyPadding}" 
+                <ContentView VerticalOptions="{Binding Source={x:Reference Self}, Path=BodyHeight}"
+                             Padding="{Binding Source={x:Reference Self}, Path=BodyPadding}" 
                              Content="{Binding Source={x:Reference Self}, Path=BodyContent}"/>
                 <separators:Divider IsVisible="{Binding Source={x:Reference Self}, Path=HasDivider}" />
-                <ContentView Content="{Binding Source={x:Reference Self}, Path=NavigationContent}" Style="{StaticResource FooterView}"/>
+                <ContentView Content="{Binding Source={x:Reference Self}, Path=NavigationContent}" 
+                             Style="{StaticResource FooterView}"/>
             </StackLayout>
         </Frame>
     </ContentPage.Content>

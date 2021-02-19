@@ -16,6 +16,9 @@ namespace Smartway.UiComponent.Pages
         public static readonly BindableProperty BodyPaddingProperty =
             BindableProperty.Create(nameof(BodyPadding), typeof(Thickness), typeof(Modal));
 
+        public static readonly BindableProperty BodyHeightProperty =
+            BindableProperty.Create(nameof(BodyHeight), typeof(LayoutOptions), typeof(Modal));
+
         public static readonly BindableProperty HasDividerProperty =
             BindableProperty.Create(nameof(HasDivider), typeof(bool), typeof(Modal));
 
@@ -39,6 +42,12 @@ namespace Smartway.UiComponent.Pages
         public Thickness BodyPadding {
             get => (Thickness)GetValue(BodyPaddingProperty);
             set => SetValue(BodyPaddingProperty, value);
+        }
+
+        public LayoutOptions BodyHeight
+        {
+            get => (LayoutOptions)GetValue(BodyHeightProperty);
+            set => SetValue(BodyHeightProperty, value);
         }
 
         public bool HasDivider
