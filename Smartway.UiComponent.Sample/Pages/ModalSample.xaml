@@ -7,6 +7,8 @@
         <StackLayout>
             <Button Text="ModalSettings FullHeight" Command="{Binding Source={x:Reference Self}, Path=ModalSettingsFullHeight}" />
             <Button Text="ModalSettings CustomHeight" Command="{Binding Source={x:Reference Self}, Path=ModalSettingsCustomHeight}" />
+            <Button Text="ModalDialog Default" Command="{Binding Source={x:Reference Self}, Path=ModalDialogDefault}" />
+            <Button Text="ModalDialog Info" Command="{Binding Source={x:Reference Self}, Path=ModalDialogInfo}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
