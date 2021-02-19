@@ -47,6 +47,9 @@
     <EmbeddedResource Update="Pages\ModalSample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ModalSettingsSample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="SectionSheet\Views\SectionSheetSample.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -79,6 +82,9 @@
     </Compile>
     <Compile Update="Pages\ModalSample.xaml.cs">
       <DependentUpon>ModalSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\ModalSettingsSample.xaml.cs">
+      <DependentUpon>ModalSettingsSample.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
