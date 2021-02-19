@@ -61,6 +61,18 @@
     <Compile Update="Layouts\ScannableLayout.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Pages\YesNoModalFooter.xaml.cs">
+      <DependentUpon>YesNoModalFooter.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Modal.xaml.cs">
+      <DependentUpon>Modal.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\YesNoModalFooter.xaml.cs">
+      <DependentUpon>YesNoModalFooter.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\YesModalFooter.xaml.cs">
+      <DependentUpon>YesModalFooter.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -135,7 +147,19 @@
     <EmbeddedResource Update="Layouts\SectionSheet.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ModalPage.xaml">
+    <EmbeddedResource Update="Pages\Modal.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ModalDialog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ModalSettings.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\YesNoModalFooter.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\YesModalFooter.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Colors.xaml">

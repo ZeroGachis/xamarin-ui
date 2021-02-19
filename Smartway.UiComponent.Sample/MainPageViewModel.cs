@@ -1,6 +1,4 @@
 ﻿using System.Windows.Input;
-using Smartway.UiComponent.Inputs;
-using Smartway.UiComponent.Sample.Inputs;
 using Smartway.UiComponent.Sample.Basics;
 using Smartway.UiComponent.Sample.ExpanderCard;
 using Smartway.UiComponent.Sample.Buttons;
@@ -8,7 +6,7 @@ using Smartway.UiComponent.Sample.Effects.ViewModels;
 using Smartway.UiComponent.Sample.ExpanderCard.ViewModels;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.Inputs.ViewModels;
-using Smartway.UiComponent.Sample.Inputs.Views;
+using Smartway.UiComponent.Sample.Pages;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
 using Smartway.UiComponent.Sample.Separator;
@@ -69,9 +67,9 @@ namespace Smartway.UiComponent.Sample
             await NavigateTo(new Layouts.LayoutsSample());
         });
 
-        public ICommand ModalPage => new Command(async () =>
+        public ICommand Modal => new Command(async () =>
         {
-            await NavigateTo(new Pages.ModalPageSample());
+            await NavigateTo(new Pages.ModalSample());
         });
 
         public ICommand FormsElements => new Command(async () =>
