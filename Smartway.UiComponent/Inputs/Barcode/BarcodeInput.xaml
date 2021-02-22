@@ -28,7 +28,7 @@
                         <Setter Property="FontFamily" Value="OpenSans" />
                     </Style>
                     <Style x:Key="Global" TargetType="Frame">
-                        <Setter Property="BackgroundColor" Value="{StaticResource ZgDarkBlue}" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource DmNightBlue}" />
                         <Setter Property="CornerRadius" Value="21" />
                         <Setter Property="Padding" Value="0" />
                     </Style>
