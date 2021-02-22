@@ -22,7 +22,7 @@
                     </Style>
                     <Style x:Key="BaseEntry" TargetType="barcode:BarcodeEntry">
                         <Setter Property="Margin" Value="-10,0,0,0" />
-                        <Setter Property="TextColor" Value="White" />
+                        <Setter Property="TextColor" Value="{StaticResource DmLightBlue}" />
                         <Setter Property="PlaceholderColor" Value="{StaticResource ZgNightGrey}" />
                         <Setter Property="FontSize" Value="14" />
                         <Setter Property="FontFamily" Value="OpenSans" />
