@@ -20,7 +20,7 @@
                     <Style TargetType="{x:Type Frame}" x:Key="RoundBtnSelected">
                         <Setter Property="BorderColor" Value="Black"/>
                         <Setter Property="CornerRadius" Value="80" />
-                        <Setter Property="BackgroundColor" Value="#EBEBEB"/>
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgLightGrey}"/>
                         <Setter Property="Margin" Value="0"/>
                         <Setter Property="Padding" Value="16,12" />
                         <Setter Property="HasShadow" Value="False" />
