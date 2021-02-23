@@ -22,13 +22,13 @@
                     </Style>
                     <Style x:Key="BaseEntry" TargetType="barcode:BarcodeEntry">
                         <Setter Property="Margin" Value="-10,0,0,0" />
-                        <Setter Property="TextColor" Value="{StaticResource DmLightBlue}" />
+                        <Setter Property="TextColor" Value="{StaticResource ZgMauve}" />
                         <Setter Property="PlaceholderColor" Value="{StaticResource ZgNightGrey}" />
                         <Setter Property="FontSize" Value="14" />
                         <Setter Property="FontFamily" Value="OpenSans" />
                     </Style>
                     <Style x:Key="Global" TargetType="Frame">
-                        <Setter Property="BackgroundColor" Value="{StaticResource DmNightBlue}" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgSomberBlue}" />
                         <Setter Property="CornerRadius" Value="21" />
                         <Setter Property="Padding" Value="0" />
                     </Style>

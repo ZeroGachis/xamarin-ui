@@ -17,8 +17,8 @@
     <Color x:Key="ZgBrightRed">#FF5065</Color>
     <Color x:Key="ZgLightYellow">#FFF7B5</Color>
 
-    <Color x:Key="DmDarkBlue">#010627</Color>
-    <Color x:Key="DmNightBlue">#141937</Color>
-    <Color x:Key="DmMediumBlue">#3D4458</Color>
-    <Color x:Key="DmLightBlue">#A2A2BA</Color>
+    <Color x:Key="ZgDarkerBlue">#010627</Color>
+    <Color x:Key="ZgSomberBlue">#141937</Color>
+    <Color x:Key="ZgGreyBlue">#3D4458</Color>
+    <Color x:Key="ZgMauve">#A2A2BA</Color>
 </ResourceDictionary>

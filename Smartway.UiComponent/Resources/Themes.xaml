@@ -25,7 +25,7 @@
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding 
                         Light={StaticResource ZgMediumGrey}, 
-                        Dark={StaticResource DmLightBlue}
+                        Dark={StaticResource ZgMauve}
                     }"  />
         <Setter Property="FontSize" Value="14"/>
     </Style>
@@ -39,7 +39,7 @@
         <Setter Property="BackgroundColor"
                 Value="{AppThemeBinding 
                         Light=White, 
-                        Dark={StaticResource DmDarkBlue}
+                        Dark={StaticResource ZgDarkerBlue}
                     }" />
     </Style>
 
@@ -48,7 +48,7 @@
         <Setter Property="BackgroundColor"
                 Value="{AppThemeBinding 
                         Light=White,
-                        Dark={StaticResource DmNightBlue}
+                        Dark={StaticResource ZgSomberBlue}
                     }" />
     </Style>
 </ResourceDictionary>
