@@ -50,6 +50,7 @@
     <Compile Include="Effects\AndroidHoldTapEffect.cs" />
     <Compile Include="Renderers\BarcodeEntryRenderer.cs" />
     <Compile Include="Renderers\CustomButtonRenderer.cs" />
+    <Compile Include="Renderers\ModalRenderer.cs" />
     <Compile Include="Renderers\NoDialogDatePickerRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
