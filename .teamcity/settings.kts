@@ -32,6 +32,8 @@ version = "2020.2"
 project {
 
     buildType(Build)
+
+    template(Template_1)
 }
 
 object Build : BuildType({
@@ -87,4 +89,9 @@ object Build : BuildType({
     requirements {
         exists("Xamarin")
     }
+})
+
+object Template_1 : Template({
+    id("Template")
+    name = "Template"
 })
