@@ -31,13 +31,13 @@ version = "2020.2"
 
 project {
 
-    buildType(Build)
+    buildType(PullRequest)
 
-    template(Template_1)
+    template(Build)
 }
 
-object Build : BuildType({
-    name = "Build"
+object PullRequest : BuildType({
+    name = "Pull Request"
 
     params {
         param("system.JavaSdkDirectory", "%JavaSdkPath%")
@@ -47,6 +47,16 @@ object Build : BuildType({
         param("JarSignerPath", """%JavaSdkPath%\bin\jarsigner.exe""")
         param("ZipAlignPath", """C:\Program Files (x86)\Android\android-sdk\build-tools\28.0.3\zipalign.exe""")
     }
+
+    triggers {
+        vcs {
+        }
+    }
+})
+
+object Build : Template({
+    id("Build")
+    name = "Build"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -81,17 +91,8 @@ object Build : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     requirements {
         exists("Xamarin")
     }
 })
 
-object Template_1 : Template({
-    id("Template")
-    name = "Template"
-})
