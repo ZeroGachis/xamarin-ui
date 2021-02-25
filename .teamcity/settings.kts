@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.msBuild
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.nuGetInstaller
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -30,6 +31,8 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 project {
+
+    vcsRoot(Settings)
 
     buildType(Build)
 
@@ -94,4 +97,14 @@ object Build : BuildType({
 object Template_1 : Template({
     id("Template")
     name = "Template"
+})
+
+object Settings : GitVcsRoot({
+    name = "Settings"
+    url = "git@github.com:ZeroGachis/xamarin-ui-teamcity.git"
+    branch = "master"
+    authMethod = uploadedKey {
+        userName = "git"
+        uploadedKey = "zgBrocoli"
+    }
 })
