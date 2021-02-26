@@ -1,10 +1,15 @@
 name: Release
 
+env:
+  PROJECT_NAME: Smartway.UiComponent
+
 on:
-  push:
+  pull_request:
     branches:
-      - release/*
-      - feature/github-actions
+      - master
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -22,6 +27,43 @@ jobs:
         nuget-api-key: ${{ secrets.NuGetAPIKey }}
         nuget-version: '5.x'
     - name: Restore
-      run: nuget restore Smartway.UiComponent.sln
+      run: |
+        nuget restore Smartway.UiComponent.Droid\Smartway.UiComponent.Droid.csproj
+        nuget restore Smartway.UiComponent\Smartway.UiComponent.csproj
     - name: Build
-      run: msbuild Smartway.UiComponent.sln
+      run: msbuild Smartway.UiComponent.Droid\Smartway.UiComponent.Droid.csproj -p:Configuration=Release
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: Smartway.UiComponent.Droid\Bin\Release
+        retention-days: 1
+
+  pack:
+
+    runs-on: windows-latest
+
+    needs: build
+
+    if: contains(github.ref, 'refs/tags/')
+
+    steps:
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: ${{ github.ref }}
+          regex: '^refs/tags/(\d+(\.\d+){2,3}(-\w+)?)$'
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: Smartway.UiComponent.Droid\Bin\Release
+      - name: Configure NuGet
+        uses: nuget/setup-nuget@v1
+        with:
+          nuget-api-key: ${{ secrets.NuGetAPIKey }}
+          nuget-version: '5.x'
+      - name: Pack
+        run: nuget pack Smartway.UiComponent.nuspec -Version=${{ steps.regex-match.outputs.group1 }}
