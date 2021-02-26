@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - release/*
+      - feature/github-actions
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Configure MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Configure NuGet
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-api-key: ${{ secrets.NuGetAPIKey }}
+        nuget-version: '5.x'
+    - name: Restore
+      run: nuget restore Smartway.UiComponent.sln
+    - name: Build
+      run: msbuild Smartway.UiComponent.sln
