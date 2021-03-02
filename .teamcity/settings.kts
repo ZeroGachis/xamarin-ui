@@ -79,9 +79,9 @@ object PullRequest : BuildType({
     name = "Pull Request"
 
     params {
-        param("system.MsBuildExtensionPath", """C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild""")
         select("system.Configuration", "Release", label = "Build Configuration",
                 options = listOf("ReleaseDesktop", "DebugDesktop", "ReleaseWince", "DebugWince", "Release"))
+        param("system.MsBuildExtensionPath", """C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild""")
         param("env.Version", "%teamcity.build.branch%.%build.counter%.0")
     }
 
@@ -161,7 +161,7 @@ object Release : BuildType({
             serverUrl = "nuget.org"
             apiKey = "credentialsJSON:756ff5ef-6e71-45cf-9c03-0faa699f81cf"
         }
-        stepsOrder = arrayListOf("RUNNER_33", "RUNNER_23", "RUNNER_26", "RUNNER_28", "RUNNER_29", "RUNNER_30", "RUNNER_35", "RUNNER_36", "RUNNER_32")
+        stepsOrder = arrayListOf("RUNNER_33", "RUNNER_23", "RUNNER_26", "RUNNER_28", "RUNNER_29", "RUNNER_30", "RUNNER_35", "RUNNER_36")
     }
 
     triggers {
