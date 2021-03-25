@@ -16,7 +16,6 @@
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="LineBreakMode" Value="TailTruncation" />
                         <Setter Property="TextColor" Value="Black"/>
-                        <Setter Property="LineHeight" Value="19"/>
                     </Style>
                     <Style x:Key="ProductImage" TargetType="Image">
                         <Setter Property="Margin" Value="0, 0, 5, 0"/>
@@ -61,8 +60,14 @@
                 </Image>
                 <StackLayout Orientation="Vertical">
                     <Label Style="{StaticResource ProductLabel}"
-                           Text="{Binding Source={Reference Self}, Path=Label}" />
-                    <StackLayout Orientation="Horizontal">
+                           Text="{Binding Source={Reference Self}, Path=Label}">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="false">
+                                <Setter Property="MaxLines" Value="2" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <StackLayout Orientation="Horizontal"  VerticalOptions="EndAndExpand">
                         <Label
                             x:Name="ProductGencode"
                             Style="{StaticResource RegularGencodeText}"
