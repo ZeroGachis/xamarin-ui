@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Android.App;
 using Android.Content;
+using Android.Views;
 using Smartway.UiComponent.Droid.Renderers;
 using Smartway.UiComponent.Inputs;
 using Xamarin.Forms;
@@ -44,6 +45,7 @@ namespace Smartway.UiComponent.Droid.Renderers
             {
                 var dialog = new DatePickerDialog(Context);
                 SetNativeControl(dialog.DatePicker);
+                DisableDatePickerKeyboard(dialog.DatePicker);
             }
 
             if (Control != null)
@@ -55,12 +57,17 @@ namespace Smartway.UiComponent.Droid.Renderers
             }
         }
 
+        private void DisableDatePickerKeyboard(DatePickerAndroid dialogDatePicker)
+        {
+            dialogDatePicker.DescendantFocusability = DescendantFocusability.BlockDescendants;
+        }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == DatePicker.MinimumDateProperty.PropertyName) 
+            if (e.PropertyName == DatePickerForms.MinimumDateProperty.PropertyName) 
                 UpdateMinimumDate();
-            else if (e.PropertyName == DatePicker.MaximumDateProperty.PropertyName)
+            else if (e.PropertyName == DatePickerForms.MaximumDateProperty.PropertyName)
                 UpdateMaximumDate();
         }
 
@@ -79,7 +86,7 @@ namespace Smartway.UiComponent.Droid.Renderers
             Control.MinDate = ConvertDateToJavaFormat(Element.MinimumDate.ToUniversalTime());
         }
 
-        private void LinkDatePickerToAndroidControl(DatePicker element)
+        private void LinkDatePickerToAndroidControl(DatePickerForms element)
         {
             element.DateSelected += ElementDateChanged;
             Control.DateChanged += AndroidControlOnDateChanged;
