@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -39,8 +40,9 @@ namespace Smartway.UiComponent.CardLists
 
         public string Counter => (SourceList?.Count ?? 0).ToString();
 
-        public ExpanderState ExpanderState { get; set; }
+        public ExpandState ExpanderState { get; set; }
 
+        
         public bool IsExpanded
         {
             get => (bool)GetValue(IsExpandedProperty);
@@ -151,7 +153,7 @@ namespace Smartway.UiComponent.CardLists
         private async Task OnExpanderClick()
         {
             ExpandCommand?.Execute(null);
-            if (ExpanderState != ExpanderState.Expanding)
+            if (ExpanderState != ExpandState.Expanding)
                 return;
 
             await DisplayData();

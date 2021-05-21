@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,7 +26,7 @@ namespace Smartway.UiComponent.Cards
         );
 
         public static readonly BindableProperty StateProperty = BindableProperty.Create(
-            nameof(State), typeof(ExpanderState), typeof(ExpanderCard), default(ExpanderState), BindingMode.OneWayToSource
+            nameof(State), typeof(ExpandState), typeof(ExpanderCard), default(ExpandState), BindingMode.OneWayToSource
         );
 
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
@@ -62,9 +63,9 @@ namespace Smartway.UiComponent.Cards
             set => SetValue(IsExpandedProperty, value);
         }
 
-        public ExpanderState State
+        public ExpandState State
         {
-            get => (ExpanderState)GetValue(StateProperty);
+            get => (ExpandState)GetValue(StateProperty);
             set => SetValue(StateProperty, value);
         }
 
