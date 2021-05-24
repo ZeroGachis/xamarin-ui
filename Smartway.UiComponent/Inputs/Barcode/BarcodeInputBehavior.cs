@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Inputs.Barcode
 {
-    public class BarcodeInputBehavior: BaseBehavior<BarcodeEntry>
+    public class BarcodeInputBehavior: BaseBehavior<Entry>
     {
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(BarcodeInputBehavior));
 
