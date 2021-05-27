@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Linq;
+using System.Windows.Input;
 using Smartway.Barcode.Ean13;
 using Smartway.UiComponent.Behaviors;
 using Xamarin.Forms;
@@ -41,8 +42,7 @@ namespace Smartway.UiComponent.Inputs.Barcode
             if (string.IsNullOrEmpty(e.NewTextValue))
                 return;
 
-            if (e.NewTextValue.Length > Ean13.CheckedLength
-                || e.NewTextValue.Length == Ean13.CheckedLength && !Ean13.Check(e.NewTextValue))
+            if (InputIsInvalid(e.NewTextValue))
             {
                 AssociatedObject.Text = e.OldTextValue;
                 return;
@@ -52,6 +52,13 @@ namespace Smartway.UiComponent.Inputs.Barcode
                 return;
 
             Command?.Execute(e.NewTextValue);
+        }
+
+        private bool InputIsInvalid(string input)
+        {
+            return input.Length > Ean13.CheckedLength
+                   || input.Length == Ean13.CheckedLength && !Ean13.Check(input)
+                   || input.ToCharArray().Any(_ => !char.IsDigit(_));
         }
     }
 }
