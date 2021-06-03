@@ -38,6 +38,6 @@
 		<file src="Smartway.UiComponent\bin\Release\**" target="lib" />
 		
         <!-- Android reference assemblies -->
-		<file src="Smartway.UiComponent.Droid\bin\Release\**" target="lib" />
+		<file src="Smartway.UiComponent.Droid\bin\Release\**" target="lib\monoandroid90" />
     </files>
 </package>
