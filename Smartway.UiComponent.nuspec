@@ -33,18 +33,11 @@
 		
 		<!-- Icon -->
 		<file src="smartway.png" target="" />
-        
-		<!-- Resources -->
-		<file src="Smartway.UiComponent\bin\Release\netstandard2.0\es-ES\**" target="lib\netstandard2.0\es-ES\" />
-		
+        		
         <!-- Cross-platform reference assemblies -->
-        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.dll" target="lib\netstandard2.0\Smartway.UiComponent.dll" />
-        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.pdb" target="lib\netstandard2.0\Smartway.UiComponent.pdb" />
+		<file src="Smartway.UiComponent\bin\Release\**" target="lib" />
 		
         <!-- Android reference assemblies -->
-        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.dll" target="lib\monoandroid90\Smartway.UiComponent.dll" />
-        <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.pdb" target="lib\monoandroid90\Smartway.UiComponent.pdb" />
-        <file src="Smartway.UiComponent.Droid\bin\Release\Smartway.UiComponent.Droid.dll" target="lib\monoandroid90\Smartway.UiComponent.Droid.dll" />
-        <file src="Smartway.UiComponent.Droid\bin\Release\Smartway.UiComponent.Droid.pdb" target="lib\monoandroid90\Smartway.UiComponent.Droid.pdb" />
+		<file src="Smartway.UiComponent.Droid\bin\Release\**" target="lib" />
     </files>
 </package>
