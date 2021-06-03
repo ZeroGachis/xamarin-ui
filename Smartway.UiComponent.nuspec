@@ -34,6 +34,9 @@
 		<!-- Icon -->
 		<file src="smartway.png" target="" />
         
+		<!-- Resources -->
+		<file src="Smartway.UiComponent\bin\Release\netstandard2.0\es-ES\**" target="lib\netstandard2.0\es-ES\" />
+		
         <!-- Cross-platform reference assemblies -->
         <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.dll" target="lib\netstandard2.0\Smartway.UiComponent.dll" />
         <file src="Smartway.UiComponent\bin\Release\netstandard2.0\Smartway.UiComponent.pdb" target="lib\netstandard2.0\Smartway.UiComponent.pdb" />
