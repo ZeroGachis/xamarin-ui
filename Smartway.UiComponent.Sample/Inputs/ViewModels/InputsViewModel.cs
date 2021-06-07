@@ -87,5 +87,12 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
 
         public DateTime MinimumDate => DateTime.Today;
         public DateTime MaximumDate => DateTime.Today.AddYears(4);
+
+        private uint _counterValue;
+        public uint CounterValue
+        {
+            get => _counterValue;
+            set => Set(nameof(CounterValue), ref _counterValue, value);
+        }
     }
 }

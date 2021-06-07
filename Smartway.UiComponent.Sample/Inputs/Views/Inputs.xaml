@@ -19,14 +19,13 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="30" Padding="16, 30, 16, 0" BackgroundColor="{StaticResource ZgLightGrey}">
+            <StackLayout Spacing="30" Padding="16, 30, 16, 30" BackgroundColor="{StaticResource ZgLightGrey}">
                 <Frame>
                     <StackLayout Padding="0, 0, 0, 5">
                         <Label Text="Barcode Input" Style="{StaticResource TitleStyle}"/>
                         <barcode:BarcodeInput />
                     </StackLayout>
                 </Frame>
-                
                 <Frame>
                     <StackLayout>
                         <Label Text="RadioButton" Style="{StaticResource TitleStyle}"/>
@@ -110,6 +109,12 @@
                             Date="{Binding Date}"/>
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
                     </StackLayout>
+                </Frame>
+                <Frame>
+                    <inputs:Counter FontColor="DarkBlue"
+                                    FontSize="25"
+                                    FontFamily="OpenSansSemiBold"
+                                    Value="{Binding CounterValue}"/>
                 </Frame>
             </StackLayout>
         </ScrollView>

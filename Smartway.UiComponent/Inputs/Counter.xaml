@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartway.UiComponent.Inputs.Counter"
+             x:Name="Self">
+    <ContentView.Resources>
+        <Style TargetType="Label" x:Key="NumericValueStyle">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="FontFamily" Value="{Binding Source={x:Reference Self}, Path=FontFamily}"/>
+            <Setter Property="Text" Value="{Binding Source={x:Reference Self}, Path=Value}"/>
+            <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+            <Setter Property="TextColor" Value="{Binding Source={x:Reference Self}, Path=FontColor}"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonsStyle">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HeightRequest" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+            <Setter Property="WidthRequest" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="Layout">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Spacing" Value="10"/>
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout Style="{StaticResource Layout}">
+            <Button Style="{StaticResource ButtonsStyle}"
+                    Clicked="DecreaseCounterValue">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xe15c;"
+                                     FontFamily="MaterialRegular"
+                                     Color="{Binding Source={x:Reference Self}, Path=FontColor}"
+                                     Size="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+                </Button.ImageSource>
+            </Button>
+            <Label Style="{StaticResource NumericValueStyle}"/>
+            <Button Style="{StaticResource ButtonsStyle}"
+                    Clicked="IncreaseCounterValue">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xe147;"
+                                     FontFamily="MaterialRegular"
+                                     Color="{Binding Source={x:Reference Self}, Path=FontColor}"
+                                     Size="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+                </Button.ImageSource>
+            </Button>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
