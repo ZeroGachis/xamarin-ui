@@ -21,6 +21,37 @@
         <ScrollView>
             <StackLayout Spacing="30" Padding="16, 30, 16, 30" BackgroundColor="{StaticResource ZgLightGrey}">
                 <Frame>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Beautiful counter" Style="{StaticResource TitleStyle}"/>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                            <Label Text="Int full range"
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   HorizontalOptions="FillAndExpand"/>
+                            <inputs:Counter FontColor="DarkBlue"
+                                            FontSize="40"
+                                            FontFamily="OpenSansSemiBold"
+                                            HorizontalOptions="EndAndExpand"
+                                            Value="{Binding CounterValue}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"
+                                     HorizontalOptions="FillAndExpand">
+                            <Label Text="0 - 15"
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   HorizontalOptions="FillAndExpand"/>
+                            <inputs:Counter FontColor="DarkBlue"
+                                            FontSize="25"
+                                            FontFamily="OpenSansSemiBold"
+                                            MinValue="0"
+                                            MaxValue="15"
+                                            HorizontalOptions="EndAndExpand"
+                                            Value="{Binding CounterValue2}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame>
                     <StackLayout Padding="0, 0, 0, 5">
                         <Label Text="Barcode Input" Style="{StaticResource TitleStyle}"/>
                         <barcode:BarcodeInput />
@@ -109,12 +140,6 @@
                             Date="{Binding Date}"/>
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
                     </StackLayout>
-                </Frame>
-                <Frame>
-                    <inputs:Counter FontColor="DarkBlue"
-                                    FontSize="25"
-                                    FontFamily="OpenSansSemiBold"
-                                    Value="{Binding CounterValue}"/>
                 </Frame>
             </StackLayout>
         </ScrollView>
