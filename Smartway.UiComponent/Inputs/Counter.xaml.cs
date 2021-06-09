@@ -14,12 +14,30 @@ namespace Smartway.UiComponent.Inputs
         }
 
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(
-            "Value", typeof(uint), typeof(Counter), default(uint), BindingMode.TwoWay);
+            "Value", typeof(int), typeof(Counter), default(int), BindingMode.TwoWay);
 
-        public uint Value
+        public int Value
         {
-            get => (uint)GetValue(ValueProperty);
+            get => (int)GetValue(ValueProperty);
             set => SetValue(ValueProperty, value);
+        }
+
+        public static readonly BindableProperty MinValueProperty = BindableProperty.Create(
+            "MinValue", typeof(int), typeof(Counter), int.MinValue);
+
+        public int MinValue
+        {
+            get => (int)GetValue(MinValueProperty);
+            set => SetValue(MinValueProperty, value);
+        }
+
+        public static readonly BindableProperty MaxValueProperty = BindableProperty.Create(
+            "MaxValue", typeof(int), typeof(Counter), int.MaxValue);
+
+        public int MaxValue
+        {
+            get => (int)GetValue(MaxValueProperty);
+            set => SetValue(MaxValueProperty, value);
         }
 
         public static readonly BindableProperty FontColorProperty = BindableProperty.Create(
@@ -51,13 +69,15 @@ namespace Smartway.UiComponent.Inputs
 
         private void DecreaseCounterValue(object sender, EventArgs e)
         {
-            if (Value == 0)
+            if (Value == MinValue)
                 return;
             Value--;
         }
 
         private void IncreaseCounterValue(object sender, EventArgs e)
         {
+            if (Value == MaxValue)
+                return;
             Value++;
         }
     }

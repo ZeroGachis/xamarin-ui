@@ -94,5 +94,12 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
             get => _counterValue;
             set => Set(nameof(CounterValue), ref _counterValue, value);
         }
+
+        private uint _counterValue2 = 10;
+        public uint CounterValue2
+        {
+            get => _counterValue2;
+            set => Set(nameof(CounterValue2), ref _counterValue2, value);
+        }
     }
 }
