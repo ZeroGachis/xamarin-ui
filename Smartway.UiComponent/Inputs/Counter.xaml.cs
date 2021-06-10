@@ -1,4 +1,5 @@
 ﻿using System;
+using Smartway.UiComponent.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -11,6 +12,8 @@ namespace Smartway.UiComponent.Inputs
         public Counter()
         {
             InitializeComponent();
+
+            RefreshButtonsEnabled();
         }
 
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(
@@ -69,16 +72,20 @@ namespace Smartway.UiComponent.Inputs
 
         private void DecreaseCounterValue(object sender, EventArgs e)
         {
-            if (Value == MinValue)
-                return;
             Value--;
+            RefreshButtonsEnabled();
         }
 
         private void IncreaseCounterValue(object sender, EventArgs e)
         {
-            if (Value == MaxValue)
-                return;
             Value++;
+            RefreshButtonsEnabled();
+        }
+
+        private void RefreshButtonsEnabled()
+        {
+            DecreaseButton.IsEnabled = Value > MinValue;
+            IncreaseButton.IsEnabled = Value < MaxValue;
         }
     }
 }
