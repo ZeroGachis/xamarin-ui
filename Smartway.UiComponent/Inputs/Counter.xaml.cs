@@ -12,12 +12,16 @@ namespace Smartway.UiComponent.Inputs
         public Counter()
         {
             InitializeComponent();
-
-            RefreshButtonsEnabled();
         }
 
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(
-            "Value", typeof(int), typeof(Counter), default(int), BindingMode.TwoWay);
+            "Value", typeof(int), typeof(Counter), default(int), BindingMode.TwoWay, propertyChanged: ValueChanged);
+
+        private static void ValueChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (bindable is Counter counter)
+                counter.RefreshButtonsEnabled();
+        }
 
         public int Value
         {
@@ -73,13 +77,11 @@ namespace Smartway.UiComponent.Inputs
         private void DecreaseCounterValue(object sender, EventArgs e)
         {
             Value--;
-            RefreshButtonsEnabled();
         }
 
         private void IncreaseCounterValue(object sender, EventArgs e)
         {
             Value++;
-            RefreshButtonsEnabled();
         }
 
         private void RefreshButtonsEnabled()
