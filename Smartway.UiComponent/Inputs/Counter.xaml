@@ -17,6 +17,12 @@
             <Setter Property="VerticalOptions" Value="Fill"/>
             <Setter Property="HorizontalOptions" Value="Fill"/>
             <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="{Binding Source={x:Reference Self}, Path=FontColor}"/>
+            <Style.Triggers>
+                <Trigger TargetType="Button" Property="IsEnabled" Value="False">
+                    <Setter Property="TextColor" Value="{StaticResource ZgColdGrey}"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
@@ -27,24 +33,26 @@
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
+                    x:Name="DecreaseButton"
                     Style="{StaticResource ButtonsStyle}"
                     Clicked="DecreaseCounterValue">
                 <Button.ImageSource>
                     <FontImageSource Glyph="&#xe15c;"
                                      FontFamily="MaterialRegular"
-                                     Color="{Binding Source={x:Reference Self}, Path=FontColor}"
+                                     Color="{Binding Source={x:Reference DecreaseButton}, Path=TextColor}"
                                      Size="{Binding Source={x:Reference Self}, Path=FontSize}"/>
                 </Button.ImageSource>
             </Button>
             <Label Grid.Column="1"
                    Style="{StaticResource NumericValueStyle}"/>
             <Button Grid.Column="2"
+                    x:Name="IncreaseButton"
                     Style="{StaticResource ButtonsStyle}"
                     Clicked="IncreaseCounterValue">
                 <Button.ImageSource>
                     <FontImageSource Glyph="&#xe147;"
                                      FontFamily="MaterialRegular"
-                                     Color="{Binding Source={x:Reference Self}, Path=FontColor}"
+                                     Color="{Binding Source={x:Reference IncreaseButton}, Path=TextColor}"
                                      Size="{Binding Source={x:Reference Self}, Path=FontSize}"/>
                 </Button.ImageSource>
             </Button>
