@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Expander
+<toolkit:Expander
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
     xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
+    xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
     x:Class="Smartway.UiComponent.Cards.CustomExpander"
     x:Name="Self"
     IsExpanded="{Binding Path=IsExpanded, Source={x:Reference Self}}"
     State="{Binding Path=State, Source={x:Reference Self}}"
     ForceUpdateSizeCommand="{Binding Path=ForceUpdateSizeCommand, Source={x:Reference Self}}"
     Command="{Binding Path=Command, Source={x:Reference Self}}" Margin="0">
-    <Expander.Resources>
+    <toolkit:Expander.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <resources:Colors />
@@ -68,8 +69,8 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Expander.Resources>
-    <Expander.Header>
+    </toolkit:Expander.Resources>
+    <toolkit:Expander.Header>
         <Grid Style="{StaticResource Header}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -83,5 +84,5 @@
             <Label Grid.Column="1" Text="{Binding Path=Counter, Source={x:Reference Self}}"  HorizontalOptions="End"  Style="{StaticResource CounterLabel}"/>
             <icons:Icon Grid.Column="2" Style="{StaticResource DropDownIcon}"/>
         </Grid>
-    </Expander.Header>
-</Expander>
+    </toolkit:Expander.Header>
+</toolkit:Expander>
