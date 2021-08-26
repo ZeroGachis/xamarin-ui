@@ -1,6 +1,11 @@
-﻿using Android.Content;
+﻿using System.Globalization;
+using System.Linq;
+using System.Text.RegularExpressions;
+using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Runtime;
+using Android.Text;
+using Android.Text.Method;
 using Android.Widget;
 using Smartway.UiComponent.Sample.Droid;
 using Xamarin.Forms;
@@ -19,19 +24,45 @@ namespace Smartway.UiComponent.Sample.Droid
         {
             base.OnElementChanged(e);
 
-            if (Control != null)
+            if (Control == null)
+                return;
+
+            var gd = new GradientDrawable();
+            gd.SetColor(global::Android.Graphics.Color.Transparent);
+
+            Control.SetPadding(0, 0, Control.PaddingRight, 0);
+
+            if (Control.InputType.HasFlag(InputTypes.NumberFlagDecimal))
             {
-                GradientDrawable gd = new GradientDrawable();
-                gd.SetColor(global::Android.Graphics.Color.Transparent);
-
-                this.Control.SetPadding(0, 0, Control.PaddingRight, 0);
-
-                if (e.OldElement != null)
-                    return;
-
-                RemoveHintBottomLine();
-                SetCursorColor();
+                Control.KeyListener = DigitsKeyListener.GetInstance("0123456789.,");
+                Control.TextChanged += Control_TextChanged;
             }
+
+            if (e.OldElement != null)
+                return;
+
+            RemoveHintBottomLine();
+            SetCursorColor();
+        }
+
+        private const string DecimalRegEx = @"^\d+((\.|\,){1})?\d*$";
+        private void Control_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            var control = sender as FormsEditText;
+            control.SetSelection(control.Text.Length);
+
+            var lastChar = e.Text?.LastOrDefault();
+            if (lastChar != ',' && lastChar != '.')
+                return;
+
+            if (!Regex.IsMatch(control.Text, DecimalRegEx))
+                control.Text = control.Text.Remove(control.Text.Length - 1);
+
+            var cultureDecimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            if (lastChar.ToString() == cultureDecimalSeparator)
+                return;
+
+            control.Text = control.Text.Replace(lastChar.ToString(), cultureDecimalSeparator);
         }
 
         private void SetCursorColor()

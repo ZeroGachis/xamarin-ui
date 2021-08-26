@@ -13,6 +13,7 @@
                 <inputs:FormEntry Title="Error" Prefix="€" Helper="There was an error" PlaceHolder="This is a placeholder" Error="True"/>
                 <inputs:FormEntry Title="Without prefix" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder"/>
                 <inputs:FormEntry Title="Password" Prefix="" Helper="Helper text" PlaceHolder="This is a placeholder" IsPassword="True"/>
+                <inputs:FormEntry Title="Numeric Keyboard" Helper="Helper text" PlaceHolder="Entrez un nombre décimal" Keyboard="Numeric"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
