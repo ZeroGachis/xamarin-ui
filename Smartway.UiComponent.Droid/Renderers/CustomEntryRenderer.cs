@@ -7,12 +7,12 @@ using Android.Runtime;
 using Android.Text;
 using Android.Text.Method;
 using Android.Widget;
-using Smartway.UiComponent.Sample.Droid;
+using Smartway.UiComponent.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
-namespace Smartway.UiComponent.Sample.Droid
+namespace Smartway.UiComponent.Droid.Renderers
 {
     public class CustomEntryRenderer : EntryRenderer
     {
