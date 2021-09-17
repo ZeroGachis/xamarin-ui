@@ -3,20 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
-             xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
              mc:Ignorable="d"
              x:Class="Smartway.UiComponent.Buttons.ScanButton"
              x:Name="Self" >
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <resources:Colors />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentView.Resources>
-    <Frame CornerRadius="32" Padding="14" BackgroundColor="{StaticResource ZgDarkBlue}">
+    <Frame CornerRadius="32" Padding="14" BackgroundColor="Accent">
             <Frame.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Source={Reference Self}, Path=Command}"/>
         </Frame.GestureRecognizers>
