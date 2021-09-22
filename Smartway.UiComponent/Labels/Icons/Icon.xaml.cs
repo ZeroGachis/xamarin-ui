@@ -33,6 +33,7 @@ namespace Smartway.UiComponent.Labels.Icons
             Today,
             ViewHeadline,
             Warning,
+            Settings,
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace Smartway.UiComponent.Labels.Icons
             { IconNames.Today, "\ue8df" },
             { IconNames.ViewHeadline, "\ue8ee" },
             { IconNames.Warning, "\ue002" },
+            { IconNames.Settings, "\ue8b8" },
         };
         
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
