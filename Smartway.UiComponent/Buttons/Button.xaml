@@ -29,7 +29,7 @@
                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="Primary"/>
                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=Activated}" Value="True"/>
             </MultiTrigger.Conditions>
-            <Setter Property="BackgroundColor" Value="{StaticResource ZgDarkBlue}" />
+            <Setter Property="BackgroundColor" Value="Accent" />
         </MultiTrigger>
         <MultiTrigger TargetType="Button">
             <MultiTrigger.Conditions>

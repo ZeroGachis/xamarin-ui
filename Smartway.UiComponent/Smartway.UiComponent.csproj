@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\SmartwayIcons.ttf" />
     <None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\SmartwayIcons.ttf" />
     <EmbeddedResource Include="Resources\Fonts\MaterialIcons-Regular.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Regular.ttf" />

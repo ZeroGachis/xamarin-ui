@@ -89,7 +89,9 @@
                 <Label Style="{StaticResource Section}" Text="Variations" />
                 <Buttons:TextButton Text="Text Button" />
                 <Buttons:TextButton Text="Text Button (limits)" BorderWidth="1" BorderColor="{StaticResource ZgBrightOrange}" />
-                <Buttons:ScanButton Command="{Binding ScanCommand}"/>
+                <Buttons:ScanButton Command="{Binding ScanCommand}"
+                                    Margin="30"
+                                    HorizontalOptions="End"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

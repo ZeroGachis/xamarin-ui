@@ -1,16 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
-             mc:Ignorable="d"
-             x:Class="Smartway.UiComponent.Buttons.ScanButton"
-             x:Name="Self" >
-    <Frame CornerRadius="32" Padding="14" BackgroundColor="Accent">
-            <Frame.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding Source={Reference Self}, Path=Command}"/>
-        </Frame.GestureRecognizers>
-        <icons:Icon Value="CenterFocusStrong" TextColor="White" FontSize="30"/>
-    </Frame>
-</ContentView>
+<Button xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Smartway.UiComponent.Buttons.ScanButton"
+        CornerRadius="32"
+        BackgroundColor="Accent"
+        WidthRequest="58"
+        HeightRequest="58"
+        Text="&#xe900;"
+        TextColor="White"
+        FontSize="24"
+        FontFamily="SmartwayIcons"/>
