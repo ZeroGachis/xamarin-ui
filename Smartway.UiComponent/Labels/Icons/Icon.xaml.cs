@@ -27,9 +27,9 @@ namespace Smartway.UiComponent.Labels.Icons
             FormatAlignLeft,
             GridView,
             NotificationImportant,
+            NotInterested,
             Search,
             SignalCellularNoSim,
-            Stop,
             Today,
             ViewHeadline,
             Warning,
@@ -56,15 +56,15 @@ namespace Smartway.UiComponent.Labels.Icons
             { IconNames.FormatAlignLeft, "\ue236" },
             { IconNames.GridView, "\ue9b0" },
             { IconNames.NotificationImportant, "\ue004" },
+            { IconNames.NotInterested, "\ue033" },
             { IconNames.Search, "\ue8b6" },
             { IconNames.SignalCellularNoSim, "\ue1ce" },
-            { IconNames.Stop, "\ue047" },
             { IconNames.Today, "\ue8df" },
             { IconNames.ViewHeadline, "\ue8ee" },
             { IconNames.Warning, "\ue002" },
             { IconNames.Settings, "\ue8b8" },
         };
-        
+
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
             typeof(IconNames), typeof(Icon), propertyChanged: OnValueChanged);
 
