@@ -30,7 +30,7 @@ namespace Smartway.UiComponent.Inputs
         }
 
         public static readonly BindableProperty MinValueProperty = BindableProperty.Create(
-            "MinValue", typeof(int), typeof(Counter), int.MinValue);
+            "MinValue", typeof(int), typeof(Counter), int.MinValue, propertyChanged: ValueChanged);
 
         public int MinValue
         {
