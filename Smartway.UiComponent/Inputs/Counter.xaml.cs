@@ -1,5 +1,4 @@
 ﻿using System;
-using Smartway.UiComponent.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;

@@ -10,7 +10,7 @@
             <Setter Property="VerticalTextAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="{Binding Source={x:Reference Self}, Path=FontFamily}"/>
             <Setter Property="Text" Value="{Binding Source={x:Reference Self}, Path=Value}"/>
-            <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="TextColor" Value="{Binding Source={x:Reference Self}, Path=FontColor}"/>
         </Style>
         <Style TargetType="Button" x:Key="ButtonsStyle">
@@ -40,7 +40,7 @@
                     <FontImageSource Glyph="&#xe15c;"
                                      FontFamily="MaterialRegular"
                                      Color="{Binding Source={x:Reference DecreaseButton}, Path=TextColor}"
-                                     Size="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+                                     Size="35"/>
                 </Button.ImageSource>
             </Button>
             <Label Grid.Column="1"
@@ -53,7 +53,7 @@
                     <FontImageSource Glyph="&#xe147;"
                                      FontFamily="MaterialRegular"
                                      Color="{Binding Source={x:Reference IncreaseButton}, Path=TextColor}"
-                                     Size="{Binding Source={x:Reference Self}, Path=FontSize}"/>
+                                     Size="35"/>
                 </Button.ImageSource>
             </Button>
         </Grid>
