@@ -35,6 +35,20 @@ namespace Smartway.UiComponent.Labels.Icons
             ViewHeadline,
             Warning,
             Settings,
+            BarcodeScan,
+            DatamatrixScan,
+            KeyboardSpace,
+            BackSpaceOutline,
+            CheckOutline,
+            Dash,
+            Heart,
+            AlertOutline,
+            Alert,
+            ListOutline,
+            List,
+            RevalueOutline,
+            Revalue,
+            Stick
         }
 
         /// <summary>
@@ -46,11 +60,8 @@ namespace Smartway.UiComponent.Labels.Icons
             new MaterialIcon(IconNames.ArrowBack, "\ue5c4"),
             new MaterialIcon(IconNames.ArrowDropDown, "\ue5c5"),
             new MaterialIcon(IconNames.ArrowDropUp, "\ue5c7"),
-            new MaterialIcon(IconNames.ArrowLeft, "\ue5de"),
-            new MaterialIcon(IconNames.ArrowRight, "\ue5df"),
             new MaterialIcon(IconNames.CalendarToday, "\ue935"),
             new MaterialIcon(IconNames.CenterFocusStrong, "\ue3b4"),
-            new MaterialIcon(IconNames.Check, "\ue5ca"),
             new MaterialIcon(IconNames.Clear, "\ue14c"),
             new MaterialIcon(IconNames.Close, "\ue5cd"),
             new MaterialIcon(IconNames.Delete, "\ue872"),
@@ -63,7 +74,25 @@ namespace Smartway.UiComponent.Labels.Icons
             new MaterialIcon(IconNames.Today, "\ue8df"),
             new MaterialIcon(IconNames.ViewHeadline, "\ue8ee"),
             new MaterialIcon(IconNames.Warning, "\ue002"),
-            new MaterialIcon(IconNames.Settings, "\ue8b8")
+            new MaterialIcon(IconNames.Settings, "\ue8b8"),
+
+            new SmartwayIcon(IconNames.BarcodeScan, "\ue900"),
+            new SmartwayIcon(IconNames.DatamatrixScan, "\ue901"),
+            new SmartwayIcon(IconNames.KeyboardSpace, "\ue902"),
+            new SmartwayIcon(IconNames.BackSpaceOutline, "\ue903"),
+            new SmartwayIcon(IconNames.Check, "\ue904"),
+            new SmartwayIcon(IconNames.Dash, "\ue905"),
+            new SmartwayIcon(IconNames.ArrowRight, "\ue906"),
+            new SmartwayIcon(IconNames.ArrowLeft, "\ue907"),
+            new SmartwayIcon(IconNames.CheckOutline, "\ue908"),
+            new SmartwayIcon(IconNames.Heart, "\ue909"),
+            new SmartwayIcon(IconNames.AlertOutline, "\ue90a"),
+            new SmartwayIcon(IconNames.Alert, "\ue90b"),
+            new SmartwayIcon(IconNames.ListOutline, "\ue90c"),
+            new SmartwayIcon(IconNames.List, "\ue90d"),
+            new SmartwayIcon(IconNames.RevalueOutline, "\ue90e"),
+            new SmartwayIcon(IconNames.Revalue, "\ue90f"),
+            new SmartwayIcon(IconNames.Stick, "\ue910")
         };
 
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
