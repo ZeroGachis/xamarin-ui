@@ -2,8 +2,7 @@
 using Android.Content.Res;
 using Android.Graphics;
 using Android.OS;
-using Android.Runtime;
-using Android.Widget;
+using Smartway.UiComponent.Droid.Extensions;
 using Smartway.UiComponent.Droid.Renderers;
 using Smartway.UiComponent.Inputs.Barcode;
 using Xamarin.Forms;
@@ -26,14 +25,7 @@ namespace Smartway.UiComponent.Droid.Renderers
                 return;
 
             RemoveHintBottomLine();
-            SetCursorColor();
-        }
-
-        private void SetCursorColor()
-        {
-            var intPtrtextViewClass = JNIEnv.FindClass(typeof(TextView));
-            var mCursorDrawableResProperty = JNIEnv.GetFieldID(intPtrtextViewClass, "mCursorDrawableRes", "I");
-            JNIEnv.SetField(Control.Handle, mCursorDrawableResProperty, Resource.Drawable.cursor);
+            Control.SetCursorColor();
         }
 
         private void RemoveHintBottomLine()

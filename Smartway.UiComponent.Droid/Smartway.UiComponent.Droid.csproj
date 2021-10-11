@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Effects\AndroidCustomTapEffect.cs" />
     <Compile Include="Effects\AndroidHoldTapEffect.cs" />
+    <Compile Include="Extensions\EntryExtension.cs" />
     <Compile Include="Renderers\BarcodeEntryRenderer.cs" />
     <Compile Include="Renderers\CustomButtonRenderer.cs" />
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
