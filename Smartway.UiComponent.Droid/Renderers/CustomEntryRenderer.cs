@@ -3,10 +3,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Android.Content;
 using Android.Graphics.Drawables;
-using Android.Runtime;
 using Android.Text;
 using Android.Text.Method;
-using Android.Widget;
+using Smartway.UiComponent.Droid.Extensions;
 using Smartway.UiComponent.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -28,7 +27,7 @@ namespace Smartway.UiComponent.Droid.Renderers
                 return;
 
             var gd = new GradientDrawable();
-            gd.SetColor(global::Android.Graphics.Color.Transparent);
+            gd.SetColor(Android.Graphics.Color.Transparent);
 
             Control.SetPadding(0, 0, Control.PaddingRight, 0);
 
@@ -41,8 +40,8 @@ namespace Smartway.UiComponent.Droid.Renderers
             if (e.OldElement != null)
                 return;
 
-            RemoveHintBottomLine();
-            SetCursorColor();
+            Control.RemoveHintBottomLine();
+            Control.SetCursorColor();
         }
 
         private const string DecimalRegEx = @"^\d+((\.|\,){1})?\d*$";
@@ -63,18 +62,6 @@ namespace Smartway.UiComponent.Droid.Renderers
                 return;
 
             control.Text = control.Text.Replace(lastChar.ToString(), cultureDecimalSeparator);
-        }
-
-        private void SetCursorColor()
-        {
-            var IntPtrtextViewClass = JNIEnv.FindClass(typeof(TextView));
-            var mCursorDrawableResProperty = JNIEnv.GetFieldID(IntPtrtextViewClass, "mCursorDrawableRes", "I");
-            JNIEnv.SetField(Control.Handle, mCursorDrawableResProperty, Resource.Drawable.cursor);
-        }
-
-        private void RemoveHintBottomLine()
-        {
-            this.Control.SetBackground(null);
         }
     }
 }
