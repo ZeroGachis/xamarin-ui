@@ -16,6 +16,7 @@
             <Button Text="Indicators" Command="{Binding Indicators}"/>
             <Button Text="SectionSheet" Command="{Binding SectionSheet}"/>
             <Button Text="ExpanderCard" Command="{Binding ExpanderCard}"/>
+            <Button Text="Icons" Command="{Binding Icons}"/>
             <Button Text="TopAppBar" Command="{Binding TopAppBar}"/>
             <Button Text="Separator" Command="{Binding Separators}" />
             <Button Text="Button" Command="{Binding Button}"/>
