@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smartway.UiComponent.Sample.Icons.Views.Icons"
+             xmlns:icons="clr-namespace:Smartway.UiComponent.Labels.Icons;assembly=Smartway.UiComponent"
+             x:Name="Self">
+    <ScrollView>
+        <FlexLayout Padding="16" 
+                    Direction="Row"
+                    Wrap="Wrap"
+                    JustifyContent="SpaceBetween"
+                    AlignContent="Start"
+                    AlignItems="Start"
+                    BindableLayout.ItemsSource="{Binding Source={x:Reference Self}, Path=IconNames}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="0, 0, 0, 16" 
+                                 Padding="8" 
+                                 HorizontalOptions="FillAndExpand" 
+                                 WidthRequest="145" 
+                                 BackgroundColor="LightGray">
+                        <icons:Icon Value="{Binding}" 
+                                    TextColor="Black" 
+                                    FontSize="32"
+                                    HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding}" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </ScrollView>
+</ContentPage>

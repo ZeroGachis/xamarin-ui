@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Smartway.UiComponent.Labels.Icons.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -34,35 +35,64 @@ namespace Smartway.UiComponent.Labels.Icons
             ViewHeadline,
             Warning,
             Settings,
+            BarcodeScan,
+            DatamatrixScan,
+            KeyboardSpace,
+            BackSpaceOutline,
+            CheckOutline,
+            Dash,
+            Heart,
+            AlertOutline,
+            Alert,
+            ListOutline,
+            List,
+            RevalueOutline,
+            Revalue,
+            Stick
         }
 
         /// <summary>
         /// <see cref="https://github.com/google/material-design-icons/blob/master/font/MaterialIconsOutlined-Regular.codepoints"/> for icon codes.
         /// </summary>
-        private readonly Dictionary<IconNames, string> _iconCodes = new Dictionary<IconNames, string>
+        private readonly List<IconModel> _iconModels = new List<IconModel>
         {
-            { IconNames.Alarm, "\ue190" },
-            { IconNames.ArrowBack, "\ue5c4" },
-            { IconNames.ArrowDropDown, "\ue5c5" },
-            { IconNames.ArrowDropUp, "\ue5c7" },
-            { IconNames.ArrowLeft, "\ue5de" },
-            { IconNames.ArrowRight, "\ue5df" },
-            { IconNames.CalendarToday, "\ue935" },
-            { IconNames.CenterFocusStrong, "\ue3b4" },
-            { IconNames.Check, "\ue5ca"},
-            { IconNames.Clear, "\ue14c" },
-            { IconNames.Close, "\ue5cd" },
-            { IconNames.Delete, "\ue872"},
-            { IconNames.FormatAlignLeft, "\ue236" },
-            { IconNames.GridView, "\ue9b0" },
-            { IconNames.NotificationImportant, "\ue004" },
-            { IconNames.NotInterested, "\ue033" },
-            { IconNames.Search, "\ue8b6" },
-            { IconNames.SignalCellularNoSim, "\ue1ce" },
-            { IconNames.Today, "\ue8df" },
-            { IconNames.ViewHeadline, "\ue8ee" },
-            { IconNames.Warning, "\ue002" },
-            { IconNames.Settings, "\ue8b8" },
+            new MaterialIcon(IconNames.Alarm, "\ue190"),
+            new MaterialIcon(IconNames.ArrowBack, "\ue5c4"),
+            new MaterialIcon(IconNames.ArrowDropDown, "\ue5c5"),
+            new MaterialIcon(IconNames.ArrowDropUp, "\ue5c7"),
+            new MaterialIcon(IconNames.CalendarToday, "\ue935"),
+            new MaterialIcon(IconNames.CenterFocusStrong, "\ue3b4"),
+            new MaterialIcon(IconNames.Clear, "\ue14c"),
+            new MaterialIcon(IconNames.Close, "\ue5cd"),
+            new MaterialIcon(IconNames.Delete, "\ue872"),
+            new MaterialIcon(IconNames.FormatAlignLeft, "\ue236"),
+            new MaterialIcon(IconNames.GridView, "\ue9b0"),
+            new MaterialIcon(IconNames.NotificationImportant, "\ue004"),
+            new MaterialIcon(IconNames.NotInterested, "\ue033"),
+            new MaterialIcon(IconNames.Search, "\ue8b6"),
+            new MaterialIcon(IconNames.SignalCellularNoSim, "\ue1ce"),
+            new MaterialIcon(IconNames.Today, "\ue8df"),
+            new MaterialIcon(IconNames.ViewHeadline, "\ue8ee"),
+            new MaterialIcon(IconNames.Warning, "\ue002"),
+            new MaterialIcon(IconNames.Settings, "\ue8b8"),
+
+            new SmartwayIcon(IconNames.BarcodeScan, "\ue900"),
+            new SmartwayIcon(IconNames.DatamatrixScan, "\ue901"),
+            new SmartwayIcon(IconNames.KeyboardSpace, "\ue902"),
+            new SmartwayIcon(IconNames.BackSpaceOutline, "\ue903"),
+            new SmartwayIcon(IconNames.Check, "\ue904"),
+            new SmartwayIcon(IconNames.Dash, "\ue905"),
+            new SmartwayIcon(IconNames.ArrowRight, "\ue906"),
+            new SmartwayIcon(IconNames.ArrowLeft, "\ue907"),
+            new SmartwayIcon(IconNames.CheckOutline, "\ue908"),
+            new SmartwayIcon(IconNames.Heart, "\ue909"),
+            new SmartwayIcon(IconNames.AlertOutline, "\ue90a"),
+            new SmartwayIcon(IconNames.Alert, "\ue90b"),
+            new SmartwayIcon(IconNames.ListOutline, "\ue90c"),
+            new SmartwayIcon(IconNames.List, "\ue90d"),
+            new SmartwayIcon(IconNames.RevalueOutline, "\ue90e"),
+            new SmartwayIcon(IconNames.Revalue, "\ue90f"),
+            new SmartwayIcon(IconNames.Stick, "\ue910")
         };
 
         public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
@@ -81,7 +111,9 @@ namespace Smartway.UiComponent.Labels.Icons
 
         private void UpdateText()
         {
-            Text = _iconCodes[Value];
+            var icon = _iconModels.Find(_ => _.Name == Value);
+            Text = icon.Code;
+            FontFamily = icon.FontFamily;
         }
 
         public IconNames Value
