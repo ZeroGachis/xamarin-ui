@@ -45,7 +45,7 @@
                         <Setter Property="Margin" Value="0, 0, 0, 10" />
                     </DataTrigger>
                 </StackLayout.Triggers>
-                <Image Style="{StaticResource ProductImage}">
+                <Image Style="{StaticResource ProductImage}" AutomationId="ProductImage">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="true">
                             <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder_multilocation.png}" />
@@ -60,6 +60,7 @@
                 </Image>
                 <StackLayout Orientation="Vertical">
                     <Label Style="{StaticResource ProductLabel}"
+                           AutomationId="ProductLabel"
                            Text="{Binding Source={Reference Self}, Path=Label}">
                         <Label.Triggers>
                             <DataTrigger TargetType="Label" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="false">
@@ -69,11 +70,13 @@
                     </Label>
                     <StackLayout Orientation="Horizontal"  VerticalOptions="EndAndExpand">
                         <Label
+                            AutomationId="ProductGencode"
                             x:Name="ProductGencode"
                             Style="{StaticResource RegularGencodeText}"
                             Text="{Binding Source={Reference Self}, Path=Gencode}" />
                         <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
                         <Label
+                            AutomationId="ProductPrice"
                             x:Name="ProductPrice"
                             Style="{StaticResource RegularGencodeText}"
                             Text="{Binding Source={Reference Self}, Path=Price}" />

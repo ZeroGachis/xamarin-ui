@@ -56,10 +56,12 @@
                         <DataTrigger TargetType="icons:Icon"
                          Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Default">
                             <Setter Property="Value" Value="ArrowBack"/>
+                            <Setter Property="AutomationId" Value="ArrowBack"/>
                         </DataTrigger>
                         <DataTrigger TargetType="icons:Icon"
                          Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Modal">
                             <Setter Property="Value" Value="Close"/>
+                            <Setter Property="AutomationId" Value="CloseIcon"/>
                         </DataTrigger>
                         <DataTrigger TargetType="icons:Icon"
                          Binding="{Binding Source={x:Reference Self}, Path=Type}" Value="Custom">
@@ -71,6 +73,7 @@
                                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Value" Value="ArrowBack"/>
+                            <Setter Property="AutomationId" Value="ArrowBack"/>
                             <Setter Property="TextColor" Value="White"/>
                         </MultiTrigger>
                         <MultiTrigger TargetType="icons:Icon">
@@ -79,6 +82,7 @@
                                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Value" Value="Close"/>
+                            <Setter Property="AutomationId" Value="CloseIcon"/>
                             <Setter Property="TextColor" Value="White"/>
                         </MultiTrigger>
                         <MultiTrigger TargetType="icons:Icon">

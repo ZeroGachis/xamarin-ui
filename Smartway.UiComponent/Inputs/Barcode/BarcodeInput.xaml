@@ -38,7 +38,7 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Frame Style="{StaticResource Global}">
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" AutomationId="EANManualInput">
                 <icons:Icon Style="{StaticResource Icon}" Value="ViewHeadline" Rotation="90"/>
                 <barcode:BarcodeEntry
                     Style="{StaticResource BaseEntry}"

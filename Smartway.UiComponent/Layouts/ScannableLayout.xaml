@@ -13,6 +13,7 @@
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" >
             </ContentView>
         <buttons:ScanButton
+                        AutomationId="FloatScanButton"
                         Command="{Binding ScanButtonCommand, Source={x:Reference Self}}"
                         RelativeLayout.XConstraint="272"
                         RelativeLayout.YConstraint="480"/>
