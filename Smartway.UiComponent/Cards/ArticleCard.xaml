@@ -60,8 +60,8 @@
                 </Image>
                 <StackLayout Orientation="Vertical">
                     <Label Style="{StaticResource ProductLabel}"
-                           AutomationId="ProductLabel"
-                           Text="{Binding Source={Reference Self}, Path=Label}">
+                           Text="{Binding Source={Reference Self}, Path=Label}"
+                           AutomationId="ProductLabel">
                         <Label.Triggers>
                             <DataTrigger TargetType="Label" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="false">
                                 <Setter Property="MaxLines" Value="2" />
@@ -70,16 +70,16 @@
                     </Label>
                     <StackLayout Orientation="Horizontal"  VerticalOptions="EndAndExpand">
                         <Label
-                            AutomationId="ProductGencode"
                             x:Name="ProductGencode"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Source={Reference Self}, Path=Gencode}" />
+                            Text="{Binding Source={Reference Self}, Path=Gencode}"
+                            AutomationId="ProductGencode"/>
                         <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
                         <Label
-                            AutomationId="ProductPrice"
                             x:Name="ProductPrice"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Source={Reference Self}, Path=Price}" />
+                            Text="{Binding Source={Reference Self}, Path=Price}"
+                            AutomationId="ProductPrice"/>
                     </StackLayout>
                     <Label
                         Style="{StaticResource RegularGencodeText}"

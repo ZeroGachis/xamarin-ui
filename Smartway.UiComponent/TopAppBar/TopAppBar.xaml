@@ -73,8 +73,8 @@
                                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Value" Value="ArrowBack"/>
-                            <Setter Property="AutomationId" Value="ArrowBack"/>
                             <Setter Property="TextColor" Value="White"/>
+                            <Setter Property="AutomationId" Value="ArrowBack"/>
                         </MultiTrigger>
                         <MultiTrigger TargetType="icons:Icon">
                             <MultiTrigger.Conditions>
@@ -82,8 +82,8 @@
                                 <BindingCondition Binding="{Binding Source={x:Reference Self}, Path=IsDarkTheme}" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Value" Value="Close"/>
-                            <Setter Property="AutomationId" Value="CloseIcon"/>
                             <Setter Property="TextColor" Value="White"/>
+                            <Setter Property="AutomationId" Value="CloseIcon"/>
                         </MultiTrigger>
                         <MultiTrigger TargetType="icons:Icon">
                             <MultiTrigger.Conditions>
