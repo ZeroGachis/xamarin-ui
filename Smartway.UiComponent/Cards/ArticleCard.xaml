@@ -45,7 +45,7 @@
                         <Setter Property="Margin" Value="0, 0, 0, 10" />
                     </DataTrigger>
                 </StackLayout.Triggers>
-                <Image Style="{StaticResource ProductImage}">
+                <Image Style="{StaticResource ProductImage}" AutomationId="ProductImage">
                     <Image.Triggers>
                         <DataTrigger TargetType="Image" Binding="{Binding Source={Reference Self}, Path=IsMultilocation}" Value="true">
                             <Setter Property="Source" Value="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.img_product_placeholder_multilocation.png}" />
@@ -60,7 +60,8 @@
                 </Image>
                 <StackLayout Orientation="Vertical">
                     <Label Style="{StaticResource ProductLabel}"
-                           Text="{Binding Source={Reference Self}, Path=Label}">
+                           Text="{Binding Source={Reference Self}, Path=Label}"
+                           AutomationId="ProductLabel">
                         <Label.Triggers>
                             <DataTrigger TargetType="Label" Binding="{Binding Source={Reference Self}, Path=IsCondensed}" Value="false">
                                 <Setter Property="MaxLines" Value="2" />
@@ -71,12 +72,14 @@
                         <Label
                             x:Name="ProductGencode"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Source={Reference Self}, Path=Gencode}" />
+                            Text="{Binding Source={Reference Self}, Path=Gencode}"
+                            AutomationId="ProductGencode"/>
                         <Label Style="{StaticResource RegularGencodeText}" FontSize="13" Text=" · " />
                         <Label
                             x:Name="ProductPrice"
                             Style="{StaticResource RegularGencodeText}"
-                            Text="{Binding Source={Reference Self}, Path=Price}" />
+                            Text="{Binding Source={Reference Self}, Path=Price}"
+                            AutomationId="ProductPrice"/>
                     </StackLayout>
                     <Label
                         Style="{StaticResource RegularGencodeText}"
