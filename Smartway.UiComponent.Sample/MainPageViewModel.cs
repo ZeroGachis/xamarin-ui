@@ -6,6 +6,8 @@ using Smartway.UiComponent.Sample.Effects.ViewModels;
 using Smartway.UiComponent.Sample.ExpanderCard.ViewModels;
 using Smartway.UiComponent.Sample.Indicators.ViewModels;
 using Smartway.UiComponent.Sample.Inputs.ViewModels;
+using Smartway.UiComponent.Sample.Layouts.ViewModels;
+using Smartway.UiComponent.Sample.Layouts.Views;
 using Smartway.UiComponent.Sample.SectionSheet.ViewModels;
 using Smartway.UiComponent.Sample.SectionSheet.Views;
 using Smartway.UiComponent.Sample.Separator;
@@ -68,7 +70,7 @@ namespace Smartway.UiComponent.Sample
 
         public ICommand Layouts => new Command(async () =>
         {
-            await NavigateTo(new Layouts.LayoutsSample());
+            await NavigateTo(new LayoutsSample{BindingContext = new LayoutsSampleViewModel()});
         });
 
         public ICommand ModalPage => new Command(async () =>
