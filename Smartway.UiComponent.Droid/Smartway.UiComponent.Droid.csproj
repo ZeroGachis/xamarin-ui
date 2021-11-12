@@ -55,6 +55,7 @@
     <Compile Include="Renderers\NoDialogDatePickerRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AndroidInfoProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\font\open_sans_regular.ttf" />
