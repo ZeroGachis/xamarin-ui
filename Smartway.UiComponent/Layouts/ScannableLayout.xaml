@@ -12,11 +12,14 @@
                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}" >
             </ContentView>
-        <buttons:ScanButton
-                        Command="{Binding ScanButtonCommand, Source={x:Reference Self}}"
-                        RelativeLayout.XConstraint="272"
-                        RelativeLayout.YConstraint="480"
-                        AutomationId="FloatScanButton"/>
+            <buttons:ScanButton
+                Margin="0, 0, 30, 30"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                Command="{Binding ScanButtonCommand, Source={x:Reference Self}}"
+                AutomationId="FloatScanButton"/>
         </RelativeLayout>
     </ContentView.Content>
 </ContentView>

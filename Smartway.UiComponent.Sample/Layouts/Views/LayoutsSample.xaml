@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
+             mc:Ignorable="d"
+             x:Class="Smartway.UiComponent.Sample.Layouts.Views.LayoutsSample">
+    <ContentPage.Content>
+        <Grid>
+            <layouts:ScannableLayout ScanButtonCommand="{Binding ScanCommand}">
+                <layouts:ScannableLayout.LayoutContent>
+                    <ScrollView>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Example layout avec bouton scan sur la page"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand" />
+                            <Button BackgroundColor="Blue" HeightRequest="200" Text="Click Me" Command="{Binding ClickCommand}"/>
+                            <Button BackgroundColor="Orange" HeightRequest="200" Text="Click Me" Command="{Binding ClickCommand}"/>
+                            <Button BackgroundColor="LimeGreen" HeightRequest="200" Text="Click Me" Command="{Binding ClickCommand}"/>
+                        </StackLayout>
+                    </ScrollView>
+                </layouts:ScannableLayout.LayoutContent>
+            </layouts:ScannableLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
