@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Smartway.UiComponent.Buttons.ToggleButton"
+       x:Name="Self"
+       Padding="6"
+       CornerRadius="20"
+       BorderColor="#D7D8D9"
+       HasShadow="False">
+    <Grid ColumnDefinitions="*, *" ColumnSpacing="0">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Frame" x:Key="FrameStyle">
+                    <Setter Property="Padding" Value="35, 12"/>
+                    <Setter Property="CornerRadius" Value="15"/>
+                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                    <Setter Property="HasShadow" Value="False"/>
+                </Style>
+                <Style TargetType="Label" x:Key="LabelStyle">
+                    <Setter Property="FontFamily" Value="OpenSans"/>
+                    <Setter Property="FontSize" Value="13"/>
+                    <Setter Property="TextColor" Value="Black"/>
+                    <Setter Property="TextTransform" Value="Uppercase"/>
+                    <Setter Property="VerticalTextAlignment" Value="Center"/>
+                    <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Frame Grid.Column="0" Style="{StaticResource FrameStyle}">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLeftButtonTapped"/>
+            </Frame.GestureRecognizers>
+            <Frame.Triggers>
+                <DataTrigger TargetType="{x:Type Frame}"
+                             Binding="{Binding SelectedButton, Source={x:Reference Self}}"
+                             Value="Left">
+                    <Setter Property="BackgroundColor" Value="#EBEBEB" />
+                </DataTrigger>
+            </Frame.Triggers>
+            <Label Style="{StaticResource LabelStyle}" 
+                   Text="{Binding Source={x:Reference Self}, Path=LeftText}"/>
+        </Frame>
+
+        <Frame Grid.Column="1" Style="{StaticResource FrameStyle}">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnRightButtonTapped"/>
+            </Frame.GestureRecognizers>
+            <Frame.Triggers>
+                <DataTrigger TargetType="{x:Type Frame}"
+                             Binding="{Binding SelectedButton, Source={x:Reference Self}}"
+                             Value="Right">
+                    <Setter Property="BackgroundColor" Value="#EBEBEB" />
+                </DataTrigger>
+            </Frame.Triggers>
+            <Label Style="{StaticResource LabelStyle}" 
+                   Text="{Binding Source={x:Reference Self}, Path=RightText}"/>
+        </Frame>
+
+    </Grid>
+</Frame>

@@ -24,7 +24,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView Padding="16">
             <StackLayout>
                 <Label Text="Priority" Style="{StaticResource Section}"/>
                 <Buttons:Button Text="Primary button"
@@ -92,6 +92,9 @@
                 <Buttons:ScanButton Command="{Binding ScanCommand}"
                                     Margin="30"
                                     HorizontalOptions="End"/>
+                <StackLayout HeightRequest="54">
+                    <Buttons:ToggleButton LeftText="left text" RightText="right text"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
