@@ -4,8 +4,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.replaceContent
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.MSBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dotnetRestore
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dotnetTest
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.msBuild
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.nuGetInstaller
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.nuGetPack
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.nuGetPublish
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
@@ -161,7 +162,7 @@ object Release : BuildType({
             serverUrl = "nuget.org"
             apiKey = "credentialsJSON:756ff5ef-6e71-45cf-9c03-0faa699f81cf"
         }
-        stepsOrder = arrayListOf("RUNNER_33", "RUNNER_23", "RUNNER_26", "RUNNER_28", "RUNNER_29", "RUNNER_30", "RUNNER_35", "RUNNER_36")
+        stepsOrder = arrayListOf("RUNNER_33", "RUNNER_57", "RUNNER_26", "RUNNER_55", "RUNNER_28", "RUNNER_29", "RUNNER_30", "RUNNER_35", "RUNNER_36")
     }
 
     triggers {
@@ -207,21 +208,27 @@ object Build : Template({
 
     steps {
         script {
-            name = "Restore package"
+            name = "Restore package (Old style project for Android and package.config)"
             id = "RUNNER_33"
             scriptContent = """"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe" Smartway.UiComponent.sln /t:restore"""
         }
-        nuGetInstaller {
-            name = "Restore package (1)"
-            id = "RUNNER_23"
-            toolPath = "%teamcity.tool.NuGet.CommandLine.DEFAULT%"
+        dotnetRestore {
+            name = "Restore package new style (.netcore)"
+            id = "RUNNER_57"
             projects = "Smartway.UiComponent.sln"
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
         msBuild {
             name = "Compile"
             id = "RUNNER_26"
             path = "Smartway.UiComponent.sln"
             toolsVersion = MSBuildStep.MSBuildToolsVersion.V16_0
+        }
+        dotnetTest {
+            name = "Run tests"
+            id = "RUNNER_55"
+            workingDir = "Smartway.UiComponent.UnitTests"
+            param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
         script {
             name = "Build Apk"
