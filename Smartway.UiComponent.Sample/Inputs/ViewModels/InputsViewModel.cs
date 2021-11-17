@@ -101,5 +101,8 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
             get => _counterValue2;
             set => Set(nameof(CounterValue2), ref _counterValue2, value);
         }
+
+        public int? BundleQuantity { get; set; }
+        public int? TotalQuantity { get; set; }
     }
 }

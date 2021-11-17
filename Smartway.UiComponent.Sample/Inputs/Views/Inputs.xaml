@@ -141,6 +141,35 @@
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
                     </StackLayout>
                 </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Numeric input" Style="{StaticResource TitleStyle}"/>
+
+                        <Label Text="Single numeric input" Style="{StaticResource SubtitleStyle}"/>
+                        <StackLayout>
+                            <inputs:NumericInput Input="{Binding BundleQuantity}"
+                                                 MaxLength="9"/>
+                        </StackLayout>
+
+                        <Label Text="Unbundle double quantity entry" Style="{StaticResource SubtitleStyle}"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <inputs:NumericInput HeightRequest="42"
+                                                 WidthRequest="58"
+                                                 Input="{Binding BundleQuantity}"/>
+                            <Label Text="/"
+                                   WidthRequest="7"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Padding="0"
+                                   FontSize="20"
+                                   TextColor="#707070"/>
+                            <inputs:NumericInput HeightRequest="42"
+                                                 WidthRequest="58"
+                                                 Input="{Binding TotalQuantity}"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

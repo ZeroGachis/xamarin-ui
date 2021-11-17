@@ -61,6 +61,9 @@
     <Compile Update="Inputs\NoDialogDatePicker.xaml.cs">
       <DependentUpon>NoDialogDatePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Inputs\NumericInput.xaml.cs">
+      <DependentUpon>NumericInput.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Layouts\ScannableLayout.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Inputs\FormEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Inputs\NumericInput.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Inputs\SearchBar.xaml">
