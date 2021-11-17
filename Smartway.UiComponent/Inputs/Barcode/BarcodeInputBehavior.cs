@@ -56,9 +56,13 @@ namespace Smartway.UiComponent.Inputs.Barcode
 
         private bool InputIsInvalid(string input)
         {
-            return input.Length > Ean13.CheckedLength
-                   || input.Length == Ean13.CheckedLength && !Ean13.Check(input)
-                   || input.ToCharArray().Any(_ => !char.IsDigit(_));
+            if (input.Length > Ean13.CheckedLength)
+                return true;
+
+            if (input.Length == Ean13.CheckedLength && !Ean13.Check(input))
+                return true;
+
+            return input.ToCharArray().Any(_ => !char.IsDigit(_));
         }
     }
 }

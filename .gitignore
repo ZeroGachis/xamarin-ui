@@ -11,4 +11,5 @@ _ReSharper.Caches
 
 # NCrunch
 *.ncrunchsolution
+*.ncrunchproject
 _NCrunch*
