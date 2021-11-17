@@ -6,6 +6,9 @@
              x:Class="Smartway.UiComponent.Inputs.NumericInput">
     <ContentView.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Colors.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <Style TargetType="Entry" x:Key="Entry">
                 <Setter Property="Keyboard" Value="Numeric"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
@@ -33,6 +36,7 @@
             </DataTrigger>
         </Frame.Triggers>
         <Entry x:Name="Entry"
+               x:FieldModifier="public"
                Style="{StaticResource Entry}"
                Text="{Binding Source={x:Reference Self}, Path=Input, Mode=TwoWay}"
                TextChanged="NumericValidation">
