@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Linq;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.Inputs
@@ -16,11 +17,7 @@ namespace Smartway.UiComponent.Inputs
         public int? Input
         {
             get => (int?)GetValue(InputProperty);
-            set
-            {
-                if (value != null)
-                    SetValue(InputProperty, value);
-            }
+            set => SetValue(InputProperty, value);
         }
 
         public int FontSize
@@ -41,15 +38,13 @@ namespace Smartway.UiComponent.Inputs
 
         public void NumericValidation(object sender, TextChangedEventArgs args)
         {
-            var entry = (Entry)sender;
-            var input = entry.Text;
-            if (int.TryParse(input, out var numericInput))
-            {
-                entry.Text = numericInput.ToString();
+            if (string.IsNullOrEmpty(args.NewTextValue))
                 return;
-            }
 
-            entry.Text = args.OldTextValue;
+            var entry = (Entry)sender;
+
+            if (args.NewTextValue.ToCharArray().Any(_ => !char.IsDigit(_)))
+                entry.Text = args.OldTextValue;
         }
     }
 }
