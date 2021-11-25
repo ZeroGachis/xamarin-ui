@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
-             x:Name="Self"
-             x:Class="Smartway.UiComponent.Inputs.NumericInput">
-    <ContentView.Resources>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
+       x:Name="Self"
+       x:Class="Smartway.UiComponent.Inputs.NumericInput"
+       CornerRadius="8"
+       Padding="0"
+       BorderColor="#DDDDDD"
+       HasShadow="False">
+    <Frame.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Colors.xaml"/>
@@ -18,28 +22,21 @@
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="MaxLength" Value="{Binding Source={x:Reference Self}, Path=MaxLength}"/>
             </Style>
-            <Style TargetType="Frame" x:Key="Frame">
-                <Setter Property="CornerRadius" Value="8"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="BorderColor" Value="#DDDDDD"/>
-                <Setter Property="HasShadow" Value="False"/>
-            </Style>
         </ResourceDictionary>
-    </ContentView.Resources>
+    </Frame.Resources>
 
-    <Frame Style="{StaticResource Frame}">
-        <Frame.Triggers>
-            <DataTrigger TargetType="Frame"
-                         Binding="{Binding Source={x:Reference Entry}, Path=IsFocused}"
-                         Value="True">
-                <Setter Property="BorderColor" Value="{StaticResource ZgPrimaryColor}"/>
-            </DataTrigger>
-        </Frame.Triggers>
-        <Entry x:Name="Entry"
-               x:FieldModifier="public"
-               Style="{StaticResource Entry}"
-               Text="{Binding Source={x:Reference Self}, Path=Input, Mode=TwoWay}"
-               TextChanged="NumericValidation">
-        </Entry>
-    </Frame>
-</ContentView>
+    <Frame.Triggers>
+        <DataTrigger TargetType="Frame"
+                     Binding="{Binding Source={x:Reference Entry}, Path=IsFocused}"
+                     Value="True">
+            <Setter Property="BorderColor" Value="{StaticResource ZgPrimaryColor}"/>
+        </DataTrigger>
+    </Frame.Triggers>
+
+    <local:EntryWithoutSoftKeyboard x:Name="Entry"
+                                    x:FieldModifier="public"
+                                    Style="{StaticResource Entry}"
+                                    Text="{Binding Source={x:Reference Self}, Path=Input, Mode=TwoWay}"
+                                    TextChanged="NumericValidation">
+    </local:EntryWithoutSoftKeyboard>
+</Frame>
