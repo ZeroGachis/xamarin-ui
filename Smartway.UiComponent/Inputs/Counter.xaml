@@ -35,7 +35,8 @@
             <Button Grid.Column="0"
                     x:Name="DecreaseButton"
                     Style="{StaticResource ButtonsStyle}"
-                    Clicked="DecreaseCounterValue">
+                    Clicked="DecreaseCounterValue"
+                    AutomationId="DecreaseQttyButton">
                 <Button.ImageSource>
                     <FontImageSource Glyph="&#xe15c;"
                                      FontFamily="MaterialRegular"
@@ -44,11 +45,13 @@
                 </Button.ImageSource>
             </Button>
             <Label Grid.Column="1"
-                   Style="{StaticResource NumericValueStyle}"/>
+                   Style="{StaticResource NumericValueStyle}"
+                   AutomationId="CurrentQtty"/>
             <Button Grid.Column="2"
                     x:Name="IncreaseButton"
                     Style="{StaticResource ButtonsStyle}"
-                    Clicked="IncreaseCounterValue">
+                    Clicked="IncreaseCounterValue"
+                    AutomationId="IncreaseQttyButton">
                 <Button.ImageSource>
                     <FontImageSource Glyph="&#xe147;"
                                      FontFamily="MaterialRegular"

@@ -6,7 +6,8 @@
        Padding="6"
        CornerRadius="20"
        BorderColor="#D7D8D9"
-       HasShadow="False">
+       HasShadow="False"
+       AutomationId="ToggleButton">
     <Grid ColumnDefinitions="*, *" ColumnSpacing="0">
         <Grid.Resources>
             <ResourceDictionary>
@@ -26,7 +27,8 @@
                 </Style>
             </ResourceDictionary>
         </Grid.Resources>
-        <Frame Grid.Column="0" Style="{StaticResource FrameStyle}">
+        <Frame Grid.Column="0" Style="{StaticResource FrameStyle}"
+               AutomationId="ToggleLeftOption">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnLeftButtonTapped"/>
             </Frame.GestureRecognizers>
@@ -41,7 +43,8 @@
                    Text="{Binding Source={x:Reference Self}, Path=LeftText}"/>
         </Frame>
 
-        <Frame Grid.Column="1" Style="{StaticResource FrameStyle}">
+        <Frame Grid.Column="1" Style="{StaticResource FrameStyle}"
+               AutomationId="ToggleRightOption">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnRightButtonTapped"/>
             </Frame.GestureRecognizers>
