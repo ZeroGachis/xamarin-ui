@@ -17,26 +17,30 @@ namespace Smartway.UiComponent.Droid.Renderers
             base.OnElementChanged(args);
             if (args.NewElement != null)
             {
-                ((EntryWithoutSoftKeyboard)args.NewElement).PropertyChanging += HideKeyboardIfPoppedWhenGettingFocus;
+                ((EntryWithoutSoftKeyboard)args.NewElement).PropertyChanging += OnPropertyChanging;
             }
 
             if (args.OldElement != null)
             {
-                ((EntryWithoutSoftKeyboard)args.OldElement).PropertyChanging -= HideKeyboardIfPoppedWhenGettingFocus;
+                ((EntryWithoutSoftKeyboard)args.OldElement).PropertyChanging -= OnPropertyChanging;
             }
 
             Control.ShowSoftInputOnFocus = false;
         }
 
-        private void HideKeyboardIfPoppedWhenGettingFocus(object sender,
+        private void OnPropertyChanging(object sender,
             PropertyChangingEventArgs propertyChangingEventArgs)
         {
-            var isGettingFocus = propertyChangingEventArgs.PropertyName == VisualElement.IsFocusedProperty.PropertyName;
-            if (isGettingFocus)
+            var isFocusChanging = propertyChangingEventArgs.PropertyName == VisualElement.IsFocusedProperty.PropertyName;
+            if (isFocusChanging)
             {
-                InputMethodManager imm = (InputMethodManager)Context.GetSystemService(Context.InputMethodService);
-                imm.HideSoftInputFromWindow(Control.WindowToken, HideSoftInputFlags.None);
+                HideKeyboard();
+                return;
             }
+
+            var isTextChanging = propertyChangingEventArgs.PropertyName == Entry.TextProperty.PropertyName;
+            if (isTextChanging)
+                TakeFocus();
         }
 
         protected override void OnFocusChangeRequested(object sender, VisualElement.FocusRequestArgs e)
@@ -47,10 +51,18 @@ namespace Smartway.UiComponent.Droid.Renderers
                 return;
             }
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                Control?.RequestFocus();
-            });
+            TakeFocus();
+        }
+
+        private void TakeFocus()
+        {
+            Device.BeginInvokeOnMainThread(() => { Control?.RequestFocus(); });
+        }
+
+        private void HideKeyboard()
+        {
+            InputMethodManager imm = (InputMethodManager)Context.GetSystemService(Context.InputMethodService);
+            imm.HideSoftInputFromWindow(Control.WindowToken, HideSoftInputFlags.None);
         }
     }
 }
