@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Smartway.UiComponent.Buttons
@@ -26,9 +27,25 @@ namespace Smartway.UiComponent.Buttons
             set => SetValue(ActivatedProperty, value);
         }
 
-        public Button()
+        protected override void OnPropertyChanged(string propertyName = null)
         {
+            base.OnPropertyChanged(propertyName);
+
+            if (propertyName != nameof(Width))
+                return;
+
+            AdjustMinimumWidth();
+        }
+
+        public Button()
+        { 
             InitializeComponent();
+        }
+
+        private void AdjustMinimumWidth()
+        {
+            if (MinimumWidthRequest > Width)
+                WidthRequest = MinimumWidthRequest;
         }
     }
 }
