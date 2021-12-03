@@ -44,7 +44,7 @@
         </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Modal">
             <Setter Property="HeightRequest" Value="50" />
-            <Setter Property="WidthRequest" Value="134" />
+            <Setter Property="MinimumWidthRequest" Value="134" />
         </DataTrigger>
         <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference Self}, Path=Size}" Value="Small">
             <Setter Property="FontSize" Value="12" />
