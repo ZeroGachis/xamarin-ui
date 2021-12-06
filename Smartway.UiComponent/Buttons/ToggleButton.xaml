@@ -28,7 +28,8 @@
             </ResourceDictionary>
         </Grid.Resources>
         <Frame Grid.Column="0" Style="{StaticResource FrameStyle}"
-               AutomationId="ToggleLeftOption">
+               AutomationId="ToggleLeftOption"
+               IsEnabled="{Binding Source={x:Reference Self}, Path=IsEnable}">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnLeftButtonTapped"/>
             </Frame.GestureRecognizers>
@@ -44,7 +45,8 @@
         </Frame>
 
         <Frame Grid.Column="1" Style="{StaticResource FrameStyle}"
-               AutomationId="ToggleRightOption">
+               AutomationId="ToggleRightOption"
+               IsEnabled="{Binding Source={x:Reference Self}, Path=IsEnable}">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnRightButtonTapped"/>
             </Frame.GestureRecognizers>

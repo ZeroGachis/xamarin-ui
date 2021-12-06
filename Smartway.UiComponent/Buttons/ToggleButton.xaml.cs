@@ -24,6 +24,10 @@ namespace Smartway.UiComponent.Buttons
             nameof(SelectedButton), typeof(SelectedToggleButton), typeof(ToggleButton),
             defaultValue: SelectedToggleButton.Left);
 
+        public static readonly BindableProperty IsEnableProperty = BindableProperty.Create(
+            nameof(IsEnable), typeof(bool), typeof(ToggleButton),
+            defaultValue: true);
+
         public string LeftText
         {
             get => (string)GetValue(LeftTextProperty);
@@ -40,6 +44,12 @@ namespace Smartway.UiComponent.Buttons
         {
             get => (SelectedToggleButton)GetValue(SelectedButtonProperty);
             set => SetValue(SelectedButtonProperty, value);
+        }
+
+        public bool IsEnable
+        {
+            get => (bool)GetValue(IsEnableProperty);
+            set => SetValue(IsEnableProperty, value);
         }
 
         public ToggleButton()
