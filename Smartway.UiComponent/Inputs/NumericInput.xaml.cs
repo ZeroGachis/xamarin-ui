@@ -15,6 +15,8 @@ namespace Smartway.UiComponent.Inputs
             typeof(int), typeof(NumericInput), 2);
         public static readonly BindableProperty IsSelectedProperty = BindableProperty.Create(nameof(IsSelected),
             typeof(bool), typeof(NumericInput), false);
+        public static readonly BindableProperty IsSelectableProperty = BindableProperty.Create(nameof(IsSelectable),
+            typeof(bool), typeof(NumericInput), true);
 
         public NumericInput()
         {
@@ -42,7 +44,19 @@ namespace Smartway.UiComponent.Inputs
         public bool IsSelected
         {
             get => (bool)GetValue(IsSelectedProperty);
-            set => SetValue(IsSelectedProperty, value);
+            set
+            {
+                if (!IsSelectable)
+                    return;
+
+                SetValue(IsSelectedProperty, value);
+            }
+        }
+
+        public bool IsSelectable
+        {
+            get => (bool)GetValue(IsSelectableProperty);
+            set => SetValue(IsSelectableProperty, value);
         }
 
         public event EventHandler OnSelected;
@@ -60,6 +74,9 @@ namespace Smartway.UiComponent.Inputs
 
         private void OnTapped(object sender, EventArgs e)
         {
+            if (!IsSelectable)
+                return;
+
             OnSelected?.Invoke(this, e);
         }
     }

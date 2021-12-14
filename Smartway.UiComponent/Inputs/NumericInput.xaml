@@ -33,5 +33,12 @@
         <Label.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapped"/>
         </Label.GestureRecognizers>
+        <Label.Triggers>
+            <DataTrigger TargetType="Label"
+                         Binding="{Binding Source={x:Reference Self}, Path=IsSelectable}"
+                         Value="False">
+                <Setter Property="TextColor" Value="{StaticResource ZgMediumGrey}"/>
+            </DataTrigger>
+        </Label.Triggers>
     </Label>
 </Frame>
