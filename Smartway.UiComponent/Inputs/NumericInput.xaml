@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:Smartway.UiComponent.Inputs;assembly=Smartway.UiComponent"
-       x:Name="Self"
        x:Class="Smartway.UiComponent.Inputs.NumericInput"
+       x:Name="Self"
        CornerRadius="8"
        Padding="0"
        BorderColor="#DDDDDD"
@@ -13,30 +12,33 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Colors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="Entry" x:Key="Entry">
-                <Setter Property="Keyboard" Value="Numeric"/>
+            <Style TargetType="Label" x:Key="LabelStyle">
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="FontFamily" Value="OpenSansRegular"/>
                 <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="MaxLength" Value="{Binding Source={x:Reference Self}, Path=MaxLength}"/>
             </Style>
         </ResourceDictionary>
     </Frame.Resources>
-
     <Frame.Triggers>
         <DataTrigger TargetType="Frame"
-                     Binding="{Binding Source={x:Reference Entry}, Path=IsFocused}"
+                     Binding="{Binding Source={x:Reference Self}, Path=IsSelected}"
                      Value="True">
-            <Setter Property="BorderColor" Value="{StaticResource ZgPrimaryColor}"/>
+            <Setter Property="BorderColor" Value="Accent"/>
         </DataTrigger>
     </Frame.Triggers>
-
-    <local:EntryWithoutSoftKeyboard x:Name="Entry"
-                                    x:FieldModifier="public"
-                                    Style="{StaticResource Entry}"
-                                    Text="{Binding Source={x:Reference Self}, Path=Input, Mode=TwoWay}"
-                                    TextChanged="NumericValidation">
-    </local:EntryWithoutSoftKeyboard>
+    <Label Style="{StaticResource LabelStyle}"
+           Text="{Binding Source={x:Reference Self}, Path=Input}">
+        <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnTapped"/>
+        </Label.GestureRecognizers>
+        <Label.Triggers>
+            <DataTrigger TargetType="Label"
+                         Binding="{Binding Source={x:Reference Self}, Path=IsSelectable}"
+                         Value="False">
+                <Setter Property="TextColor" Value="{StaticResource ZgMediumGrey}"/>
+            </DataTrigger>
+        </Label.Triggers>
+    </Label>
 </Frame>
