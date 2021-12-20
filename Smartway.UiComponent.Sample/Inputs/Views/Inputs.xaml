@@ -139,6 +139,7 @@
                             MaximumDate="{Binding MaximumDate}"
                             Date="{Binding Date}"/>
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
+                        <inputs:NumericDateEntry ErrorCommand="{Binding ErrorDateCommand}"/>
                     </StackLayout>
                 </Frame>
                 <Frame>
@@ -147,10 +148,8 @@
 
                         <Label Text="Single numeric input" Style="{StaticResource SubtitleStyle}"/>
                         <StackLayout>
-                            <inputs:NumericInput Input="{Binding BundleQuantity}"
-                                                 MaxLength="9"/>
+                            <inputs:NumericInput />
                         </StackLayout>
-
                         <Label Text="Unbundle double quantity entry" Style="{StaticResource SubtitleStyle}"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <inputs:NumericInput HeightRequest="42"

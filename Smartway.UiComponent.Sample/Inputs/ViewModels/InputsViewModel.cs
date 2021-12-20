@@ -85,6 +85,13 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
             set => Set(nameof(Date), ref _date, value);
         }
 
+        private DateTime _numericEntryDate;
+        public DateTime NumericEntryDate
+        {
+            get => _numericEntryDate;
+            set => Set(nameof(NumericEntryDate), ref _numericEntryDate, value);
+        }
+
         public DateTime MinimumDate => DateTime.Today;
         public DateTime MaximumDate => DateTime.Today.AddYears(4);
 
@@ -104,5 +111,11 @@ namespace Smartway.UiComponent.Sample.Inputs.ViewModels
 
         public int? BundleQuantity { get; set; }
         public int? TotalQuantity { get; set; }
+
+        public ICommand ErrorDateCommand => new Command((param) =>
+        {
+            var message = "date non valide format respectez JJ/MM/AA";
+            DependencyService.Get<INotifyMessage>().ShortAlert(message);
+        });
     }
 }
