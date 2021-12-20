@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.assemblyInfoPatcher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.replaceContent
@@ -35,7 +36,7 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 'Debug' option is available in the context menu for the task.
 */
 
-version = "2020.2"
+version = "2021.2"
 
 project {
     description = "Composant graphique xamarin"
@@ -160,7 +161,7 @@ object Release : BuildType({
             toolPath = "%teamcity.tool.NuGet.CommandLine.DEFAULT%"
             packages = "**/*.nupkg"
             serverUrl = "nuget.org"
-            apiKey = "credentialsJSON:756ff5ef-6e71-45cf-9c03-0faa699f81cf"
+            apiKey = "credentialsJSON:ed46ddbc-e70f-414d-96f1-b538f8270d41"
         }
         stepsOrder = arrayListOf("RUNNER_33", "RUNNER_57", "RUNNER_26", "RUNNER_55", "RUNNER_28", "RUNNER_29", "RUNNER_30", "RUNNER_35", "RUNNER_36")
     }
@@ -250,10 +251,9 @@ object Build : Template({
     }
 
     features {
-        feature {
+        assemblyInfoPatcher {
             id = "JetBrains.AssemblyInfo"
-            type = "JetBrains.AssemblyInfo"
-            param("assembly-format", "%env.Version%")
+            assemblyFormat = "%env.Version%"
         }
     }
 
@@ -276,6 +276,7 @@ object Integration_1 : GitVcsRoot({
     authMethod = uploadedKey {
         uploadedKey = "zgBrocoli"
     }
+    param("useAlternates", "true")
 })
 
 object PullRequest_1 : GitVcsRoot({
@@ -291,4 +292,5 @@ object PullRequest_1 : GitVcsRoot({
     authMethod = uploadedKey {
         uploadedKey = "zgBrocoli"
     }
+    param("useAlternates", "true")
 })
