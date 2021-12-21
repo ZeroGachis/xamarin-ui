@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +14,12 @@ namespace Smartway.UiComponent.Buttons
             Left,
             Right
         }
+
+        public static readonly BindableProperty OnLeftButtonTappedCommandProperty = BindableProperty.Create(
+            nameof(OnLeftButtonTappedCommand), typeof(ICommand), typeof(ToggleButton));
+
+        public static readonly BindableProperty OnRightButtonTappedCommandProperty = BindableProperty.Create(
+            nameof(OnRightButtonTappedCommand), typeof(ICommand), typeof(ToggleButton));
 
         public static readonly BindableProperty LeftTextProperty = BindableProperty.Create(
             nameof(LeftText), typeof(string), typeof(ToggleButton));
@@ -42,17 +49,32 @@ namespace Smartway.UiComponent.Buttons
             set => SetValue(SelectedButtonProperty, value);
         }
 
+        public ICommand OnLeftButtonTappedCommand
+        {
+            get => (ICommand)GetValue(OnLeftButtonTappedCommandProperty);
+            set => SetValue(OnLeftButtonTappedCommandProperty, value);
+        }
+
+        public ICommand OnRightButtonTappedCommand
+        {
+            get => (ICommand)GetValue(OnRightButtonTappedCommandProperty);
+            set => SetValue(OnRightButtonTappedCommandProperty, value);
+        }
+
         public ToggleButton()
         {
             InitializeComponent();
+
+            OnLeftButtonTappedCommand = new Command(OnLeftButtonTapped);
+            OnRightButtonTappedCommand = new Command(OnRightButtonTapped);
         }
 
-        private void OnLeftButtonTapped(object sender, EventArgs e)
+        private void OnLeftButtonTapped()
         {
             SwitchButtonTo(SelectedToggleButton.Left);
         }
 
-        private void OnRightButtonTapped(object sender, EventArgs e)
+        private void OnRightButtonTapped()
         {
             SwitchButtonTo(SelectedToggleButton.Right);
         }
