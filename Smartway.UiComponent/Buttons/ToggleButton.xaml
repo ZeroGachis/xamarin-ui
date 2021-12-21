@@ -30,7 +30,7 @@
         <Frame Grid.Column="0" Style="{StaticResource FrameStyle}"
                AutomationId="ToggleLeftOption">
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnLeftButtonTapped"/>
+                <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=OnLeftButtonTappedCommand}"/>
             </Frame.GestureRecognizers>
             <Frame.Triggers>
                 <DataTrigger TargetType="{x:Type Frame}"
@@ -39,14 +39,14 @@
                     <Setter Property="BackgroundColor" Value="#EBEBEB" />
                 </DataTrigger>
             </Frame.Triggers>
-            <Label Style="{StaticResource LabelStyle}" 
+            <Label Style="{StaticResource LabelStyle}"
                    Text="{Binding Source={x:Reference Self}, Path=LeftText}"/>
         </Frame>
 
         <Frame Grid.Column="1" Style="{StaticResource FrameStyle}"
                AutomationId="ToggleRightOption">
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnRightButtonTapped"/>
+                <TapGestureRecognizer Command="{Binding Source={x:Reference Self}, Path=OnRightButtonTappedCommand}"/>
             </Frame.GestureRecognizers>
             <Frame.Triggers>
                 <DataTrigger TargetType="{x:Type Frame}"
