@@ -161,7 +161,7 @@ object Release : BuildType({
             toolPath = "%teamcity.tool.NuGet.CommandLine.DEFAULT%"
             packages = "**/*.nupkg"
             serverUrl = "nuget.org"
-            apiKey = "credentialsJSON:ed46ddbc-e70f-414d-96f1-b538f8270d41"
+            apiKey = "credentialsJSON:df1641c4-bb55-40ae-8047-0675abca07c4"
         }
         stepsOrder = arrayListOf("RUNNER_33", "RUNNER_57", "RUNNER_26", "RUNNER_55", "RUNNER_28", "RUNNER_29", "RUNNER_30", "RUNNER_35", "RUNNER_36")
     }
