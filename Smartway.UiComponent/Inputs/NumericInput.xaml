@@ -15,7 +15,7 @@
             <Style TargetType="Label" x:Key="LabelStyle">
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="FontFamily" Value="OpenSansRegular"/>
+                <Setter Property="FontFamily" Value="OpenSans"/>
                 <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
                 <Setter Property="TextColor" Value="Black"/>
             </Style>

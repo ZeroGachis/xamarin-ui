@@ -4,14 +4,16 @@
     x:Class="Smartway.UiComponent.Inputs.NumericDateEntry"
     x:Name="Self"
     HorizontalOptions="Center"
-    ColumnDefinitions="Auto, Auto, Auto, Auto, Auto">
+    ColumnDefinitions="*, Auto, *, Auto, *">
     <Grid.Resources>
         <ResourceDictionary>
-            <Style TargetType="Label" >
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSans"/>
                 <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=GlobalFontSize}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center" />
             </Style>
             <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="OpenSans"/>
                 <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=GlobalFontSize}"/>
                 <Setter Property="PlaceholderColor" Value="{Binding Source={x:Reference Self}, Path=PlaceholderColor}" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
