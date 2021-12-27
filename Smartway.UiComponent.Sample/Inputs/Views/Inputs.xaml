@@ -8,14 +8,16 @@
              x:Class="Smartway.UiComponent.Sample.Inputs.Views.Inputs"
              x:DataType="viewModels:InputsViewModel">
     <ContentPage.Resources>
-        <Style x:Key="SubtitleStyle" TargetType="Label">
-            <Setter Property="FontFamily" Value="OpenSansSemiBold"/>
-            <Setter Property="FontSize" Value="14"/>
-        </Style>
-        <Style x:Key="TitleStyle" TargetType="Label">
-            <Setter Property="FontFamily" Value="OpenSansBold"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
+        <ResourceDictionary>
+            <Style x:Key="SubtitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansSemiBold"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="OpenSansBold"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
@@ -139,7 +141,10 @@
                             MaximumDate="{Binding MaximumDate}"
                             Date="{Binding Date}"/>
                         <Label Text="{Binding Date, StringFormat='Date selectionnée: {0}'}"/>
-                        <inputs:NumericDateEntry ErrorCommand="{Binding ErrorDateCommand}"/>
+                        <inputs:NumericDateEntry
+                            GlobalFontSize="17"
+                            Margin="70, 0"
+                            ErrorCommand="{Binding ErrorDateCommand}"/>
                     </StackLayout>
                 </Frame>
                 <Frame>
