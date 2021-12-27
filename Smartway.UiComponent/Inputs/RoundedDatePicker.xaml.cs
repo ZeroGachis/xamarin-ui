@@ -43,8 +43,12 @@ namespace Smartway.UiComponent.Inputs
 
         private void InitializeDatePicker()
         {
+            var datePicker = new DatePicker();
+#if __Android__
             var platformInfo = DependencyService.Get<IPlatormInfoProvider>();
-            var datePicker = platformInfo.OsSdkVersion <= 23 ? new DatePicker() : new NoDialogDatePicker { HeightRequest = 172 };
+            if ( platformInfo.OsSdkVersion > 23 )
+                datePicker = new NoDialogDatePicker { HeightRequest = 172 };
+#endif
             datePicker.SetBinding(DatePicker.DateProperty, new Binding("Date", source: this));
             datePicker.SetBinding(DatePicker.MaximumDateProperty, new Binding("MaximumDate", source: this));
             datePicker.SetBinding(DatePicker.MinimumDateProperty, new Binding("MinimumDate", source: this));
