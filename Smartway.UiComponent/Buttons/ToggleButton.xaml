@@ -12,7 +12,7 @@
         <Grid.Resources>
             <ResourceDictionary>
                 <Style TargetType="Frame" x:Key="FrameStyle">
-                    <Setter Property="Padding" Value="35, 12"/>
+                    <Setter Property="Padding" Value="12"/>
                     <Setter Property="CornerRadius" Value="15"/>
                     <Setter Property="BackgroundColor" Value="Transparent"/>
                     <Setter Property="HasShadow" Value="False"/>
