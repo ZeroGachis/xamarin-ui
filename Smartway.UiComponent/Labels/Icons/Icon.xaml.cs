@@ -48,7 +48,9 @@ namespace Smartway.UiComponent.Labels.Icons
             List,
             RevalueOutline,
             Revalue,
-            Stick
+            Stick,
+            Printer,
+            Logout
         }
 
         /// <summary>
@@ -75,6 +77,8 @@ namespace Smartway.UiComponent.Labels.Icons
             new MaterialIcon(IconNames.ViewHeadline, "\ue8ee"),
             new MaterialIcon(IconNames.Warning, "\ue002"),
             new MaterialIcon(IconNames.Settings, "\ue8b8"),
+            new MaterialIcon(IconNames.Printer, "\ue8ad"),
+            new MaterialIcon(IconNames.Logout, "\ue9ba"),
 
             new SmartwayIcon(IconNames.BarcodeScan, "\ue900"),
             new SmartwayIcon(IconNames.DatamatrixScan, "\ue901"),
@@ -95,7 +99,7 @@ namespace Smartway.UiComponent.Labels.Icons
             new SmartwayIcon(IconNames.Stick, "\ue910")
         };
 
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), 
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value),
             typeof(IconNames), typeof(Icon), propertyChanged: OnValueChanged);
 
         private static void OnValueChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -119,7 +123,7 @@ namespace Smartway.UiComponent.Labels.Icons
         public IconNames Value
         {
             get => (IconNames)GetValue(ValueProperty);
-            set =>  SetValue(ValueProperty, value);
+            set => SetValue(ValueProperty, value);
         }
     }
 }
