@@ -23,7 +23,7 @@ namespace Smartway.UiComponent.Inputs
             BindableProperty.Create(nameof(ErrorCommand), typeof(ICommand), typeof(NumericDateEntry));
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(NumericDateEntry), Color.LightGray);
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(NumericDateEntry), Color.FromHex("#757575"));
 
         private static void DatePlaceholderPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
@@ -151,9 +151,9 @@ namespace Smartway.UiComponent.Inputs
 
         private void SetDateTimePlaceholder()
         {
-            DayEntry.Placeholder = DatePlaceholder.Day.ToString();
-            MonthEntry.Placeholder = DatePlaceholder.Month.ToString();
-            YearEntry.Placeholder = DatePlaceholder.Year.ToString().Substring(2);
+            DayEntry.Placeholder = DatePlaceholder.ToString("dd");
+            MonthEntry.Placeholder = DatePlaceholder.ToString("MM");
+            YearEntry.Placeholder = DatePlaceholder.ToString("yy");
         }
 
         private void SetFilledDate()
@@ -161,9 +161,9 @@ namespace Smartway.UiComponent.Inputs
             if (DateTimeIsNull(FilledDateTime))
                 return;
 
-            DayEntry.Text = FilledDateTime.Day.ToString();
-            MonthEntry.Text = FilledDateTime.Month.ToString();
-            YearEntry.Text = FilledDateTime.Year.ToString().Substring(2);
+            DayEntry.Text = FilledDateTime.ToString("dd");
+            MonthEntry.Text = FilledDateTime.ToString("MM");
+            YearEntry.Text = FilledDateTime.ToString("yy");
         }
 
         private void SetEntriesPosition()
