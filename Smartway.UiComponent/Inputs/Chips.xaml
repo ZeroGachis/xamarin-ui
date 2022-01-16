@@ -9,21 +9,27 @@
             <ResourceDictionary.MergedDictionaries>
                 <resources:Colors />
                 <ResourceDictionary>
-                    <Style TargetType="{x:Type Frame}" x:Key="RoundBtn">
-                        <Setter Property="BorderColor" Value="{StaticResource ZgColdGrey}"/>
-                        <Setter Property="CornerRadius" Value="80" />
-                        <Setter Property="BackgroundColor" Value="White"/>
+                    <Style x:Key="BaseStyle" TargetType="{x:Type Frame}">
+                        <Setter Property="CornerRadius">
+                            <Setter.Value>
+                                <OnPlatform x:TypeArguments="x:Double" Default="80">
+                                    <On Platform="IOS">
+                                        20
+                                    </On>
+                                </OnPlatform>
+                            </Setter.Value>
+                            </Setter>
                         <Setter Property="Margin" Value="0"/>
                         <Setter Property="Padding" Value="16,12" />
                         <Setter Property="HasShadow" Value="False" />
                     </Style>
-                    <Style TargetType="{x:Type Frame}" x:Key="RoundBtnSelected">
+                    <Style TargetType="{x:Type Frame}" x:Key="RoundBtn" BasedOn="{StaticResource BaseStyle}">
+                        <Setter Property="BorderColor" Value="{StaticResource ZgColdGrey}"/>
+                        <Setter Property="BackgroundColor" Value="White"/>
+                    </Style>
+                    <Style TargetType="{x:Type Frame}" x:Key="RoundBtnSelected" BasedOn="{StaticResource BaseStyle}">
                         <Setter Property="BorderColor" Value="Black"/>
-                        <Setter Property="CornerRadius" Value="80" />
                         <Setter Property="BackgroundColor" Value="{StaticResource ZgLightGrey}"/>
-                        <Setter Property="Margin" Value="0"/>
-                        <Setter Property="Padding" Value="16,12" />
-                        <Setter Property="HasShadow" Value="False" />
                     </Style>
                     <Style TargetType="{x:Type Label}" x:Key="ChipsLabel">
                         <Setter Property="FontFamily" Value="OpenSans"/>

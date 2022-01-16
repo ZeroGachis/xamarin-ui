@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         x:Class="Smartway.UiComponent.Buttons.Button"
         x:Name="Self"
-        CornerRadius="36"
         HorizontalOptions="Center"
         BackgroundColor="{StaticResource ZgMediumGrey}"
         TextTransform="None"
@@ -20,6 +19,19 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <resources:Colors />
+                <ResourceDictionary>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="CornerRadius">
+                            <Setter.Value>
+                                <OnPlatform x:TypeArguments="x:Double" Default="36">
+                                    <On Platform="IOS">
+                                        20
+                                    </On>
+                                </OnPlatform>
+                            </Setter.Value>
+                            </Setter>
+                     </Style>
+                  </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Button.Resources>
