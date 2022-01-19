@@ -14,7 +14,7 @@ namespace Smartway.UiComponent.Inputs
             BindableProperty.Create(nameof(GlobalFontSize), typeof(int), typeof(NumericDateEntry), 24);
 
         public static readonly BindableProperty FilledDateTimeProperty =
-            BindableProperty.Create(nameof(FilledDateTime), typeof(DateTime), typeof(NumericDateEntry), defaultBindingMode: BindingMode.TwoWay, propertyChanged: FilledDateTimePropertyChanged);
+            BindableProperty.Create(nameof(FilledDateTime), typeof(DateTime?), typeof(NumericDateEntry), defaultBindingMode: BindingMode.TwoWay, propertyChanged: FilledDateTimePropertyChanged);
 
         public static readonly BindableProperty DatePlaceholderProperty =
             BindableProperty.Create(nameof(DatePlaceholder), typeof(DateTime), typeof(NumericDateEntry), propertyChanged: DatePlaceholderPropertyChanged);
@@ -23,7 +23,7 @@ namespace Smartway.UiComponent.Inputs
             BindableProperty.Create(nameof(ErrorCommand), typeof(ICommand), typeof(NumericDateEntry));
 
         public static readonly BindableProperty PlaceholderColorProperty =
-            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(NumericDateEntry), Color.FromHex("#757575"));
+            BindableProperty.Create(nameof(PlaceholderColor), typeof(Color), typeof(NumericDateEntry), DefaultPlaceholderColor);
 
         private static void DatePlaceholderPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
@@ -41,9 +41,9 @@ namespace Smartway.UiComponent.Inputs
             set => SetValue(GlobalFontSizeProperty, value);
         }
 
-        public DateTime FilledDateTime
+        public DateTime? FilledDateTime
         {
-            get => (DateTime)GetValue(FilledDateTimeProperty);
+            get => (DateTime?)GetValue(FilledDateTimeProperty);
             set => SetValue(FilledDateTimeProperty, value);
         }
 
@@ -69,6 +69,7 @@ namespace Smartway.UiComponent.Inputs
         public Entry DayEntry;
         public Entry MonthEntry;
         public Entry YearEntry;
+        protected static Color DefaultPlaceholderColor => Color.FromHex("#757575");
 
         public NumericDateEntry()
         {
@@ -81,7 +82,10 @@ namespace Smartway.UiComponent.Inputs
         {
             var currentEntry = sender as Entry;
             if (!IsValidDateEntry(currentEntry))
+            {
+                FilledDateTime = null;
                 return;
+            }
 
             var hasEmptyEntryFocused = FocusNextUnvalidEntry();
             if (hasEmptyEntryFocused)
@@ -113,6 +117,9 @@ namespace Smartway.UiComponent.Inputs
 
         protected bool FocusNextUnvalidEntry()
         {
+            if (FilledDateTime != null)
+                return false;
+
             foreach (var entry in _dateEntries)
             {
                 if (IsValidDateEntry(entry))
@@ -156,14 +163,16 @@ namespace Smartway.UiComponent.Inputs
             YearEntry.Placeholder = DatePlaceholder.ToString("yy");
         }
 
-        private void SetFilledDate()
+        protected virtual void SetFilledDate()
         {
-            if (DateTimeIsNull(FilledDateTime))
+            if (FilledDateTime == null)
                 return;
 
-            DayEntry.Text = FilledDateTime.ToString("dd");
-            MonthEntry.Text = FilledDateTime.ToString("MM");
-            YearEntry.Text = FilledDateTime.ToString("yy");
+            var date = (DateTime)FilledDateTime;
+
+            DayEntry.Text = date.ToString("dd");
+            MonthEntry.Text = date.ToString("MM");
+            YearEntry.Text = date.ToString("yy");
         }
 
         private void SetEntriesPosition()
