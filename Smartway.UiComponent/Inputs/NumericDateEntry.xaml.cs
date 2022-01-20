@@ -66,9 +66,9 @@ namespace Smartway.UiComponent.Inputs
         }
 
         private List<Entry> _dateEntries;
-        protected Entry DayEntry;
-        protected Entry MonthEntry;
-        protected Entry YearEntry;
+        public Entry DayEntry;
+        public Entry MonthEntry;
+        public Entry YearEntry;
 
         public NumericDateEntry()
         {
