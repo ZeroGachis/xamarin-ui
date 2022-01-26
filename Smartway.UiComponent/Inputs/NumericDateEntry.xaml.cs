@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -65,6 +66,8 @@ namespace Smartway.UiComponent.Inputs
             set => SetValue(ErrorCommandProperty, value);
         }
 
+        public event EventHandler OnCleared;
+
         private List<Entry> _dateEntries;
         public Entry DayEntry;
         public Entry MonthEntry;
@@ -96,9 +99,9 @@ namespace Smartway.UiComponent.Inputs
 
         protected virtual DateTime GetFilledDate()
         {
-            var day = int.Parse(DayEntry.Text);
-            var month = int.Parse(MonthEntry.Text);
-            var year = CultureInfo.CurrentCulture.Calendar.ToFourDigitYear(int.Parse(YearEntry.Text));
+            var day = int.Parse(DayEntry.Text ?? DayEntry.Placeholder);
+            var month = int.Parse(MonthEntry.Text ?? MonthEntry.Placeholder);
+            var year = CultureInfo.CurrentCulture.Calendar.ToFourDigitYear(int.Parse(YearEntry.Text ?? YearEntry.Placeholder));
 
             return new DateTime(year, month, day);
         }
@@ -242,6 +245,25 @@ namespace Smartway.UiComponent.Inputs
                 entry.CursorPosition = 0;
                 entry.SelectionLength = entry.Text.Length;
             });
+        }
+
+        private void OnUnfocusedEntry(object sender, FocusEventArgs e)
+        {
+            if (!(sender is Entry entry))
+                return;
+
+            FillEntryIfNeeded(entry);
+
+            if (_dateEntries.Any(_ => !string.IsNullOrEmpty(_.Text)))
+                return;
+
+            OnCleared?.Invoke(this, EventArgs.Empty);
+        }
+
+        private static void FillEntryIfNeeded(Entry entry)
+        {
+            if (entry.Text?.Length == 1)
+                entry.Text = $"0{entry.Text}";
         }
     }
 }

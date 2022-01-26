@@ -16,5 +16,10 @@ namespace Smartway.UiComponent.Sample.Inputs.Views
         {
             InitializeComponent();
         }
+
+        private void NumericDateEntry_OnCleared(object sender, EventArgs e)
+        {
+            Console.WriteLine("Date cleared");
+        }
     }
 }

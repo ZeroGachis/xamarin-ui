@@ -23,9 +23,9 @@
             </Style>
         </ResourceDictionary>
     </Grid.Resources>
-    <Entry x:Name="FirstEntry" Grid.Column="0" Focused="OnFocusedSelectAllEntryContent"/>
+    <Entry x:Name="FirstEntry" Grid.Column="0" Focused="OnFocusedSelectAllEntryContent" Unfocused="OnUnfocusedEntry"/>
     <Label Grid.Column="1" Text="/"/>
-    <Entry x:Name="SecondEntry" Grid.Column="2" Focused="OnFocusedSelectAllEntryContent"/>
+    <Entry x:Name="SecondEntry" Grid.Column="2" Focused="OnFocusedSelectAllEntryContent" Unfocused="OnUnfocusedEntry"/>
     <Label Grid.Column="3" Text="/"/>
-    <Entry x:Name="ThirdEntry" Grid.Column="4" Focused="OnFocusedSelectAllEntryContent"/>
+    <Entry x:Name="ThirdEntry" Grid.Column="4" Focused="OnFocusedSelectAllEntryContent" Unfocused="OnUnfocusedEntry"/>
 </Grid>
