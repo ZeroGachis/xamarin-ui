@@ -12,6 +12,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
         public BarcodeInputBehaviorTest()
         {
             Command = new Mock<ICommand>();
+            Command.Setup(_ => _.CanExecute(It.IsAny<object>())).Returns(true);
             Behavior = new BarcodeInputBehavior();
             Behavior.Command = Command.Object;
             Entry = new Entry();
@@ -71,6 +72,17 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
 
             Check.That(Entry.Text).IsEqualTo(null);
             Command.Verify(_ => _.Execute(It.IsAny<string>()), Times.Never);
+        }
+
+        [Fact]
+        public void CanExecuteIsFalse()
+        {
+            Command.Setup(_ => _.CanExecute(It.IsAny<object>())).Returns(false);
+
+            Entry.Text = "2970812075764";
+
+            Check.That(Entry.Text).IsEqualTo("2970812075764");
+            Command.Verify(_ => _.Execute(It.IsAny<object>()), Times.Never);
         }
     }
 }
