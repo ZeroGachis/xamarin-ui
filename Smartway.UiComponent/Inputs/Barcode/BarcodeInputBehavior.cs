@@ -51,7 +51,10 @@ namespace Smartway.UiComponent.Inputs.Barcode
             if (e.NewTextValue.Length != Ean13.CheckedLength)
                 return;
 
-            Command?.Execute(e.NewTextValue);
+            if (Command == null || !Command.CanExecute(null))
+                return;
+
+            Command.Execute(e.NewTextValue);
         }
 
         private bool InputIsInvalid(string input)
