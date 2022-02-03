@@ -4,6 +4,7 @@
              xmlns:indicators="clr-namespace:Smartway.UiComponent.Indicators;assembly=Smartway.UiComponent"
              xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
              xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
+             xmlns:converters="clr-namespace:Smartway.Mvvm.Converters;assembly=Smartway.Mvvm"
              x:Class="Smartway.UiComponent.Cards.ArticleCard"
              x:Name="Self">
     <ContentView.Resources>
@@ -30,6 +31,7 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <converters:NullToBooleanConverter x:Key="FalseIfNull" />
     </ContentView.Resources>
     <ContentView.Content>
         <StackLayout Orientation="Vertical">
@@ -86,16 +88,15 @@
                         TextColor="Black"
                         Text="{Binding Source={Reference Self}, Path=OnShortageSince, StringFormat='Rupture depuis le {0:dd/MM/yyyy}'}"
                         IsVisible="{Binding Source={Reference Self}, Path=DisplayOnShortageSince}" />
-                    <indicators:Status IsVisible="False" HorizontalOptions="StartAndExpand">
+                    <indicators:Status IsVisible="{Binding Source={Reference Self}, Path=Status, Converter={StaticResource FalseIfNull}}" 
+                                       HorizontalOptions="StartAndExpand">
                         <indicators:Status.Triggers>
                             <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Monitored">
                                 <Setter Property="Value" Value="Success" />
-                                <Setter Property="IsVisible" Value="True" />
                                 <Setter Property="Text" Value="{x:Static resources:Resources.Monitor}" />
                             </DataTrigger>
                             <DataTrigger TargetType="indicators:Status" Binding="{Binding Source={Reference Self}, Path=Status}" Value="Unmonitored">
                                 <Setter Property="Value" Value="Basic" />
-                                <Setter Property="IsVisible" Value="True" />
                                 <Setter Property="Text" Value="{x:Static resources:Resources.Unmonitor}" />
                             </DataTrigger>
                         </indicators:Status.Triggers>
