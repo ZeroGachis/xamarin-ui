@@ -41,12 +41,14 @@
                         <Setter Property="Value" Value="ArrowDropDown" />
                         <Setter Property="FontSize" Value="24" />
                         <Setter Property="TextColor" Value="Black" />
+                        <Setter Property="AutomationId" Value="CardDropDown" />
                         <Style.Triggers>
                             <DataTrigger TargetType="{x:Type icons:Icon}" Binding="{Binding Source={x:Reference Self}, Path=Status}" Value="warning">
                                 <Setter Property="TextColor" Value="{StaticResource ZgBrightOrange}" />
                             </DataTrigger>
                             <DataTrigger TargetType="{x:Type icons:Icon}" Binding="{Binding Source={x:Reference Self}, Path=IsExpanded}" Value="true">
                                 <Setter Property="Value" Value="ArrowDropUp" />
+                                <Setter Property="AutomationId" Value="CardDropUp" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -78,10 +80,14 @@
                 <ColumnDefinition Width="24"/>
             </Grid.ColumnDefinitions>
             <FlexLayout Grid.Column="0">
-                <icons:Icon IsVisible="false" HorizontalOptions="Start" Style="{StaticResource WarningIcon}" />
-                <Label Text="{Binding Path=Title, Source={x:Reference Self}}" Style="{StaticResource TitleLabel}"/>
+                <icons:Icon IsVisible="false" HorizontalOptions="Start" Style="{StaticResource WarningIcon}" AutomationId="CardWarning"/>
+                <Label Text="{Binding Path=Title, Source={x:Reference Self}}" Style="{StaticResource TitleLabel}" AutomationId="CardTitle"/>
             </FlexLayout>
-            <Label Grid.Column="1" Text="{Binding Path=Counter, Source={x:Reference Self}}"  HorizontalOptions="End"  Style="{StaticResource CounterLabel}"/>
+            <Label  Grid.Column="1"
+                    Text="{Binding Path=Counter, Source={x:Reference Self}}"  
+                    HorizontalOptions="End"
+                    Style="{StaticResource CounterLabel}"
+                    AutomationId="CardCounter"/>
             <icons:Icon Grid.Column="2" Style="{StaticResource DropDownIcon}"/>
         </Grid>
     </toolkit:Expander.Header>

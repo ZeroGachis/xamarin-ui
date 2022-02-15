@@ -130,10 +130,12 @@
             </layouts:ClickableItem>
             <Label Grid.Column="1"
                    Style="{StaticResource LabelTitle}"
-                   Text="{Binding Source={x:Reference Self}, Path=Title}"/>
+                   Text="{Binding Source={x:Reference Self}, Path=Title}"
+                   AutomationId="TopNavigationHeader"/>
             <Label Grid.Column="2"
-                       Style="{StaticResource ExtraLabel}"
-                       Text="{Binding Source={x:Reference Self}, Path=ExtraNavigationLabel}">
+                   Style="{StaticResource ExtraLabel}"
+                   Text="{Binding Source={x:Reference Self}, Path=ExtraNavigationLabel}"
+                   AutomationId="ExtraNavigationControl">
                 <Label.Triggers>
                     <DataTrigger TargetType="Label"
                                      Binding="{Binding Source={x:Reference Self}, Path=ExtraNavigationLabel}" Value="">
