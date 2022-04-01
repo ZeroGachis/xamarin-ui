@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -66,7 +67,7 @@ namespace Smartway.UiComponent.Inputs
         }
 
         public static readonly BindableProperty SelectCommandProperty = 
-            BindableProperty.Create(nameof(SelectCommand), typeof(ICommand), typeof(FormEntry));
+            BindableProperty.Create(nameof(SelectCommand), typeof(IAsyncCommand), typeof(FormEntry));
 
         public string Title
         {
@@ -134,9 +135,9 @@ namespace Smartway.UiComponent.Inputs
             set => SetValue(EntryTypeProperty, value);
         }
 
-        public ICommand SelectCommand
+        public IAsyncCommand SelectCommand
         {
-            get => (ICommand)GetValue(SelectCommandProperty);
+            get => (IAsyncCommand)GetValue(SelectCommandProperty);
             set => SetValue(SelectCommandProperty, value);
         }
 
@@ -172,13 +173,9 @@ namespace Smartway.UiComponent.Inputs
             }
         }
 
-        public ICommand OnSelectTap => new Command(() =>
+        public IAsyncCommand OnSelectTap => new AsyncCommand(async () =>
         {
-            if (SelectCommand == null)
-                return;
-
-            if (SelectCommand.CanExecute(null))
-                SelectCommand.Execute(null);
-        });
+                await SelectCommand.ExecuteAsync();
+        }, allowsMultipleExecutions:false);
     }
 }
