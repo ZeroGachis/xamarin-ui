@@ -15,19 +15,20 @@ namespace Smartway.UiComponent.Droid.Renderers
         protected override void OnElementChanged(ElementChangedEventArgs<Button> args)
         {
             base.OnElementChanged(args);
-            if (Control != null) SetColors();
+            if (Control != null)
+                SetOpacity();
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             base.OnElementPropertyChanged(sender, args);
-            if (args.PropertyName == nameof(Button.IsEnabled)) SetColors();
+            if (args.PropertyName == nameof(Button.IsEnabled))
+                SetOpacity();
         }
 
-        private void SetColors()
+        private void SetOpacity()
         {
-            if(!Element.IsEnabled)
-                Control.SetTextColor(Android.Graphics.Color.White);
+            Element.Opacity = Element.IsEnabled ? 1 : 0.3;
         }
     }
 }
