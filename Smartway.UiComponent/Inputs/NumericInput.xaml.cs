@@ -17,6 +17,8 @@ namespace Smartway.UiComponent.Inputs
             typeof(bool), typeof(NumericInput), false);
         public static readonly BindableProperty IsSelectableProperty = BindableProperty.Create(nameof(IsSelectable),
             typeof(bool), typeof(NumericInput), true);
+        public static readonly BindableProperty IsDefaultValueProperty = BindableProperty.Create(nameof(IsDefaultValue),
+            typeof(bool), typeof(NumericInput), false);
 
         public NumericInput()
         {
@@ -57,6 +59,12 @@ namespace Smartway.UiComponent.Inputs
         {
             get => (bool)GetValue(IsSelectableProperty);
             set => SetValue(IsSelectableProperty, value);
+        }
+
+        public bool IsDefaultValue
+        {
+            get => (bool)GetValue(IsDefaultValueProperty);
+            set => SetValue(IsDefaultValueProperty, value);
         }
 
         public event EventHandler OnSelected;
