@@ -18,6 +18,13 @@
                 <Setter Property="FontFamily" Value="OpenSans"/>
                 <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=FontSize}"/>
                 <Setter Property="TextColor" Value="Black"/>
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding Source={x:Reference Self}, Path=IsDefaultValue}"
+                                 Value="True">
+                        <Setter Property="TextColor" Value="{StaticResource ZgColdGrey}"/>
+                    </DataTrigger>
+                </Style.Triggers>
             </Style>
         </ResourceDictionary>
     </Frame.Resources>
