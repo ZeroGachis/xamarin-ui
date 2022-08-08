@@ -13,6 +13,10 @@
             <Label Text="Default"/>
             <topappbar:TopAppBar Title="Product 1"
                                  Command="{Binding Back}"/>
+            <Label Text="Default centered"/>
+            <topappbar:TopAppBar Title="Product 1"
+                                 IsTitleCentered="True"
+                                 Command="{Binding Back}"/>
             <Label Text="Modal"/>
             <topappbar:TopAppBar Title="Product 2"
                                  Type="Modal"

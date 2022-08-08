@@ -19,12 +19,10 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="TextColor" Value="{StaticResource ZgDarkBlue}"/>
                 <Setter Property="FontSize" Value="24"/>
-                <Setter Property="Margin" Value="0, 0, 16, 0"/>
             </Style>
             <Style x:Key="LabelTitle" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="Margin" Value="16, 0, 0, 0"/>
-                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
@@ -32,20 +30,30 @@
             <Style x:Key="ExtraLabel" TargetType="Label" BasedOn="{StaticResource SemiBoldFont}">
                 <Setter Property="FontSize" Value="16"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="0, 1, 0, 0"/>
+                <Setter Property="HorizontalTextAlignment" Value="End"/>
+                <Setter Property="Padding" Value="0, 0, 16, 0"/>
+            </Style>
+            <Style x:Key="LeftTopAppBar" TargetType="Grid">
+                <Setter Property="RowDefinitions" Value="48"/>
+                <Setter Property="ColumnSpacing" Value="16"/>
+                <Setter Property="ColumnDefinitions" Value="Auto, *, Auto"/>
+            </Style>
+            <Style x:Key="CenteredTopAppBar" TargetType="Grid">
+                <Setter Property="RowDefinitions" Value="48"/>
+                <Setter Property="ColumnSpacing" Value="16"/>
+                <Setter Property="ColumnDefinitions" Value="1*, 3*, 1*"/>
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Grid Padding="0, 3, 16, 5" ColumnSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="48" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <Grid Style="{StaticResource LeftTopAppBar}">
+            <Grid.Triggers>
+                <DataTrigger TargetType="Grid"
+                             Binding="{Binding Source={x:Reference Self}, Path=IsTitleCentered}"
+                             Value="True">
+                    <Setter Property="Style" Value="{StaticResource CenteredTopAppBar}"/>
+                </DataTrigger>
+            </Grid.Triggers>
             <layouts:ClickableItem Padding="16, 0, 0, 0">
                 <layouts:ClickableItem.GestureRecognizers>
                     <TapGestureRecognizer
@@ -131,7 +139,15 @@
             <Label Grid.Column="1"
                    Style="{StaticResource LabelTitle}"
                    Text="{Binding Source={x:Reference Self}, Path=Title}"
-                   AutomationId="TopNavigationHeader"/>
+                   AutomationId="TopNavigationHeader">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding Source={x:Reference Self}, Path=IsTitleCentered}"
+                                 Value="True">
+                        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
             <Label Grid.Column="2"
                    Style="{StaticResource ExtraLabel}"
                    Text="{Binding Source={x:Reference Self}, Path=ExtraNavigationLabel}"

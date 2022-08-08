@@ -9,6 +9,7 @@ namespace Smartway.UiComponent.TopAppBar
     public partial class TopAppBar
     {
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(TopAppBar));
+        public static readonly BindableProperty IsTitleCenteredProperty = BindableProperty.Create(nameof(IsTitleCentered), typeof(bool), typeof(TopAppBar));
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(TopAppBar));
         public static readonly BindableProperty TypeProperty = BindableProperty.Create(nameof(Type), typeof(string), typeof(TopAppBar), "Default");
         public static readonly BindableProperty ExtraNavigationLabelProperty = BindableProperty.Create(nameof(ExtraNavigationLabel), typeof(string), typeof(TopAppBar));
@@ -21,6 +22,11 @@ namespace Smartway.UiComponent.TopAppBar
         {
             get => (string)GetValue(TitleProperty);
             set => SetValue(TitleProperty, value);
+        }
+        public bool IsTitleCentered
+        {
+            get => (bool)GetValue(IsTitleCenteredProperty);
+            set => SetValue(IsTitleCenteredProperty, value);
         }
         public ICommand Command
         {
