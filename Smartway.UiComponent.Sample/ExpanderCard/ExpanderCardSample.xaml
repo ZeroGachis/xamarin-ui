@@ -10,8 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <cards:ExpanderCard Title="basic title" Counter="1">
-                </cards:ExpanderCard>
+                <cards:ExpanderCard Title="basic title" Counter="1"/>
                 <cards:ExpanderCard Title="basic title With Content" Counter="123">
                     <cards:ExpanderCard.ExpanderTemplate>
                         <DataTemplate>
@@ -23,7 +22,21 @@
                     <Label Text="In Section Sheet"></Label>
                     <cardLists:ExpanderCardList Title="Expander 50 items " Status="warning" SourceList="{Binding Articles}"/>
                     <cardLists:ExpanderCardList Title="Expander lazy loading 50 items" SourceList="{Binding Articles}" LoadAsync="True"/>
-                <Label Text="In Section Sheet - Condensed"></Label>
+                    <cards:ExpanderCard Title="Expander complex content" Counter="{Binding Articles.Count}">
+                        <cards:ExpanderCard.ExpanderContent>
+                            <StackLayout>
+                                <Label Text="Hello"></Label>
+                                <CollectionView ItemsSource="{Binding Articles}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <cards:ArticleCard Label="Escargot" Gencode="123456" Price="666" IsMultilocation="true" IsCondensed="true"/>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+                        </cards:ExpanderCard.ExpanderContent>
+                    </cards:ExpanderCard>
+                    <Label Text="In Section Sheet - Condensed"></Label>
                     <cards:ExpanderCard Title="Basic Title">
                         <cards:ExpanderCard.ExpanderTemplate>
                             <DataTemplate>

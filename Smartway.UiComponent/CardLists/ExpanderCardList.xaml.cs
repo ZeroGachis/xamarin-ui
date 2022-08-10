@@ -15,12 +15,24 @@ namespace Smartway.UiComponent.CardLists
     {
         private readonly Queue<object> _articleToAdd = new Queue<object>();
 
-        public static readonly BindableProperty StatusProperty = BindableProperty.Create(nameof(Status), typeof(string), typeof(ExpanderCardList));
-        public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(ExpanderCardList));
-        public static readonly BindableProperty IsExpandedProperty = BindableProperty.Create(nameof(IsExpanded), typeof(bool), typeof(ExpanderCardList), defaultBindingMode: BindingMode.TwoWay);
-        public static readonly BindableProperty ExpandCommandProperty = BindableProperty.Create(nameof(ExpandCommand), typeof(ICommand), typeof(ExpanderCardList));
-        public static readonly BindableProperty SourceListProperty = BindableProperty.Create(nameof(SourceList), typeof(ObservableCollection<object>), typeof(ExpanderCardList), propertyChanged: OnArticleListChanged);
-        public static readonly BindableProperty LoadAsyncProperty = BindableProperty.Create(nameof(LoadAsync), typeof(bool), typeof(ExpanderCardList));
+        public static readonly BindableProperty StatusProperty = BindableProperty.Create(
+            nameof(Status), typeof(string), typeof(ExpanderCardList));
+        
+        public static readonly BindableProperty TitleProperty = BindableProperty.Create(
+            nameof(Title), typeof(string), typeof(ExpanderCardList));
+        
+        public static readonly BindableProperty IsExpandedProperty = BindableProperty.Create(
+            nameof(IsExpanded), typeof(bool), typeof(ExpanderCardList), defaultBindingMode: BindingMode.TwoWay);
+        
+        public static readonly BindableProperty ExpandCommandProperty = BindableProperty.Create(
+            nameof(ExpandCommand), typeof(ICommand), typeof(ExpanderCardList));
+        
+        public static readonly BindableProperty SourceListProperty = BindableProperty.Create
+            (nameof(SourceList), typeof(ObservableCollection<object>), typeof(ExpanderCardList), propertyChanged: OnArticleListChanged);
+        
+        public static readonly BindableProperty LoadAsyncProperty = BindableProperty.Create(
+            nameof(LoadAsync), typeof(bool), typeof(ExpanderCardList));
+
 
         public ExpanderCardList()
         {
