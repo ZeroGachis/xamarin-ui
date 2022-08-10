@@ -16,7 +16,8 @@
                 State="{Binding Source={x:Reference Self}, Path=State}"
                 Command="{Binding Source={x:Reference Self}, Path=Command}"
                 ForceUpdateSizeCommand="{Binding Source={x:Reference Self}, Path=ForceUpdateSizeCommand}"
-                ContentTemplate="{Binding Source={x:Reference Self}, Path=ExpanderTemplate}"
+                ExpanderContent="{Binding Source={x:Reference Self}, Path=ExpanderContent}"
+                ExpanderTemplate="{Binding Source={x:Reference Self}, Path=ExpanderTemplate}"
                 >
         </cards:CustomExpander>
         </cards:RoundedFrame>

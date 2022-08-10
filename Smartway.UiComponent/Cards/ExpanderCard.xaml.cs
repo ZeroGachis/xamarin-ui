@@ -37,8 +37,13 @@ namespace Smartway.UiComponent.Cards
             nameof(ForceUpdateSizeCommand), typeof(ICommand), typeof(ExpanderCard), null, BindingMode.OneWayToSource
         );
 
-        public static readonly BindableProperty ExpanderTemplateProperty = BindableProperty.Create(nameof(ExpanderTemplate), typeof(DataTemplate), typeof(ExpanderCard));
-        
+        public static readonly BindableProperty ExpanderTemplateProperty = BindableProperty.Create(
+            nameof(ExpanderTemplate), typeof(DataTemplate), typeof(ExpanderCard));
+
+        public static readonly BindableProperty ExpanderContentProperty = BindableProperty.Create(
+            nameof(ExpanderContent), typeof(View), typeof(ExpanderCard)
+        );
+
         public string Status
         {
             get => (string)GetValue(StatusProperty);
@@ -85,6 +90,12 @@ namespace Smartway.UiComponent.Cards
         {
             get => (DataTemplate)GetValue(ExpanderTemplateProperty);
             set => SetValue(ExpanderTemplateProperty, value);
+        }
+
+        public View ExpanderContent
+        {
+            get => (View)GetValue(ExpanderContentProperty);
+            set => SetValue(ExpanderContentProperty, value);
         }
 
         public ExpanderCard()
