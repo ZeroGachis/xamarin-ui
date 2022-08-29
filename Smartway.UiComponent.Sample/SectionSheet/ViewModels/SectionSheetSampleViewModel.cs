@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Smartway.UiComponent.Sample.SectionSheet.ViewModels
 {
-    class SectionSheetSampleViewModel: ViewModel
+    public class SectionSheetSampleViewModel: ViewModel
     {
         public ObservableCollection<object> Articles => new ObservableCollection<object>
         {
@@ -50,5 +52,11 @@ namespace Smartway.UiComponent.Sample.SectionSheet.ViewModels
                 NavigationParameter = "Article 5"
             },
         };
+
+        public ICommand DisplayToastCommand => new Command((param) =>
+        {
+            var message = "Product Card is tapped";
+            DependencyService.Get<INotifyMessage>().ShortAlert(message);
+        });
     }
 }

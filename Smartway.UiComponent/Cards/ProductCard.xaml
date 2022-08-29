@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+      x:Class="Smartway.UiComponent.Cards.ProductCard"
+      ColumnDefinitions="64, *"
+      RowDefinitions="64"
+      VerticalOptions="Center"
+      AutomationId="ProductCardItem"
+      x:Name="Self">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BoxViewStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource ZgColdGrey}"/>
+                <Setter Property="WidthRequest" Value="64"/>
+                <Setter Property="HeightRequest" Value="64"/>
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BorderColor" Value="{StaticResource ZgColdGrey}"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Padding" Value="10, 2"/>
+                <Setter Property="Margin" Value="0, 20, 0, 10"/>
+                <Setter Property="TranslationY" Value="20"/>
+                <Setter Property="TranslationX" Value="3"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
+            <Style x:Key="BaseLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontFamily" Value="OpenSans"/>
+            </Style>
+            <Style x:Key="TitleLabel" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="LineBreakMode" Value="TailTruncation"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="OpenSansSemiBold"/>
+            </Style>
+            <Style x:Key="QuantityLabel" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Opacity" Value="0.38"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontFamily" Value="OpenSansSemiBold"/>
+            </Style>
+            <Style x:Key="GencodePriceLabel" TargetType="Label"  BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="Opacity" Value="0.38"/>
+            </Style>
+            <Style x:Key="DetailsView" TargetType="ContentView">
+                <Setter Property="BackgroundColor" Value="{StaticResource ZgColdGrey}"/>
+            </Style>
+            <xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter"/>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ClickCommand, Source={x:Reference Self}}"
+                              CommandParameter="{Binding ClickCommandParameter, Source={x:Reference Self}}"/>
+    </Grid.GestureRecognizers>
+    <RelativeLayout Grid.Column="0">
+        <BoxView Style="{StaticResource BoxViewStyle}"/>
+        <Frame Style="{StaticResource FrameStyle}"
+               IsVisible="{Binding Quantity, Source={x:Reference Self}, Converter={StaticResource IsNotNullOrEmptyConverter}}">
+            <Label Style="{StaticResource QuantityLabel}"
+                   Text="{Binding Quantity, StringFormat='x {0}', Source={x:Reference Self}}"
+                   AutomationId="ProductCardQtty"/>
+        </Frame>
+    </RelativeLayout>
+    <StackLayout Grid.Column="1">
+        <Label Style="{StaticResource TitleLabel}"
+               Text="{Binding Label, Source={x:Reference Self}}"
+               AutomationId="ProductCardLabel"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Style="{StaticResource GencodePriceLabel}" Margin="3, 0" AutomationId="ProductCardGencodePrice">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} • {1}">
+                        <Binding Path="Gencode" Source="{x:Reference Self}"/>
+                        <Binding Path="InitialPrice" Source="{x:Reference Self}"/>
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+            <Label Style="{StaticResource GencodePriceLabel}"
+                   IsVisible="{Binding IsVariableProduct, Source={x:Reference Self}}"
+                   Text="{Binding Weight, Source={x:Reference Self}, StringFormat='• {0}'}"
+                   AutomationId="ProductCardWeight"/>
+        </StackLayout>
+        <Grid ColumnSpacing="0"
+              HorizontalOptions="FillAndExpand"
+              ColumnDefinitions="Auto, *">
+            <ContentView Style="{StaticResource DetailsView}" Content="{Binding Details, Source={x:Reference Self}}"/>
+            <Label Grid.Column="1"
+                   HorizontalOptions="End"
+                   Style="{StaticResource BaseLabel}"
+                   TextColor="{StaticResource ZgLightSilver}"
+                   IsVisible="{Binding Time, Source={x:Reference Self}, Converter={StaticResource IsNotNullOrEmptyConverter}}"
+                   Text="{Binding Time, Source={x:Reference Self}, StringFormat='{}{0:HH:mm}'}"
+                   AutomationId="ProductCardTime"/>
+        </Grid>
+    </StackLayout>
+</Grid>
