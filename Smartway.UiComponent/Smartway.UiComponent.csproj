@@ -35,8 +35,8 @@
     <PackageReference Include="Smartway.Barcode" Version="0.1.0" />
     <PackageReference Include="Smartway.ValueObjects" Version="0.3.0" />
     <PackageReference Include="Smartway.Mvvm" Version="0.4.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.4" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
   </ItemGroup>
 
   <ItemGroup>
