@@ -3,13 +3,15 @@ using Moq;
 using NFluent;
 using Smartway.UiComponent.Inputs.Barcode;
 using Xamarin.Forms;
-using Xunit;
+using NUnit;
+using NUnit.Framework;
 
 namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
 {
     public class BarcodeInputBehaviorTest
     {
-        public BarcodeInputBehaviorTest()
+        [SetUp]
+        public void SetUp()
         {
             Command = new Mock<ICommand>();
             Command.Setup(_ => _.CanExecute(It.IsAny<object>())).Returns(true);
@@ -28,7 +30,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
 
     public class OnTextChanged : BarcodeInputBehaviorTest
     {
-        [Fact]
+        [Test]
         public void ValidGencodeFilled()
         {
             Entry.Text = "2970812075764";
@@ -37,7 +39,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
             Command.Verify(_ => _.Execute("2970812075764"), Times.Once);
         }
 
-        [Fact]
+        [Test]
         public void UnvalidGencodeFilled()
         {
             Entry.Text = "297081207576";
@@ -47,7 +49,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
             Command.Verify(_ => _.Execute(It.IsAny<string>()), Times.Never);
         }
 
-        [Fact]
+        [Test]
         public void GencodeNotTotallyFilled()
         {
             Entry.Text = "297081207";
@@ -56,7 +58,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
             Command.Verify(_ => _.Execute(It.IsAny<string>()), Times.Never);
         }
 
-        [Fact]
+        [Test]
         public void GencodeFilledWithNotDigitChar()
         {
             Entry.Text = "x";
@@ -65,7 +67,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
             Command.Verify(_ => _.Execute(It.IsAny<string>()), Times.Never);
         }
 
-        [Fact]
+        [Test]
         public void GencodeFilledBigLength()
         {
             Entry.Text = "29708120757644";
@@ -74,7 +76,7 @@ namespace Smartway.UiComponent.UnitTests.Inputs.Barcode
             Command.Verify(_ => _.Execute(It.IsAny<string>()), Times.Never);
         }
 
-        [Fact]
+        [Test]
         public void CanExecuteIsFalse()
         {
             Command.Setup(_ => _.CanExecute(It.IsAny<object>())).Returns(false);

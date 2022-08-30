@@ -1,16 +1,15 @@
 ﻿using System;
-using Xunit;
 using System.Windows.Input;
 using Moq;
+using NUnit.Framework;
 using Smartway.UiComponent.Inputs;
 using Xamarin.Forms.Mocks;
 
-
-namespace Smartway.UiComponent.UnitTests.Inputs.NumericDateEntryTest
+namespace Smartway.UiComponent.UnitTests.Inputs.NumericDateInput
 {
     public class NumericDateEntryTest
     {
-        protected NumericDateEntry _numericDateEntry { get; set; }
+        protected NumericDateEntry NumericDateEntry { get; set; }
 
         public NumericDateEntryTest()
         {
@@ -19,39 +18,41 @@ namespace Smartway.UiComponent.UnitTests.Inputs.NumericDateEntryTest
 
         public void SetDateToDatepicker(string day, string month, string year)
         {
-            _numericDateEntry.DayEntry.Text = day;
-            _numericDateEntry.MonthEntry.Text = month;
-            _numericDateEntry.YearEntry.Text = year;
+            NumericDateEntry.DayEntry.Text = day;
+            NumericDateEntry.MonthEntry.Text = month;
+            NumericDateEntry.YearEntry.Text = year;
         }
     }
 
-    public class GetFilledDateTest: NumericDateEntryTest
+    public class GetFilledDateTest : NumericDateEntryTest
     {
-        private Mock<ICommand> _errorCommandMock { get; set; }
-        public GetFilledDateTest()
+        private Mock<ICommand> ErrorCommandMock { get; set; }
+
+        [SetUp]
+        public void SetUp()
         {
-            _errorCommandMock = new Mock<ICommand>();
-            _numericDateEntry = new NumericDateEntry
+            ErrorCommandMock = new Mock<ICommand>();
+            NumericDateEntry = new NumericDateEntry
             {
-                ErrorCommand = _errorCommandMock.Object,
+                ErrorCommand = ErrorCommandMock.Object,
             };
         }
 
-        [Fact]
+        [Test]
         public void FilledCorrect()
         {
             SetDateToDatepicker("10", "01", "22");
-            _errorCommandMock.Verify(mock => mock.Execute(It.IsAny<string>()), Times.Never());
+            ErrorCommandMock.Verify(mock => mock.Execute(It.IsAny<string>()), Times.Never());
         }
 
         [Theory]
-        [InlineData("10", "90", "22")]
-        [InlineData("31", "02", "22")]
-        [InlineData("10", "02", "-1")]
+        [TestCase("10", "90", "22")]
+        [TestCase("31", "02", "22")]
+        [TestCase("10", "02", "-1")]
         public void FilledUncorrectDate(string day, string month, string year)
         {
             SetDateToDatepicker(day, month, year);
-            _errorCommandMock.Verify(mock => mock.Execute(It.IsAny<Exception>()), Times.Once());
+            ErrorCommandMock.Verify(mock => mock.Execute(It.IsAny<Exception>()), Times.Once());
         }
     }
 }

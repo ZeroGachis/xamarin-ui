@@ -10,9 +10,8 @@
 	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="NFluent" Version="2.7.2" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="Xamarin.Forms.Mocks" Version="4.7.0.1" />
-    <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Smartway.UiComponent\Smartway.UiComponent.csproj" />
