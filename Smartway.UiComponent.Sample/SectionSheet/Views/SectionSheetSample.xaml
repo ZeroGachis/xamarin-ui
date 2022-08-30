@@ -4,11 +4,21 @@
              xmlns:layouts="clr-namespace:Smartway.UiComponent.Layouts;assembly=Smartway.UiComponent"
              xmlns:viewModels="clr-namespace:Smartway.UiComponent.Sample.SectionSheet.ViewModels;assembly=Smartway.UiComponent.Sample"
              xmlns:cardLists="clr-namespace:Smartway.UiComponent.CardLists;assembly=Smartway.UiComponent"
+             xmlns:cards="clr-namespace:Smartway.UiComponent.Cards;assembly=Smartway.UiComponent"
              x:Class="Smartway.UiComponent.Sample.SectionSheet.Views.SectionSheetSample"
              x:DataType="viewModels:SectionSheetSampleViewModel">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <layouts:SectionSheet>
+                    <Label Text="Product Card" />
+                    <cards:ProductCard Label="Cuisse de Dinde"
+                                       Gencode="3421375509306"
+                                       InitialPrice="2€25"
+                                       Quantity="5"
+                                       Time="02:55"
+                                       ClickCommand="{Binding DisplayToastCommand}"/>
+                </layouts:SectionSheet>
                 <layouts:SectionSheet>
                     <Label Text="Normal Size" />
                     <cardLists:ArticleCardList ArticlesList="{Binding Articles}" />
