@@ -11,6 +11,7 @@
                 <Setter Property="FontFamily" Value="OpenSans"/>
                 <Setter Property="FontSize" Value="{Binding Source={x:Reference Self}, Path=GlobalFontSize}"/>
                 <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="Black" />
             </Style>
             <Style TargetType="Entry">
                 <Setter Property="FontFamily" Value="OpenSans"/>
