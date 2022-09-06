@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
       xmlns:resources="clr-namespace:Smartway.UiComponent.Resources;assembly=Smartway.UiComponent"
+      xmlns:utils="clr-namespace:Smartway.UiComponent.Utils;assembly=Smartway.UiComponent"
       x:Class="Smartway.UiComponent.Cards.ProductCard"
       ColumnDefinitions="64, *"
       RowDefinitions="64"
@@ -16,6 +17,12 @@
                 <Setter Property="WidthRequest" Value="64"/>
                 <Setter Property="HeightRequest" Value="64"/>
                 <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+            <Style x:Key="MultiLocationIcon" TargetType="Image">
+                <Setter Property="WidthRequest" Value="20"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="TranslationY" Value="4"/>
+                <Setter Property="TranslationX" Value="40"/>
             </Style>
             <Style x:Key="FrameStyle" TargetType="Frame">
                 <Setter Property="BorderColor" Value="{StaticResource ZgColdGrey}"/>
@@ -59,6 +66,9 @@
     </Grid.GestureRecognizers>
     <RelativeLayout Grid.Column="0">
         <BoxView Style="{StaticResource BoxViewStyle}"/>
+        <Image Style="{StaticResource MultiLocationIcon}"
+               Source="{utils:ImageResource Source=Smartway.UiComponent.Resources.Images.icon_sdet_multiimplantation.png}"
+               IsVisible="{Binding Source={Reference Self}, Path=IsMultilocation}"/>
         <Frame Style="{StaticResource FrameStyle}"
                IsVisible="{Binding Quantity, Source={x:Reference Self}, Converter={StaticResource IsNotNullOrEmptyConverter}}">
             <Label Style="{StaticResource QuantityLabel}"

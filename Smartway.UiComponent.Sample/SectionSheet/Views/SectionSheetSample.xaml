@@ -18,6 +18,19 @@
                                        Quantity="5"
                                        Time="02:55"
                                        ClickCommand="{Binding DisplayToastCommand}"/>
+                    <cards:ProductCard Label="Cuisse de Dinde"
+                                       Gencode="3421375509306"
+                                       InitialPrice="2€25"
+                                       IsMultilocation="True"
+                                       Time="02:55"
+                                       ClickCommand="{Binding DisplayToastCommand}"/>
+                    <cards:ProductCard Label="Cuisse de Dinde"
+                                       Gencode="3421375509306"
+                                       InitialPrice="2€25"
+                                       IsMultilocation="True"
+                                       Quantity="6"
+                                       Time="02:55"
+                                       ClickCommand="{Binding DisplayToastCommand}"/>
                 </layouts:SectionSheet>
                 <layouts:SectionSheet>
                     <Label Text="Normal Size" />
