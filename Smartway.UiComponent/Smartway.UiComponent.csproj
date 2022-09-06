@@ -15,6 +15,7 @@
     <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
     <None Remove="Resources\Fonts\OpenSans-SemiBold.ttf" />
+    <None Remove="Resources\Images\icon_sdet_multiimplantation.png" />
     <None Remove="Resources\Images\img_product_placeholder.png" />
     <None Remove="Resources\Images\img_product_placeholder_multilocation.png" />
     <None Remove="Resources\Images\logo_easyturn.png" />
@@ -26,6 +27,7 @@
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Regular.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-SemiBold.ttf" />
+    <EmbeddedResource Include="Resources\Images\icon_sdet_multiimplantation.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder.png" />
     <EmbeddedResource Include="Resources\Images\img_product_placeholder_multilocation.png" />
     <EmbeddedResource Include="Resources\Images\logo_easyturn.png" />
