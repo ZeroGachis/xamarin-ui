@@ -39,7 +39,7 @@ namespace Smartway.UiComponent.Cards
             nameof(Weight), typeof(long?), typeof(ProductCard));
 
         public static readonly BindableProperty IsMultilocationProperty = BindableProperty.Create(
-            nameof(IsMultilocation), typeof(bool), typeof(ArticleCard), false);
+            nameof(IsMultilocation), typeof(bool), typeof(ProductCard), false);
 
         public ProductCard()
         {
