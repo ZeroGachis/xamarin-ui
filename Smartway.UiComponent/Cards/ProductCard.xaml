@@ -17,6 +17,11 @@
                 <Setter Property="WidthRequest" Value="64"/>
                 <Setter Property="HeightRequest" Value="64"/>
                 <Setter Property="CornerRadius" Value="5"/>
+                <Style.Triggers>
+                    <DataTrigger TargetType="BoxView" Binding="{Binding IsEnabled, Source={x:Reference Self}}" Value="False">
+                        <Setter Property="BackgroundColor" Value="{StaticResource ZgLightColdGrey}"/>
+                    </DataTrigger>
+                </Style.Triggers>
             </Style>
             <Style x:Key="MultiLocationIcon" TargetType="Image">
                 <Setter Property="WidthRequest" Value="20"/>
@@ -33,11 +38,21 @@
                 <Setter Property="TranslationX" Value="3"/>
                 <Setter Property="CornerRadius" Value="5"/>
                 <Setter Property="HasShadow" Value="False"/>
+                <Style.Triggers>
+                    <DataTrigger TargetType="Frame" Binding="{Binding IsEnabled, Source={x:Reference Self}}" Value="False">
+                        <Setter Property="BorderColor" Value="{StaticResource ZgLightColdGrey}"/>
+                    </DataTrigger>
+                </Style.Triggers>
             </Style>
             <Style x:Key="BaseLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="11"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontFamily" Value="OpenSans"/>
+                <Style.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsEnabled, Source={x:Reference Self}}" Value="False">
+                        <Setter Property="TextColor" Value="{StaticResource ZgMediumGrey}"/>
+                    </DataTrigger>
+                </Style.Triggers>
             </Style>
             <Style x:Key="TitleLabel" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
@@ -58,6 +73,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource ZgColdGrey}"/>
             </Style>
             <xct:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter"/>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
         </ResourceDictionary>
     </Grid.Resources>
     <Grid.GestureRecognizers>
