@@ -1,0 +1,33 @@
+name: Xamarin-UI
+
+on:
+  workflow_call:
+    inputs: 
+      app-version: 
+        required: true
+        type: string
+      configuration:
+        required: true
+        type: string
+
+jobs:
+  publish:
+    name: Publish Nuget
+    runs-on: [self-hosted, xamarin-android]
+
+    steps:
+    - name: Clean Workspace
+      uses: mickem/clean-after-action@v1
+    - name: Download Workspace
+      uses: actions/download-artifact@v3
+      with:
+        name: worskpace        
+    - name: Modify Nuget Version
+      uses: mingjun97/file-regex-replace@v1
+      with:
+        regex: '<Version>.*<\/Version>'
+        replacement: '<Version>${{ inputs.app-version }}</Version>'
+        include: 'Smartway.UiComponent.nuspec'  
+    - name: Pack Nuget
+      run: "nuget pack Smartway.UiComponent.nuspec -Version ${{ inputs.app-version }} -Properties Configuration=${{ inputs.configuration }}"
+    
