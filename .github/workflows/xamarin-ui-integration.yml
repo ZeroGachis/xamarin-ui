@@ -1,0 +1,27 @@
+name: Xamarin-UI-Integration
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'release/**' 
+      - 'hotfix/**'
+
+jobs:
+  format-version:
+    name: Format versions
+    runs-on: [self-hosted, xamarin-android]
+    outputs:
+      app-version-formated: ${{ steps.format-app-version.outputs.app-version }} 
+    steps:
+    - name: "Format app version for VersionCode"
+      id: format-app-version
+      run: echo "::set-output name=app-version::$(sed 's/^[^\/]*\///' <<< ${{github.ref_name}} )"
+
+  xamarin-ui-integration:
+    needs: format-version
+    uses: ./.github/workflows/xamarin-ui-template.yml
+    with: 
+      app-version: ${{needs.format-version.outputs.app-version-formated}}.${{ github.run_number }}
+      configuration: Release
+    secrets: inherit

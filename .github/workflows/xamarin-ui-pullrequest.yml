@@ -1,0 +1,13 @@
+name: Xamarin-UI-PullRequest
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  xamarin-ui-pullrequest:
+    uses: ./.github/workflows/xamarin-ui-template.yml
+    with: 
+      app-version: 1.0.${{ github.event.pull_request.number }}.${{ github.run_number }}
+      configuration: Release
+    secrets: inherit

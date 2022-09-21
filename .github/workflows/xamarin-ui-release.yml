@@ -1,0 +1,15 @@
+name: Xamarin-UI-Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*' 
+
+jobs:
+  xamarin-ui-release:
+    uses: ./.github/workflows/xamarin-ui-template.yml
+    with: 
+      app-version: ${{ github.ref_name }}
+      configuration: Release
+    secrets: inherit
