@@ -1,0 +1,29 @@
+name: Notify-Slack
+
+on:
+  workflow_call:
+
+jobs:
+  notify:
+    name: Notify Slack
+    runs-on: [self-hosted, xamarin-android]
+    steps:
+    - name: Send Slack Notification
+      uses: slackapi/slack-github-action@v1.18.0
+      with:
+        payload: |
+          {
+            "text": "GitHub Action build result: ${{ github.workflow }} : ${{ job.status }}\nPipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{github.run_id }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "GitHub Action build result: ${{ github.workflow }} : ${{ job.status }}\nPipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{github.run_id }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

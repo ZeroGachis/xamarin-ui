@@ -1,0 +1,68 @@
+name: Publish-Nuget
+
+on:
+  workflow_call:
+    inputs: 
+      app-version: 
+        required: true
+        type: string
+      configuration:
+        required: true
+        type: string
+
+jobs:
+  publish:
+    name: Publish Nuget
+    runs-on: [self-hosted, xamarin-android]
+
+    steps:
+    - name: Clean Workspace
+      uses: mickem/clean-after-action@v1
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Modify AssemblyInfo files
+      uses: mingjun97/file-regex-replace@v1
+      with:
+        regex: 'AssemblyVersion\("(.*?)"\)'
+        replacement: 'AssemblyVersion("${{ inputs.app-version }}")'
+        include: 'AssemblyInfo.cs'  
+    - name: Modify Nuget Version
+      uses: mingjun97/file-regex-replace@v1
+      with:
+        regex: '<Version>.*<\/Version>'
+        replacement: '<Version>${{ inputs.app-version }}</Version>'
+        include: 'Smartway.UiComponent.nuspec' 
+
+    - name: Nuget - Restore packages
+      run: nuget restore Smartway.UiComponent.sln
+
+    - name: MsBuild - Compile
+      run: msbuild Smartway.UiComponent.sln -p:Configuration=${{ inputs.configuration }} -clp:Summary
+
+ 
+    - name: Pack Nuget
+      run: "nuget pack Smartway.UiComponent.nuspec -Version ${{ inputs.app-version}} -Properties Configuration=${{ inputs.configuration }}"
+    - name: Publish Nuget
+      run: "nuget push Smartway.UiComponent.${{ inputs.app-version }}.nupkg -ApiKey ${{ secrets.NUGET_API_KEY }} -Source nuget.org -NonInteractive"
+
+    - name: Send Slack Notification
+      if: ${{ failure() }}
+      uses: slackapi/slack-github-action@v1.18.0
+      with:
+        payload: |
+          {
+            "text": "GitHub Action build result: ${{ github.workflow }} : ${{ job.status }}\nPipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{github.run_id }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "GitHub Action build result: ${{ github.workflow }} : ${{ job.status }}\nPipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{github.run_id }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
