@@ -54,6 +54,7 @@ project {
 object Integration : BuildType({
     templates(Build)
     name = "Integration"
+    paused = true
 
     params {
         select("system.Configuration", "Release", label = "Build Configuration",
@@ -79,6 +80,7 @@ object Integration : BuildType({
 object PullRequest : BuildType({
     templates(Build)
     name = "Pull Request"
+    paused = true
 
     params {
         select("system.Configuration", "Release", label = "Build Configuration",
@@ -133,6 +135,7 @@ object PullRequest : BuildType({
 object Release : BuildType({
     templates(Build)
     name = "Release"
+    paused = true
 
     params {
         select("system.Configuration", "Release", label = "Build Configuration",
