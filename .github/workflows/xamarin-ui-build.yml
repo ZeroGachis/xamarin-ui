@@ -1,0 +1,87 @@
+name: Build-Sample-APK
+
+on:
+  workflow_call:
+    inputs: 
+      app-version: 
+        required: true
+        type: string
+      configuration:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build Sample APK
+    runs-on: [self-hosted, xamarin-android]
+    steps:
+    - name: Clean Workspace
+      uses: mickem/clean-after-action@v1
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-1
+    - name: Get ZG APK -keystore
+      run: aws s3 cp s3://backup-zerogachis/github-actions/zg.keystore zg.keystore
+
+    - name: Modify AssemblyInfo files
+      uses: mingjun97/file-regex-replace@v1
+      with:
+        regex: 'AssemblyVersion\("(.*?)"\)'
+        replacement: 'AssemblyVersion("${{ inputs.app-version }}")'
+        include: 'AssemblyInfo.cs'  
+
+    - name: Nuget - Restore packages
+      run: nuget restore Smartway.UiComponent.sln
+
+    - name: MsBuild - Compile
+      run: msbuild Smartway.UiComponent.sln -p:Configuration=${{ inputs.configuration }} -clp:Summary
+
+    - name: Unit tests
+      id: unittests
+      continue-on-error: true
+      run: dotnet test Smartway.UiComponent.UnitTests/Smartway.UiComponent.UnitTests.csproj  --logger "trx;LogFileName=test-results-unittests.trx"
+    - name: Test Report - Unit Tests
+      uses: dorny/test-reporter@v1.5.0
+      if: success() || (failure() && steps.unittests.outcome == 'failure')
+      with:
+        name: Unit Tests Results                 
+        path: 'Smartway.UiComponent.UnitTests/TestResults/test-results-unittests.trx'                     
+        reporter: dotnet-trx
+
+    - name: Build APK 
+      run: msbuild Smartway.UiComponent.Sample.Android/Smartway.UiComponent.Sample.Android.csproj -p:Configuration=${{ inputs.configuration }} -t:PackageForAndroid        
+    - name: Optimize APK
+      run: zipalign -f -v 4 Smartway.UiComponent.Sample.Android/bin/Release/com.companyname.smartway.uicomponent.sample.apk Smartway.UiComponent.Sample.Android/bin/Release/xamarin-ui-sample.apk
+    - name: Sign APK
+      run: /usr/lib/android-sdk/build-tools/30.0.3/apksigner sign --ks zg.keystore --ks-pass pass:'${{ secrets.APK_KEYSTORE_PASSWORD }}' --ks-key-alias zg_key_store Smartway.UiComponent.Sample.Android/bin/Release/xamarin-ui-sample.apk
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Xamarin-UI-${{ inputs.app-version }}
+        path: Smartway.UiComponent.Sample.Android/bin/Release/xamarin-ui-sample.apk
+
+    - name: Send Slack Notification
+      if: ${{ failure() }}
+      uses: slackapi/slack-github-action@v1.18.0
+      with:
+        payload: |
+          {
+            "text": "GitHub Action build result: ${{ github.workflow }} : ${{ job.status }}\nPipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{github.run_id }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "GitHub Action build result: ${{ github.workflow }} : ${{ job.status }}\nPipeline: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{github.run_id }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_HOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

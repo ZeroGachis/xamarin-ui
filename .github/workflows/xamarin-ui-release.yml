@@ -1,0 +1,29 @@
+name: Xamarin-UI-Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*' 
+
+jobs:
+  build:
+    uses: ./.github/workflows/xamarin-ui-build.yml
+    with: 
+      app-version: ${{ github.ref_name }}
+      configuration: Release
+    secrets: inherit
+
+  publish:
+    needs: build
+    uses: ./.github/workflows/xamarin-ui-publish.yml
+    with: 
+      app-version: ${{ github.ref_name }}
+      configuration: Release
+    secrets: inherit  
+
+  notify:
+    if: ${{ success() }}
+    needs: [build, publish]
+    uses: ./.github/workflows/xamarin-ui-notify.yml
+    secrets: inherit
