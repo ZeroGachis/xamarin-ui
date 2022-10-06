@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Input;
@@ -200,9 +200,9 @@ namespace Smartway.UiComponent.Inputs
 
         private bool DateTimeIsNull(DateTime date)
         {
-            // null value of datetime is a datetime at 01/01/01
-            return date.Year == 1;
+            return date.Year == DateTime.MinValue.Year;
         }
+
         private void SetDefaultPlaceholder()
         {
             if (IsDayMonthCalendar())
@@ -223,7 +223,7 @@ namespace Smartway.UiComponent.Inputs
         {
             var calendarType =
                 CultureInfo.GetCultureInfo(CultureInfo.CurrentCulture.Name).DateTimeFormat.MonthDayPattern;
-            return calendarType == "d MMMM";
+            return calendarType.IndexOf("d") < calendarType.IndexOf("M");
         }
 
         private void OnFocusedSelectAllEntryContent(object sender, FocusEventArgs e)
