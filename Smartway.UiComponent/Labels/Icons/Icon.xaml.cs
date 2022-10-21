@@ -50,7 +50,8 @@ namespace Smartway.UiComponent.Labels.Icons
             Revalue,
             Stick,
             Printer,
-            Logout
+            Logout,
+            WifiOff
         }
 
         /// <summary>
@@ -71,6 +72,7 @@ namespace Smartway.UiComponent.Labels.Icons
             new MaterialIcon(IconNames.GridView, "\ue9b0"),
             new MaterialIcon(IconNames.NotificationImportant, "\ue004"),
             new MaterialIcon(IconNames.NotInterested, "\ue033"),
+            new MaterialIcon(IconNames.WifiOff, "\ue648"),
             new MaterialIcon(IconNames.Search, "\ue8b6"),
             new MaterialIcon(IconNames.SignalCellularNoSim, "\ue1ce"),
             new MaterialIcon(IconNames.Today, "\ue8df"),
