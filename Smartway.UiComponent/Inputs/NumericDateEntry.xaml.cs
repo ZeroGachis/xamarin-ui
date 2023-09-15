@@ -177,7 +177,7 @@ namespace Smartway.UiComponent.Inputs
 
         private void SetEntriesPosition()
         {
-            if (IsDayMonthCalendar())
+            if (IsDayMonthCalendar() || IsYearsFirstCalendar())
             {
                 DayEntry = FirstEntry;
                 MonthEntry = SecondEntry;
@@ -205,7 +205,7 @@ namespace Smartway.UiComponent.Inputs
 
         private void SetDefaultPlaceholder()
         {
-            if (IsDayMonthCalendar())
+            if (IsDayMonthCalendar() || IsYearsFirstCalendar())
             {
                 DayEntry.Placeholder = "JJ";
                 MonthEntry.Placeholder = "MM";
@@ -224,6 +224,13 @@ namespace Smartway.UiComponent.Inputs
             var calendarType =
                 CultureInfo.GetCultureInfo(CultureInfo.CurrentCulture.Name).DateTimeFormat.MonthDayPattern;
             return calendarType.IndexOf("d") < calendarType.IndexOf("M");
+        }
+
+        private bool IsYearsFirstCalendar()
+        {
+            var calendarType =
+                CultureInfo.GetCultureInfo(CultureInfo.CurrentCulture.Name).DateTimeFormat.YearMonthPattern;
+            return calendarType.IndexOf("y") < calendarType.IndexOf("M");
         }
 
         private void OnFocusedSelectAllEntryContent(object sender, FocusEventArgs e)
