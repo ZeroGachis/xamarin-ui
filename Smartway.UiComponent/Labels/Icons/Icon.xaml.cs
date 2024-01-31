@@ -49,6 +49,7 @@ namespace Smartway.UiComponent.Labels.Icons
             RevalueOutline,
             Revalue,
             Stick,
+            Sync,
             Printer,
             Logout
         }
@@ -79,6 +80,7 @@ namespace Smartway.UiComponent.Labels.Icons
             new MaterialIcon(IconNames.Settings, "\ue8b8"),
             new MaterialIcon(IconNames.Printer, "\ue8ad"),
             new MaterialIcon(IconNames.Logout, "\ue9ba"),
+            new MaterialIcon(IconNames.Sync, "\ue627"),
 
             new SmartwayIcon(IconNames.BarcodeScan, "\ue900"),
             new SmartwayIcon(IconNames.DatamatrixScan, "\ue901"),
