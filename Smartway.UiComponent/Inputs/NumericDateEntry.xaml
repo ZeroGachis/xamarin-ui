@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Smartway.UiComponent.Inputs.NumericDateEntry"
     x:Name="Self"
     HorizontalOptions="Center"
-    ColumnDefinitions="*, Auto, *, Auto, *">
-    <Grid.Resources>
+    Orientation="Horizontal">
+    <StackLayout.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="OpenSans"/>
@@ -23,10 +23,10 @@
                 <Setter Property="MaxLength" Value="2" />
             </Style>
         </ResourceDictionary>
-    </Grid.Resources>
+    </StackLayout.Resources>
     <Entry x:Name="FirstEntry" Grid.Column="0" Focused="OnFocusedSelectAllEntryContent"/>
     <Label Grid.Column="1" Text="/"/>
     <Entry x:Name="SecondEntry" Grid.Column="2" Focused="OnFocusedSelectAllEntryContent"/>
     <Label Grid.Column="3" Text="/"/>
     <Entry x:Name="ThirdEntry" Grid.Column="4" Focused="OnFocusedSelectAllEntryContent"/>
-</Grid>
+</StackLayout>
