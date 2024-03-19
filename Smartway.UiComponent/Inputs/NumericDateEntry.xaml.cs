@@ -65,6 +65,21 @@ namespace Smartway.UiComponent.Inputs
             set => SetValue(ErrorCommandProperty, value);
         }
 
+        private CultureInfo _culture;
+        public CultureInfo Culture
+        {
+            get
+            {
+                if (_culture != null)
+                {
+                    return _culture;
+                }
+
+                return CultureInfo.CurrentCulture;
+            }
+            set => _culture = value;
+        }
+
         private List<Entry> _dateEntries;
         public Entry DayEntry;
         public Entry MonthEntry;
@@ -98,7 +113,7 @@ namespace Smartway.UiComponent.Inputs
         {
             var day = int.Parse(DayEntry.Text);
             var month = int.Parse(MonthEntry.Text);
-            var year = CultureInfo.CurrentCulture.Calendar.ToFourDigitYear(int.Parse(YearEntry.Text));
+            var year = Culture.Calendar.ToFourDigitYear(int.Parse(YearEntry.Text));
 
             return new DateTime(year, month, day);
         }
@@ -158,9 +173,9 @@ namespace Smartway.UiComponent.Inputs
 
         private void SetDateTimePlaceholder()
         {
-            DayEntry.Placeholder = DatePlaceholder.ToString("dd");
-            MonthEntry.Placeholder = DatePlaceholder.ToString("MM");
-            YearEntry.Placeholder = DatePlaceholder.ToString("yy");
+            DayEntry.Placeholder = DatePlaceholder.ToString("dd", Culture);
+            MonthEntry.Placeholder = DatePlaceholder.ToString("MM", Culture);
+            YearEntry.Placeholder = DatePlaceholder.ToString("yy", Culture);
         }
 
         protected virtual void SetFilledDate()
@@ -170,9 +185,9 @@ namespace Smartway.UiComponent.Inputs
 
             var date = (DateTime)FilledDateTime;
 
-            DayEntry.Text = date.ToString("dd");
-            MonthEntry.Text = date.ToString("MM");
-            YearEntry.Text = date.ToString("yy");
+            DayEntry.Text = date.ToString("dd", Culture);
+            MonthEntry.Text = date.ToString("MM", Culture);
+            YearEntry.Text = date.ToString("yy", Culture);
         }
 
         private void SetEntriesPosition()
@@ -221,15 +236,13 @@ namespace Smartway.UiComponent.Inputs
 
         private bool IsDayMonthCalendar()
         {
-            var calendarType =
-                CultureInfo.GetCultureInfo(CultureInfo.CurrentCulture.Name).DateTimeFormat.MonthDayPattern;
+            var calendarType = Culture.DateTimeFormat.MonthDayPattern;
             return calendarType.IndexOf("d") < calendarType.IndexOf("M");
         }
 
         private bool IsYearsFirstCalendar()
         {
-            var calendarType =
-                CultureInfo.GetCultureInfo(CultureInfo.CurrentCulture.Name).DateTimeFormat.YearMonthPattern;
+            var calendarType = Culture.DateTimeFormat.YearMonthPattern;
             return calendarType.IndexOf("y") < calendarType.IndexOf("M");
         }
 
